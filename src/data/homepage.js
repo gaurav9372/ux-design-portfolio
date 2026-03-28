@@ -3,8 +3,8 @@ const PLACEHOLDER = "/images/image-missing.png";
 export const homepageContent = {
   nav: {
     links: ["About me", "Contact", "Blogs"],
-    cta: "My Works",
-    mobileLinks: ["About me", "Contact", "Blogs", "My Works"]
+    cta: "Projects",
+    mobileLinks: ["About me", "Contact", "Blogs", "Projects"]
   },
   hero: {
     bgWords: ["UX", "Designer"],
@@ -84,7 +84,7 @@ export const homepageContent = {
     contactTitle: "Contact me",
     email: "Gauravguptasggs@gmail.com",
     desc: "[TODO: Write real footer copy]",
-    navLinks: ["About me", "Contact", "Portfolio"]
+    navLinks: ["About me", "Contact", "Projects"]
   }
 };
 
