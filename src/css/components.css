@@ -2,20 +2,34 @@
    COMPONENTS — Navbar, Mobile Menu, Cards, Carousel, Buttons, Logo Tiles
    =========================== */
 
-/* Navbar */
-.nav {
-  border-bottom: 1px solid var(--stroke);
-  --nav-progress: 0;
-  height: calc(126px - 38px * var(--nav-progress));
+/* Top navbar (scrolls with page) */
+.nav-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: calc(88px - 56px * var(--nav-progress)) var(--pad);
-  position: sticky;
+  padding: 32px var(--pad);
+  background: transparent;
+  position: relative;
+  z-index: 40;
+}
+
+/* Fixed navbar (appears on scroll) */
+.nav {
+  border-bottom: 1px solid var(--stroke);
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--pad);
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 50;
-  background: var(--bg);
-  transition: height .25s ease, padding .25s ease, transform .3s ease;
+  background: rgba(18, 23, 21, .92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform .35s cubic-bezier(.4,0,.2,1);
   will-change: transform;
 }
 .nav.nav-hidden {
@@ -24,10 +38,6 @@
 }
 .brand {
   width: 48px; height: 48px; position: relative; flex: 0 0 auto;
-  transform: scale(calc(1.35 - 0.65 * var(--nav-progress)));
-  transform-origin: left center;
-  transition: transform .25s ease;
-  will-change: transform;
 }
 .brand img {
   position: absolute;
@@ -69,7 +79,8 @@
 }
 
 /* Mobile menu */
-.burger {
+.burger,
+.burger-top {
   display: none;
   width: 44px; height: 44px;
   border: 1px solid rgba(255,255,255,.12);
@@ -116,7 +127,7 @@
   height: 100vh;
   max-width: none;
   margin: 0 auto;
-  overflow: hidden;
+  overflow: clip;
 }
 .case-card {
   position: absolute;

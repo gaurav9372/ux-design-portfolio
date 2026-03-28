@@ -184,7 +184,14 @@ export const initCardStack = () => {
   const SCROLL_PER_CARD = window.innerHeight * 0.6;
   const SCALE_STEP = 0.025;
   const PUSH_STEP = 12;
-  const TOP_OFFSET = 80; // px from top of viewport
+  const TOP_OFFSET = 80;
+
+  // Natural rotation angles per card (alternating, slight randomness)
+  const ROTATIONS = cards.map((_, i) => {
+    if (i === 0) return 0; // first card is straight
+    const direction = i % 2 === 0 ? 1 : -1;
+    return direction * (1.2 + (i % 3) * 0.6);
+  });
 
   // Set section height to create scroll room
   section.style.height = `${SCROLL_PER_CARD * (count - 1) + window.innerHeight + 200}px`;
@@ -215,8 +222,10 @@ export const initCardStack = () => {
       // Count how many cards have fully landed on top of this one
       const cardsOnTop = Math.max(0, Math.floor(scrolled / SCROLL_PER_CARD) - i);
 
+      const rot = ROTATIONS[i];
+
       if (i === 0) {
-        // First card: always visible, just shrinks as stack grows
+        // First card: always visible, shrinks as stack grows
         const scale = Math.max(1 - cardsOnTop * SCALE_STEP, 0.85);
         const push = cardsOnTop * PUSH_STEP;
         card.style.transform = `translateX(-50%) translateY(${TOP_OFFSET - push}px) scale(${scale})`;
@@ -225,20 +234,21 @@ export const initCardStack = () => {
       }
 
       if (progress <= 0) {
-        // Not triggered yet — hidden below
-        card.style.transform = `translateX(-50%) translateY(100vh)`;
+        // Hidden below
+        card.style.transform = `translateX(-50%) translateY(100vh) rotate(${rot * 2}deg)`;
         card.style.opacity = "0";
       } else if (progress < 1) {
-        // Sliding up into position
+        // Sliding up — rotation eases from exaggerated to final angle
         const ease = 1 - Math.pow(1 - progress, 3);
         const yOffset = TOP_OFFSET + (1 - ease) * (window.innerHeight - TOP_OFFSET);
-        card.style.transform = `translateX(-50%) translateY(${yOffset}px)`;
+        const currentRot = rot * 2 * (1 - ease) + rot * ease;
+        card.style.transform = `translateX(-50%) translateY(${yOffset}px) rotate(${currentRot}deg)`;
         card.style.opacity = String(Math.min(progress * 3, 1));
       } else {
-        // Landed — scale down if more cards stacked on top
+        // Landed — keeps its natural tilt, scales down as buried
         const scale = Math.max(1 - cardsOnTop * SCALE_STEP, 0.85);
         const push = cardsOnTop * PUSH_STEP;
-        card.style.transform = `translateX(-50%) translateY(${TOP_OFFSET - push}px) scale(${scale})`;
+        card.style.transform = `translateX(-50%) translateY(${TOP_OFFSET - push}px) scale(${scale}) rotate(${rot}deg)`;
         card.style.opacity = "1";
       }
     });

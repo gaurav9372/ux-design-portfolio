@@ -23,8 +23,8 @@
 
 <body>
 <div class="wrap" id="top">
-    <!-- NAVBAR -->
-    <header class="nav">
+    <!-- TOP NAVBAR (scrolls with page) -->
+    <header class="nav-top" id="navTop">
       <a class="brand" href="#top" aria-label="Home">
         <img id="brandImg" alt="Shreyansh Gaurav logo" />
       </a>
@@ -38,6 +38,28 @@
         <a class="nav-cta" href="/pages/projects.html">
           <span>Projects</span>
           <img id="arrowImg" alt="" aria-hidden="true" />
+        </a>
+      </nav>
+
+      <button class="burger burger-top" id="burgerTop" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+      </button>
+    </header>
+
+    <!-- FIXED NAVBAR (appears on scroll down) -->
+    <header class="nav nav-hidden" id="navFixed">
+      <a class="brand" href="#top" aria-label="Home">
+        <img src="/images/image-missing.png" alt="Shreyansh Gaurav logo" />
+      </a>
+
+      <nav class="nav-right" aria-label="Primary">
+        <div class="nav-links">
+          <a href="/pages/about.html">About me</a>
+          <a href="/pages/contact.html">Contact</a>
+          <a href="/pages/blog.html">Blogs</a>
+        </div>
+        <a class="nav-cta" href="/pages/projects.html">
+          <span>Projects</span>
         </a>
       </nav>
 

@@ -1,5 +1,6 @@
 // JS modules
 import { applyImages } from './content.js';
+import { applyMdContent } from './md-content.js';
 import { initNav } from './nav.js';
 import { initStatsAnimation, initUxParallax, initSplitHover, initCardStack } from './animations.js';
 import { initTestimonials } from './testimonials.js';
@@ -8,7 +9,8 @@ import { initMarquee } from './marquee.js';
 // Initialize everything
 const init = () => {
   try { applyImages(); } catch (e) { console.error("applyImages:", e); }
-try { initNav(); } catch (e) { console.error("initNav:", e); }
+  try { applyMdContent(); } catch (e) { console.error("applyMdContent:", e); }
+  try { initNav(); } catch (e) { console.error("initNav:", e); }
   try { initStatsAnimation(); } catch (e) { console.error("initStatsAnimation:", e); }
   try { initUxParallax(); } catch (e) { console.error("initUxParallax:", e); }
   try { initSplitHover(); } catch (e) { console.error("initSplitHover:", e); }

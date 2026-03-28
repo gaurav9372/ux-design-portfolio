@@ -66,8 +66,11 @@
 /* Mobile */
 @media (max-width: 720px) {
   :root { --pad: 20px }
-  .nav { padding: 24px 16px; height: auto }
-  .nav-right { display: none }
+  .nav-top { padding: 20px 16px }
+  .nav-top .nav-right { display: none }
+  .burger-top { display: flex }
+  .nav { padding: 0 16px; height: 56px }
+  .nav .nav-right { display: none }
   .burger { display: flex }
   .mobile-panel { display: none }
   .mobile-panel.open { display: grid }

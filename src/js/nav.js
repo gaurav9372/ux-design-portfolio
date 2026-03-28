@@ -1,24 +1,29 @@
 import { $, smoothTo } from './utils.js';
 
 export const initNav = () => {
+  const navTop = $("navTop");
+  const navFixed = $("navFixed");
   const burger = $("burger");
+  const burgerTop = $("burgerTop");
   const panel = $("mobilePanel");
-  const navEl = document.querySelector(".nav");
-  const worksCta = $("worksCta");
-
-  if (!burger || !panel) return;
 
   const openMenu = () => {
-    burger.setAttribute("aria-expanded", "true");
-    panel.classList.add("open");
+    if (burger) burger.setAttribute("aria-expanded", "true");
+    if (burgerTop) burgerTop.setAttribute("aria-expanded", "true");
+    if (panel) panel.classList.add("open");
   };
   const closeMenu = () => {
-    burger.setAttribute("aria-expanded", "false");
-    panel.classList.remove("open");
+    if (burger) burger.setAttribute("aria-expanded", "false");
+    if (burgerTop) burgerTop.setAttribute("aria-expanded", "false");
+    if (panel) panel.classList.remove("open");
   };
 
-  burger.addEventListener("click", () => {
+  if (burger) burger.addEventListener("click", () => {
     const isOpen = burger.getAttribute("aria-expanded") === "true";
+    isOpen ? closeMenu() : openMenu();
+  });
+  if (burgerTop) burgerTop.addEventListener("click", () => {
+    const isOpen = burgerTop.getAttribute("aria-expanded") === "true";
     isOpen ? closeMenu() : openMenu();
   });
 
@@ -34,20 +39,10 @@ export const initNav = () => {
     });
   });
 
-  // CTA jump
-  if (worksCta) {
-    worksCta.addEventListener("click", () => smoothTo("#projects"));
-  }
+  // Fixed navbar: show when top navbar scrolls out, hide on scroll up near top
+  if (!navFixed || !navTop) return;
 
-  // Navbar shrink + hide/show on scroll
-  if (!navEl) return;
-
-  const NAV_SHOW_THRESHOLD = 20;
-  const NAV_HIDE_THRESHOLD = 160;
-  const NAV_SCROLL_START = 20;
-  const NAV_SCROLL_END = 120;
-  const MIN_DELTA = 6;
-
+  const MIN_DELTA = 15;
   let lastY = window.scrollY;
   let ticking = false;
 
@@ -55,19 +50,22 @@ export const initNav = () => {
     ticking = false;
     const y = window.scrollY;
     const delta = y - lastY;
-    const progress = Math.min(Math.max((y - NAV_SCROLL_START) / (NAV_SCROLL_END - NAV_SCROLL_START), 0), 1);
-    navEl.style.setProperty("--nav-progress", progress.toFixed(3));
+    const topNavBottom = navTop.offsetTop + navTop.offsetHeight;
 
-    if (y <= NAV_SHOW_THRESHOLD) {
-      navEl.classList.remove("nav-hidden");
-    } else if (y > NAV_HIDE_THRESHOLD) {
-      if (delta > MIN_DELTA) {
-        navEl.classList.add("nav-hidden");
-      } else if (delta < -MIN_DELTA) {
-        navEl.classList.remove("nav-hidden");
+    if (y <= topNavBottom) {
+      // Top navbar still visible — hide fixed navbar
+      navFixed.classList.add("nav-hidden");
+      lastY = y;
+    } else if (Math.abs(delta) > MIN_DELTA) {
+      if (delta < 0) {
+        // Scrolling up — show fixed navbar
+        navFixed.classList.remove("nav-hidden");
+      } else {
+        // Scrolling down — hide fixed navbar
+        navFixed.classList.add("nav-hidden");
       }
+      lastY = y;
     }
-    lastY = y;
   };
 
   window.addEventListener("scroll", () => {
