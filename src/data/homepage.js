@@ -15,7 +15,7 @@ export const homepageContent = {
   },
   about: {
     heading: "A passion for screens and helping people",
-    body: "[TODO: Write real about copy]"
+    body: "I'm a UX Designer who turns complex problems into intuitive, user-first experiences. With a background in visual design and a deep curiosity for how people interact with screens, I bridge the gap between what users need and what businesses want. Every pixel I place is backed by research, empathy, and a relentless focus on usability."
   },
   stats: [
     { number: "40+", label: "Projects I worked on." },
@@ -28,7 +28,7 @@ export const homepageContent = {
   ux: {
     bgText: "User Experience",
     heading: "UX Design fuels my ADHD and I love it.",
-    desc: "[TODO: Write real UX section copy]",
+    desc: "I thrive at the intersection of user needs, business goals, and technical feasibility. My process starts with listening \u2014 understanding the people who will use the product \u2014 and ends with designs that feel effortless. From research to wireframes to polished interfaces, I own the full design journey.",
     tags: {
       client: { label: "Client", sub: "Critic" },
       users: { label: "Users", sub: "Judge" },
@@ -37,7 +37,7 @@ export const homepageContent = {
   },
   projects: {
     heading: "My Projects",
-    desc: "[TODO: Write real projects description]"
+    desc: "A selection of projects where I helped brands and startups design experiences that convert, retain, and delight. Each project is a story of constraints, collaboration, and user-centered thinking."
   },
   caseStudies: [
     {
@@ -52,13 +52,13 @@ export const homepageContent = {
       cta: "Case Study"
     },
     {
-      title: "[TODO: Project 3]",
-      subtitle: "[TODO: Add third project subtitle]",
-      bottom: "[TODO: Add third project description]"
+      title: "AdsCult",
+      subtitle: "Digital marketing agency \u2014 brand identity and web experience",
+      bottom: "Built a conversion-focused website that communicates trust and expertise at first glance."
     }
   ],
   caseFooter: {
-    left: "[TODO: Write case study footer copy]",
+    left: "Every project starts with a question: what does the user actually need? I work backwards from that answer to build experiences that feel natural.",
     right: "View all"
   },
   testimonials: {
@@ -77,13 +77,13 @@ export const homepageContent = {
   gallery: {
     heading: "\"Your job is not to make the app amazing. Your job is to make the user awesome.\"",
     author: "Kathy Sierra",
-    smallQuote: "[TODO: Write real gallery quote]"
+    smallQuote: "\"Design is not just what it looks like. Design is how it works.\" \u2014 Steve Jobs"
   },
   footer: {
     location: ["Varanasi,", "india"],
     contactTitle: "Contact me",
     email: "Gauravguptasggs@gmail.com",
-    desc: "[TODO: Write real footer copy]",
+    desc: "Open to freelance projects, full-time roles, and collaborations. If you're building something that puts users first, let's talk.",
     navLinks: ["About me", "Contact", "Projects", "Blogs"]
   }
 };
