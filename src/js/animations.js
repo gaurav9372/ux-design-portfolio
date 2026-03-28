@@ -1,24 +1,12 @@
 import { parseStatText } from './utils.js';
-import { homepageContent } from '../data/homepage.js';
-import { setText } from './utils.js';
 
 const STAT_DURATION = 1400;
-const CONTENT = homepageContent;
 
 /* --- Stat counter animation --- */
 const statData = [];
 
 const initStatData = () => {
   const nums = document.querySelectorAll(".stat .num");
-  const labels = document.querySelectorAll(".stat .lbl");
-
-  if (Array.isArray(CONTENT.stats)) {
-    CONTENT.stats.forEach((item, i) => {
-      if (!item) return;
-      setText(nums[i], item.number);
-      setText(labels[i], item.label);
-    });
-  }
 
   nums.forEach((el) => {
     const parsed = parseStatText(el.textContent);

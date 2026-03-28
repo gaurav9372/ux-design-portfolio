@@ -1,18 +1,6 @@
-import { homepageContent, defaultImages } from '../data/homepage.js';
+import { testimonials as testimonialData } from '../data/homepage.js';
 
-const PLACEHOLDER = "/images/image-missing.png";
-const CONTENT = homepageContent;
 const AUTO_INTERVAL = 4000;
-
-const defaultTestimonials = [
-  { quote: "Shreyansh brought clarity to our product vision from day one.", name: "Rahul Raj", role: "Developer", avatar: PLACEHOLDER },
-  { quote: "The flow felt effortless and the layout reads clean on every screen.", name: "Aditi Sharma", role: "Product Designer", avatar: PLACEHOLDER },
-  { quote: "Clear structure, fast decisions, and a sharp visual story.", name: "Neel Verma", role: "Founder", avatar: PLACEHOLDER },
-  { quote: "The UX choices improved comprehension without adding noise.", name: "Priya Singh", role: "UX Lead", avatar: PLACEHOLDER },
-  { quote: "Every screen feels intentional. The hierarchy is spot on.", name: "Karan Mehta", role: "PM", avatar: PLACEHOLDER },
-  { quote: "The experience is calm, structured, and easy to navigate.", name: "Rhea Patel", role: "Researcher", avatar: PLACEHOLDER },
-  { quote: "Strong visual rhythm with just the right amount of contrast.", name: "Arjun Nair", role: "Engineer", avatar: PLACEHOLDER }
-];
 
 export const initTestimonials = () => {
   const quoteEl = document.getElementById("testimonialQuote");
@@ -26,10 +14,7 @@ export const initTestimonials = () => {
 
   if (!quoteEl || !nameEl || !roleEl || !avatarEl || !dotsEl || !prevBtn || !nextBtn) return;
 
-  const testimonialsContent = CONTENT.testimonials || {};
-  const testimonials = Array.isArray(testimonialsContent.items) && testimonialsContent.items.length
-    ? testimonialsContent.items
-    : defaultTestimonials;
+  const testimonials = testimonialData;
 
   let index = 0;
   let autoTimer = null;
