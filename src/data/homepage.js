@@ -55,6 +55,26 @@ export const homepageContent = {
       title: "AdsCult",
       subtitle: "Digital marketing agency \u2014 brand identity and web experience",
       bottom: "Built a conversion-focused website that communicates trust and expertise at first glance."
+    },
+    {
+      title: "FinFlow",
+      subtitle: "Fintech startup \u2014 mobile banking experience",
+      bottom: "Redesigned the onboarding flow, reducing drop-off by 35% and improving first-transaction time."
+    },
+    {
+      title: "MediTrack",
+      subtitle: "Healthcare SaaS \u2014 patient management dashboard",
+      bottom: "Simplified a complex data dashboard into an intuitive interface used daily by 200+ clinics."
+    },
+    {
+      title: "Flavor Street",
+      subtitle: "Food delivery app \u2014 end-to-end mobile UX",
+      bottom: "Designed a seamless ordering experience from discovery to checkout with real-time tracking."
+    },
+    {
+      title: "EduSpark",
+      subtitle: "EdTech platform \u2014 learning experience for K-12",
+      bottom: "Created an engaging, gamified learning interface that increased student retention by 40%."
     }
   ],
   caseFooter: {
