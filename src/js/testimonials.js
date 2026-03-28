@@ -1,6 +1,15 @@
-import { testimonials as testimonialData } from '../data/homepage.js';
-
+const PLACEHOLDER = "/images/image-missing.png";
 const AUTO_INTERVAL = 4000;
+
+const TESTIMONIALS = [
+  { quote: "\"Shreyansh brought clarity to our product vision from day one.\"", name: "Rahul Raj", role: "Developer", avatar: PLACEHOLDER },
+  { quote: "\"The flow felt effortless and the layout reads clean on every screen.\"", name: "Aditi Sharma", role: "Product Designer", avatar: PLACEHOLDER },
+  { quote: "\"Clear structure, fast decisions, and a sharp visual story.\"", name: "Neel Verma", role: "Founder", avatar: PLACEHOLDER },
+  { quote: "\"The UX choices improved comprehension without adding noise.\"", name: "Priya Singh", role: "UX Lead", avatar: PLACEHOLDER },
+  { quote: "\"Every screen feels intentional. The hierarchy is spot on.\"", name: "Karan Mehta", role: "PM", avatar: PLACEHOLDER },
+  { quote: "\"The experience is calm, structured, and easy to navigate.\"", name: "Rhea Patel", role: "Researcher", avatar: PLACEHOLDER },
+  { quote: "\"Strong visual rhythm with just the right amount of contrast.\"", name: "Arjun Nair", role: "Engineer", avatar: PLACEHOLDER }
+];
 
 export const initTestimonials = () => {
   const quoteEl = document.getElementById("testimonialQuote");
@@ -14,15 +23,13 @@ export const initTestimonials = () => {
 
   if (!quoteEl || !nameEl || !roleEl || !avatarEl || !dotsEl || !prevBtn || !nextBtn) return;
 
-  const testimonials = testimonialData;
-
   let index = 0;
   let autoTimer = null;
   let fadeTimer = null;
 
   const render = (i, animate = true) => {
     const apply = () => {
-      const item = testimonials[i];
+      const item = TESTIMONIALS[i];
       quoteEl.textContent = item.quote;
       nameEl.textContent = item.name;
       roleEl.textContent = item.role;
@@ -42,8 +49,7 @@ export const initTestimonials = () => {
     }, 260);
   };
 
-  // Create dots
-  testimonials.forEach((_, i) => {
+  TESTIMONIALS.forEach((_, i) => {
     const dot = document.createElement("button");
     dot.type = "button";
     dot.className = "t-dot";
@@ -52,13 +58,12 @@ export const initTestimonials = () => {
     dotsEl.appendChild(dot);
   });
 
-  const goPrev = () => { index = (index - 1 + testimonials.length) % testimonials.length; render(index); startAuto(); };
-  const goNext = () => { index = (index + 1) % testimonials.length; render(index); startAuto(); };
+  const goPrev = () => { index = (index - 1 + TESTIMONIALS.length) % TESTIMONIALS.length; render(index); startAuto(); };
+  const goNext = () => { index = (index + 1) % TESTIMONIALS.length; render(index); startAuto(); };
 
   prevBtn.addEventListener("click", goPrev);
   nextBtn.addEventListener("click", goNext);
 
-  // Keyboard navigation
   document.addEventListener("keydown", (e) => {
     if (e.key === "ArrowLeft") goPrev();
     if (e.key === "ArrowRight") goNext();
@@ -67,7 +72,7 @@ export const initTestimonials = () => {
   const startAuto = () => {
     if (autoTimer) clearInterval(autoTimer);
     autoTimer = setInterval(() => {
-      index = (index + 1) % testimonials.length;
+      index = (index + 1) % TESTIMONIALS.length;
       render(index);
     }, AUTO_INTERVAL);
   };
