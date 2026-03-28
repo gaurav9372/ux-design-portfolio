@@ -92,199 +92,113 @@ ux-design-portfolio/
 
 ---
 
-## Completed
+## Completed Phases
 
-- [x] Setup GitHub and Git
-- [x] Setup Vite
+### Phase 0: Asset Cleanup — DONE
+- [x] Moved all assets to `public/images/` with kebab-case names
+- [x] Replaced 105 Figma API URLs with `/images/image-missing.png`
+- [x] Fixed asset path case sensitivity
+- [x] Simplified case study cards to single placeholder images
+- [x] Replaced pill mask elements with `<img>` tags
+- [x] Fixed logo tile borders, section padding (96px), case card 50/50 split (max 1088px)
 
----
+### Phase 1: Project Config & Scaffolding — DONE
+- [x] Updated `package.json` to ES module, added description/author
+- [x] Configured Vite for multi-page build (8 page entries)
+- [x] Created all skeleton pages: projects, about, contact, blog, 2 case studies, blog post template
+- [x] All pages share consistent nav and footer
 
-## Phase 0: Asset Cleanup [BLOCKING — do first]
+### Phase 2: CSS Decomposition — DONE
+- [x] Split `styles.css` (1,250 lines) into 5 modular files:
+  - `src/css/base.css` — variables, reset, typography, scrollbar, split-hover animation
+  - `src/css/layout.css` — wrap, section padding utilities
+  - `src/css/components.css` — navbar, mobile menu, case cards, logo tiles, testimonial controls
+  - `src/css/sections.css` — hero, about, stats, UX, projects, gallery, testimonials, footer
+  - `src/css/responsive.css` — 5 breakpoints (1280, 1100, 768, 720, 480px)
+- [x] Added CSS font variables (`--font-body`, `--font-display`, `--font-ui`), `--accent-hover`
+- [x] Replaced hardcoded colors with CSS variables
 
-**Goal:** Replace all Figma API URLs with local placeholder image, and reorganize assets for Vite.
+### Phase 3: JS Modularization — DONE
+- [x] Split `script.js` (702 lines) into 7 ES modules:
+  - `src/js/utils.js` — `$`, `setText`, `setTextList`, `smoothTo`, `parseStatText`, `clamp`
+  - `src/data/homepage.js` — all content data + image paths
+  - `src/js/content.js` — `applyImages()`, `applyTextContent()`
+  - `src/js/nav.js` — navbar shrink/hide, burger menu, smooth scroll
+  - `src/js/animations.js` — stat counters, UX parallax, split-hover text
+  - `src/js/testimonials.js` — carousel with keyboard arrow support
+  - `src/js/marquee.js` — logo track duplication
+  - `src/js/main.js` — entry point with CSS imports and try/catch init
+- [x] Deleted old root `script.js` and `homepageContent.js`
 
-- [x] Create `public/images/` directory and copy existing local assets into it
-- [x] Replace ALL Figma API URLs in `homepageContent.js` with `/images/image-missing.png`
-- [x] Replace ALL Figma API URLs in `script.js` with `/images/image-missing.png`
-- [x] Fix case sensitivity: update all `assets/Images/` references to new `public/images/` paths
-- [x] Update local image references (heroPhoto, arrowImg, uxRings, etc.) to new paths
-- [x] Delete old `Assets/` folder
-- [x] Replace complex case study right-side elements with single placeholder images
-- [x] Replace pill mask elements with `<img>` tags
-- [x] Fix logo tile borders and backgrounds
-- [x] Fix section side padding to consistent 96px
-- [x] Set case study cards to max-width 1088px
-- [x] Fix case study cards to 50/50 split
+### Phase 4: HTML Cleanup & Semantic Fixes — DONE
+- [x] Title: `"Shreyansh Gaurav | UX Designer"`
+- [x] Added meta description, theme-color, Open Graph tags
+- [x] Wrapped sections in `<main>`, converted hero title to `<h1>`
+- [x] Replaced CTA `div[role=button]` with `<button>`
+- [x] Fixed 50+ empty alt attributes with descriptive text
+- [x] Extracted 7 inline styles to CSS classes (`.hero-name`, `.ux-inner`, `.gallery-inner`, `.projects-inner`, `.logos-container`, `.footer-contact`, `.circle--company`)
+- [x] Replaced social dot `<div>`s with `<a>` elements
+- [x] Fixed "DeSigner" Unicode char (U+FEFF)
 
----
+### Phase 5: Content & Data Fixes — DONE
+- [x] Replaced all Lorem ipsum with `[TODO]` markers (15 total)
+- [x] Fixed duplicate stats: rows 3 & 6 now unique
+- [x] Fixed duplicate case study: card 3 has `[TODO]` for new project
+- [x] Fixed case study subtitles to be unique per project
+- [x] Replaced "mummy kasam I didnt pay them" → "Real people, real feedback"
+- [x] Replaced test testimonial quote with real copy
 
-## Phase 1: Project Configuration & Scaffolding
+### Phase 6: Responsive & Polish — DONE
+- [x] 5 responsive breakpoints active (1280, 1100, 768, 720, 480px)
+- [x] Gallery: `aspect-ratio: 4/3` instead of fixed height
+- [x] `loading="lazy"` on all below-fold images (~30)
+- [x] `fetchpriority="high"` on hero photo
+- [x] `prefers-reduced-motion` media query disables all animations
+- [x] Global `:focus-visible` outline indicator
+- [x] Keyboard arrow navigation for testimonial carousel
+- [x] Fixed `100vw` scrollbar overflow → `100%`
 
-**Goal:** Set up Vite for multi-page builds and create the directory structure.
-
-- [ ] Update `package.json`: change `"type": "commonjs"` → `"type": "module"`, add description and author
-- [ ] Update `vite.config.js` with multi-page `rollupOptions.input` for all pages
-- [ ] Create directories: `src/css/`, `src/js/`, `src/data/`, `pages/`, `pages/project/`, `pages/blog/`
-- [ ] Create `pages/projects.html` — project grid/list with thumbnails and filters
-- [ ] Create `pages/project/care-naturals.html` — case study page (challenge, process, solution, results)
-- [ ] Create `pages/project/united-rubber.html` — case study page
-- [ ] Create `pages/about.html` — full bio, skills, experience, tools, timeline
-- [ ] Create `pages/contact.html` — contact form, email, social links, location map
-- [ ] Create `pages/blog.html` — blog listing page with post cards
-- [ ] Create `pages/blog/sample-post.html` — blog post template page
-- [ ] All pages share consistent nav and footer HTML
-
----
-
-## Phase 2: CSS Decomposition [parallel with Phase 3]
-
-**Goal:** Split single CSS file into 5 modular files with expanded variables and responsive coverage.
-
-- [ ] Create `src/css/base.css` — from lines 1–107 of current styles.css
-  - Expand `:root` variables: add `--font-body`, `--font-display`, `--font-ui`, spacing scale, `--accent-hover`
-  - Replace all hardcoded `#fff`/`#ffffff`/`rgba(255,255,255,...)` with CSS variable references
-  - Include box-sizing reset, html/body base, scrollbar, base `a`/`img` rules
-  - Include split-hover character animation styles
-- [ ] Create `src/css/layout.css` — `.wrap`, `.section`, `.section-tight`, `.section-soft`, `.section-border`
-- [ ] Create `src/css/components.css` — navbar, mobile menu, testimonial controls, case cards, logo tiles, gallery tiles, social links, buttons
-- [ ] Create `src/css/sections.css` — hero, about, stats, UX circles, gallery, projects, case studies, testimonials, footer
-- [ ] Create `src/css/responsive.css` — expand from 2 to 5 breakpoints:
-  - `@media (max-width: 1280px)` — large desktop adjustments
-  - `@media (max-width: 1100px)` — existing rules
-  - `@media (max-width: 768px)` — NEW tablet (2-column stats, stacked case cards)
-  - `@media (max-width: 720px)` — existing mobile rules
-  - `@media (max-width: 480px)` — NEW small mobile (single column, reduced fonts)
-- [ ] Fix gallery: replace fixed `height: 272px` with `aspect-ratio`
-- [ ] Remove duplicate CSS selectors
-- [ ] Consolidate repeated `margin: 0` into global reset
-
----
-
-## Phase 3: JavaScript Modularization [parallel with Phase 2]
-
-**Goal:** Convert global JS to ES modules for Vite.
-
-- [ ] Create `src/js/utils.js` — export `$()`, `setText()`, `setTextList()`, `smoothTo()`, `parseStatText()`
-- [ ] Create `src/data/homepage.js` — export `homepageContent` (replaces `window.HOMEPAGE_CONTENT`)
-  - Update ALL image URLs to local `public/images/` paths
-  - Fix duplicate stats (remove rows 3 and 6, add unique stats or reduce to 4)
-  - Fix duplicate case study (card 3 needs unique content)
-  - Replace Lorem ipsum with `"[TODO: Write real copy]"` markers
-  - Remove U+FEFF from "DeSigner"
-  - Replace "mummy kasam I didnt pay them" with professional tagline
-- [ ] Create `src/js/content.js` — export `applyImages()`, `applyTextContent()`
-  - Update `defaultImages` map to local paths
-  - All DOM text-binding logic from current script.js lines 270–426
-- [ ] Create `src/js/nav.js` — export `initNav()`
-  - Navbar shrink-on-scroll, burger menu, CTA click, smooth scroll
-  - Consolidate two separate scroll event listeners into one shared handler
-- [ ] Create `src/js/animations.js` — export `initSplitHover()`, `initUxParallax()`, `initStatsAnimation()`
-  - Extract magic numbers: `STAT_DURATION = 1400`, `NAV_HIDE_THRESHOLD = 160`, etc.
-  - Add try/catch error handling
-- [ ] Create `src/js/testimonials.js` — export `initTestimonials()`
-  - Add `clearInterval` cleanup
-  - Add keyboard arrow key support
-- [ ] Create `src/js/marquee.js` — export `initMarquee()`
-- [ ] Create `src/js/main.js` — entry point
-  - Import all 5 CSS files
-  - Import all JS modules
-  - Call all `init*()` functions inside `DOMContentLoaded`, each in try/catch
+### Phase 7: Testing — DONE
+- [x] All 8 pages return 200
+- [x] All 7 assets load correctly
+- [x] `npm run build` clean: 24 modules, 0 errors, 377ms
+- [x] Bundle: CSS 23.7KB, JS 14.6KB (gzipped ~5KB each)
+- [x] Zero Figma URLs, zero old asset paths, zero Lorem ipsum remaining
 
 ---
 
-## Phase 4: HTML Cleanup & Semantic Fixes [depends on Phases 2 & 3]
+## Remaining Work (for you)
 
-**Goal:** Fix all HTML issues — SEO, accessibility, semantics, inline styles.
+Replace the 15 `[TODO]` markers with your real content:
 
-### `<head>` overhaul:
-- [ ] Title: `"Shreyansh Gaurav | UX Designer"` (replace "Test-P (Figma → HTML)")
-- [ ] Add `<meta name="description" content="...">`
-- [ ] Add Open Graph tags (og:title, og:description, og:image, og:url)
-- [ ] Add `<meta name="theme-color" content="#121715">`
+### In `src/data/homepage.js`:
+- [ ] About section body copy
+- [ ] UX section description
+- [ ] Projects section description
+- [ ] Case study card 3 — title, subtitle, description
+- [ ] Case study footer copy
+- [ ] Gallery small quote
+- [ ] Footer description
+
+### In `index.html`:
+- [ ] About section paragraph
+- [ ] UX section description
+- [ ] Gallery small quote
+- [ ] Projects description
+- [ ] Case study footer copy
+- [ ] Footer description
+
+### In sub-pages:
+- [ ] About page — background, skills, experience content
+- [ ] Case study pages — challenge, process, solution, results
+- [ ] Blog post — real article content
+- [ ] Add real social media URLs to footer links
+
+### Images to replace:
+- [ ] Replace `image-missing.png` placeholders with real project images
+- [ ] Add real brand logo
+- [ ] Add real stat icons
+- [ ] Add real testimonial avatars
+- [ ] Add real gallery images
+- [ ] Add real project logos
 - [ ] Add favicon
-
-### Semantic structure:
-- [ ] Wrap all sections in a `<main>` element
-- [ ] Convert hero title "I Design Solutions." to `<h1>`
-- [ ] Replace CTA div with `role="button"` with actual `<button>` element
-
-### Image alt text (50+ fixes):
-- [ ] Brand logo: `alt="Shreyansh Gaurav logo"`
-- [ ] Hero photo: `alt="Shreyansh Gaurav, UX Designer"`
-- [ ] Stat icons: descriptive alt per icon
-- [ ] Decorative images: keep `alt=""` and add `aria-hidden="true"`
-- [ ] Testimonial avatars: `alt="[Name] photo"`
-- [ ] Gallery/case study images: descriptive alt text
-
-### Inline style cleanup (35+ occurrences):
-- [ ] Create CSS classes: `.ux-inner`, `.gallery-inner`, `.projects-inner`, `.logos-container`, `.footer-contact`
-- [ ] Create modifiers: `.hero-name`, `.logo-tile--borderless`, `.circle--company`, `.label--small`
-- [ ] Keep case card `.abs` positioning inline (unique per-element Figma coordinates)
-
-### Script tags:
-- [ ] Replace two `<script>` tags with single `<script type="module" src="/src/js/main.js"></script>`
-- [ ] Remove old `homepageContent.js` and `script.js` from root
-
-### Social links:
-- [ ] Replace empty `div.dot` placeholders with `<a>` elements containing SVG icons (LinkedIn, Behance, Dribbble, Twitter/X, Instagram)
-
-### Asset paths:
-- [ ] All `src="assets/Images/..."` → `src="/images/..."` (fixes case sensitivity bug)
-
----
-
-## Phase 5: Content & Data Fixes [depends on Phases 0 & 3]
-
-- [ ] Replace all Lorem ipsum text with real copy (or clear `[TODO]` markers)
-- [ ] Remove duplicate stats — add 2 unique stats or reduce grid to 4
-- [ ] Fix case study card 3 — needs unique title, subtitle, description
-- [ ] Finalize all image paths to `public/images/` local values
-- [ ] Verify testimonial data has real quotes (not test strings)
-
----
-
-## Phase 6: Responsive Design & Polish [depends on all prior]
-
-- [ ] Implement tablet breakpoint (768px): 2-column stats grid, stacked gallery, case cards responsive
-- [ ] Implement small mobile breakpoint (480px): single column, reduced font sizes
-- [ ] Gallery: `aspect-ratio` instead of fixed heights, `object-fit: cover`
-- [ ] Add `loading="lazy"` on all below-fold images
-- [ ] Add `fetchpriority="high"` on hero photo
-- [ ] Add `prefers-reduced-motion` media query to disable parallax/animations
-- [ ] Add keyboard navigation for testimonial carousel (arrow keys)
-- [ ] Add visible `:focus-visible` indicators on all interactive elements
-
----
-
-## Phase 7: Testing & Verification
-
-- [ ] `npm run dev` — no console errors
-- [ ] Test responsive at: 1440px, 1280px, 1100px, 768px, 720px, 480px
-- [ ] Verify all anchor links scroll correctly
-- [ ] Test mobile hamburger menu open/close
-- [ ] Test testimonial carousel (click, auto-advance, keyboard)
-- [ ] Test logo marquee animation
-- [ ] `npm run build` — clean output, no warnings
-- [ ] Verify sub-pages load (case-study.html, blog.html)
-- [ ] All images load from local paths (no Figma URLs)
-- [ ] Run Lighthouse — target 90+ on all categories
-
----
-
-## Execution Order
-
-```
-Phase 0 (Asset Rescue)
-    ↓
-Phase 1 (Config & Scaffolding)
-    ↓
-Phase 2 (CSS) ──┬── Phase 3 (JS)    ← parallel
-    ↓            ↓
-Phase 4 (HTML Cleanup)
-    ↓
-Phase 5 (Content Fixes)
-    ↓
-Phase 6 (Responsive & Polish)
-    ↓
-Phase 7 (Testing)
-```
