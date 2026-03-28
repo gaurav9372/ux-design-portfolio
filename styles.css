@@ -121,7 +121,7 @@
       display:flex;
       align-items:center;
       justify-content:space-between;
-      padding:calc(88px - 56px * var(--nav-progress)) 56px;
+      padding:calc(88px - 56px * var(--nav-progress)) var(--pad);
       position:sticky;
       top:0;
       z-index:50;
@@ -203,7 +203,7 @@
     .mobile-panel{
       display:none;
       border-top:1px solid rgba(255,255,255,.08);
-      padding:16px 56px 24px;
+      padding:16px var(--pad) 24px;
       gap:12px;
     }
     .mobile-panel a{
@@ -623,9 +623,8 @@
     }
     .logo-tile{
       width:200px;height:136px;
-      background:#fff;
-      border:2px solid #363636;
-      box-shadow:var(--shadow);
+      background:transparent;
+      border:none;
       position:relative;
       overflow:hidden;
     }
@@ -679,6 +678,10 @@
       overflow:hidden;
       background:transparent;
     }
+    .pill img{
+      width:100%;height:100%;
+      object-fit:cover;
+    }
     .pill .maskish{
       position:absolute;
       left:50%;top:50%;
@@ -699,16 +702,17 @@
       background:var(--bg3);
       padding:32px var(--pad) 72px;
     }
-    .case-stack{display:flex;flex-direction:column;gap:44px}
+    .case-stack{display:flex;flex-direction:column;gap:44px;max-width:1088px;margin:0 auto}
     .case-card{
       height:467px;
       width:100%;
       display:flex;
       overflow:hidden;
-      background:#535353;
+      background:var(--bg2);
     }
     .case-left{
-      flex:1 1 0;
+      width:50%;
+      flex:0 0 50%;
       background:var(--bg2);
       padding:44px;
       display:flex;
@@ -764,13 +768,15 @@
       white-space:pre-wrap;
     }
     .case-right{
-      flex:1 1 0;
+      width:50%;
+      flex:0 0 50%;
       position:relative;
       overflow:hidden;
     }
-    .case-right.green{background:#1a382e}
-    .case-right.blue{background:#6f85ea}
-    .case-right.lime{background:#abda00}
+    .case-placeholder{
+      width:100%;height:100%;
+      object-fit:cover;
+    }
 
     /* Decorative assets (approximate) */
     .case-right .abs{position:absolute;inset:auto}
