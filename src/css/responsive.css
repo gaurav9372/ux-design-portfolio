@@ -82,3 +82,13 @@
   .case-left .title { font-size: 24px }
   .ux-circles { transform: translateX(-8px) scale(.6) }
 }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

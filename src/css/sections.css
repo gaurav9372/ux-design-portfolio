@@ -406,9 +406,7 @@
 }
 .projects .logos-top,
 .projects .logos-bottom {
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  width: 100%;
 }
 
 /* Testimonials */
@@ -552,7 +550,7 @@
 }
 .gallery-grid { display: flex; flex-direction: column; gap: 16px; z-index: 2 }
 .grid-row { display: flex; gap: 16px; width: 100% }
-.grid-tile { flex: 1 1 0; height: 272px; position: relative; overflow: hidden }
+.grid-tile { flex: 1 1 0; aspect-ratio: 4/3; position: relative; overflow: hidden }
 .grid-tile img { width: 100%; height: 100%; object-fit: cover }
 .gallery .small-quote {
   margin: 0;
