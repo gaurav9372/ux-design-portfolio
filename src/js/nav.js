@@ -77,4 +77,16 @@ export const initNav = () => {
   }, { passive: true });
 
   update();
+
+  // Page transitions — fade out on internal link clicks
+  document.addEventListener("click", (e) => {
+    const link = e.target.closest("a");
+    if (!link) return;
+    const href = link.getAttribute("href");
+    if (!href || href.startsWith("#") || href.startsWith("mailto:") || link.target === "_blank") return;
+    if (link.hostname && link.hostname !== window.location.hostname) return;
+    e.preventDefault();
+    document.body.classList.add("is-leaving");
+    setTimeout(() => { window.location.href = href; }, 250);
+  });
 };
