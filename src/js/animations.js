@@ -204,37 +204,38 @@ export const initCardStack = () => {
   const update = () => {
     ticking = false;
     const sectionTop = section.getBoundingClientRect().top;
-    const scrolled = -sectionTop;
+    // Only count scroll after section top hits viewport top
+    const scrolled = Math.max(0, -sectionTop);
 
     cards.forEach((card, i) => {
+      // Each card (including first) has a scroll trigger point
+      const cardTrigger = i * SCROLL_PER_CARD;
+      const progress = Math.min(Math.max((scrolled - cardTrigger) / SCROLL_PER_CARD, 0), 1);
+
+      // Count how many cards have fully landed on top of this one
+      const cardsOnTop = Math.max(0, Math.floor(scrolled / SCROLL_PER_CARD) - i);
+
       if (i === 0) {
-        // First card: always pinned, scales down as others stack on top
-        const aboveFirst = Math.max(0, Math.floor(scrolled / SCROLL_PER_CARD));
-        const scale = Math.max(1 - aboveFirst * SCALE_STEP, 0.85);
-        const push = aboveFirst * PUSH_STEP;
+        // First card: always visible, just shrinks as stack grows
+        const scale = Math.max(1 - cardsOnTop * SCALE_STEP, 0.85);
+        const push = cardsOnTop * PUSH_STEP;
         card.style.transform = `translateX(-50%) translateY(${TOP_OFFSET - push}px) scale(${scale})`;
         card.style.opacity = "1";
         return;
       }
 
-      // Cards 2+ slide in from below
-      const cardStart = (i - 1) * SCROLL_PER_CARD;
-      const cardEnd = i * SCROLL_PER_CARD;
-      const progress = Math.min(Math.max((scrolled - cardStart) / SCROLL_PER_CARD, 0), 1);
-
       if (progress <= 0) {
-        // Below viewport
-        card.style.transform = `translateX(-50%) translateY(calc(100vh))`;
+        // Not triggered yet — hidden below
+        card.style.transform = `translateX(-50%) translateY(100vh)`;
         card.style.opacity = "0";
       } else if (progress < 1) {
-        // Sliding up
+        // Sliding up into position
         const ease = 1 - Math.pow(1 - progress, 3);
-        const fromBottom = (1 - ease) * 100;
-        card.style.transform = `translateX(-50%) translateY(calc(${TOP_OFFSET}px + ${fromBottom}vh))`;
-        card.style.opacity = String(Math.min(progress * 2, 1));
+        const yOffset = TOP_OFFSET + (1 - ease) * (window.innerHeight - TOP_OFFSET);
+        card.style.transform = `translateX(-50%) translateY(${yOffset}px)`;
+        card.style.opacity = String(Math.min(progress * 3, 1));
       } else {
-        // Landed — may need to scale down if more cards are on top
-        const cardsOnTop = Math.max(0, Math.floor((scrolled - cardEnd) / SCROLL_PER_CARD));
+        // Landed — scale down if more cards stacked on top
         const scale = Math.max(1 - cardsOnTop * SCALE_STEP, 0.85);
         const push = cardsOnTop * PUSH_STEP;
         card.style.transform = `translateX(-50%) translateY(${TOP_OFFSET - push}px) scale(${scale})`;
