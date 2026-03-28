@@ -20,10 +20,10 @@ export const homepageContent = {
   stats: [
     { number: "40+", label: "Projects I worked on." },
     { number: "14+", label: "Years of scrolling web" },
-    { number: "14+", label: "Years of scrolling web" },
+    { number: "5+", label: "Happy clients" },
     { number: "2,050+", label: "Apps installed" },
     { number: "3X", label: "Speed with my ADHD" },
-    { number: "3X", label: "Speed with my ADHD" }
+    { number: "100+", label: "Screens designed" }
   ],
   ux: {
     bgText: "User Experience",
@@ -42,30 +42,30 @@ export const homepageContent = {
   caseStudies: [
     {
       title: "Care Naturals",
-      subtitle: "United Rubber India: Serving global OEMs with custom rubber solutions",
-      bottom: "I helped URI connect with high-value buyers through clear positioning and UX."
+      subtitle: "Natural skincare brand with a clean, organic product line",
+      bottom: "Designed a clean e-commerce experience for organic skincare products."
     },
     {
       title: "United Rubber",
-      subtitle: "United Rubber India: Serving global OEMs with custom rubber solutions",
-      bottom: "I helped URI connect with high-value buyers through clear positioning and UX.",
+      subtitle: "B2B industrial manufacturer serving global OEMs",
+      bottom: "Helped URI connect with high-value buyers through clear positioning and UX.",
       cta: "Case Study"
     },
     {
-      title: "Care Naturals",
-      subtitle: "United Rubber India: Serving global OEMs with custom rubber solutions",
-      bottom: "I helped URI connect with high-value buyers through clear positioning and UX."
+      title: "[TODO: Project 3]",
+      subtitle: "[TODO: Add third project subtitle]",
+      bottom: "[TODO: Add third project description]"
     }
   ],
   caseFooter: {
-    left: "Adventure for me. [TODO: Write real copy]",
+    left: "[TODO: Write case study footer copy]",
     right: "View all"
   },
   testimonials: {
     heading: "What everyone is saying",
-    bgline: "mummy kasam I didnt pay them",
+    bgline: "Real people, real feedback",
     items: [
-      { quote: "\"Testing Lorem ipsum dolor sit amet, consectetur adipiscing elit.\"", name: "Rahul Raj", role: "Developer", avatar: PLACEHOLDER },
+      { quote: "\"Shreyansh brought clarity to our product vision from day one.\"", name: "Rahul Raj", role: "Developer", avatar: PLACEHOLDER },
       { quote: "\"The flow felt effortless and the layout reads clean on every screen.\"", name: "Aditi Sharma", role: "Product Designer", avatar: PLACEHOLDER },
       { quote: "\"Clear structure, fast decisions, and a sharp visual story.\"", name: "Neel Verma", role: "Founder", avatar: PLACEHOLDER },
       { quote: "\"The UX choices improved comprehension without adding noise.\"", name: "Priya Singh", role: "UX Lead", avatar: PLACEHOLDER },
