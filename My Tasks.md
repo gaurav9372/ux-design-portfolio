@@ -19,6 +19,38 @@
 - [ ] Wire up social links in the footer
 - [ ] Easy way to add portfolio projects simple from md file or any backend project adding website tool
 
+### In `src/data/homepage.js`:
+- [ ] About section body copy
+- [ ] UX section description
+- [ ] Projects section description
+- [ ] Case study card 3 — title, subtitle, description
+- [ ] Case study footer copy
+- [ ] Gallery small quote
+- [ ] Footer description
+
+### In `index.html`:
+- [ ] About section paragraph
+- [ ] UX section description
+- [ ] Gallery small quote
+- [ ] Projects description
+- [ ] Case study footer copy
+- [ ] Footer description
+
+### In sub-pages:
+- [ ] About page — background, skills, experience content
+- [ ] Case study pages — challenge, process, solution, results
+- [ ] Blog post — real article content
+- [ ] Add real social media URLs to footer links
+
+### Images to replace:
+- [ ] Replace `image-missing.png` placeholders with real project images
+- [ ] Add real brand logo
+- [ ] Add real stat icons
+- [ ] Add real testimonial avatars
+- [ ] Add real gallery images
+- [ ] Add real project logos
+- [ ] Add favicon
+
 ## New Implementations
 
 - [ ] Add Other pages
