@@ -1,0 +1,16 @@
+/* ===========================
+   LAYOUT — Wrap, Sections, Utilities
+   =========================== */
+
+.wrap {
+  width: 100vw;
+  max-width: none;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+/* Section padding utilities */
+.section { padding: 88px var(--pad) }
+.section-tight { padding: 64px var(--pad) }
+.section-soft { padding: 80px 90px }
+.section-border { border: 16px solid var(--stroke2) }
