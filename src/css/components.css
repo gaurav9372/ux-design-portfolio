@@ -108,15 +108,32 @@
 /* Case study cards */
 .case-list {
   background: var(--bg3);
-  padding: 32px var(--pad) 72px;
+  position: relative;
 }
-.case-stack { display: flex; flex-direction: column; gap: 44px; max-width: 1088px; margin: 0 auto }
+.case-stack {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  max-width: 1088px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
 .case-card {
+  position: absolute;
+  left: 50%;
+  width: calc(100% - var(--pad) * 2);
+  max-width: 1088px;
   height: 467px;
-  width: 100%;
   display: flex;
   overflow: hidden;
   background: var(--bg2);
+  border-radius: 12px;
+  box-shadow: 0 -4px 30px rgba(0,0,0,.3);
+  transform: translateX(-50%) translateY(110%);
+  will-change: transform;
 }
 .case-left {
   width: 50%;
@@ -189,6 +206,13 @@
 }
 /* Case section footer */
 .case-footer {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - var(--pad) * 2);
+  max-width: 1088px;
+  opacity: 0;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;

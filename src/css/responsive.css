@@ -17,9 +17,34 @@
   .stats-row { flex-direction: column; align-items: flex-start }
   .stat { width: 100% }
   .ux-circles { transform: translateX(-16px) scale(.9); transform-origin: center }
-  .case-card { flex-direction: column; height: auto }
+  .case-list { height: auto !important }
+  .case-stack {
+    position: relative;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px var(--pad);
+  }
+  .case-card {
+    position: relative;
+    left: auto;
+    flex-direction: column;
+    height: auto;
+    transform: none !important;
+    opacity: 1 !important;
+    border-radius: 12px;
+  }
   .case-left { width: 100%; flex: 0 0 auto }
   .case-right { width: 100%; flex: 0 0 auto; height: 360px }
+  .case-footer {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none !important;
+    opacity: 1 !important;
+    width: 100%;
+  }
   .grid-row { flex-direction: column }
   .grid-tile { height: 220px }
   .testimonial-stage { grid-template-columns: 48px minmax(0,1fr) 48px; gap: 20px }

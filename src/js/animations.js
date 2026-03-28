@@ -169,3 +169,79 @@ export const initSplitHover = () => {
 
   document.querySelectorAll('a, button, [role="button"], .nav-cta, .footer .email').forEach(splitTextForHover);
 };
+
+/* --- Scroll-driven card stacking --- */
+const CARD_SCALE_STEP = 0.03;
+const CARD_OFFSET_STEP = 16;
+
+export const initCardStack = () => {
+  if (window.matchMedia("(max-width: 1100px)").matches) return;
+
+  const section = document.querySelector(".case-list");
+  const cards = Array.from(document.querySelectorAll(".case-card"));
+  const footer = document.querySelector(".case-footer");
+  if (!section || cards.length === 0) return;
+
+  const count = cards.length;
+  const scrollPerCard = window.innerHeight * 0.8;
+  section.style.height = `${scrollPerCard * count + window.innerHeight}px`;
+
+  let ticking = false;
+
+  const update = () => {
+    ticking = false;
+    const rect = section.getBoundingClientRect();
+    const scrolled = -rect.top;
+    const vh = window.innerHeight;
+
+    cards.forEach((card, i) => {
+      const cardStart = i * scrollPerCard;
+      const progress = Math.min(Math.max((scrolled - cardStart) / scrollPerCard, 0), 1);
+
+      // How many cards are stacked on top of this one
+      const cardsAbove = cards.length - 1 - i;
+      const stackedCount = Math.max(0, Math.floor((scrolled - cardStart) / scrollPerCard));
+
+      if (progress <= 0) {
+        // Not yet in view — below the stack
+        card.style.transform = `translateX(-50%) translateY(110%)`;
+        card.style.opacity = "0";
+      } else if (progress < 1) {
+        // Animating in
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const y = (1 - ease) * 100;
+        card.style.transform = `translateX(-50%) translateY(${y}%)`;
+        card.style.opacity = "1";
+      } else {
+        // Landed — scale down as more cards stack on top
+        const above = Math.min(Math.floor((scrolled - cardStart) / scrollPerCard) - 1, count);
+        const scaleDown = Math.max(1 - above * CARD_SCALE_STEP, 0.85);
+        const pushUp = above * CARD_OFFSET_STEP;
+        card.style.transform = `translateX(-50%) translateY(-${pushUp}px) scale(${scaleDown})`;
+        card.style.opacity = "1";
+      }
+    });
+
+    // Show/hide footer
+    if (footer) {
+      const footerStart = count * scrollPerCard;
+      const footerProgress = Math.min(Math.max((scrolled - footerStart) / (scrollPerCard * 0.3), 0), 1);
+      footer.style.opacity = footerProgress.toFixed(3);
+      footer.style.transform = `translateY(${(1 - footerProgress) * 30}px)`;
+    }
+  };
+
+  window.addEventListener("scroll", () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  }, { passive: true });
+
+  window.addEventListener("resize", () => {
+    if (window.matchMedia("(max-width: 1100px)").matches) return;
+    section.style.height = `${scrollPerCard * count + window.innerHeight}px`;
+    update();
+  });
+
+  update();
+};

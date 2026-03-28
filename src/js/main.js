@@ -1,7 +1,7 @@
 // JS modules
 import { applyImages } from './content.js';
 import { initNav } from './nav.js';
-import { initStatsAnimation, initUxParallax, initSplitHover } from './animations.js';
+import { initStatsAnimation, initUxParallax, initSplitHover, initCardStack } from './animations.js';
 import { initTestimonials } from './testimonials.js';
 import { initMarquee } from './marquee.js';
 
@@ -14,6 +14,7 @@ try { initNav(); } catch (e) { console.error("initNav:", e); }
   try { initSplitHover(); } catch (e) { console.error("initSplitHover:", e); }
   try { initTestimonials(); } catch (e) { console.error("initTestimonials:", e); }
   try { initMarquee(); } catch (e) { console.error("initMarquee:", e); }
+  try { initCardStack(); } catch (e) { console.error("initCardStack:", e); }
 };
 
 if (document.readyState === "loading") {
