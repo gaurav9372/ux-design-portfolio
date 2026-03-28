@@ -1,10 +1,3 @@
-// CSS imports (Vite handles these)
-import '../css/base.css';
-import '../css/layout.css';
-import '../css/components.css';
-import '../css/sections.css';
-import '../css/responsive.css';
-
 // JS modules
 import { applyImages } from './content.js';
 import { initNav } from './nav.js';

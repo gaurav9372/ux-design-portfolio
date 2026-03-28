@@ -1,19 +1,5 @@
 export const $ = (id) => document.getElementById(id);
 
-export const setText = (el, value) => {
-  if (!el || value === undefined || value === null) return;
-  el.textContent = String(value);
-};
-
-export const setTextList = (elements, values) => {
-  if (!elements || !values || !values.length) return;
-  elements.forEach((el, i) => {
-    if (values[i] !== undefined && values[i] !== null) {
-      setText(el, values[i]);
-    }
-  });
-};
-
 export const smoothTo = (hash) => {
   const el = document.querySelector(hash);
   if (!el) return;
@@ -31,5 +17,3 @@ export const parseStatText = (text) => {
   const suffix = text.replace(raw, "");
   return { number, decimals, suffix, hasComma: raw.includes(",") };
 };
-
-export const clamp = (value, min, max) => Math.min(Math.max(value, min), max);

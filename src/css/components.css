@@ -187,9 +187,6 @@
   width: 100%; height: 100%;
   object-fit: cover;
 }
-.case-right .abs { position: absolute; inset: auto }
-.case-right .abs img { width: 100%; height: 100%; object-fit: contain }
-
 /* Case section footer */
 .case-footer {
   display: flex;
@@ -270,21 +267,6 @@
   width: 100%; height: 100%;
   object-fit: cover;
 }
-.pill .maskish {
-  position: absolute;
-  left: 50%; top: 50%;
-  transform: translate(-50%, -50%);
-  width: 147.6px; height: 89.614px;
-  background: var(--ink);
-  opacity: .78;
-  -webkit-mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-size: contain;
-  mask-repeat: no-repeat;
-  mask-position: center;
-}
-
 /* Testimonial controls */
 .testimonial-stage {
   width: min(1080px, 100%);

@@ -8,8 +8,5 @@
   overflow-x: hidden;
 }
 
-/* Section padding utilities */
-.section { padding: 88px var(--pad) }
-.section-tight { padding: 64px var(--pad) }
-.section-soft { padding: 80px 90px }
+/* Section utilities */
 .section-border { border: 16px solid var(--stroke2) }
