@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Test-P (Figma → HTML)</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@800&family=Inter:wght@400;500;600&family=Outfit:wght@500;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+<div class="wrap" id="top">
+    <!-- NAVBAR -->
+    <header class="nav">
+      <a class="brand" href="#top" aria-label="Home">
+        <img id="brandImg" alt="" />
+      </a>
+
+      <nav class="nav-right" aria-label="Primary">
+        <div class="nav-links">
+          <a href="#about">About me</a>
+          <a href="#contact">Contact</a>
+          <a href="#blogs">Blogs</a>
+        </div>
+        <div class="nav-cta" id="worksCta">
+          <span>My Works</span>
+          <img id="arrowImg" alt="" />
+        </div>
+      </nav>
+
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+      </button>
+    </header>
+
+    <div class="mobile-panel" id="mobilePanel" aria-label="Mobile menu">
+      <a href="#about">About me</a>
+      <a href="#contact">Contact</a>
+      <a href="#blogs">Blogs</a>
+      <a href="#projects" class="cta">My Works</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-orn">
+        <img id="heroOrn" alt="" />
+      </div>
+
+      <div class="hero-bgword" aria-hidden="true">
+        <p>UX</p>
+        <p>DeSigner﻿</p>
+      </div>
+
+      <div class="hero-left">
+        <p class="hello"><span>Hello there, I am </span><strong style="font-weight:500">Shreyansh Gaurav.</strong></p>
+        <p class="hero-title"><span>I Design </span><span class="accent">Solutions.</span></p>
+      </div>
+
+      <div class="hero-img">
+        <img id="heroPhoto" alt="" />
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+      <div class="about-logo">
+        <img id="aboutLogo" alt="" />
+      </div>
+      <div class="about-copy">
+        <h2>A passion for screens and helping people</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada enim vitae malesuada dapibus. Praesent pretium, nunc mollis egestas posuere, est massa tincidunt ligula, et scelerisque massa libero non purus. Proin luctus placerat nisl, sit amet ultrices nibh porta malesuada.</p>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats section-border" id="stats">
+      <div class="stats-grid">
+        <div class="stats-row">
+          <div class="stat">
+            <div class="stat-icon"><img id="statIcon1" alt="" /></div>
+            <div class="stat-meta">
+              <p class="num">40+</p>
+              <p class="lbl">Projects i worked on.</p>
+            </div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-icon"><img id="statIcon2" alt="" /></div>
+            <div class="stat-meta">
+              <p class="num">14 +</p>
+              <p class="lbl">Years of scrolling web</p>
+            </div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-icon"><img id="statIcon3" alt="" /></div>
+            <div class="stat-meta">
+              <p class="num">14 +</p>
+              <p class="lbl">Years of scrolling web</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat">
+            <div class="stat-icon"><img id="statIcon4" alt="" /></div>
+            <div class="stat-meta">
+              <p class="num">2,050+</p>
+              <p class="lbl">Apps installed</p>
+            </div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-icon"><img id="statIcon5" alt="" /></div>
+            <div class="stat-meta">
+              <p class="num">3X</p>
+              <p class="lbl">Speed with my ADHD</p>
+            </div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-icon"><img id="statIcon6" alt="" /></div>
+            <div class="stat-meta">
+              <p class="num">3X</p>
+              <p class="lbl">Speed with my ADHD</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UX -->
+    <section class="ux" id="ux">
+      <div class="ux-bg" aria-hidden="true">User Experience</div>
+
+      <div style="display:flex;flex-direction:column;align-items:center;gap:88px;width:100%;z-index:2;">
+        <h2>UX Design fuels my ADHD and i love it.</h2>
+
+        <div class="ux-circles" aria-label="UX stakeholders">
+          <div class="circle dim z1 ux-fx left" style="--fx-delay:240ms;--base-opacity:.16;--fx-depth:1.8;--fx-speed:1.25;"><img id="c1" alt="" /></div>
+          <div class="circle mid z2 ux-fx left" style="--fx-delay:120ms;--base-opacity:.55;--fx-depth:1.5;--fx-speed:1.1;"><img id="c2" alt="" /></div>
+          <div class="circle z3 ux-fx left" style="--fx-delay:0ms;--base-opacity:1;--fx-depth:1.25;--fx-speed:.95;"><img id="c3" alt="" /></div>
+
+          <div class="circle tag" aria-label="Client">
+            <div class="ring"></div>
+            <img class="ux-ring" id="uxRingClient" alt="" />
+            <div class="label">Client</div>
+            <div class="sub">Critic</div>
+          </div>
+
+          <div class="circle users" aria-label="Users">
+            <div class="dash"></div>
+            <div class="inner"></div>
+            <img class="ux-rings" id="uxRings" alt="" />
+            <div class="user-copy">
+              <div class="label">Users</div>
+              <div class="sub">Judge</div>
+            </div>
+          </div>
+
+          <div class="circle tag" aria-label="Company" style="margin-right:-32px;">
+            <div class="ring"></div>
+            <img class="ux-ring" id="uxRingCompany" alt="" />
+            <div class="label" style="font-size:14px;letter-spacing:-.42px;">Company</div>
+            <div class="sub">Challenger</div>
+          </div>
+
+          <div class="circle z3 ux-fx right" style="--fx-delay:0ms;--base-opacity:1;--fx-depth:1.25;--fx-speed:.95;"><img id="c4" alt="" /></div>
+          <div class="circle mid z2 ux-fx right" style="--fx-delay:120ms;--base-opacity:.55;--fx-depth:1.5;--fx-speed:1.1;"><img id="c5" alt="" /></div>
+          <div class="circle dim z1 ux-fx right" style="--fx-delay:240ms;--base-opacity:.16;--fx-depth:1.8;--fx-speed:1.25;"><img id="c6" alt="" /></div>
+        </div>
+      </div>
+
+      <p class="desc">orem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada enim vitae malesuada dapibus. Praesent pretium, n</p>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="gallery">
+      <div class="gallery-orn"><img id="footerOrn" alt="" /></div>
+
+      <h2>
+        <span class="gallery-quote">Your job is not to make the app amazing. Your job is to make the user awesome.</span>
+        <span class="gallery-author">- Kathy Sierra</span>
+      </h2>
+
+      <div style="display:flex;flex-direction:column;gap:56px;align-items:flex-end;">
+        <div class="gallery-grid">
+          <div class="grid-row">
+            <div class="grid-tile"><img id="g1" alt="" /></div>
+            <div class="grid-tile"><img id="g2" alt="" /></div>
+            <div class="grid-tile"><img id="g3" alt="" /></div>
+            <div class="grid-tile"><img id="g4" alt="" /></div>
+          </div>
+          <div class="grid-row">
+            <div class="grid-tile"><img id="g5" alt="" /></div>
+            <div class="grid-tile"><img id="g6" alt="" /></div>
+            <div class="grid-tile"><img id="g7" alt="" /></div>
+            <div class="grid-tile"><img id="g8" alt="" /></div>
+          </div>
+        </div>
+
+        <p class="small-quote"> “ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada enim vitae malesuada dapibus. “</p>
+      </div>
+    </section>
+
+    <!-- PROJECT LOGOS -->
+    <section class="projects" id="projects">
+      <h2>My Projects</h2>
+
+      <div style="display:flex;flex-direction:column;gap:48px;align-items:center;width:100%;">
+        <p class="desc">orem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada enim vitae malesuada dapibus. Praesent pretium, n</p>
+
+        <div style="display:flex;flex-direction:column;gap:16px;align-items:center;width:100%;">
+          <div class="logos-top">
+            <div class="logos-track">
+              <div class="logo-tile"><img id="logo1" alt="" /></div>
+              <div class="logo-tile"><img id="logo2" alt="" /></div>
+              <div class="logo-tile" style="border:none"><img id="logo3" alt="" /></div>
+              <div class="logo-tile" style="border:none"><img id="logo4" alt="" /></div>
+              <div class="logo-tile" style="border:none"><img id="logo5" alt="" /></div>
+              <div class="logo-tile" style="border:none"><img id="logo6" alt="" /></div>
+              <div class="logo-tile" style="border:none"><img id="logo7" alt="" /></div>
+            </div>
+          </div>
+
+          <div class="logos-bottom">
+            <div class="logos-track">
+              <div class="pill"><div class="maskish" id="pill1"></div></div>
+              <div class="pill"><div class="maskish" id="pill2"></div></div>
+              <div class="pill"><div class="maskish" id="pill3"></div></div>
+              <div class="pill"><div class="maskish" id="pill4"></div></div>
+              <div class="pill"><div class="maskish" id="pill5"></div></div>
+              <div class="pill"><div class="maskish" id="pill6"></div></div>
+              <div class="pill"><div class="maskish" id="pill7"></div></div>
+              <div class="pill"><div class="maskish" id="pill8"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASE STUDY CARDS -->
+    <section class="case-list" id="blogs">
+      <div class="case-stack">
+        <!-- Card 1 -->
+        <div class="case-card">
+          <div class="case-left">
+            <div class="top">
+              <img class="icon" id="caseIconA" alt="" />
+              <div>
+                <p class="title">Care Naturals</p>
+                <p class="sub">United Rubber India: Serving global OEMs with custom rubber solutions</p>
+              </div>
+            </div>
+
+            <div class="bottom">
+              <div class="bar"></div>
+              <p>I Helped URI connect with high-value buyers through clear positioning and UX.</p>
+            </div>
+          </div>
+
+          <div class="case-right green">
+            <div class="abs" style="left:calc(50% + 217.5px);top:calc(50% - 224px);width:413px;height:413px;transform:translate(-50%,-50%);">
+              <img id="e19" alt="" />
+            </div>
+            <div class="abs" style="left:calc(50% + 217.5px);top:calc(50% - 224px);width:353px;height:353px;transform:translate(-50%,-50%);">
+              <img id="e21" alt="" />
+            </div>
+            <div class="abs" style="left:calc(50% + 217.5px);top:calc(50% - 224px);width:303px;height:303px;transform:translate(-50%,-50%);">
+              <img id="e22" alt="" />
+            </div>
+            <div class="abs" style="left:calc(50% - 168.5px);top:calc(50% + 81px);width:197px;height:197px;transform:translate(-50%,-50%);">
+              <img id="e20" alt="" />
+            </div>
+
+            <!-- Rotated image columns (approximate placement) -->
+            <div class="abs" style="left:-252px;top:-725px;width:1133px;height:1690px;transform:rotate(15deg);transform-origin:left top;opacity:1;">
+              <img id="imgColA" alt="" style="width:100%;height:100%;object-fit:contain" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="case-card">
+          <div class="case-left blue">
+            <div class="top">
+              <img class="icon small" id="caseIconB" alt="" />
+              <div>
+                <p class="title">United Rubber</p>
+                <p class="sub">United Rubber India: Serving global OEMs with custom rubber solutions</p>
+              </div>
+              <div class="cta" tabindex="0" role="button">
+                <span>Case Study</span>
+                <img id="caseArrow" alt="" />
+              </div>
+            </div>
+
+            <div class="bottom">
+              <div class="bar"></div>
+              <p>I Helped URI connect with high-value buyers through clear positioning and UX.</p>
+            </div>
+          </div>
+
+          <div class="case-right blue">
+            <div class="abs" style="left:215px;top:-37px;width:343px;height:343px;">
+              <img id="e23" alt="" />
+            </div>
+            <div class="abs" style="left:152px;top:-155px;width:531px;height:531px;">
+              <img id="e24" alt="" />
+            </div>
+            <div class="abs" style="left:-50px;top:141px;width:137px;height:207px;transform:rotate(15deg);transform-origin:left top;">
+              <img id="frame937" alt="" style="width:91px;height:190px;object-fit:contain" />
+            </div>
+
+            <div class="shot">
+              <div class="frame">
+                <img id="infraShot" alt="" />
+              </div>
+            </div>
+
+            <div class="rounded">
+              <img id="roundedShot" alt="" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="case-card">
+          <div class="case-left">
+            <div class="top">
+              <img class="icon" id="caseIconC" alt="" />
+              <div>
+                <p class="title">Care Naturals</p>
+                <p class="sub">United Rubber India: Serving global OEMs with custom rubber solutions</p>
+              </div>
+            </div>
+
+            <div class="bottom">
+              <div class="bar"></div>
+              <p>I Helped URI connect with high-value buyers through clear positioning and UX.</p>
+            </div>
+          </div>
+
+          <div class="case-right lime">
+            <div class="abs" style="left:272px;top:-354px;width:500px;height:1022px;transform:rotate(15deg);transform-origin:left top;opacity:.71;">
+              <img id="limeA" alt="" style="width:100%;height:100%;object-fit:contain" />
+            </div>
+            <div class="abs" style="left:-220px;top:-911px;width:638px;height:1557px;transform:rotate(15deg);transform-origin:left top;opacity:.71;">
+              <img id="limeB" alt="" style="width:100%;height:100%;object-fit:contain" />
+            </div>
+            <div class="abs" style="left:-110px;top:-390px;width:638px;height:1557px;transform:rotate(15deg);transform-origin:left top;">
+              <img id="limeC" alt="" style="width:100%;height:100%;object-fit:contain" />
+            </div>
+          </div>
+        </div>
+
+        <div class="case-footer">
+          <p class="left">Adventure for me Adventure for meDonec malesuada enim vitae malesuada dapibus. Praesent pretium, n</p>
+          <a class="right" href="#projects">View all</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="testimonials">
+      <div class="bgline" aria-hidden="true">
+        <div class="bgline-track">
+          <span>mummy kasam I didnt pay them</span>
+          <span>mummy kasam I didnt pay them</span>
+        </div>
+      </div>
+      
+
+      
+
+      <div class="testimonials-head">
+        <h2>What everyone says</h2>
+      </div>
+
+      <div class="testimonial-stage">
+        <button class="t-nav prev" id="tPrev" type="button" aria-label="Previous testimonial">
+          <img class="t-icon" src="assets/Images/icons/Arrow_button.svg" alt="" aria-hidden="true" />
+        </button>
+
+        <div class="testimonial-card" aria-live="polite">
+          <p class="quote" id="testimonialQuote">“ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada enim vitae malesuada dapibus. Praesent pretium, nunc mollis egestas posuere, est massa tincidunt ligula, et scelerisque massa libero non purus. Proin luctus placerat nisl, sit amet ultrices nibh porta malesuada.“</p>
+
+          <div class="person">
+            <div class="avatar"><img id="testimonialAvatar" alt="" /></div>
+            <div class="meta">
+              <p class="name" id="testimonialName">Rahul Raj</p>
+              <p class="role" id="testimonialRole">Developer</p>
+            </div>
+          </div>
+        </div>
+
+        <button class="t-nav next" id="tNext" type="button" aria-label="Next testimonial">
+          <img class="t-icon" src="assets/Images/icons/Arrow_button.svg" alt="" aria-hidden="true" />
+        </button>
+      </div>
+
+      <div class="t-dots" id="tDots" aria-label="Testimonials"></div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="contact">
+      <div class="footer-bg" aria-hidden="true">
+        <p>Varanasi,</p>
+        <p>india</p>
+      </div>
+
+      <div class="block">
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <p class="kicker">Contact me</p>
+          <a class="email" href="mailto:Gauravguptasggs@gmail.com">Gauravguptasggs@gmail.com</a>
+        </div>
+
+        <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada enim vitae malesuada dapibus.</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#about">About me</a>
+        <a href="#contact">Contact</a>
+        <a href="#projects">Portfolio</a>
+      </nav>
+
+      <div class="socials" aria-label="Social links placeholders">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </footer>
+  </div>
+  <script src="homepageContent.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+
+
