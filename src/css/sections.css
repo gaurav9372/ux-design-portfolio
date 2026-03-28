@@ -63,6 +63,7 @@
   white-space: nowrap;
 }
 .hero-title .accent { color: var(--accent) }
+.hero-name { font-weight: 500 }
 .hero-img {
   width: 294px; height: 328px;
   overflow: hidden;
@@ -186,6 +187,14 @@
   text-align: center;
   z-index: 2;
 }
+.ux-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 88px;
+  width: 100%;
+  z-index: 2;
+}
 .ux-circles {
   display: flex;
   align-items: center;
@@ -265,6 +274,7 @@
   text-align: center;
   white-space: nowrap;
 }
+.circle--company { margin-right: -32px }
 .circle.users {
   width: 200px; height: 200px; overflow: visible;
   border-radius: 999px;
@@ -379,6 +389,20 @@
   letter-spacing: .16px;
   text-align: center;
   white-space: pre-wrap;
+}
+.projects-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  align-items: center;
+  width: 100%;
+}
+.logos-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  width: 100%;
 }
 .projects .logos-top,
 .projects .logos-bottom {
@@ -520,6 +544,12 @@
   vertical-align: baseline;
   white-space: nowrap;
 }
+.gallery-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  align-items: flex-end;
+}
 .gallery-grid { display: flex; flex-direction: column; gap: 16px; z-index: 2 }
 .grid-row { display: flex; gap: 16px; width: 100% }
 .grid-tile { flex: 1 1 0; height: 272px; position: relative; overflow: hidden }
@@ -595,6 +625,11 @@
   gap: 44px;
   align-items: flex-start;
   z-index: 2;
+}
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 .footer .kicker {
   margin: 0;

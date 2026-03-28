@@ -3,14 +3,22 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Test-P (Figma → HTML)</title>
+  <title>Shreyansh Gaurav | UX Designer</title>
+  <meta name="description" content="UX Design Portfolio of Shreyansh Gaurav — designing user-centered solutions from Varanasi, India." />
+  <meta name="theme-color" content="#121715" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Shreyansh Gaurav | UX Designer" />
+  <meta property="og:description" content="UX Design Portfolio — designing user-centered solutions." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/images/my-photo.png" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@800&family=Inter:wght@400;500;600&family=Outfit:wght@500;800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
@@ -18,7 +26,7 @@
     <!-- NAVBAR -->
     <header class="nav">
       <a class="brand" href="#top" aria-label="Home">
-        <img id="brandImg" alt="" />
+        <img id="brandImg" alt="Shreyansh Gaurav logo" />
       </a>
 
       <nav class="nav-right" aria-label="Primary">
@@ -29,7 +37,7 @@
         </div>
         <div class="nav-cta" id="worksCta">
           <span>My Works</span>
-          <img id="arrowImg" alt="" />
+          <img id="arrowImg" alt="" aria-hidden="true" />
         </div>
       </nav>
 
@@ -45,31 +53,32 @@
       <a href="#projects" class="cta">My Works</a>
     </div>
 
+    <main>
     <!-- HERO -->
     <section class="hero" id="home">
-      <div class="hero-orn">
-        <img id="heroOrn" alt="" />
+      <div class="hero-orn" aria-hidden="true">
+        <img id="heroOrn" alt="" aria-hidden="true" />
       </div>
 
       <div class="hero-bgword" aria-hidden="true">
         <p>UX</p>
-        <p>DeSigner﻿</p>
+        <p>Designer</p>
       </div>
 
       <div class="hero-left">
-        <p class="hello"><span>Hello there, I am </span><strong style="font-weight:500">Shreyansh Gaurav.</strong></p>
-        <p class="hero-title"><span>I Design </span><span class="accent">Solutions.</span></p>
+        <p class="hello"><span>Hello there, I am </span><strong class="hero-name">Shreyansh Gaurav.</strong></p>
+        <h1 class="hero-title"><span>I Design </span><span class="accent">Solutions.</span></h1>
       </div>
 
       <div class="hero-img">
-        <img id="heroPhoto" alt="" />
+        <img id="heroPhoto" alt="Shreyansh Gaurav, UX Designer" />
       </div>
     </section>
 
     <!-- ABOUT -->
     <section class="about" id="about">
-      <div class="about-logo">
-        <img id="aboutLogo" alt="" />
+      <div class="about-logo" aria-hidden="true">
+        <img id="aboutLogo" alt="" aria-hidden="true" />
       </div>
       <div class="about-copy">
         <h2>A passion for screens and helping people</h2>
@@ -82,49 +91,44 @@
       <div class="stats-grid">
         <div class="stats-row">
           <div class="stat">
-            <div class="stat-icon"><img id="statIcon1" alt="" /></div>
+            <div class="stat-icon"><img id="statIcon1" alt="Projects icon" /></div>
             <div class="stat-meta">
               <p class="num">40+</p>
-              <p class="lbl">Projects i worked on.</p>
+              <p class="lbl">Projects I worked on.</p>
             </div>
           </div>
-
           <div class="stat">
-            <div class="stat-icon"><img id="statIcon2" alt="" /></div>
+            <div class="stat-icon"><img id="statIcon2" alt="Experience icon" /></div>
             <div class="stat-meta">
               <p class="num">14 +</p>
               <p class="lbl">Years of scrolling web</p>
             </div>
           </div>
-
           <div class="stat">
-            <div class="stat-icon"><img id="statIcon3" alt="" /></div>
+            <div class="stat-icon"><img id="statIcon3" alt="Experience icon" /></div>
             <div class="stat-meta">
               <p class="num">14 +</p>
               <p class="lbl">Years of scrolling web</p>
             </div>
           </div>
         </div>
-
         <div class="stats-row">
           <div class="stat">
-            <div class="stat-icon"><img id="statIcon4" alt="" /></div>
+            <div class="stat-icon"><img id="statIcon4" alt="Apps icon" /></div>
             <div class="stat-meta">
               <p class="num">2,050+</p>
               <p class="lbl">Apps installed</p>
             </div>
           </div>
-
           <div class="stat">
-            <div class="stat-icon"><img id="statIcon5" alt="" /></div>
+            <div class="stat-icon"><img id="statIcon5" alt="Speed icon" /></div>
             <div class="stat-meta">
               <p class="num">3X</p>
               <p class="lbl">Speed with my ADHD</p>
             </div>
           </div>
-
           <div class="stat">
-            <div class="stat-icon"><img id="statIcon6" alt="" /></div>
+            <div class="stat-icon"><img id="statIcon6" alt="Speed icon" /></div>
             <div class="stat-meta">
               <p class="num">3X</p>
               <p class="lbl">Speed with my ADHD</p>
@@ -138,17 +142,17 @@
     <section class="ux" id="ux">
       <div class="ux-bg" aria-hidden="true">User Experience</div>
 
-      <div style="display:flex;flex-direction:column;align-items:center;gap:88px;width:100%;z-index:2;">
-        <h2>UX Design fuels my ADHD and i love it.</h2>
+      <div class="ux-inner">
+        <h2>UX Design fuels my ADHD and I love it.</h2>
 
         <div class="ux-circles" aria-label="UX stakeholders">
-          <div class="circle dim z1 ux-fx left" style="--fx-delay:240ms;--base-opacity:.16;--fx-depth:1.8;--fx-speed:1.25;"><img id="c1" alt="" /></div>
-          <div class="circle mid z2 ux-fx left" style="--fx-delay:120ms;--base-opacity:.55;--fx-depth:1.5;--fx-speed:1.1;"><img id="c2" alt="" /></div>
-          <div class="circle z3 ux-fx left" style="--fx-delay:0ms;--base-opacity:1;--fx-depth:1.25;--fx-speed:.95;"><img id="c3" alt="" /></div>
+          <div class="circle dim z1 ux-fx left" style="--fx-delay:240ms;--base-opacity:.16;--fx-depth:1.8;--fx-speed:1.25;"><img id="c1" alt="" aria-hidden="true" /></div>
+          <div class="circle mid z2 ux-fx left" style="--fx-delay:120ms;--base-opacity:.55;--fx-depth:1.5;--fx-speed:1.1;"><img id="c2" alt="" aria-hidden="true" /></div>
+          <div class="circle z3 ux-fx left" style="--fx-delay:0ms;--base-opacity:1;--fx-depth:1.25;--fx-speed:.95;"><img id="c3" alt="" aria-hidden="true" /></div>
 
           <div class="circle tag" aria-label="Client">
             <div class="ring"></div>
-            <img class="ux-ring" id="uxRingClient" alt="" />
+            <img class="ux-ring" id="uxRingClient" alt="" aria-hidden="true" />
             <div class="label">Client</div>
             <div class="sub">Critic</div>
           </div>
@@ -156,23 +160,23 @@
           <div class="circle users" aria-label="Users">
             <div class="dash"></div>
             <div class="inner"></div>
-            <img class="ux-rings" id="uxRings" alt="" />
+            <img class="ux-rings" id="uxRings" alt="" aria-hidden="true" />
             <div class="user-copy">
               <div class="label">Users</div>
               <div class="sub">Judge</div>
             </div>
           </div>
 
-          <div class="circle tag" aria-label="Company" style="margin-right:-32px;">
+          <div class="circle tag circle--company" aria-label="Company">
             <div class="ring"></div>
-            <img class="ux-ring" id="uxRingCompany" alt="" />
-            <div class="label" style="font-size:14px;letter-spacing:-.42px;">Company</div>
+            <img class="ux-ring" id="uxRingCompany" alt="" aria-hidden="true" />
+            <div class="label">Company</div>
             <div class="sub">Challenger</div>
           </div>
 
-          <div class="circle z3 ux-fx right" style="--fx-delay:0ms;--base-opacity:1;--fx-depth:1.25;--fx-speed:.95;"><img id="c4" alt="" /></div>
-          <div class="circle mid z2 ux-fx right" style="--fx-delay:120ms;--base-opacity:.55;--fx-depth:1.5;--fx-speed:1.1;"><img id="c5" alt="" /></div>
-          <div class="circle dim z1 ux-fx right" style="--fx-delay:240ms;--base-opacity:.16;--fx-depth:1.8;--fx-speed:1.25;"><img id="c6" alt="" /></div>
+          <div class="circle z3 ux-fx right" style="--fx-delay:0ms;--base-opacity:1;--fx-depth:1.25;--fx-speed:.95;"><img id="c4" alt="" aria-hidden="true" /></div>
+          <div class="circle mid z2 ux-fx right" style="--fx-delay:120ms;--base-opacity:.55;--fx-depth:1.5;--fx-speed:1.1;"><img id="c5" alt="" aria-hidden="true" /></div>
+          <div class="circle dim z1 ux-fx right" style="--fx-delay:240ms;--base-opacity:.16;--fx-depth:1.8;--fx-speed:1.25;"><img id="c6" alt="" aria-hidden="true" /></div>
         </div>
       </div>
 
@@ -181,30 +185,30 @@
 
     <!-- GALLERY -->
     <section class="gallery" id="gallery">
-      <div class="gallery-orn"><img id="footerOrn" alt="" /></div>
+      <div class="gallery-orn" aria-hidden="true"><img id="footerOrn" alt="" aria-hidden="true" /></div>
 
       <h2>
         <span class="gallery-quote">Your job is not to make the app amazing. Your job is to make the user awesome.</span>
         <span class="gallery-author">- Kathy Sierra</span>
       </h2>
 
-      <div style="display:flex;flex-direction:column;gap:56px;align-items:flex-end;">
+      <div class="gallery-inner">
         <div class="gallery-grid">
           <div class="grid-row">
-            <div class="grid-tile"><img id="g1" alt="" /></div>
-            <div class="grid-tile"><img id="g2" alt="" /></div>
-            <div class="grid-tile"><img id="g3" alt="" /></div>
-            <div class="grid-tile"><img id="g4" alt="" /></div>
+            <div class="grid-tile"><img id="g1" alt="Design work sample" /></div>
+            <div class="grid-tile"><img id="g2" alt="Design work sample" /></div>
+            <div class="grid-tile"><img id="g3" alt="Design work sample" /></div>
+            <div class="grid-tile"><img id="g4" alt="Design work sample" /></div>
           </div>
           <div class="grid-row">
-            <div class="grid-tile"><img id="g5" alt="" /></div>
-            <div class="grid-tile"><img id="g6" alt="" /></div>
-            <div class="grid-tile"><img id="g7" alt="" /></div>
-            <div class="grid-tile"><img id="g8" alt="" /></div>
+            <div class="grid-tile"><img id="g5" alt="Design work sample" /></div>
+            <div class="grid-tile"><img id="g6" alt="Design work sample" /></div>
+            <div class="grid-tile"><img id="g7" alt="Design work sample" /></div>
+            <div class="grid-tile"><img id="g8" alt="Design work sample" /></div>
           </div>
         </div>
 
-        <p class="small-quote"> “ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada enim vitae malesuada dapibus. “</p>
+        <p class="small-quote">" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada enim vitae malesuada dapibus. "</p>
       </div>
     </section>
 
@@ -212,32 +216,32 @@
     <section class="projects" id="projects">
       <h2>My Projects</h2>
 
-      <div style="display:flex;flex-direction:column;gap:48px;align-items:center;width:100%;">
+      <div class="projects-inner">
         <p class="desc">orem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada enim vitae malesuada dapibus. Praesent pretium, n</p>
 
-        <div style="display:flex;flex-direction:column;gap:16px;align-items:center;width:100%;">
+        <div class="logos-container">
           <div class="logos-top">
             <div class="logos-track">
-              <div class="logo-tile"><img id="logo1" alt="" /></div>
-              <div class="logo-tile"><img id="logo2" alt="" /></div>
-              <div class="logo-tile"><img id="logo3" alt="" /></div>
-              <div class="logo-tile"><img id="logo4" alt="" /></div>
-              <div class="logo-tile"><img id="logo5" alt="" /></div>
-              <div class="logo-tile"><img id="logo6" alt="" /></div>
-              <div class="logo-tile"><img id="logo7" alt="" /></div>
+              <div class="logo-tile"><img id="logo1" alt="Project logo" /></div>
+              <div class="logo-tile"><img id="logo2" alt="Project logo" /></div>
+              <div class="logo-tile"><img id="logo3" alt="Project logo" /></div>
+              <div class="logo-tile"><img id="logo4" alt="Project logo" /></div>
+              <div class="logo-tile"><img id="logo5" alt="Project logo" /></div>
+              <div class="logo-tile"><img id="logo6" alt="Project logo" /></div>
+              <div class="logo-tile"><img id="logo7" alt="Project logo" /></div>
             </div>
           </div>
 
           <div class="logos-bottom">
             <div class="logos-track">
-              <div class="pill"><img id="pill1" src="/images/image-missing.png" alt="" /></div>
-              <div class="pill"><img id="pill2" src="/images/image-missing.png" alt="" /></div>
-              <div class="pill"><img id="pill3" src="/images/image-missing.png" alt="" /></div>
-              <div class="pill"><img id="pill4" src="/images/image-missing.png" alt="" /></div>
-              <div class="pill"><img id="pill5" src="/images/image-missing.png" alt="" /></div>
-              <div class="pill"><img id="pill6" src="/images/image-missing.png" alt="" /></div>
-              <div class="pill"><img id="pill7" src="/images/image-missing.png" alt="" /></div>
-              <div class="pill"><img id="pill8" src="/images/image-missing.png" alt="" /></div>
+              <div class="pill"><img id="pill1" src="/images/image-missing.png" alt="Project thumbnail" /></div>
+              <div class="pill"><img id="pill2" src="/images/image-missing.png" alt="Project thumbnail" /></div>
+              <div class="pill"><img id="pill3" src="/images/image-missing.png" alt="Project thumbnail" /></div>
+              <div class="pill"><img id="pill4" src="/images/image-missing.png" alt="Project thumbnail" /></div>
+              <div class="pill"><img id="pill5" src="/images/image-missing.png" alt="Project thumbnail" /></div>
+              <div class="pill"><img id="pill6" src="/images/image-missing.png" alt="Project thumbnail" /></div>
+              <div class="pill"><img id="pill7" src="/images/image-missing.png" alt="Project thumbnail" /></div>
+              <div class="pill"><img id="pill8" src="/images/image-missing.png" alt="Project thumbnail" /></div>
             </div>
           </div>
         </div>
@@ -247,71 +251,62 @@
     <!-- CASE STUDY CARDS -->
     <section class="case-list" id="blogs">
       <div class="case-stack">
-        <!-- Card 1 -->
         <div class="case-card">
           <div class="case-left">
             <div class="top">
-              <img class="icon" id="caseIconA" alt="" />
+              <img class="icon" id="caseIconA" alt="Care Naturals logo" />
               <div>
                 <p class="title">Care Naturals</p>
                 <p class="sub">United Rubber India: Serving global OEMs with custom rubber solutions</p>
               </div>
             </div>
-
             <div class="bottom">
               <div class="bar"></div>
               <p>I Helped URI connect with high-value buyers through clear positioning and UX.</p>
             </div>
           </div>
-
           <div class="case-right">
             <img src="/images/project1.png" alt="Care Naturals project preview" class="case-placeholder" />
           </div>
         </div>
 
-        <!-- Card 2 -->
         <div class="case-card">
           <div class="case-left blue">
             <div class="top">
-              <img class="icon small" id="caseIconB" alt="" />
+              <img class="icon small" id="caseIconB" alt="United Rubber logo" />
               <div>
                 <p class="title">United Rubber</p>
                 <p class="sub">United Rubber India: Serving global OEMs with custom rubber solutions</p>
               </div>
-              <div class="cta" tabindex="0" role="button">
+              <button class="cta" type="button">
                 <span>Case Study</span>
-                <img id="caseArrow" alt="" />
-              </div>
+                <img id="caseArrow" alt="" aria-hidden="true" />
+              </button>
             </div>
-
             <div class="bottom">
               <div class="bar"></div>
               <p>I Helped URI connect with high-value buyers through clear positioning and UX.</p>
             </div>
           </div>
-
           <div class="case-right">
             <img src="/images/image-missing.png" alt="United Rubber project preview" class="case-placeholder" />
           </div>
         </div>
 
-        <!-- Card 3 -->
         <div class="case-card">
           <div class="case-left">
             <div class="top">
-              <img class="icon" id="caseIconC" alt="" />
+              <img class="icon" id="caseIconC" alt="Care Naturals logo" />
               <div>
                 <p class="title">Care Naturals</p>
                 <p class="sub">United Rubber India: Serving global OEMs with custom rubber solutions</p>
               </div>
             </div>
-
             <div class="bottom">
               <div class="bar"></div>
               <p>I Helped URI connect with high-value buyers through clear positioning and UX.</p>
             </div>
           </div>
-
           <div class="case-right">
             <img src="/images/image-missing.png" alt="Care Naturals project preview" class="case-placeholder" />
           </div>
@@ -332,9 +327,6 @@
           <span>mummy kasam I didnt pay them</span>
         </div>
       </div>
-      
-
-      
 
       <div class="testimonials-head">
         <h2>What everyone says</h2>
@@ -346,10 +338,9 @@
         </button>
 
         <div class="testimonial-card" aria-live="polite">
-          <p class="quote" id="testimonialQuote">“ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada enim vitae malesuada dapibus. Praesent pretium, nunc mollis egestas posuere, est massa tincidunt ligula, et scelerisque massa libero non purus. Proin luctus placerat nisl, sit amet ultrices nibh porta malesuada.“</p>
-
+          <p class="quote" id="testimonialQuote">" Lorem ipsum dolor sit amet, consectetur adipiscing elit."</p>
           <div class="person">
-            <div class="avatar"><img id="testimonialAvatar" alt="" /></div>
+            <div class="avatar"><img id="testimonialAvatar" alt="Testimonial author" /></div>
             <div class="meta">
               <p class="name" id="testimonialName">Rahul Raj</p>
               <p class="role" id="testimonialRole">Developer</p>
@@ -364,6 +355,7 @@
 
       <div class="t-dots" id="tDots" aria-label="Testimonials"></div>
     </section>
+    </main>
 
     <!-- FOOTER -->
     <footer class="footer" id="contact">
@@ -373,7 +365,7 @@
       </div>
 
       <div class="block">
-        <div style="display:flex;flex-direction:column;gap:16px;">
+        <div class="footer-contact">
           <p class="kicker">Contact me</p>
           <a class="email" href="mailto:Gauravguptasggs@gmail.com">Gauravguptasggs@gmail.com</a>
         </div>
@@ -387,17 +379,15 @@
         <a href="#projects">Portfolio</a>
       </nav>
 
-      <div class="socials" aria-label="Social links placeholders">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
+      <div class="socials" aria-label="Social links">
+        <a class="dot" href="#" aria-label="LinkedIn"></a>
+        <a class="dot" href="#" aria-label="Behance"></a>
+        <a class="dot" href="#" aria-label="Dribbble"></a>
+        <a class="dot" href="#" aria-label="Twitter"></a>
+        <a class="dot" href="#" aria-label="Instagram"></a>
       </div>
     </footer>
-  </div>
-  <script type="module" src="/src/js/main.js"></script>
+</div>
+<script type="module" src="/src/js/main.js"></script>
 </body>
 </html>
-
-
