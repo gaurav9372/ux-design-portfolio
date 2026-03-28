@@ -84,7 +84,7 @@ export const homepageContent = {
     contactTitle: "Contact me",
     email: "Gauravguptasggs@gmail.com",
     desc: "[TODO: Write real footer copy]",
-    navLinks: ["About me", "Contact", "Projects"]
+    navLinks: ["About me", "Contact", "Projects", "Blogs"]
   }
 };
 
