@@ -129,7 +129,6 @@
   gap: 24px;
   overflow: hidden;
 }
-.case-left.blue { background: #0c1431 }
 .case-left .top { display: flex; flex-direction: column; gap: 20px }
 .case-left .top .icon { width: 76px; height: 76px }
 .case-left .top .icon.small { width: 53px; height: 71px }
@@ -158,8 +157,15 @@
   letter-spacing: -.32px;
   cursor: pointer;
   width: max-content;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .3s ease, transform .3s ease;
 }
-.case-left .cta img { width: 28px; height: 32px }
+.case-card:hover .case-left .cta {
+  opacity: 1;
+  transform: translateY(0);
+}
 .case-left .bottom { display: flex; gap: 16px; align-items: flex-start }
 .case-left .bottom .bar { width: 2px; background: var(--ink); flex: 0 0 auto }
 .case-left .bottom p {
