@@ -1,16 +1,16 @@
 {
   "name": "ux-design-portfolio",
   "version": "1.0.0",
-  "description": "",
+  "description": "UX Design Portfolio — Shreyansh Gaurav",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "keywords": [],
-  "author": "",
+  "author": "Shreyansh Gaurav",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "devDependencies": {
     "vite": "^8.0.3"
   }
