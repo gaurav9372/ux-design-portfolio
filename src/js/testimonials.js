@@ -5,7 +5,7 @@ const CONTENT = homepageContent;
 const AUTO_INTERVAL = 4000;
 
 const defaultTestimonials = [
-  { quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", name: "Rahul Raj", role: "Developer", avatar: PLACEHOLDER },
+  { quote: "Shreyansh brought clarity to our product vision from day one.", name: "Rahul Raj", role: "Developer", avatar: PLACEHOLDER },
   { quote: "The flow felt effortless and the layout reads clean on every screen.", name: "Aditi Sharma", role: "Product Designer", avatar: PLACEHOLDER },
   { quote: "Clear structure, fast decisions, and a sharp visual story.", name: "Neel Verma", role: "Founder", avatar: PLACEHOLDER },
   { quote: "The UX choices improved comprehension without adding noise.", name: "Priya Singh", role: "UX Lead", avatar: PLACEHOLDER },
