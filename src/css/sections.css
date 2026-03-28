@@ -401,9 +401,10 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  align-items: center;
   width: 100vw;
-  margin-left: calc(-1 * var(--pad));
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
   overflow: hidden;
 }
 .projects .logos-top,
