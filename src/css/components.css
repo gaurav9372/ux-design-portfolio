@@ -114,11 +114,8 @@
   position: sticky;
   top: 0;
   height: 100vh;
-  max-width: 1088px;
+  max-width: none;
   margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
 }
 .case-card {
@@ -131,9 +128,10 @@
   overflow: hidden;
   background: var(--bg2);
   border-radius: 12px;
-  box-shadow: 0 -4px 30px rgba(0,0,0,.3);
-  transform: translateX(-50%) translateY(110%);
+  box-shadow: 0 4px 40px rgba(0,0,0,.35);
+  transform: translateX(-50%) translateY(100vh);
   will-change: transform;
+  opacity: 0;
 }
 .case-left {
   width: 50%;

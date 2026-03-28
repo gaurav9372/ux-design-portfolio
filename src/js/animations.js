@@ -171,63 +171,83 @@ export const initSplitHover = () => {
 };
 
 /* --- Scroll-driven card stacking --- */
-const CARD_SCALE_STEP = 0.03;
-const CARD_OFFSET_STEP = 16;
-
 export const initCardStack = () => {
   if (window.matchMedia("(max-width: 1100px)").matches) return;
 
   const section = document.querySelector(".case-list");
+  const stack = document.querySelector(".case-stack");
   const cards = Array.from(document.querySelectorAll(".case-card"));
   const footer = document.querySelector(".case-footer");
-  if (!section || cards.length === 0) return;
+  if (!section || !stack || cards.length < 2) return;
 
   const count = cards.length;
-  const scrollPerCard = window.innerHeight * 0.8;
-  section.style.height = `${scrollPerCard * count + window.innerHeight}px`;
+  const SCROLL_PER_CARD = window.innerHeight * 0.6;
+  const SCALE_STEP = 0.025;
+  const PUSH_STEP = 12;
+  const TOP_OFFSET = 80; // px from top of viewport
+
+  // Set section height to create scroll room
+  section.style.height = `${SCROLL_PER_CARD * (count - 1) + window.innerHeight + 200}px`;
+
+  // First card is always visible and pinned
+  cards[0].style.transform = `translateX(-50%) translateY(${TOP_OFFSET}px)`;
+  cards[0].style.opacity = "1";
+  cards[0].style.zIndex = "1";
+
+  // Set z-index so later cards stack on top
+  cards.forEach((card, i) => {
+    card.style.zIndex = String(i + 1);
+  });
 
   let ticking = false;
 
   const update = () => {
     ticking = false;
-    const rect = section.getBoundingClientRect();
-    const scrolled = -rect.top;
-    const vh = window.innerHeight;
+    const sectionTop = section.getBoundingClientRect().top;
+    const scrolled = -sectionTop;
 
     cards.forEach((card, i) => {
-      const cardStart = i * scrollPerCard;
-      const progress = Math.min(Math.max((scrolled - cardStart) / scrollPerCard, 0), 1);
+      if (i === 0) {
+        // First card: always pinned, scales down as others stack on top
+        const aboveFirst = Math.max(0, Math.floor(scrolled / SCROLL_PER_CARD));
+        const scale = Math.max(1 - aboveFirst * SCALE_STEP, 0.85);
+        const push = aboveFirst * PUSH_STEP;
+        card.style.transform = `translateX(-50%) translateY(${TOP_OFFSET - push}px) scale(${scale})`;
+        card.style.opacity = "1";
+        return;
+      }
 
-      // How many cards are stacked on top of this one
-      const cardsAbove = cards.length - 1 - i;
-      const stackedCount = Math.max(0, Math.floor((scrolled - cardStart) / scrollPerCard));
+      // Cards 2+ slide in from below
+      const cardStart = (i - 1) * SCROLL_PER_CARD;
+      const cardEnd = i * SCROLL_PER_CARD;
+      const progress = Math.min(Math.max((scrolled - cardStart) / SCROLL_PER_CARD, 0), 1);
 
       if (progress <= 0) {
-        // Not yet in view — below the stack
-        card.style.transform = `translateX(-50%) translateY(110%)`;
+        // Below viewport
+        card.style.transform = `translateX(-50%) translateY(calc(100vh))`;
         card.style.opacity = "0";
       } else if (progress < 1) {
-        // Animating in
+        // Sliding up
         const ease = 1 - Math.pow(1 - progress, 3);
-        const y = (1 - ease) * 100;
-        card.style.transform = `translateX(-50%) translateY(${y}%)`;
-        card.style.opacity = "1";
+        const fromBottom = (1 - ease) * 100;
+        card.style.transform = `translateX(-50%) translateY(calc(${TOP_OFFSET}px + ${fromBottom}vh))`;
+        card.style.opacity = String(Math.min(progress * 2, 1));
       } else {
-        // Landed — scale down as more cards stack on top
-        const above = Math.min(Math.floor((scrolled - cardStart) / scrollPerCard) - 1, count);
-        const scaleDown = Math.max(1 - above * CARD_SCALE_STEP, 0.85);
-        const pushUp = above * CARD_OFFSET_STEP;
-        card.style.transform = `translateX(-50%) translateY(-${pushUp}px) scale(${scaleDown})`;
+        // Landed — may need to scale down if more cards are on top
+        const cardsOnTop = Math.max(0, Math.floor((scrolled - cardEnd) / SCROLL_PER_CARD));
+        const scale = Math.max(1 - cardsOnTop * SCALE_STEP, 0.85);
+        const push = cardsOnTop * PUSH_STEP;
+        card.style.transform = `translateX(-50%) translateY(${TOP_OFFSET - push}px) scale(${scale})`;
         card.style.opacity = "1";
       }
     });
 
-    // Show/hide footer
+    // Footer
     if (footer) {
-      const footerStart = count * scrollPerCard;
-      const footerProgress = Math.min(Math.max((scrolled - footerStart) / (scrollPerCard * 0.3), 0), 1);
-      footer.style.opacity = footerProgress.toFixed(3);
-      footer.style.transform = `translateY(${(1 - footerProgress) * 30}px)`;
+      const footerStart = (count - 1) * SCROLL_PER_CARD;
+      const fp = Math.min(Math.max((scrolled - footerStart) / (SCROLL_PER_CARD * 0.4), 0), 1);
+      footer.style.opacity = fp.toFixed(3);
+      footer.style.transform = `translateY(${(1 - fp) * 20}px)`;
     }
   };
 
@@ -239,7 +259,7 @@ export const initCardStack = () => {
 
   window.addEventListener("resize", () => {
     if (window.matchMedia("(max-width: 1100px)").matches) return;
-    section.style.height = `${scrollPerCard * count + window.innerHeight}px`;
+    section.style.height = `${SCROLL_PER_CARD * (count - 1) + window.innerHeight + 200}px`;
     update();
   });
 
