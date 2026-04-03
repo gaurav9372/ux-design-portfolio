@@ -3,6 +3,7 @@ import { applyImages } from './content.js';
 import { applyMdContent } from './md-content.js';
 import { applyCaseStudyContent } from './case-study-content.js';
 import { applyBlogContent } from './blog-content.js';
+import { applyAboutContent } from './about-content.js';
 import { initNav } from './nav.js';
 import { initStatsAnimation, initUxParallax, initSplitHover, initCardStack, initProjectFilter, initBlogFilter } from './animations.js';
 import { initTestimonials } from './testimonials.js';
@@ -14,6 +15,7 @@ const init = () => {
   try { applyMdContent(); } catch (e) { console.error("applyMdContent:", e); }
   try { applyCaseStudyContent(); } catch (e) { console.error("applyCaseStudyContent:", e); }
   try { applyBlogContent(); } catch (e) { console.error("applyBlogContent:", e); }
+  try { applyAboutContent(); } catch (e) { console.error("applyAboutContent:", e); }
   try { initNav(); } catch (e) { console.error("initNav:", e); }
   try { initStatsAnimation(); } catch (e) { console.error("initStatsAnimation:", e); }
   try { initUxParallax(); } catch (e) { console.error("initUxParallax:", e); }

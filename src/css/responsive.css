@@ -187,6 +187,31 @@
   .bl-more-grid { grid-template-columns: 1fr }
 }
 
+/* ---- About page responsive ---- */
+@media (max-width: 1100px) {
+  .ab-hero-inner { flex-direction: column; text-align: center; gap: 40px }
+  .ab-hero-photo { flex: 0 0 220px; width: 220px; height: 220px; margin-inline: auto }
+  .ab-values-grid { grid-template-columns: 1fr }
+  .ab-skills-grid { grid-template-columns: 1fr }
+  .ab-testimonials-grid { grid-template-columns: 1fr }
+  .ab-personal-inner { flex-direction: column; text-align: center }
+  .ab-personal-photo { margin-inline: auto }
+  .ab-timeline-item { flex-direction: column; gap: 8px }
+  .ab-timeline-left { flex: none }
+}
+@media (max-width: 768px) {
+  .ab-hero { padding: 120px 20px 60px }
+  .ab-section-inner { padding: 0 20px }
+  .ab-hero-photo { flex: 0 0 180px; width: 180px; height: 180px }
+  .ab-hero-title { font-size: 28px }
+  .ab-story, .ab-values, .ab-skills, .ab-experience, .ab-personal { padding: 60px 0 }
+  .ab-testimonials { padding: 60px 0 }
+  .ab-cta { padding: 60px 0 }
+  .ab-value-card { padding: 24px }
+  .ab-personal-photo { flex: 0 0 180px; width: 180px; height: 180px }
+  .ab-cta-socials { flex-wrap: wrap }
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
