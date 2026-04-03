@@ -1,4 +1,4 @@
-import aboutMd from '../content/about-content.md?raw';
+import aboutMd from '../content/core/about-content.md?raw';
 
 const parseMd = (raw) => {
   const content = {};

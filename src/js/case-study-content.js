@@ -1,10 +1,10 @@
-import careNaturalsMd from '../content/care-naturals.md?raw';
-import unitedRubberMd from '../content/united-rubber.md?raw';
-import adscultMd from '../content/adscult.md?raw';
-import finflowMd from '../content/finflow.md?raw';
-import meditrackMd from '../content/meditrack.md?raw';
-import flavorStreetMd from '../content/flavor-street.md?raw';
-import edusparkMd from '../content/eduspark.md?raw';
+import careNaturalsMd from '../content/projects/care-naturals.md?raw';
+import unitedRubberMd from '../content/projects/united-rubber.md?raw';
+import adscultMd from '../content/projects/adscult.md?raw';
+import finflowMd from '../content/projects/finflow.md?raw';
+import meditrackMd from '../content/projects/meditrack.md?raw';
+import flavorStreetMd from '../content/projects/flavor-street.md?raw';
+import edusparkMd from '../content/projects/eduspark.md?raw';
 
 const MD_MAP = {
   'care-naturals': careNaturalsMd,
@@ -36,7 +36,7 @@ export const applyCaseStudyContent = () => {
 
   const project = meta.getAttribute('content');
   const md = MD_MAP[project];
-  if (!md) return;
+  if (!md) { console.warn(`Case study: no MD found for "${project}"`); return; }
 
   const content = parseMd(md);
 

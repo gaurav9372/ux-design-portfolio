@@ -166,7 +166,7 @@ export const applyBlogContent = () => {
 
   const slug = meta.getAttribute('content');
   const md = MD_MAP[slug];
-  if (!md) return;
+  if (!md) { console.warn(`Blog: no MD found for "${slug}"`); return; }
 
   const content = parseBlogMd(md);
 

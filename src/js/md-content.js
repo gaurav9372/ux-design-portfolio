@@ -1,4 +1,4 @@
-import homepageMd from '../content/homepage.md?raw';
+import homepageMd from '../content/core/homepage.md?raw';
 
 const parseMd = (raw) => {
   const content = {};

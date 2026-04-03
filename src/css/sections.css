@@ -1785,7 +1785,7 @@
   margin: 0 0 16px;
 }
 .bl-index-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   font-size: clamp(32px, 4vw, 52px);
   font-weight: 800;
   color: var(--ink);
@@ -1905,7 +1905,7 @@
   color: var(--muted);
 }
 .bl-card-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   font-size: 22px;
   font-weight: 800;
   color: var(--ink);
@@ -1981,7 +1981,7 @@
   margin-bottom: 16px;
 }
 .bl-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   font-size: clamp(28px, 4vw, 44px);
   font-weight: 800;
   color: var(--ink);
@@ -2038,7 +2038,7 @@
 }
 .bl-article p:last-child { margin-bottom: 0 }
 .bl-article .bl-subheading {
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   font-size: 22px;
   font-weight: 800;
   color: var(--ink);
@@ -2087,7 +2087,7 @@
   margin: 0 0 4px;
 }
 .bl-author-name {
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   font-size: 18px;
   font-weight: 800;
   color: var(--ink);
@@ -2123,7 +2123,7 @@
   margin-inline: auto;
 }
 .bl-more-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   font-size: 28px;
   font-weight: 800;
   color: var(--ink);
@@ -2163,7 +2163,7 @@
   margin: 0 0 8px;
 }
 .home-blogs-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   font-size: clamp(28px, 3.5vw, 40px);
   font-weight: 800;
   color: var(--ink);

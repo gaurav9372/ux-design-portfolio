@@ -4,6 +4,7 @@ const PLACEHOLDER = "/images/image-missing.png";
 
 const IMAGE_MAP = {
   brandImg: PLACEHOLDER,
+  brandImgFixed: PLACEHOLDER,
   aboutLogo: PLACEHOLDER,
   arrowImg: "/images/icons/arrow-button.svg",
   heroOrn: PLACEHOLDER,
