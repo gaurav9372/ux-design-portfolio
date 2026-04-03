@@ -1,8 +1,10 @@
 // JS modules
 import { applyImages } from './content.js';
 import { applyMdContent } from './md-content.js';
+import { applyCaseStudyContent } from './case-study-content.js';
+import { applyBlogContent } from './blog-content.js';
 import { initNav } from './nav.js';
-import { initStatsAnimation, initUxParallax, initSplitHover, initCardStack } from './animations.js';
+import { initStatsAnimation, initUxParallax, initSplitHover, initCardStack, initProjectFilter, initBlogFilter } from './animations.js';
 import { initTestimonials } from './testimonials.js';
 import { initMarquee } from './marquee.js';
 
@@ -10,6 +12,8 @@ import { initMarquee } from './marquee.js';
 const init = () => {
   try { applyImages(); } catch (e) { console.error("applyImages:", e); }
   try { applyMdContent(); } catch (e) { console.error("applyMdContent:", e); }
+  try { applyCaseStudyContent(); } catch (e) { console.error("applyCaseStudyContent:", e); }
+  try { applyBlogContent(); } catch (e) { console.error("applyBlogContent:", e); }
   try { initNav(); } catch (e) { console.error("initNav:", e); }
   try { initStatsAnimation(); } catch (e) { console.error("initStatsAnimation:", e); }
   try { initUxParallax(); } catch (e) { console.error("initUxParallax:", e); }
@@ -17,6 +21,8 @@ const init = () => {
   try { initTestimonials(); } catch (e) { console.error("initTestimonials:", e); }
   try { initMarquee(); } catch (e) { console.error("initMarquee:", e); }
   try { initCardStack(); } catch (e) { console.error("initCardStack:", e); }
+  try { initProjectFilter(); } catch (e) { console.error("initProjectFilter:", e); }
+  try { initBlogFilter(); } catch (e) { console.error("initBlogFilter:", e); }
 };
 
 if (document.readyState === "loading") {

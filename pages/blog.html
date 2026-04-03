@@ -49,11 +49,152 @@
     </div>
 
     <main>
-      <section class="coming-soon">
-        <h1>Blog</h1>
-        <p>Articles on UX, design, and building better products are coming soon.</p>
-        <a href="/" class="btn-home">Go to Home</a>
+
+      <!-- Blog Index Hero -->
+      <section class="bl-index-hero">
+        <div class="block">
+          <p class="bl-index-eyebrow">Blog</p>
+          <h1 class="bl-index-title">Thoughts, lessons, and the occasional rant.</h1>
+          <p class="bl-index-subtitle">Writing about design, process, and things I learn along the way.</p>
+        </div>
       </section>
+
+      <!-- Filter Bar -->
+      <div class="bl-filter-bar" role="group" aria-label="Filter posts by tag">
+        <button class="bl-filter active" data-filter="all">All <span class="bl-count">6</span></button>
+        <button class="bl-filter" data-filter="design">Design</button>
+        <button class="bl-filter" data-filter="process">Process</button>
+        <button class="bl-filter" data-filter="ai">AI</button>
+        <button class="bl-filter" data-filter="productivity">Productivity</button>
+        <button class="bl-filter" data-filter="collaboration">Collaboration</button>
+      </div>
+
+      <!-- Blog Grid -->
+      <section class="bl-index-grid-section">
+        <div class="block">
+          <div class="bl-grid">
+
+            <!-- Post 01 -->
+            <a href="/pages/blog/12-mistakes-junior-designers-make.html" class="bl-card" data-tags="design,productivity">
+              <div class="bl-card-img">
+                <img src="/images/image-missing.png" alt="12 Mistakes Junior Designers Make" loading="lazy" />
+              </div>
+              <div class="bl-card-body">
+                <h2 class="bl-card-title">12 Mistakes Junior Designers Make (And How to Actually Fix Them)</h2>
+                <p class="bl-card-excerpt">I made most of these mistakes myself when I started out. Here is what I learned the hard way so you do not have to.</p>
+                <div class="bl-card-tags">
+                  <span class="bl-card-tag">Design</span>
+                  <span class="bl-card-tag">Productivity</span>
+                </div>
+                <div class="bl-card-bottom">
+                  <span class="bl-card-date">March 2025</span>
+                  <span class="bl-card-read">Read</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Post 02 -->
+            <a href="/pages/blog/how-you-work-with-developers.html" class="bl-card" data-tags="process,collaboration">
+              <div class="bl-card-img">
+                <img src="/images/image-missing.png" alt="How You Work With Developers" loading="lazy" />
+              </div>
+              <div class="bl-card-body">
+                <h2 class="bl-card-title">How You Work With Developers (Real Friction)</h2>
+                <p class="bl-card-excerpt">Nobody talks about the awkward part of designer and developer handoffs. Here is what actually causes friction and how to deal with it.</p>
+                <div class="bl-card-tags">
+                  <span class="bl-card-tag">Process</span>
+                  <span class="bl-card-tag">Collaboration</span>
+                </div>
+                <div class="bl-card-bottom">
+                  <span class="bl-card-date">March 2025</span>
+                  <span class="bl-card-read">Read</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Post 03 -->
+            <a href="/pages/blog/designing-under-constraints.html" class="bl-card" data-tags="design,process">
+              <div class="bl-card-img">
+                <img src="/images/image-missing.png" alt="Designing Under Constraints" loading="lazy" />
+              </div>
+              <div class="bl-card-body">
+                <h2 class="bl-card-title">Designing Under Constraints</h2>
+                <p class="bl-card-excerpt">Constraints are not the enemy of good design. They are the reason good design exists in the first place.</p>
+                <div class="bl-card-tags">
+                  <span class="bl-card-tag">Design</span>
+                  <span class="bl-card-tag">Process</span>
+                </div>
+                <div class="bl-card-bottom">
+                  <span class="bl-card-date">February 2025</span>
+                  <span class="bl-card-read">Read</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Post 04 -->
+            <a href="/pages/blog/ai-ux-real-use-cases.html" class="bl-card" data-tags="design,ai,productivity">
+              <div class="bl-card-img">
+                <img src="/images/image-missing.png" alt="AI + UX: Real Use Cases" loading="lazy" />
+              </div>
+              <div class="bl-card-body">
+                <h2 class="bl-card-title">AI + UX: Real Use Cases (Not Hype)</h2>
+                <p class="bl-card-excerpt">Everyone is talking about AI in design but most of it is noise. Here are the places where AI actually helps UX designers do better work.</p>
+                <div class="bl-card-tags">
+                  <span class="bl-card-tag">Design</span>
+                  <span class="bl-card-tag">AI</span>
+                  <span class="bl-card-tag">Productivity</span>
+                </div>
+                <div class="bl-card-bottom">
+                  <span class="bl-card-date">April 2025</span>
+                  <span class="bl-card-read">Read</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Post 05 -->
+            <a href="/pages/blog/using-claude-ai-as-ux-thinking-partner.html" class="bl-card" data-tags="ai,design,process">
+              <div class="bl-card-img">
+                <img src="/images/image-missing.png" alt="Using Claude AI as a UX Thinking Partner" loading="lazy" />
+              </div>
+              <div class="bl-card-body">
+                <h2 class="bl-card-title">Using Claude AI as a UX Thinking Partner, Not a Tool</h2>
+                <p class="bl-card-excerpt">Most designers use AI to generate stuff. I use it to think better. Here is how Claude changed my design process without replacing any part of it.</p>
+                <div class="bl-card-tags">
+                  <span class="bl-card-tag">AI</span>
+                  <span class="bl-card-tag">Design</span>
+                  <span class="bl-card-tag">Process</span>
+                </div>
+                <div class="bl-card-bottom">
+                  <span class="bl-card-date">April 2025</span>
+                  <span class="bl-card-read">Read</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Post 06 -->
+            <a href="/pages/blog/why-ux-designers-need-vibe-coding.html" class="bl-card" data-tags="design,ai,productivity">
+              <div class="bl-card-img">
+                <img src="/images/image-missing.png" alt="Why UX Designers Need Vibe Coding" loading="lazy" />
+              </div>
+              <div class="bl-card-body">
+                <h2 class="bl-card-title">Why UX Designers Need to Learn Vibe Coding (And How It Is Not Optional Anymore)</h2>
+                <p class="bl-card-excerpt">Vibe coding is not about becoming a developer. It is about closing the gap between what you design and what actually gets built.</p>
+                <div class="bl-card-tags">
+                  <span class="bl-card-tag">Design</span>
+                  <span class="bl-card-tag">AI</span>
+                  <span class="bl-card-tag">Productivity</span>
+                </div>
+                <div class="bl-card-bottom">
+                  <span class="bl-card-date">April 2025</span>
+                  <span class="bl-card-read">Read</span>
+                </div>
+              </div>
+            </a>
+
+          </div>
+        </div>
+      </section>
+
     </main>
 
     <footer class="footer">

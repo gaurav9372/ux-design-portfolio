@@ -167,7 +167,7 @@ export const initSplitHover = () => {
     el.classList.add("split-hover");
   };
 
-  document.querySelectorAll('a, button, [role="button"], .nav-cta, .footer .email').forEach(splitTextForHover);
+  document.querySelectorAll('a:not(.bl-card), button, [role="button"], .nav-cta, .footer .email, .bl-card-read').forEach(splitTextForHover);
 };
 
 /* --- Scroll-driven card stacking --- */
@@ -275,4 +275,51 @@ export const initCardStack = () => {
   });
 
   update();
+};
+
+/* --- Projects page filter --- */
+export const initProjectFilter = () => {
+  const filters = document.querySelectorAll(".pp-filter");
+  const cards = document.querySelectorAll("[data-category]");
+  const empty = document.querySelector(".pp-empty");
+  if (!filters.length) return;
+
+  filters.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      filters.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const f = btn.dataset.filter;
+      let visible = 0;
+
+      cards.forEach((card) => {
+        const match = f === "all" || card.dataset.category === f;
+        card.hidden = !match;
+        if (match) visible++;
+      });
+
+      if (empty) empty.hidden = visible > 0;
+    });
+  });
+};
+
+/* --- Blog page filter --- */
+export const initBlogFilter = () => {
+  const filters = document.querySelectorAll(".bl-filter");
+  const cards = document.querySelectorAll(".bl-grid [data-tags]");
+  if (!filters.length) return;
+
+  filters.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      filters.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const f = btn.dataset.filter;
+      cards.forEach((card) => {
+        const tags = card.dataset.tags.split(",");
+        const match = f === "all" || tags.includes(f);
+        card.hidden = !match;
+      });
+    });
+  });
 };

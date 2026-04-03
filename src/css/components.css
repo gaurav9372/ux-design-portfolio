@@ -137,6 +137,9 @@
   height: 467px;
   display: flex;
   overflow: hidden;
+}
+.case-card[hidden] {
+  display: none;
   background: var(--bg2);
   border-radius: 12px;
   box-shadow: 0 4px 40px rgba(0,0,0,.35);
