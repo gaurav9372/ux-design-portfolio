@@ -187,6 +187,19 @@
   .bl-more-grid { grid-template-columns: 1fr }
 }
 
+/* ---- Contact page responsive ---- */
+@media (max-width: 1100px) {
+  .ct-grid { grid-template-columns: 1fr; gap: 48px }
+  .ct-faq-grid { grid-template-columns: 1fr }
+}
+@media (max-width: 768px) {
+  .ct-hero { padding: 120px 0 48px }
+  .ct-inner { padding: 0 20px }
+  .ct-body { padding: 0 0 72px }
+  .ct-faq { padding: 60px 0 72px }
+  .ct-submit { width: 100% }
+}
+
 /* ---- About page responsive ---- */
 @media (max-width: 1100px) {
   .ab-hero-inner { flex-direction: column; text-align: center; gap: 40px }

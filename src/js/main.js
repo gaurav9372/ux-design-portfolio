@@ -4,6 +4,7 @@ import { applyMdContent } from './md-content.js';
 import { applyCaseStudyContent } from './case-study-content.js';
 import { applyBlogContent } from './blog-content.js';
 import { applyAboutContent } from './about-content.js';
+import { initContactForm } from './contact-form.js';
 import { initNav } from './nav.js';
 import { initStatsAnimation, initUxParallax, initSplitHover, initCardStack, initProjectFilter, initBlogFilter } from './animations.js';
 import { initTestimonials } from './testimonials.js';
@@ -25,6 +26,7 @@ const init = () => {
   try { initCardStack(); } catch (e) { console.error("initCardStack:", e); }
   try { initProjectFilter(); } catch (e) { console.error("initProjectFilter:", e); }
   try { initBlogFilter(); } catch (e) { console.error("initBlogFilter:", e); }
+  try { initContactForm(); } catch (e) { console.error("initContactForm:", e); }
 };
 
 if (document.readyState === "loading") {
