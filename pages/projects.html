@@ -78,7 +78,7 @@
       </div>
     </section>
 
-    <!-- 2. Filter Bar -->
+    <!-- 2. Filter Bar (desktop: chips, mobile: dropdown) -->
     <div class="pp-filter-bar" role="group" aria-label="Filter projects by category">
       <button class="pp-filter active" data-filter="all">All <span class="pp-count">7</span></button>
       <button class="pp-filter" data-filter="e-commerce">E-commerce</button>
@@ -87,6 +87,15 @@
       <button class="pp-filter" data-filter="healthcare">Healthcare</button>
       <button class="pp-filter" data-filter="food">Food &amp; Lifestyle</button>
       <button class="pp-filter" data-filter="edtech">EdTech</button>
+      <select class="filter-dropdown" aria-label="Filter projects by category">
+        <option value="all">All (7)</option>
+        <option value="e-commerce">E-commerce</option>
+        <option value="b2b">B2B</option>
+        <option value="fintech">Fintech</option>
+        <option value="healthcare">Healthcare</option>
+        <option value="food">Food &amp; Lifestyle</option>
+        <option value="edtech">EdTech</option>
+      </select>
     </div>
 
     <!-- 3. Project List -->

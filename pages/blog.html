@@ -59,7 +59,7 @@
         </div>
       </section>
 
-      <!-- Filter Bar -->
+      <!-- Filter Bar (desktop: chips, mobile: dropdown) -->
       <div class="bl-filter-bar" role="group" aria-label="Filter posts by tag">
         <button class="bl-filter active" data-filter="all">All <span class="bl-count">6</span></button>
         <button class="bl-filter" data-filter="design">Design</button>
@@ -67,6 +67,14 @@
         <button class="bl-filter" data-filter="ai">AI</button>
         <button class="bl-filter" data-filter="productivity">Productivity</button>
         <button class="bl-filter" data-filter="collaboration">Collaboration</button>
+        <select class="filter-dropdown" aria-label="Filter posts by tag">
+          <option value="all">All (6)</option>
+          <option value="design">Design</option>
+          <option value="process">Process</option>
+          <option value="ai">AI</option>
+          <option value="productivity">Productivity</option>
+          <option value="collaboration">Collaboration</option>
+        </select>
       </div>
 
       <!-- Blog Grid -->

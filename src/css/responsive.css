@@ -29,7 +29,9 @@
   .case-card {
     position: relative;
     left: auto;
-    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    flex-direction: column-reverse;
     height: auto;
     transform: none !important;
     opacity: 1 !important;
@@ -59,8 +61,8 @@
   .pp-steps { grid-template-columns: 1fr 1fr }
   .pp-cta-right { display: none }
   .pp-cta-title { font-size: 36px }
-  /* Cards go single-column like mobile layout */
-  .pp-list .case-card { flex-direction: column; height: auto }
+  /* Cards go single-column, image on top */
+  .pp-list .case-card { flex-direction: column-reverse; height: auto }
   .pp-list .case-left { width: 100%; flex: 0 0 auto }
   .pp-list .case-right { width: 100%; flex: 0 0 auto; height: 280px }
 }
@@ -84,8 +86,13 @@
 
 /* Case study mobile */
 @media (max-width: 768px) {
+  .cs-hero { padding: 120px var(--pad) 40px }
   .cs-hero h1 { font-size: 36px }
   .cs-next-title { font-size: 28px }
+  .cs-overview, .cs-problem, .cs-goals, .cs-research, .cs-personas,
+  .cs-wireframes, .cs-screens, .cs-results, .cs-reflections, .cs-next {
+    padding: 56px var(--pad);
+  }
   .cs-goals-grid { grid-template-columns: 1fr }
   .cs-research-grid { grid-template-columns: 1fr }
   .cs-personas-grid { grid-template-columns: 1fr }
@@ -96,6 +103,8 @@
   .cs-meta-strip { flex-wrap: wrap }
   .cs-meta-item { flex: 0 0 50%; border-right: none; border-bottom: 1px solid var(--stroke) }
   .cs-meta-item:last-child { border-bottom: none }
+  .cs-pain-list { gap: 16px }
+  .cs-reflections { gap: 32px }
 }
 
 /* Tablet portrait */
@@ -105,10 +114,19 @@
   .ux h2 { font-size: 32px }
   .projects h2 { font-size: 32px }
   .testimonials h2 { font-size: 32px }
+  .testimonials { padding: 56px var(--pad) }
   .gallery h2 { font-size: 32px }
+  .gallery-orn { width: 300px; height: 300px; left: -80px; bottom: -80px }
   .footer .email { font-size: 28px }
   .page-hero h1 { font-size: 40px }
   .stats-row { gap: 24px }
+}
+
+/* Filter bars → dropdown on mobile */
+@media (max-width: 720px) {
+  .pp-filter, .bl-filter { display: none }
+  .filter-dropdown { display: block }
+  .pp-filter-bar, .bl-filter-bar { padding: 12px var(--pad) }
 }
 
 /* Mobile */
@@ -133,6 +151,8 @@
   .gallery { padding: 56px var(--pad) }
   .footer { padding: 56px var(--pad) }
   .footer-bg { display: none }
+  .footer-nav { gap: 16px; flex-wrap: wrap }
+  .footer-nav a { white-space: nowrap }
   .ux-bg { display: none }
   .ux { padding: 64px var(--pad) }
   .ux-circles { transform: translateX(-12px) scale(.78) }
@@ -150,6 +170,7 @@
   .projects h2 { font-size: 28px }
   .testimonials h2 { font-size: 28px }
   .gallery h2 { font-size: 28px }
+  .gallery-orn { display: none }
   .footer .email { font-size: 22px; padding-right: 0 }
   .footer .email::after { display: none }
   .page-hero h1 { font-size: 32px }
@@ -157,6 +178,55 @@
   .case-left { padding: 24px }
   .case-left .title { font-size: 24px }
   .ux-circles { transform: translateX(-8px) scale(.6) }
+
+  /* Case study 480px */
+  .cs-hero h1 { font-size: 28px }
+  .cs-overview, .cs-problem, .cs-goals, .cs-research, .cs-personas,
+  .cs-wireframes, .cs-screens, .cs-results, .cs-reflections, .cs-next {
+    padding: 40px var(--pad);
+  }
+  .cs-meta-strip { flex-direction: column }
+  .cs-meta-item {
+    flex: 0 0 auto;
+    border-right: none;
+    border-bottom: 1px solid var(--stroke);
+    padding: 16px 20px;
+  }
+  .cs-meta-item:last-child { border-bottom: none }
+
+  /* Blog 480px */
+  .bl-index-hero { padding: 100px 20px 32px }
+  .bl-index-grid-section { padding: 0 20px 80px }
+  .bl-grid { grid-template-columns: 1fr }
+  .bl-hero { padding: 100px 20px 28px }
+  .bl-cover { padding: 0 20px 32px }
+  .bl-body-section { padding: 0 20px 40px }
+  .bl-author-section { padding: 0 20px 32px }
+  .bl-more-section { padding: 0 20px 60px }
+  .bl-filter-bar { padding: 10px 16px; top: 56px; gap: 6px }
+  .bl-filter { padding: 6px 12px; font-size: 11px }
+  .bl-title { font-size: 24px }
+
+  /* Contact 480px */
+  .ct-hero { padding: 100px 0 40px }
+  .ct-title { font-size: 28px }
+  .ct-faq-q { font-size: 15px; padding: 20px 0 }
+
+  /* About 480px */
+  .ab-hero { padding: 100px 20px 48px }
+  .ab-hero-photo { flex: 0 0 150px; width: 150px; height: 150px }
+  .ab-hero-title { font-size: 24px }
+  .ab-story, .ab-values, .ab-skills, .ab-experience, .ab-personal { padding: 48px 0 }
+  .ab-testimonials { padding: 48px 0 }
+  .ab-cta { padding: 48px 0 }
+  .ab-value-card { padding: 20px }
+  .ab-personal-photo { flex: 0 0 150px; width: 150px; height: 150px }
+  .ab-quote-card { padding: 24px }
+
+  /* Projects 480px */
+  .pp-filter-bar { padding: 12px var(--pad); gap: 6px }
+  .pp-filter { padding: 6px 12px; font-size: 11px }
+  .pp-h1 { font-size: 28px }
 }
 
 /* ---- Blog responsive ---- */
@@ -182,15 +252,30 @@
   .bl-card-body { padding: 20px }
   .bl-meta-row { flex-wrap: wrap; gap: 8px }
   .home-blogs { padding: 60px 20px 80px }
-  .home-blogs-grid { grid-template-columns: 1fr }
+  .home-blogs-grid,
+  .bl-more-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .home-blogs-grid::-webkit-scrollbar,
+  .bl-more-grid::-webkit-scrollbar { display: none }
+  .home-blogs-grid .bl-card,
+  .bl-more-grid .bl-card {
+    flex: 0 0 82%;
+    max-width: 82%;
+    scroll-snap-align: start;
+  }
   .home-blogs-header { flex-direction: column; align-items: flex-start; gap: 16px }
-  .bl-more-grid { grid-template-columns: 1fr }
 }
 
 /* ---- Contact page responsive ---- */
 @media (max-width: 1100px) {
   .ct-grid { grid-template-columns: 1fr; gap: 48px }
-  .ct-faq-grid { grid-template-columns: 1fr }
 }
 @media (max-width: 768px) {
   .ct-hero { padding: 120px 0 48px }

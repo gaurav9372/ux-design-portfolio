@@ -81,4 +81,16 @@ export const initContactForm = () => {
       }, 3000);
     }
   });
+
+  // FAQ accordion — only one open at a time
+  const faqItems = document.querySelectorAll('.ct-faq-item');
+  faqItems.forEach((item) => {
+    item.addEventListener('toggle', () => {
+      if (item.open) {
+        faqItems.forEach((other) => {
+          if (other !== item) other.removeAttribute('open');
+        });
+      }
+    });
+  });
 };

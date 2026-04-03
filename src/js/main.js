@@ -6,7 +6,7 @@ import { applyBlogContent } from './blog-content.js';
 import { applyAboutContent } from './about-content.js';
 import { initContactForm } from './contact-form.js';
 import { initNav } from './nav.js';
-import { initStatsAnimation, initUxParallax, initSplitHover, initCardStack, initProjectFilter, initBlogFilter } from './animations.js';
+import { initStatsAnimation, initUxParallax, initSplitHover, initCardStack, initProjectFilter, initBlogFilter, initCardLinks } from './animations.js';
 import { initTestimonials } from './testimonials.js';
 import { initMarquee } from './marquee.js';
 
@@ -24,6 +24,7 @@ const init = () => {
   try { initTestimonials(); } catch (e) { console.error("initTestimonials:", e); }
   try { initMarquee(); } catch (e) { console.error("initMarquee:", e); }
   try { initCardStack(); } catch (e) { console.error("initCardStack:", e); }
+  try { initCardLinks(); } catch (e) { console.error("initCardLinks:", e); }
   try { initProjectFilter(); } catch (e) { console.error("initProjectFilter:", e); }
   try { initBlogFilter(); } catch (e) { console.error("initBlogFilter:", e); }
   try { initContactForm(); } catch (e) { console.error("initContactForm:", e); }

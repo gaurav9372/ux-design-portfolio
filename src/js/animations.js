@@ -277,49 +277,87 @@ export const initCardStack = () => {
   update();
 };
 
+/* --- Clickable project cards --- */
+export const initCardLinks = () => {
+  document.querySelectorAll(".case-card").forEach((card) => {
+    const link = card.querySelector("a.cta");
+    if (!link) return;
+    card.style.cursor = "pointer";
+    card.addEventListener("click", (e) => {
+      // Don't double-navigate if they clicked the actual link
+      if (e.target.closest("a")) return;
+      link.click();
+    });
+  });
+};
+
 /* --- Projects page filter --- */
 export const initProjectFilter = () => {
   const filters = document.querySelectorAll(".pp-filter");
   const cards = document.querySelectorAll("[data-category]");
   const empty = document.querySelector(".pp-empty");
+  const dropdown = document.querySelector(".pp-filter-bar .filter-dropdown");
   if (!filters.length) return;
+
+  const applyFilter = (f) => {
+    let visible = 0;
+    cards.forEach((card) => {
+      const match = f === "all" || card.dataset.category === f;
+      card.hidden = !match;
+      if (match) visible++;
+    });
+    if (empty) empty.hidden = visible > 0;
+  };
 
   filters.forEach((btn) => {
     btn.addEventListener("click", () => {
       filters.forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
-
-      const f = btn.dataset.filter;
-      let visible = 0;
-
-      cards.forEach((card) => {
-        const match = f === "all" || card.dataset.category === f;
-        card.hidden = !match;
-        if (match) visible++;
-      });
-
-      if (empty) empty.hidden = visible > 0;
+      if (dropdown) dropdown.value = btn.dataset.filter;
+      applyFilter(btn.dataset.filter);
     });
   });
+
+  if (dropdown) {
+    dropdown.addEventListener("change", () => {
+      filters.forEach((b) => b.classList.remove("active"));
+      const match = [...filters].find((b) => b.dataset.filter === dropdown.value);
+      if (match) match.classList.add("active");
+      applyFilter(dropdown.value);
+    });
+  }
 };
 
 /* --- Blog page filter --- */
 export const initBlogFilter = () => {
   const filters = document.querySelectorAll(".bl-filter");
   const cards = document.querySelectorAll(".bl-grid [data-tags]");
+  const dropdown = document.querySelector(".bl-filter-bar .filter-dropdown");
   if (!filters.length) return;
+
+  const applyFilter = (f) => {
+    cards.forEach((card) => {
+      const tags = card.dataset.tags.split(",");
+      const match = f === "all" || tags.includes(f);
+      card.hidden = !match;
+    });
+  };
 
   filters.forEach((btn) => {
     btn.addEventListener("click", () => {
       filters.forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
-
-      const f = btn.dataset.filter;
-      cards.forEach((card) => {
-        const tags = card.dataset.tags.split(",");
-        const match = f === "all" || tags.includes(f);
-        card.hidden = !match;
-      });
+      if (dropdown) dropdown.value = btn.dataset.filter;
+      applyFilter(btn.dataset.filter);
     });
   });
+
+  if (dropdown) {
+    dropdown.addEventListener("change", () => {
+      filters.forEach((b) => b.classList.remove("active"));
+      const match = [...filters].find((b) => b.dataset.filter === dropdown.value);
+      if (match) match.classList.add("active");
+      applyFilter(dropdown.value);
+    });
+  }
 };

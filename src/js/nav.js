@@ -11,11 +11,15 @@ export const initNav = () => {
     if (burger) burger.setAttribute("aria-expanded", "true");
     if (burgerTop) burgerTop.setAttribute("aria-expanded", "true");
     if (panel) panel.classList.add("open");
+    // Always show fixed nav so the burger is accessible to close menu
+    if (navFixed) navFixed.classList.remove("nav-hidden");
+    document.body.style.overflow = "hidden";
   };
   const closeMenu = () => {
     if (burger) burger.setAttribute("aria-expanded", "false");
     if (burgerTop) burgerTop.setAttribute("aria-expanded", "false");
     if (panel) panel.classList.remove("open");
+    document.body.style.overflow = "";
   };
 
   if (burger) burger.addEventListener("click", () => {
@@ -26,6 +30,13 @@ export const initNav = () => {
     const isOpen = burgerTop.getAttribute("aria-expanded") === "true";
     isOpen ? closeMenu() : openMenu();
   });
+
+  // Close menu when panel links are clicked
+  if (panel) {
+    panel.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => closeMenu());
+    });
+  }
 
   // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
