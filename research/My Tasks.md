@@ -16,6 +16,7 @@
 - [ ] Add lazy loading (loading="lazy") to below-fold images
 - [ ] Clean up the testimonials marquee text
 - [ ] Add wow and advanced animations
+- [ ] Fix mobile responsive screens
 - [ ] Wire up social links in the footer
 - [x] Easy way to add portfolio projects simple from md file or any backend project adding website tool
 

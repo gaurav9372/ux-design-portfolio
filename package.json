@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "UX Design Portfolio — Shreyansh Gaurav",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "screens": "node scripts/generate-screen-manifest.js",
+    "dev": "node scripts/generate-screen-manifest.js && vite",
+    "build": "node scripts/generate-screen-manifest.js && vite build",
     "preview": "vite preview"
   },
   "keywords": [],

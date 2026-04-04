@@ -1,0 +1,59 @@
+{
+  "adscult": [],
+  "carenaturals": [
+    "home.png",
+    "about.png",
+    "bulkorder.png",
+    "gift.png",
+    "oversea.png",
+    "pdp.png",
+    "plp.png"
+  ],
+  "eduspark": [],
+  "finflow": [],
+  "flavorstreet": [
+    "home.png",
+    "about.png",
+    "ava.png",
+    "avatar.png",
+    "career.png",
+    "contact.png",
+    "iksana.png",
+    "ira.png",
+    "news.png",
+    "nobi.png",
+    "team.png"
+  ],
+  "meditrack": [
+    "home.png",
+    "about.png",
+    "calc.png",
+    "calcresult.png",
+    "conservationservice2.png",
+    "conservationservices.png",
+    "contact.png",
+    "electricconsult.png",
+    "projects.png",
+    "services.png",
+    "solar.png"
+  ],
+  "unitedrubber": [
+    "home.png",
+    "aboutus.png",
+    "certificate.png",
+    "customsolution.png",
+    "gallaryinfra.png",
+    "galleryplants.png",
+    "galleryproducts.png",
+    "inframanufacturing.png",
+    "infraplants.png",
+    "infrawarehouse.png",
+    "occustom.png",
+    "ocqms.png",
+    "ocreseearch.png",
+    "ocsustain.png",
+    "pdp.png",
+    "plp.png",
+    "productsparent.png"
+  ]
+}

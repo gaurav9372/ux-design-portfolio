@@ -105,6 +105,9 @@
   .cs-meta-item:last-child { border-bottom: none }
   .cs-pain-list { gap: 16px }
   .cs-reflections { gap: 32px }
+  .cs-screens-mosaic { padding: 56px 12px }
+  .cs-mosaic { gap: 6px }
+  .cs-mosaic-col { gap: 6px }
 }
 
 /* Tablet portrait */
@@ -180,6 +183,9 @@
   .ux-circles { transform: translateX(-8px) scale(.6) }
 
   /* Case study 480px */
+  .cs-screens-mosaic { padding: 40px 10px }
+  .cs-mosaic { gap: 4px; flex-wrap: wrap }
+  .cs-mosaic-col { flex: 1 1 calc(50% - 2px); gap: 4px }
   .cs-hero h1 { font-size: 28px }
   .cs-overview, .cs-problem, .cs-goals, .cs-research, .cs-personas,
   .cs-wireframes, .cs-screens, .cs-results, .cs-reflections, .cs-next {
