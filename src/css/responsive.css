@@ -118,8 +118,12 @@
   .projects h2 { font-size: 32px }
   .testimonials h2 { font-size: 32px }
   .testimonials { padding: 56px var(--pad) }
+  .gallery { padding: 64px var(--pad) }
   .gallery h2 { font-size: 32px }
+  .gallery-header-icon { width: 120px; height: 120px }
   .gallery-orn { width: 300px; height: 300px; left: -80px; bottom: -80px }
+  .grid-row:first-child, .grid-row:last-child { height: auto }
+  .grid-tile { aspect-ratio: 4/3 }
   .footer .email { font-size: 28px }
   .page-hero h1 { font-size: 40px }
   .stats-row { gap: 24px }
@@ -173,6 +177,7 @@
   .projects h2 { font-size: 28px }
   .testimonials h2 { font-size: 28px }
   .gallery h2 { font-size: 28px }
+  .gallery-header-icon { width: 80px; height: 80px }
   .gallery-orn { display: none }
   .footer .email { font-size: 22px; padding-right: 0 }
   .footer .email::after { display: none }

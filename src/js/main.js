@@ -6,7 +6,7 @@ import { applyBlogContent } from './blog-content.js';
 import { applyAboutContent } from './about-content.js';
 import { initContactForm } from './contact-form.js';
 import { initMosaicGallery } from './mosaic-gallery.js';
-import { initSmoothScroll } from './smooth-scroll.js';
+import { initLottieIcons } from './lottie-icons.js';
 import { initNav } from './nav.js';
 import { initStatsAnimation, initUxParallax, initSplitHover, initCardStack, initProjectFilter, initBlogFilter, initCardLinks } from './animations.js';
 import { initTestimonials } from './testimonials.js';
@@ -31,7 +31,7 @@ const init = () => {
   try { initBlogFilter(); } catch (e) { console.error("initBlogFilter:", e); }
   try { initContactForm(); } catch (e) { console.error("initContactForm:", e); }
   try { initMosaicGallery(); } catch (e) { console.error("initMosaicGallery:", e); }
-  try { initSmoothScroll(); } catch (e) { console.error("initSmoothScroll:", e); }
+  try { initLottieIcons(); } catch (e) { console.error("initLottieIcons:", e); }
 };
 
 if (document.readyState === "loading") {

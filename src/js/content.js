@@ -3,15 +3,13 @@ import { $ } from './utils.js';
 const PLACEHOLDER = "/images/image-missing.png";
 
 const IMAGE_MAP = {
-  brandImg: PLACEHOLDER,
-  brandImgFixed: PLACEHOLDER,
-  aboutLogo: PLACEHOLDER,
+  brandImg: "/images/navlogo.png",
+  brandImgFixed: "/images/navlogo.png",
+  aboutLogo: "/images/brandlogo.png",
   arrowImg: "/images/icons/arrow-button.svg",
-  heroOrn: PLACEHOLDER,
+  heroOrn: "/images/headerpattern.svg",
   heroPhoto: "/images/my-photo.png",
 
-  statIcon1: PLACEHOLDER, statIcon2: PLACEHOLDER, statIcon3: PLACEHOLDER,
-  statIcon4: PLACEHOLDER, statIcon5: PLACEHOLDER, statIcon6: PLACEHOLDER,
 
   c1: PLACEHOLDER, c2: PLACEHOLDER, c3: PLACEHOLDER,
   c4: PLACEHOLDER, c5: PLACEHOLDER, c6: PLACEHOLDER,
@@ -19,15 +17,10 @@ const IMAGE_MAP = {
   uxRingClient: "/images/ux-smaller-ring.svg",
   uxRingCompany: "/images/ux-smaller-ring.svg",
 
-  logo1: PLACEHOLDER, logo2: PLACEHOLDER, logo3: PLACEHOLDER,
-  logo4: PLACEHOLDER, logo5: PLACEHOLDER, logo6: PLACEHOLDER, logo7: PLACEHOLDER,
-
-  pill1: PLACEHOLDER, pill2: PLACEHOLDER, pill3: PLACEHOLDER, pill4: PLACEHOLDER,
-  pill5: PLACEHOLDER, pill6: PLACEHOLDER, pill7: PLACEHOLDER, pill8: PLACEHOLDER,
 
   caseIconA: PLACEHOLDER, caseIconB: PLACEHOLDER, caseIconC: PLACEHOLDER,
 
-  footerOrn: PLACEHOLDER,
+  footerOrn: "/images/headerpattern.svg",
   g1: PLACEHOLDER, g2: PLACEHOLDER, g3: PLACEHOLDER, g4: PLACEHOLDER,
   g5: PLACEHOLDER, g6: PLACEHOLDER, g7: PLACEHOLDER, g8: PLACEHOLDER
 };

@@ -55,9 +55,15 @@ export const applyMdContent = () => {
       return;
     }
 
+    if (key === 'gallery-quote') {
+      const el = document.querySelector(selector);
+      if (el) el.innerHTML = value.replace(/\n/g, '<br>');
+      return;
+    }
+
     if (key === 'gallery-author') {
       const el = document.querySelector(selector);
-      if (el) el.textContent = `- ${value}`;
+      if (el) el.textContent = `— ${value}`;
       return;
     }
 

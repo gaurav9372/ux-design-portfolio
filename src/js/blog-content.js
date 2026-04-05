@@ -24,6 +24,7 @@ export const BLOG_LIST = [
       'I made most of these mistakes myself when I started out. Here is what I learned the hard way so you do not have to.',
     tags: ['Design', 'Productivity'],
     readTime: '8 min read',
+    thumb: '/images/blog thumbs/mistakesjuniordesigner.png',
   },
   {
     slug: 'how-you-work-with-developers',
@@ -33,6 +34,7 @@ export const BLOG_LIST = [
       'Nobody talks about the awkward part of designer and developer handoffs. Here is what actually causes friction and how to deal with it.',
     tags: ['Process', 'Collaboration'],
     readTime: '7 min read',
+    thumb: '/images/blog thumbs/workwithdevelopers.png',
   },
   {
     slug: 'designing-under-constraints',
@@ -42,6 +44,7 @@ export const BLOG_LIST = [
       'Constraints are not the enemy of good design. They are the reason good design exists in the first place.',
     tags: ['Design', 'Process'],
     readTime: '6 min read',
+    thumb: '/images/blog thumbs/designingunderconstraints.png',
   },
   {
     slug: 'ai-ux-real-use-cases',
@@ -51,6 +54,7 @@ export const BLOG_LIST = [
       'Everyone is talking about AI in design but most of it is noise. Here are the places where AI actually helps UX designers do better work.',
     tags: ['Design', 'AI', 'Productivity'],
     readTime: '7 min read',
+    thumb: '/images/blog thumbs/aiplusuXrealusecases.png',
   },
   {
     slug: 'using-claude-ai-as-ux-thinking-partner',
@@ -60,6 +64,7 @@ export const BLOG_LIST = [
       'Most designers use AI to generate stuff. I use it to think better. Here is how Claude changed my design process without replacing any part of it.',
     tags: ['AI', 'Design', 'Process'],
     readTime: '8 min read',
+    thumb: '/images/blog thumbs/usinclaudeaI.png',
   },
   {
     slug: 'why-ux-designers-need-vibe-coding',
@@ -69,6 +74,7 @@ export const BLOG_LIST = [
       'Vibe coding is not about becoming a developer. It is about closing the gap between what you design and what actually gets built.',
     tags: ['Design', 'AI', 'Productivity'],
     readTime: '9 min read',
+    thumb: '/images/blog thumbs/vibecoding.png',
   },
 ];
 
@@ -125,7 +131,7 @@ const renderCard = (post) => {
   return `
   <a href="/pages/blog/${post.slug}.html" class="bl-card" data-tags="${post.tags.map((t) => t.toLowerCase()).join(',')}">
     <div class="bl-card-img">
-      <img src="/images/image-missing.png" alt="${post.title}" loading="lazy" />
+      <img src="${post.thumb || '/images/image-missing.png'}" alt="${post.title}" loading="lazy" />
     </div>
     <div class="bl-card-body">
       <h3 class="bl-card-title">${post.title}</h3>

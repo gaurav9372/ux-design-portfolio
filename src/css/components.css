@@ -289,8 +289,8 @@
   animation: logos-left 28s linear infinite;
 }
 .logos-bottom .logos-track {
-  gap: 12px;
-  padding-right: 12px;
+  gap: 20px;
+  padding-right: 20px;
   animation: logos-right 28s linear infinite;
 }
 @keyframes logos-left {

@@ -32,7 +32,7 @@ I'm a UI/UX Designer who turns complex problems into intuitive, user-first exper
 ---
 
 ## ux-heading
-UX Design fuels my ADHD and I love it.
+Three stakeholders. One experience. That's the job.
 
 ## ux-desc
 I thrive at the intersection of user needs, business goals, and technical feasibility. My process starts with listening — understanding the people who will use the product — and ends with designs that feel effortless. From research to wireframes to polished interfaces, I own the full design journey.
@@ -48,7 +48,8 @@ A selection of projects where I helped brands and startups design experiences th
 ---
 
 ## gallery-quote
-Your job is not to make the app amazing. Your job is to make the user awesome.
+"Your job is not to make the app amazing,
+Your job is to make the user awesome."
 
 ## gallery-author
 Kathy Sierra

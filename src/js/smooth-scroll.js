@@ -1,18 +1,24 @@
 /*
   Smooth scroll — lerp-based custom smooth scrolling.
   Gives a buttery, ease-out feel to all page scrolling.
-  Disabled on mobile (<=768px) and prefers-reduced-motion.
+  Disabled on mobile (<=768px), touch devices, and prefers-reduced-motion.
 */
 
 export const initSmoothScroll = () => {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (window.matchMedia('(max-width: 768px)').matches) return;
-  if ('ontouchstart' in window) return; // skip on touch devices
+  if ('ontouchstart' in window) return;
 
   const body = document.body;
-  const html = document.documentElement;
 
-  // Create a wrapper that holds all page content
+  // Pull fixed-position elements (nav, mobile panel) out of the flow
+  // so they don't get affected by the wrapper's translateY
+  const navFixed = document.getElementById('navFixed');
+  const mobilePanel = document.getElementById('mobilePanel');
+  if (navFixed) body.appendChild(navFixed);
+  if (mobilePanel) body.appendChild(mobilePanel);
+
+  // Create wrapper for all remaining body content
   const wrapper = document.createElement('div');
   wrapper.style.position = 'fixed';
   wrapper.style.top = '0';
@@ -20,15 +26,14 @@ export const initSmoothScroll = () => {
   wrapper.style.width = '100%';
   wrapper.style.willChange = 'transform';
 
-  // Move all body children into the wrapper
-  while (body.firstChild) {
+  while (body.firstChild && body.firstChild !== navFixed && body.firstChild !== mobilePanel) {
     wrapper.appendChild(body.firstChild);
   }
-  body.appendChild(wrapper);
+  body.insertBefore(wrapper, body.firstChild);
 
-  let current = 0;  // current smooth scroll position
-  let target = 0;   // actual scroll target
-  const ease = 0.08; // lower = smoother/slower, higher = snappier
+  let current = 0;
+  let target = 0;
+  const ease = 0.08;
 
   const setBodyHeight = () => {
     body.style.height = wrapper.scrollHeight + 'px';
@@ -39,23 +44,20 @@ export const initSmoothScroll = () => {
   const update = () => {
     target = window.scrollY;
     current = lerp(current, target, ease);
-
-    // Stop jittering when close enough
     if (Math.abs(current - target) < 0.5) current = target;
-
     wrapper.style.transform = `translateY(${-current}px)`;
+    // Expose current position so other animations (card stacking) can use it
+    window.__smoothY = current;
     requestAnimationFrame(update);
   };
 
-  // Set initial body height and start the loop
+  window.__smoothScrollActive = true;
+
   setBodyHeight();
   requestAnimationFrame(update);
 
-  // Recalculate body height on resize and after images load
   window.addEventListener('resize', setBodyHeight);
   window.addEventListener('load', setBodyHeight);
-
-  // Recalc periodically for dynamic content (mosaic gallery, MD injection)
   setTimeout(setBodyHeight, 1000);
   setTimeout(setBodyHeight, 3000);
 };
