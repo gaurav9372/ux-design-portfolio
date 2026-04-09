@@ -47,8 +47,9 @@
     opacity: 1 !important;
     width: 100%;
   }
-  .grid-row { flex-direction: column }
-  .grid-tile { height: 220px }
+  .gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px }
+  .grid-row { display: contents }
+  .grid-tile { flex: none; width: 100%; aspect-ratio: 4/3 }
   .testimonial-stage { grid-template-columns: 48px minmax(0,1fr) 48px; gap: 20px }
 }
 
@@ -150,6 +151,9 @@
   .hero-orn { opacity: .25; right: -120px; top: -120px }
   .about { padding: 44px var(--pad) }
   .projects { padding: 44px var(--pad) }
+  .logos-top, .logos-bottom { display: none }
+  .logos-mob { display: block }
+  .logos-container::before, .logos-container::after { width: 88px }
   .case-list { padding: 24px var(--pad) 56px }
   .testimonials { padding: 56px var(--pad) }
   .testimonials .bgline { display: none }
@@ -241,8 +245,24 @@
 /* ---- Blog responsive ---- */
 @media (max-width: 1100px) {
   .bl-grid { grid-template-columns: 1fr 1fr }
-  .home-blogs-grid { grid-template-columns: 1fr 1fr }
-  .bl-more-grid { grid-template-columns: 1fr 1fr }
+  .home-blogs-grid,
+  .bl-more-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .home-blogs-grid::-webkit-scrollbar,
+  .bl-more-grid::-webkit-scrollbar { display: none }
+  .home-blogs-grid .bl-card,
+  .bl-more-grid .bl-card {
+    flex: 0 0 55%;
+    max-width: 55%;
+    scroll-snap-align: start;
+  }
 }
 @media (max-width: 768px) {
   .bl-filter-bar { padding: 12px 20px; top: 0 }
@@ -261,24 +281,6 @@
   .bl-card-body { padding: 20px }
   .bl-meta-row { flex-wrap: wrap; gap: 8px }
   .home-blogs { padding: 60px 20px 80px }
-  .home-blogs-grid,
-  .bl-more-grid {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 16px;
-    padding-bottom: 8px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .home-blogs-grid::-webkit-scrollbar,
-  .bl-more-grid::-webkit-scrollbar { display: none }
-  .home-blogs-grid .bl-card,
-  .bl-more-grid .bl-card {
-    flex: 0 0 82%;
-    max-width: 82%;
-    scroll-snap-align: start;
-  }
   .home-blogs-header { flex-direction: column; align-items: flex-start; gap: 16px }
 }
 

@@ -130,11 +130,13 @@
 .case-list {
   background: var(--bg3);
   position: relative;
+  width: 100%;
 }
 .case-stack {
   position: sticky;
   top: 0;
   height: 100vh;
+  width: 100%;
   max-width: none;
   margin: 0 auto;
   overflow: clip;
@@ -293,6 +295,19 @@
   padding-right: 20px;
   animation: logos-right 28s linear infinite;
 }
+/* Mobile-only logo rows (hidden on desktop) */
+.logos-mob { overflow: hidden; width: 100%; display: none }
+.logos-mob .logos-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  will-change: transform;
+  gap: 20px;
+  padding-right: 20px;
+}
+.logos-mob-1 .logos-track { animation: logos-left 28s linear infinite }
+.logos-mob-2 .logos-track { animation: logos-right 28s linear infinite }
+.logos-mob-3 .logos-track { animation: logos-left 28s linear infinite }
 @keyframes logos-left {
   0% { transform: translateX(0) }
   100% { transform: translateX(-50%) }

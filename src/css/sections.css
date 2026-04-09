@@ -412,7 +412,7 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 80px;
+  width: 300px;
   z-index: 2;
   pointer-events: none;
 }

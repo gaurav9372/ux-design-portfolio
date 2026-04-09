@@ -16,4 +16,7 @@ export const initMarquee = () => {
 
   setup(".logos-top");
   setup(".logos-bottom");
+  setup(".logos-mob-1");
+  setup(".logos-mob-2");
+  setup(".logos-mob-3");
 };
