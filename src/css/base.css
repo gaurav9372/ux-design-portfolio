@@ -33,14 +33,14 @@
 
 /* Reset */
 * { box-sizing: border-box }
-html { height: 100% }
+html { height: 100%; overflow-x: hidden }
 body { height: 100% }
 body {
   margin: 0;
   font-family: var(--font-body);
   background: var(--bg);
   color: var(--ink);
-  overflow-x: clip;
+  overflow-x: hidden;
 }
 
 /* Page transition */
