@@ -137,7 +137,7 @@
 
 /* Mobile */
 @media (max-width: 720px) {
-  :root { --pad: 20px }
+  :root { --pad: 28px }
   .nav-top { padding: 20px 16px }
   .nav-top .nav-right { display: none }
   .burger-top { display: flex }
@@ -208,14 +208,14 @@
   .cs-meta-item:last-child { border-bottom: none }
 
   /* Blog 480px */
-  .bl-index-hero { padding: 100px 20px 32px }
-  .bl-index-grid-section { padding: 0 20px 80px }
+  .bl-index-hero { padding: 100px var(--pad) 32px }
+  .bl-index-grid-section { padding: 0 var(--pad) 80px }
   .bl-grid { grid-template-columns: 1fr }
-  .bl-hero { padding: 100px 20px 28px }
-  .bl-cover { padding: 0 20px 32px }
-  .bl-body-section { padding: 0 20px 40px }
-  .bl-author-section { padding: 0 20px 32px }
-  .bl-more-section { padding: 0 20px 60px }
+  .bl-hero { padding: 100px var(--pad) 28px }
+  .bl-cover { padding: 0 var(--pad) 32px }
+  .bl-body-section { padding: 0 var(--pad) 40px }
+  .bl-author-section { padding: 0 var(--pad) 32px }
+  .bl-more-section { padding: 0 var(--pad) 60px }
   .bl-filter-bar { padding: 10px 16px; top: 56px; gap: 6px }
   .bl-filter { padding: 6px 12px; font-size: 11px }
   .bl-title { font-size: 24px }
@@ -226,7 +226,7 @@
   .ct-faq-q { font-size: 15px; padding: 20px 0 }
 
   /* About 480px */
-  .ab-hero { padding: 100px 20px 48px }
+  .ab-hero { padding: 100px var(--pad) 48px }
   .ab-hero-photo { flex: 0 0 150px; width: 150px; height: 150px }
   .ab-hero-title { font-size: 24px }
   .ab-story, .ab-values, .ab-skills, .ab-experience, .ab-personal { padding: 48px 0 }
@@ -252,6 +252,9 @@
     scroll-snap-type: x mandatory;
     gap: 16px;
     padding-bottom: 8px;
+    padding-bottom: 8px;
+    margin-right: calc(-1 * var(--pad));
+    padding-right: var(--pad);
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
@@ -265,22 +268,27 @@
   }
 }
 @media (max-width: 768px) {
-  .bl-filter-bar { padding: 12px 20px; top: 0 }
-  .bl-index-hero { padding: 120px 20px 40px }
-  .bl-index-grid-section { padding: 0 20px 120px }
+  .bl-filter-bar { padding: 12px var(--pad); top: 0 }
+  .bl-index-hero { padding: 120px var(--pad) 40px }
+  .bl-index-grid-section { padding: 0 var(--pad) 120px }
   .bl-grid { grid-template-columns: 1fr }
-  .bl-hero { padding: 120px 20px 32px }
-  .bl-cover { padding: 0 20px 48px }
-  .bl-body-section { padding: 0 20px 64px }
-  .bl-author-section { padding: 0 20px 48px }
-  .bl-more-section { padding: 0 20px 80px }
+  .bl-hero { padding: 120px var(--pad) 32px }
+  .bl-cover { padding: 0 var(--pad) 48px }
+  .bl-body-section { padding: 0 var(--pad) 64px }
+  .bl-author-section { padding: 0 var(--pad) 48px }
+  .bl-more-section { padding: 0 var(--pad) 80px }
   .bl-title { font-size: 28px }
   .bl-article p { font-size: 16px }
   .bl-article .bl-subheading { font-size: 19px; margin-top: 36px }
   .bl-author-card { flex-direction: column; text-align: center; padding: 24px }
   .bl-card-body { padding: 20px }
   .bl-meta-row { flex-wrap: wrap; gap: 8px }
-  .home-blogs { padding: 60px 20px 80px }
+  .home-blogs { padding: 60px var(--pad) 80px }
+  .home-blogs-grid .bl-card,
+  .bl-more-grid .bl-card {
+    flex: 0 0 80%;
+    max-width: 80%;
+  }
   .home-blogs-header { flex-direction: column; align-items: flex-start; gap: 16px }
 }
 
@@ -290,7 +298,7 @@
 }
 @media (max-width: 768px) {
   .ct-hero { padding: 120px 0 48px }
-  .ct-inner { padding: 0 20px }
+  .ct-inner { padding: 0 var(--pad) }
   .ct-body { padding: 0 0 72px }
   .ct-faq { padding: 60px 0 72px }
   .ct-submit { width: 100% }
@@ -309,8 +317,8 @@
   .ab-timeline-left { flex: none }
 }
 @media (max-width: 768px) {
-  .ab-hero { padding: 120px 20px 60px }
-  .ab-section-inner { padding: 0 20px }
+  .ab-hero { padding: 120px var(--pad) 60px }
+  .ab-section-inner { padding: 0 var(--pad) }
   .ab-hero-photo { flex: 0 0 180px; width: 180px; height: 180px }
   .ab-hero-title { font-size: 28px }
   .ab-story, .ab-values, .ab-skills, .ab-experience, .ab-personal { padding: 60px 0 }

@@ -86,7 +86,6 @@
   justify-content: space-between;
   gap: 48px;
   padding: 96px var(--pad);
-  border: 16px solid var(--stroke2);
 }
 .about-logo {
   width: 236px; height: 244px; position: relative; flex: 0 0 auto;
@@ -122,7 +121,6 @@
 .stats {
   padding: 96px var(--pad);
   overflow: hidden;
-  border: 16px solid var(--stroke2);
   background: transparent;
 }
 .stats-grid { display: flex; flex-direction: column; gap: 64px }
@@ -519,8 +517,7 @@
 .gallery {
   background: #fff;
   color: var(--bg);
-  border: 16px solid var(--bg4);
-  padding: 80px 96px 80px;
+  padding: 80px var(--pad) 80px;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -1540,7 +1537,7 @@
 
 /* Mosaic gallery */
 .cs-screens-mosaic {
-  padding: 96px 16px;
+  padding: 96px var(--pad);
   overflow: hidden;
 }
 .cs-mosaic {
@@ -1777,7 +1774,7 @@
   word-break: break-word;
   position: relative;
   display: inline-block;
-  padding-right: 40px;
+  padding-right: var(--pad);
   text-transform: none;
 }
 .footer .email::after {
@@ -1820,7 +1817,7 @@
    ================================================================ */
 
 .bl-index-hero {
-  padding: 160px 40px 60px;
+  padding: 160px var(--pad) 60px;
   text-align: center;
 }
 .bl-index-eyebrow {
@@ -1853,7 +1850,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 16px 40px;
+  padding: 16px var(--pad);
   position: sticky;
   top: 64px;
   z-index: 90;
@@ -1914,7 +1911,7 @@
   color: var(--ink);
 }
 
-.bl-index-grid-section { padding: 40px 40px 120px }
+.bl-index-grid-section { padding: 40px var(--pad) 120px }
 .bl-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(360px, 100%), 1fr));
@@ -2032,7 +2029,7 @@
 
 /* Hero */
 .bl-hero {
-  padding: 160px 40px 40px;
+  padding: 160px var(--pad) 40px;
 }
 .bl-hero .block {
   max-width: 780px;
@@ -2077,7 +2074,7 @@
 }
 
 /* Cover */
-.bl-cover { padding: 0 40px 48px }
+.bl-cover { padding: 0 var(--pad) 48px }
 .bl-cover .block {
   max-width: 900px;
   margin-inline: auto;
@@ -2097,7 +2094,7 @@
 }
 
 /* Article body */
-.bl-body-section { padding: 0 40px 64px }
+.bl-body-section { padding: 0 var(--pad) 64px }
 .bl-body-section .block {
   max-width: 720px;
   margin-inline: auto;
@@ -2131,7 +2128,7 @@
 .bl-article a:hover { text-decoration-color: transparent }
 
 /* Author card */
-.bl-author-section { padding: 0 40px 48px }
+.bl-author-section { padding: 0 var(--pad) 48px }
 .bl-author-section .block {
   max-width: 720px;
   margin-inline: auto;
@@ -2174,7 +2171,7 @@
 }
 
 /* Back to posts */
-.bl-back-section { padding: 0 40px 100px }
+.bl-back-section { padding: 0 var(--pad) 100px }
 .bl-back-section .block {
   max-width: 720px;
   margin-inline: auto;
@@ -2190,7 +2187,7 @@
 .bl-back-btn:hover { letter-spacing: .5px }
 
 /* More posts (on blog post pages) */
-.bl-more-section { padding: 0 40px 100px }
+.bl-more-section { padding: 0 var(--pad) 100px }
 .bl-more-section .block {
   max-width: 1100px;
   margin-inline: auto;
@@ -2218,7 +2215,7 @@
    ================================================================ */
 
 .home-blogs {
-  padding: 100px 40px 120px;
+  padding: 100px var(--pad) 120px;
   max-width: 1320px;
   margin-inline: auto;
 }
@@ -2267,7 +2264,7 @@
 .ab-section-inner {
   max-width: 1100px;
   margin-inline: auto;
-  padding: 0 40px;
+  padding: 0 var(--pad);
 }
 .ab-eyebrow,
 .ab-kicker {
@@ -2281,7 +2278,7 @@
 
 /* 1. Hero */
 .ab-hero {
-  padding: 140px 40px 80px;
+  padding: 140px var(--pad) 80px;
 }
 .ab-hero-inner {
   max-width: 1100px;
@@ -2610,7 +2607,7 @@
 .ct-inner {
   max-width: 1100px;
   margin-inline: auto;
-  padding: 0 40px;
+  padding: 0 var(--pad);
 }
 .ct-eyebrow {
   font-size: 12px;
