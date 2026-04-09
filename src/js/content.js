@@ -11,8 +11,12 @@ const IMAGE_MAP = {
   heroPhoto: "/images/my-photo.png",
 
 
-  c1: PLACEHOLDER, c2: PLACEHOLDER, c3: PLACEHOLDER,
-  c4: PLACEHOLDER, c5: PLACEHOLDER, c6: PLACEHOLDER,
+  c1: "/images/clientThird.png",
+  c2: "/images/clientSecond.png",
+  c3: "/images/clientFirst.png",
+  c4: "/images/companyFirst.png",
+  c5: "/images/companySecond.png",
+  c6: "/images/companyThird.png",
   uxRings: "/images/ux-dual-rings-center.svg",
   uxRingClient: "/images/ux-smaller-ring.svg",
   uxRingCompany: "/images/ux-smaller-ring.svg",
@@ -21,8 +25,12 @@ const IMAGE_MAP = {
   caseIconA: PLACEHOLDER, caseIconB: PLACEHOLDER, caseIconC: PLACEHOLDER,
 
   footerOrn: "/images/headerpattern.svg",
-  g1: PLACEHOLDER, g2: PLACEHOLDER, g3: PLACEHOLDER, g4: PLACEHOLDER,
-  g5: PLACEHOLDER, g6: PLACEHOLDER, g7: PLACEHOLDER, g8: PLACEHOLDER
+  g1: "/images/galleryOne.png",
+  g2: "/images/galleryTwo.png",
+  g3: "/images/galleryThree.png",
+  g4: "/images/galleryFour.png",
+  g5: "/images/galleryFive.png",
+  g6: "/images/gallerySix.png"
 };
 
 export const applyImages = () => {
