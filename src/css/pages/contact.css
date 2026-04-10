@@ -72,6 +72,12 @@
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+.ct-required {
+  color: var(--muted);
+  font-weight: 400;
+  opacity: .5;
+  margin-left: 2px;
+}
 .ct-input {
   font-family: var(--font-ui);
   font-size: 16px;
@@ -88,6 +94,52 @@
 .ct-textarea {
   resize: vertical;
   min-height: 140px;
+}
+/* Message counter + hint row */
+.ct-message-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 6px;
+  font-size: 12px;
+  font-family: var(--font-ui);
+  letter-spacing: .3px;
+}
+.ct-hint {
+  color: var(--muted);
+  transition: color .2s;
+}
+.ct-counter {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  transition: color .2s;
+}
+/* Warning state — message approaching max (> 4500 chars) */
+.ct-message-meta.is-warning .ct-counter { color: var(--accent) }
+/* Error state — too short or at/over max */
+.ct-message-meta.is-error .ct-hint,
+.ct-message-meta.is-error .ct-counter { color: #ff6b6b }
+.ct-textarea.is-invalid { border-color: #ff6b6b }
+.ct-textarea.is-invalid:focus { border-color: #ff6b6b }
+/* Inline error messages under Name / Email / Subject */
+.ct-error {
+  font-size: 12px;
+  font-family: var(--font-ui);
+  letter-spacing: .3px;
+  color: #ff6b6b;
+  margin: 6px 0 0;
+  min-height: 14px;
+  display: none;
+}
+.ct-error.is-visible { display: block }
+.ct-input.is-invalid { border-color: #ff6b6b }
+.ct-input.is-invalid:focus { border-color: #ff6b6b }
+/* Disabled submit state when form is invalid */
+.ct-submit:disabled:not(.ct-submit--sending):not(.ct-submit--success):not(.ct-submit--error) {
+  background: var(--stroke);
+  color: var(--muted);
+  cursor: not-allowed;
 }
 .ct-submit {
   align-self: flex-start;

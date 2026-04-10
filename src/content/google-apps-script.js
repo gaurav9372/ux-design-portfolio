@@ -23,9 +23,9 @@ var MAX_TIME_MS = 2 * 60 * 60 * 1000; // 2 hours maximum (stale forms)
 var RATE_LIMIT_PER_HOUR = 30;    // global max submissions per hour
 var MIN_MESSAGE_LEN = 10;
 var MAX_MESSAGE_LEN = 5000;
-var MAX_NAME_LEN = 100;
-var MAX_EMAIL_LEN = 200;
-var MAX_SUBJECT_LEN = 200;
+var MAX_NAME_LEN = 150;
+var MAX_EMAIL_LEN = 150;
+var MAX_SUBJECT_LEN = 150;
 
 function doPost(e) {
   try {
@@ -46,13 +46,22 @@ function doPost(e) {
       }
     }
 
-    // 3. Field length validation
-    var name = String(p.name || '').trim().slice(0, MAX_NAME_LEN);
-    var email = String(p.email || '').trim().slice(0, MAX_EMAIL_LEN);
-    var subject = String(p.subject || '').trim().slice(0, MAX_SUBJECT_LEN);
+    // 3. Field length validation — reject (not truncate) anything over limit
+    var name = String(p.name || '').trim();
+    var email = String(p.email || '').trim();
+    var subject = String(p.subject || '').trim();
     var message = String(p.message || '').trim();
 
-    if (!name || !email || message.length < MIN_MESSAGE_LEN || message.length > MAX_MESSAGE_LEN) {
+    if (!name || name.length > MAX_NAME_LEN || /\d/.test(name)) {
+      return json({ status: 'success' }); // silent reject
+    }
+    if (!email || email.length > MAX_EMAIL_LEN) {
+      return json({ status: 'success' }); // silent reject
+    }
+    if (!subject || subject.length > MAX_SUBJECT_LEN) {
+      return json({ status: 'success' }); // silent reject
+    }
+    if (message.length < MIN_MESSAGE_LEN || message.length > MAX_MESSAGE_LEN) {
       return json({ status: 'success' }); // silent reject
     }
 
@@ -83,14 +92,25 @@ function doPost(e) {
     });
 
     // All checks passed — append to sheet
+    // Columns: Date Received | Time | Name | Email | Subject | Message
+    // We write the SAME Date object to both date + time cells, then apply
+    // different number formats so filtering/charts treat them as real
+    // dates/times (not strings). Also stamp the header row once so a
+    // fresh sheet starts with labels.
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-    sheet.appendRow([
-      new Date(),
-      name,
-      email,
-      subject.slice(0, MAX_SUBJECT_LEN),
-      message.slice(0, MAX_MESSAGE_LEN)
-    ]);
+    if (sheet.getLastRow() === 0) {
+      sheet.appendRow(['Date Received', 'Time', 'Name', 'Email', 'Subject', 'Message']);
+      sheet.getRange(1, 1, 1, 6).setFontWeight('bold');
+      sheet.setFrozenRows(1);
+    }
+
+    var stamp = new Date();
+    sheet.appendRow([stamp, stamp, name, email, subject, message]);
+
+    // Re-apply formats on the new row (safe even if already set)
+    var newRow = sheet.getLastRow();
+    sheet.getRange(newRow, 1).setNumberFormat('dd-mmm-yyyy');  // 10-Apr-2026
+    sheet.getRange(newRow, 2).setNumberFormat('h:mm AM/PM');   // 12:34 PM
 
     return json({ status: 'success' });
 

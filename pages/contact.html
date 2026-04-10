@@ -70,7 +70,7 @@
 
             <!-- Left: Form -->
             <div class="ct-form-wrap">
-              <form class="ct-form" id="contactForm" action="#" method="POST">
+              <form class="ct-form" id="contactForm" action="#" method="POST" novalidate>
                 <!-- Honeypot: hidden from humans, bots fill it automatically -->
                 <div class="ct-honeypot" aria-hidden="true">
                   <label for="ct-website">Leave this field empty</label>
@@ -80,20 +80,28 @@
                 <input type="hidden" id="ct-ts" name="_ts" value="" />
 
                 <div class="ct-field">
-                  <label class="ct-label" for="ct-name">Name</label>
-                  <input class="ct-input" type="text" id="ct-name" name="name" placeholder="Your name" required />
+                  <label class="ct-label" for="ct-name">Name <span class="ct-required" aria-hidden="true">*</span></label>
+                  <input class="ct-input" type="text" id="ct-name" name="name" placeholder="Your name" maxlength="150" required aria-required="true" />
+                  <p class="ct-error" id="ct-name-error"></p>
                 </div>
                 <div class="ct-field">
-                  <label class="ct-label" for="ct-email">Email</label>
-                  <input class="ct-input" type="email" id="ct-email" name="email" placeholder="you@example.com" required />
+                  <label class="ct-label" for="ct-email">Email <span class="ct-required" aria-hidden="true">*</span></label>
+                  <input class="ct-input" type="email" id="ct-email" name="email" placeholder="you@example.com" maxlength="150" required aria-required="true" />
+                  <p class="ct-error" id="ct-email-error"></p>
                 </div>
                 <div class="ct-field">
-                  <label class="ct-label" for="ct-subject">Subject</label>
-                  <input class="ct-input" type="text" id="ct-subject" name="subject" placeholder="What is this about?" />
+                  <label class="ct-label" for="ct-subject">Subject <span class="ct-required" aria-hidden="true">*</span></label>
+                  <input class="ct-input" type="text" id="ct-subject" name="subject" placeholder="What is this about?" maxlength="150" required aria-required="true" />
+                  <p class="ct-error" id="ct-subject-error"></p>
                 </div>
                 <div class="ct-field">
-                  <label class="ct-label" for="ct-message">Message</label>
-                  <textarea class="ct-input ct-textarea" id="ct-message" name="message" placeholder="Tell me about your project, idea, or just say hi..." rows="6" required></textarea>
+                  <label class="ct-label" for="ct-message">Message <span class="ct-required" aria-hidden="true">*</span></label>
+                  <textarea class="ct-input ct-textarea" id="ct-message" name="message" placeholder="Tell me about your project, idea, or just say hi..." rows="6" minlength="10" maxlength="5000" required aria-required="true"></textarea>
+                  <div class="ct-message-meta">
+                    <span class="ct-hint" id="ct-message-hint">Minimum 10 characters</span>
+                    <span class="ct-counter" id="ct-message-counter">0 / 5000</span>
+                  </div>
+                  <p class="ct-error" id="ct-message-error"></p>
                 </div>
                 <button class="ct-submit" type="submit">Send Message</button>
               </form>

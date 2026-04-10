@@ -76,6 +76,8 @@ The URL is still technically exposed in the built JS (unavoidable for a form tha
 
 **MANUAL STEP REQUIRED:** You need to paste the updated `src/content/google-apps-script.js` into your Apps Script editor and redeploy (Deploy → Manage deployments → Edit → Version: New version → Deploy).
 
+Gaurav : I already did
+
 ---
 
 ### Original description
