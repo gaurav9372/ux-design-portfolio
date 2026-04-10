@@ -50,6 +50,16 @@
   flex-direction: column;
   gap: 24px;
 }
+/* Honeypot — visually hidden but present in DOM for bot detection */
+.ct-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
 .ct-field {
   display: flex;
   flex-direction: column;

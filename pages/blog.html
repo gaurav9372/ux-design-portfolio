@@ -8,14 +8,16 @@
   <meta name="theme-color" content="#121715" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@800&family=Inter:wght@400;500;600&family=Outfit:wght@500;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Heebo:wght@800&family=Inter:wght@400;500;600&family=Outfit:wght@500;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@800&family=Inter:wght@400;500;600&family=Outfit:wght@500;800&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@800&family=Inter:wght@400;500;600&family=Outfit:wght@500;800&display=swap"></noscript>
   <link rel="stylesheet" href="../styles.css" />
 </head>
 <body data-page="blog-index">
 <div class="wrap" id="top">
     <header class="nav-top" id="navTop">
       <a class="brand" href="/" aria-label="Home">
-        <img src="/images/navlogo.png" alt="Shreyansh Gaurav logo" />
+        <img src="/images/navlogo.png" alt="Shreyansh Gaurav logo" width="40" height="40" />
       </a>
       <nav class="nav-right" aria-label="Primary">
         <div class="nav-links">
@@ -29,7 +31,7 @@
     </header>
     <header class="nav nav-hidden" id="navFixed">
       <a class="brand" href="/" aria-label="Home">
-        <img src="/images/navlogo.png" alt="Shreyansh Gaurav logo" />
+        <img src="/images/navlogo.png" alt="Shreyansh Gaurav logo" width="40" height="40" />
       </a>
       <nav class="nav-right" aria-label="Primary">
         <div class="nav-links">
@@ -85,7 +87,7 @@
             <!-- Post 01 -->
             <a href="/pages/blog/12-mistakes-junior-designers-make.html" class="bl-card" data-tags="design,productivity">
               <div class="bl-card-img">
-                <img src="/images/blog thumbs/mistakesjuniordesigner.png" alt="12 Mistakes Junior Designers Make" loading="lazy" />
+                <img src="/images/blog thumbs/mistakesjuniordesigner.png" alt="12 Mistakes Junior Designers Make" width="800" height="450" loading="lazy" />
               </div>
               <div class="bl-card-body">
                 <h2 class="bl-card-title">12 Mistakes Junior Designers Make (And How to Actually Fix Them)</h2>
@@ -104,7 +106,7 @@
             <!-- Post 02 -->
             <a href="/pages/blog/how-you-work-with-developers.html" class="bl-card" data-tags="process,collaboration">
               <div class="bl-card-img">
-                <img src="/images/blog thumbs/workwithdevelopers.png" alt="How You Work With Developers" loading="lazy" />
+                <img src="/images/blog thumbs/workwithdevelopers.png" alt="How You Work With Developers" width="800" height="450" loading="lazy" />
               </div>
               <div class="bl-card-body">
                 <h2 class="bl-card-title">How You Work With Developers (Real Friction)</h2>
@@ -123,7 +125,7 @@
             <!-- Post 03 -->
             <a href="/pages/blog/designing-under-constraints.html" class="bl-card" data-tags="design,process">
               <div class="bl-card-img">
-                <img src="/images/blog thumbs/designingunderconstraints.png" alt="Designing Under Constraints" loading="lazy" />
+                <img src="/images/blog thumbs/designingunderconstraints.png" alt="Designing Under Constraints" width="800" height="450" loading="lazy" />
               </div>
               <div class="bl-card-body">
                 <h2 class="bl-card-title">Designing Under Constraints</h2>
@@ -142,7 +144,7 @@
             <!-- Post 04 -->
             <a href="/pages/blog/ai-ux-real-use-cases.html" class="bl-card" data-tags="design,ai,productivity">
               <div class="bl-card-img">
-                <img src="/images/blog thumbs/aiplusuXrealusecases.png" alt="AI + UX: Real Use Cases" loading="lazy" />
+                <img src="/images/blog thumbs/aiplusuXrealusecases.png" alt="AI + UX: Real Use Cases" width="800" height="450" loading="lazy" />
               </div>
               <div class="bl-card-body">
                 <h2 class="bl-card-title">AI + UX: Real Use Cases (Not Hype)</h2>
@@ -162,7 +164,7 @@
             <!-- Post 05 -->
             <a href="/pages/blog/using-claude-ai-as-ux-thinking-partner.html" class="bl-card" data-tags="ai,design,process">
               <div class="bl-card-img">
-                <img src="/images/blog thumbs/usinclaudeaI.png" alt="Using Claude AI as a UX Thinking Partner" loading="lazy" />
+                <img src="/images/blog thumbs/usinclaudeaI.png" alt="Using Claude AI as a UX Thinking Partner" width="800" height="450" loading="lazy" />
               </div>
               <div class="bl-card-body">
                 <h2 class="bl-card-title">Using Claude AI as a UX Thinking Partner, Not a Tool</h2>
@@ -182,7 +184,7 @@
             <!-- Post 06 -->
             <a href="/pages/blog/why-ux-designers-need-vibe-coding.html" class="bl-card" data-tags="design,ai,productivity">
               <div class="bl-card-img">
-                <img src="/images/blog thumbs/vibecoding.png" alt="Why UX Designers Need Vibe Coding" loading="lazy" />
+                <img src="/images/blog thumbs/vibecoding.png" alt="Why UX Designers Need Vibe Coding" width="800" height="450" loading="lazy" />
               </div>
               <div class="bl-card-body">
                 <h2 class="bl-card-title">Why UX Designers Need to Learn Vibe Coding (And How It Is Not Optional Anymore)</h2>
@@ -220,11 +222,11 @@
         <a href="/pages/blog.html">Blogs</a>
       </nav>
       <div class="socials" aria-label="Social links">
-        <a class="social-icon" href="tel:+917269089026" aria-label="Phone"><img src="/images/icons/phone.svg" alt="Phone" /><img src="/images/icons/phoneHover.svg" alt="" class="hover-icon" /></a>
-        <a class="social-icon" href="https://api.whatsapp.com/send?phone=917269089026" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="/images/icons/whatsapp.svg" alt="WhatsApp" /><img src="/images/icons/whatsappHover.svg" alt="" class="hover-icon" /></a>
-        <a class="social-icon" href="https://www.linkedin.com/in/gaurav9372" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="/images/icons/linkedin.svg" alt="LinkedIn" /><img src="/images/icons/linkedinHover.svg" alt="" class="hover-icon" /></a>
-        <a class="social-icon" href="https://www.instagram.com/puff.designs" target="_blank" rel="noopener" aria-label="Instagram"><img src="/images/icons/instagram.svg" alt="Instagram" /><img src="/images/icons/instagramHover.svg" alt="" class="hover-icon" /></a>
-        <a class="social-icon" href="mailto:gauravguptasggs@gmail.com" aria-label="Email"><img src="/images/icons/mail.svg" alt="Email" /><img src="/images/icons/mailHover.svg" alt="" class="hover-icon" /></a>
+        <a class="social-icon" href="tel:+917269089026" aria-label="Phone"><img src="/images/icons/phone.svg" alt="Phone" width="28" height="28" /><img src="/images/icons/phoneHover.svg" alt="" class="hover-icon" width="28" height="28" /></a>
+        <a class="social-icon" href="https://api.whatsapp.com/send?phone=917269089026" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="/images/icons/whatsapp.svg" alt="WhatsApp" width="28" height="28" /><img src="/images/icons/whatsappHover.svg" alt="" class="hover-icon" width="28" height="28" /></a>
+        <a class="social-icon" href="https://www.linkedin.com/in/gaurav9372" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="/images/icons/linkedin.svg" alt="LinkedIn" width="28" height="28" /><img src="/images/icons/linkedinHover.svg" alt="" class="hover-icon" width="28" height="28" /></a>
+        <a class="social-icon" href="https://www.instagram.com/puff.designs" target="_blank" rel="noopener" aria-label="Instagram"><img src="/images/icons/instagram.svg" alt="Instagram" width="28" height="28" /><img src="/images/icons/instagramHover.svg" alt="" class="hover-icon" width="28" height="28" /></a>
+        <a class="social-icon" href="mailto:gauravguptasggs@gmail.com" aria-label="Email"><img src="/images/icons/mail.svg" alt="Email" width="28" height="28" /><img src="/images/icons/mailHover.svg" alt="" class="hover-icon" width="28" height="28" /></a>
       </div>
     </footer>
 </div>

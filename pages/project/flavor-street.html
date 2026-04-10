@@ -9,13 +9,15 @@
   <meta name="theme-color" content="#121715" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@800&family=Inter:wght@400;500;600&family=Outfit:wght@500;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Heebo:wght@800&family=Inter:wght@400;500;600&family=Outfit:wght@500;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@800&family=Inter:wght@400;500;600&family=Outfit:wght@500;800&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@800&family=Inter:wght@400;500;600&family=Outfit:wght@500;800&display=swap"></noscript>
   <link rel="stylesheet" href="../../styles.css" />
 </head>
 <body data-page="project">
 <div class="wrap" id="top">
   <header class="nav-top" id="navTop">
-    <a class="brand" href="/" aria-label="Home"><img src="/images/navlogo.png" alt="Shreyansh Gaurav logo" /></a>
+    <a class="brand" href="/" aria-label="Home"><img src="/images/navlogo.png" alt="Shreyansh Gaurav logo" width="40" height="40" /></a>
     <nav class="nav-right" aria-label="Primary">
       <div class="nav-links">
         <a href="/pages/about.html">About me</a>
@@ -27,7 +29,7 @@
     <button class="burger burger-top" id="burgerTop" aria-label="Open menu" aria-expanded="false"><span></span></button>
   </header>
   <header class="nav nav-hidden" id="navFixed">
-    <a class="brand" href="/" aria-label="Home"><img src="/images/navlogo.png" alt="Shreyansh Gaurav logo" /></a>
+    <a class="brand" href="/" aria-label="Home"><img src="/images/navlogo.png" alt="Shreyansh Gaurav logo" width="40" height="40" /></a>
     <nav class="nav-right" aria-label="Primary">
       <div class="nav-links">
         <a href="/pages/about.html">About me</a>
@@ -53,7 +55,7 @@
         <p class="tagline" data-cs="hero-tagline">Designing a hyperlocal food discovery experience for street food and small eateries.</p>
       </div>
       <div class="cs-hero-img">
-        <img src="/images/image-missing.png" alt="Flavor Street hero mockup" loading="eager" fetchpriority="high" />
+        <img src="/images/image-missing.png" alt="Flavor Street hero mockup" width="1120" height="630" loading="eager" fetchpriority="high" />
       </div>
       <div class="cs-meta-strip">
         <div class="cs-meta-item"><p class="meta-label">Role</p><p class="meta-value" data-cs="meta-role">Lead UX Designer</p></div>
@@ -132,7 +134,7 @@
       <div class="cs-personas-grid">
         <div class="cs-persona-card">
           <div class="cs-persona-head">
-            <div class="cs-persona-avatar"><img src="/images/image-missing.png" alt="Persona avatar" loading="lazy" /></div>
+            <div class="cs-persona-avatar"><img src="/images/image-missing.png" alt="Persona avatar" width="52" height="52" loading="lazy" /></div>
             <div class="cs-persona-info">
               <p class="cs-persona-name" data-cs="persona-1-name"></p>
               <p class="cs-persona-role" data-cs="persona-1-role"></p>
@@ -143,7 +145,7 @@
         </div>
         <div class="cs-persona-card">
           <div class="cs-persona-head">
-            <div class="cs-persona-avatar"><img src="/images/image-missing.png" alt="Persona avatar" loading="lazy" /></div>
+            <div class="cs-persona-avatar"><img src="/images/image-missing.png" alt="Persona avatar" width="52" height="52" loading="lazy" /></div>
             <div class="cs-persona-info">
               <p class="cs-persona-name" data-cs="persona-2-name"></p>
               <p class="cs-persona-role" data-cs="persona-2-role"></p>
@@ -159,10 +161,10 @@
       <p class="cs-kicker">Ideation &amp; Structure</p>
       <h2 class="cs-section-title">Wireframing &amp; Ideation</h2>
       <div class="cs-img-grid">
-        <div class="cs-img-placeholder"><img src="/images/image-missing.png" alt="Wireframe 1" loading="lazy" /></div>
-        <div class="cs-img-placeholder"><img src="/images/image-missing.png" alt="Wireframe 2" loading="lazy" /></div>
-        <div class="cs-img-placeholder"><img src="/images/image-missing.png" alt="Wireframe 3" loading="lazy" /></div>
-        <div class="cs-img-placeholder"><img src="/images/image-missing.png" alt="Wireframe 4" loading="lazy" /></div>
+        <div class="cs-img-placeholder"><img src="/images/image-missing.png" alt="Wireframe 1" width="560" height="315" loading="lazy" /></div>
+        <div class="cs-img-placeholder"><img src="/images/image-missing.png" alt="Wireframe 2" width="560" height="315" loading="lazy" /></div>
+        <div class="cs-img-placeholder"><img src="/images/image-missing.png" alt="Wireframe 3" width="560" height="315" loading="lazy" /></div>
+        <div class="cs-img-placeholder"><img src="/images/image-missing.png" alt="Wireframe 4" width="560" height="315" loading="lazy" /></div>
       </div>
       <p class="cs-caption" data-cs="wireframes-caption"></p>
     </section>
@@ -219,11 +221,11 @@
         <a href="/pages/blog.html">Blogs</a>
     </nav>
       <div class="socials" aria-label="Social links">
-        <a class="social-icon" href="tel:+917269089026" aria-label="Phone"><img src="/images/icons/phone.svg" alt="Phone" /><img src="/images/icons/phoneHover.svg" alt="" class="hover-icon" /></a>
-        <a class="social-icon" href="https://api.whatsapp.com/send?phone=917269089026" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="/images/icons/whatsapp.svg" alt="WhatsApp" /><img src="/images/icons/whatsappHover.svg" alt="" class="hover-icon" /></a>
-        <a class="social-icon" href="https://www.linkedin.com/in/gaurav9372" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="/images/icons/linkedin.svg" alt="LinkedIn" /><img src="/images/icons/linkedinHover.svg" alt="" class="hover-icon" /></a>
-        <a class="social-icon" href="https://www.instagram.com/puff.designs" target="_blank" rel="noopener" aria-label="Instagram"><img src="/images/icons/instagram.svg" alt="Instagram" /><img src="/images/icons/instagramHover.svg" alt="" class="hover-icon" /></a>
-        <a class="social-icon" href="mailto:gauravguptasggs@gmail.com" aria-label="Email"><img src="/images/icons/mail.svg" alt="Email" /><img src="/images/icons/mailHover.svg" alt="" class="hover-icon" /></a>
+        <a class="social-icon" href="tel:+917269089026" aria-label="Phone"><img src="/images/icons/phone.svg" alt="Phone" width="28" height="28" /><img src="/images/icons/phoneHover.svg" alt="" class="hover-icon" width="28" height="28" /></a>
+        <a class="social-icon" href="https://api.whatsapp.com/send?phone=917269089026" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="/images/icons/whatsapp.svg" alt="WhatsApp" width="28" height="28" /><img src="/images/icons/whatsappHover.svg" alt="" class="hover-icon" width="28" height="28" /></a>
+        <a class="social-icon" href="https://www.linkedin.com/in/gaurav9372" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="/images/icons/linkedin.svg" alt="LinkedIn" width="28" height="28" /><img src="/images/icons/linkedinHover.svg" alt="" class="hover-icon" width="28" height="28" /></a>
+        <a class="social-icon" href="https://www.instagram.com/puff.designs" target="_blank" rel="noopener" aria-label="Instagram"><img src="/images/icons/instagram.svg" alt="Instagram" width="28" height="28" /><img src="/images/icons/instagramHover.svg" alt="" class="hover-icon" width="28" height="28" /></a>
+        <a class="social-icon" href="mailto:gauravguptasggs@gmail.com" aria-label="Email"><img src="/images/icons/mail.svg" alt="Email" width="28" height="28" /><img src="/images/icons/mailHover.svg" alt="" class="hover-icon" width="28" height="28" /></a>
       </div>
   </footer>
 </div>

@@ -1,11 +1,29 @@
 # Bugs and Fixes — Critical Site-Wide Audit
 
-> Audit performed by a senior dev / UX reviewer focused on performance, architecture, security, and accessibility. These are real site-wide issues, not nitpicks. Documentation only — no code changes made.
+> Audit performed by a senior dev / UX reviewer focused on performance, architecture, security, and accessibility.
+
+## Status overview
+
+| # | Bug | Severity | Status |
+|---|---|---|---|
+| 1 | 96 MB unoptimized PNG images | CRITICAL | ❌ Open |
+| 2 | Exposed Google Apps Script URL, no spam protection | CRITICAL | ✅ Fixed |
+| 3 | All init functions run on every page | HIGH | ✅ Fixed |
+| 4 | lottie-web bundled on every page | HIGH | ✅ Fixed |
+| 5 | All 7 project MDs + 6 blog MDs bundled per page | HIGH | ✅ Fixed |
+| 6 | Images missing width/height → CLS | HIGH | ✅ Fixed |
+| 7 | 2,800-line sections.css with duplicates + dead code | MEDIUM | ✅ Fixed |
+| 8 | No canonical, no structured data, no per-page OG | MEDIUM | ❌ Open |
+| 9 | Render-blocking fonts, no LCP image preload | MEDIUM | ✅ Fixed |
+| 10 | Dead smooth-scroll.js + orphan flags | MEDIUM | ✅ Fixed |
+
+**8 fixed, 2 open.** The remaining 2 are image compression (PNG → WebP) and SEO (canonical/OG/structured data).
 
 ---
 
 ## 1. 96.4 MB of Unoptimized PNG Images (No WebP, No Compression)
 
+**Status:** ❌ OPEN
 **Severity:** CRITICAL
 **Location:** `public/images/` — especially `public/images/projectscreens/`, `public/images/blog thumbs/`, `public/images/client logos/`
 
@@ -33,7 +51,34 @@ The marquee on the homepage alone has 46 client logos, all uncompressed PNGs wit
 
 ## 2. Google Apps Script URL Publicly Exposed with No Rate Limiting
 
+**Status:** ✅ FIXED
 **Severity:** CRITICAL
+
+### Fix applied
+
+**Client-side (`src/js/contact-form.js`, `pages/contact.html`, `src/css/pages/contact.css`):**
+- Added a honeypot field (`<input name="website">`) hidden with `position: absolute; left: -9999px` — invisible to humans but bots fill it automatically
+- Added a hidden `_ts` timestamp field set to `Date.now()` on page load
+- On submit, JS rejects any submission where the honeypot is filled OR less than 2 seconds have elapsed since page load
+- Rejections show a fake "Sent!" success state so bots can't tell they were blocked
+
+**Server-side (`src/content/google-apps-script.js` — to be pasted into Apps Script):**
+- Honeypot validation (rejects if `website` field has any value)
+- Min-time check (rejects submissions < 2 seconds after page load)
+- Max-time check (rejects stale forms > 2 hours old)
+- **Global rate limit: max 30 submissions per hour** (tracked via ScriptProperties)
+- Email regex validation
+- Length limits: name ≤ 100, email ≤ 200, subject ≤ 200, message 10–5000 chars
+- Auto-cleanup of old rate-limit buckets to prevent ScriptProperties bloat
+- All rejections return `{ status: 'success' }` so scrapers can't probe the defenses
+
+The URL is still technically exposed in the built JS (unavoidable for a form that posts directly to Apps Script without a backend proxy), but it's now rate-limited and heavily validated. An attacker would get ~30 submissions through per hour before being hard-blocked, and even those have to pass all the validation checks.
+
+**MANUAL STEP REQUIRED:** You need to paste the updated `src/content/google-apps-script.js` into your Apps Script editor and redeploy (Deploy → Manage deployments → Edit → Version: New version → Deploy).
+
+---
+
+### Original description
 **Location:** `src/js/contact-form.js` line 15
 
 ### Description
@@ -58,8 +103,20 @@ The Apps Script is also set to `Anyone` access, which means the endpoint itself 
 
 ## 3. Every JS Init Function Runs on Every Page
 
+**Status:** ✅ FIXED
 **Severity:** HIGH
 **Location:** `src/js/main.js` lines 14–34
+
+### Fix applied
+- Added `data-page="X"` attribute to all 18 HTML body tags (home, about, contact, projects, project, blog-index, blog-post)
+- Rewrote `main.js` with a `PAGE_LOADERS` map that dynamically imports page-specific modules
+- Only shared modules load eagerly: `nav.js`, `split-hover.js`, `card-links.js`
+- Each page now only downloads the JS it actually needs
+- Vite code-splits every dynamic `import()` into its own async chunk
+
+---
+
+### Original description
 
 ### Description
 `main.js` calls 18 init functions wrapped in try/catch on every single page load:
@@ -112,8 +169,19 @@ Even better — use dynamic `import()` so the code isn't even in the bundle for 
 
 ## 4. Lottie-web Bundled on Every Page (170 KB Unused on 17 of 19 Pages)
 
+**Status:** ✅ FIXED
 **Severity:** HIGH
 **Location:** `src/js/main.js` line 9, `src/js/lottie-icons.js`, `package.json`
+
+### Fix applied
+- `lottie-icons.js` is now dynamically imported only inside `loadHome()` in `main.js`
+- Guarded the import with a DOM check: `if (document.querySelector('[data-lottie]'))`
+- Lottie-web (~170 KB) no longer downloads on the 17 pages that don't use it
+- On the homepage, Lottie loads as a second-tier async chunk (doesn't block other animations)
+
+---
+
+### Original description
 
 ### Description
 `lottie-web` is ~170 KB minified and is imported statically at the top of `lottie-icons.js`:
@@ -142,8 +210,21 @@ This moves lottie-web into its own chunk that's only fetched on the homepage and
 
 ## 5. All 7 Project MD Files Bundled Into Every Case Study Page
 
+**Status:** ✅ FIXED
 **Severity:** HIGH
 **Location:** `src/js/case-study-content.js` lines 1–17
+
+### Fix applied
+- Replaced static `import` statements with a `MD_LOADERS` map of dynamic `import()` functions, one per project slug
+- `applyCaseStudyContent()` is now async and reads `<meta name="project">` to pick the right loader
+- Vite code-splits each MD file into its own async chunk
+- Visiting Care Naturals now downloads only `care-naturals.md` (~10 KB) instead of all 7 project MDs (~70 KB)
+- Same pattern applied to `blog-content.js` — each blog post only downloads its own MD file
+- `BLOG_LIST` metadata stays static (needed for the "More posts" grid on every blog post)
+
+---
+
+### Original description
 
 ### Description
 ```js
@@ -185,7 +266,46 @@ Vite will code-split each MD into its own chunk. A visitor to Care Naturals only
 
 ## 6. HTML Images Missing `width` and `height` — Cumulative Layout Shift
 
+**Status:** ✅ FIXED
 **Severity:** HIGH
+
+### Fix applied
+Added `width` and `height` attributes to **all 344 `<img>` tags** across all 18 HTML pages. Dimensions were derived from the CSS values of the containers:
+
+| Image type | Dimensions |
+|---|---|
+| Nav logo (brand) | 40×40 |
+| Hero photo (homepage LCP) | 310×395 |
+| About logo | 154×242 |
+| Hero ornament (header pattern) | 320×320 |
+| UX circle images (c1–c6) | 168×168 |
+| UX rings | 168×168 / 200×200 |
+| Stat icons | 88×88 |
+| Client logo tiles (46×) | 200×136 |
+| Case card icons | 48×48 |
+| Case card previews | 544×467 |
+| Testimonial avatar | 72×72 |
+| Testimonial arrow icon | 18×18 |
+| Gallery ornament | 480×480 |
+| Gallery tiles (homepage) | 400×300 |
+| Blog card thumbnails | 800×450 (16:9) |
+| Blog post cover | 800×450 (16:9) |
+| Blog author avatar | 64×64 |
+| Case study hero image | 1120×630 (16:9) |
+| Case study persona avatar | 52×52 |
+| Case study wireframe placeholder | 560×315 |
+| About hero photo | 280×280 |
+| About personal photo | 240×240 |
+| Social icons (phone/whatsapp/linkedin/instagram/mail + hover variants) | 28×28 |
+| Nav CTA arrow | 24×24 |
+
+Final verification: **344 / 344 img tags now have both `width` and `height` attributes**. CLS should drop significantly as browsers can reserve space for every image before it downloads.
+
+Mosaic gallery images (dynamically inserted by `mosaic-gallery.js`) are excluded from this count since they're created at runtime — the JS can add dimensions too if needed, but they're inside an async chunk that only runs on case study pages.
+
+---
+
+### Original description
 **Location:** Every HTML file with dynamically-sourced images — `index.html` lines 29, 40, 52, 82, 96, 103, and every img with an `id` but no `src`
 
 ### Description
@@ -217,8 +337,22 @@ For images injected by `applyImages()`, set `src` directly in the HTML instead o
 
 ## 7. `sections.css` Is 2,800+ Lines and Has Duplicate `.pp-empty` Rule
 
+**Status:** ✅ FIXED
 **Severity:** MEDIUM
 **Location:** `src/css/sections.css` (entire file, ~2,800 lines)
+
+### Fix applied
+- Split `sections.css` into 6 colocated page files under `src/css/pages/`:
+  - `home.css`, `projects.css`, `case-study.css`, `blog.css`, `about.css`, `contact.css`
+- Each page file contains its section styles AND its responsive rules (base + media queries colocated)
+- `responsive.css` shrank from 340 lines to 37 lines (only site-wide rules: `--pad`, nav mobile, reduced motion)
+- Deleted `sections.css` entirely
+- Updated `styles.css` to import the page files
+- Duplicate `.pp-empty` rule resolved in the split
+
+---
+
+### Original description
 
 ### Description
 `sections.css` has grown into an unmaintainable monolith:
@@ -254,6 +388,7 @@ A senior dev opening this file for the first time has to scroll through 2,800 li
 
 ## 8. No Canonical URLs, No Structured Data, No OG Tags on Sub-pages
 
+**Status:** ❌ OPEN
 **Severity:** MEDIUM
 **Location:** All HTML files in `pages/` and `pages/blog/` and `pages/project/`
 
@@ -291,7 +426,20 @@ When these pages get shared on LinkedIn, Twitter, or WhatsApp, the preview will 
 
 ## 9. Render-Blocking Google Fonts, No Preload on Hero Image
 
+**Status:** ✅ FIXED
 **Severity:** MEDIUM
+
+### Fix applied
+- Google Fonts stylesheet is now loaded asynchronously on all 18 pages using the `media="print" onload="this.media='all'"` trick
+- Added a `<link rel="preload" as="style">` hint so the browser starts fetching the CSS early even though it's non-blocking
+- Added `<noscript>` fallback that loads fonts synchronously if JavaScript is disabled
+- `<link rel="preconnect">` hints to `fonts.googleapis.com` and `fonts.gstatic.com` retained for faster DNS + TLS handshake
+- On the homepage, added preload hints for the LCP hero image (`/images/my-photo.png` with `fetchpriority="high"`) and the hero ornament (`/images/headerpattern.svg`)
+- Combined with the earlier deletion of `content.js`, the hero photo is now both hardcoded in HTML AND preloaded, so it starts downloading at the highest priority during HTML parsing
+
+---
+
+### Original description
 **Location:** `index.html` lines 17–19 (and every other page's head)
 
 ### Description
@@ -326,8 +474,20 @@ On a cold load, LCP happens well after the browser could have started fetching t
 
 ## 10. Dead Code: `smooth-scroll.js` Exists but Is Never Imported
 
+**Status:** ✅ FIXED
 **Severity:** MEDIUM
 **Location:** `src/js/smooth-scroll.js` (entire file), `src/js/main.js`
+
+### Fix applied
+- Deleted `src/js/smooth-scroll.js` entirely
+- Removed dead `g1`–`g6` entries from `content.js` (they had been hardcoded in HTML)
+- Later, **`content.js` itself was deleted** and all image `src` attributes inlined into HTML, removing the entire runtime image injector
+- `initCardStack` in `card-stack.js` (formerly in `animations.js`) no longer references the orphan `window.__smoothScrollActive` flag
+- `animations.js` also deleted after its 7 functions were split into focused per-feature files
+
+---
+
+### Original description
 
 ### Description
 `src/js/smooth-scroll.js` exists as a full ~60-line module with its own parallax/lerp logic, but `main.js` no longer imports it (we removed smooth scroll because it conflicted with the card stacking animation). The file is orphaned.
@@ -346,26 +506,39 @@ This is not huge in terms of bundle size, but it's a code-quality smell — dead
 
 ## Summary Table
 
-| # | Issue | Severity | Area |
-|---|-------|----------|------|
-| 1 | 96 MB of unoptimized PNGs | CRITICAL | Performance |
-| 2 | Exposed Google Script URL, no spam protection | CRITICAL | Security |
-| 3 | All init functions run on every page | HIGH | Performance |
-| 4 | lottie-web bundled on 17 unused pages | HIGH | Performance / Bundle |
-| 5 | All 7 project MDs + 6 blog MDs bundled per page | HIGH | Performance / Bundle |
-| 6 | Images missing width/height → CLS | HIGH | Performance / Web Vitals |
-| 7 | 2,800-line sections.css with dead code + duplicates | MEDIUM | Maintainability |
-| 8 | No canonical, no structured data, no per-page OG | MEDIUM | SEO |
-| 9 | Render-blocking fonts, no LCP image preload | MEDIUM | Performance / Web Vitals |
-| 10 | Dead `smooth-scroll.js` file + orphan flags | MEDIUM | Code Quality |
+| # | Issue | Severity | Area | Status |
+|---|-------|----------|------|--------|
+| 1 | 96 MB of unoptimized PNGs | CRITICAL | Performance | ❌ Open |
+| 2 | Exposed Google Script URL, no spam protection | CRITICAL | Security | ✅ Fixed |
+| 3 | All init functions run on every page | HIGH | Performance | ✅ Fixed |
+| 4 | lottie-web bundled on 17 unused pages | HIGH | Performance / Bundle | ✅ Fixed |
+| 5 | All 7 project MDs + 6 blog MDs bundled per page | HIGH | Performance / Bundle | ✅ Fixed |
+| 6 | Images missing width/height → CLS | HIGH | Performance / Web Vitals | ✅ Fixed |
+| 7 | 2,800-line sections.css with dead code + duplicates | MEDIUM | Maintainability | ✅ Fixed |
+| 8 | No canonical, no structured data, no per-page OG | MEDIUM | SEO | ❌ Open |
+| 9 | Render-blocking fonts, no LCP image preload | MEDIUM | Performance / Web Vitals | ✅ Fixed |
+| 10 | Dead `smooth-scroll.js` file + orphan flags | MEDIUM | Code Quality | ✅ Fixed |
 
-## Priority Order to Fix
+## Priority Order for Remaining Work
 
-1. **#1 images** — will cut page weight by ~80 MB, single biggest win
-2. **#2 contact form security** — protect against inevitable spam
-3. **#3 + #4 + #5 JS splitting** — can be done together, reduces JS bundle by ~60%
-4. **#6 image dimensions** — Core Web Vitals fix, also prevents broken layouts while lazy-loading
-5. **#9 font loading + preload** — LCP improvement
-6. **#8 SEO** — required before going public
-7. **#7 CSS split** — maintainability, worth doing before adding more features
-8. **#10 dead code cleanup** — small but should be done whenever touching the JS modules
+1. **#1 images** — convert PNGs to WebP. Single biggest win (~80 MB → ~8 MB page weight).
+2. **#8 SEO** — per-page canonical, OG, Twitter card, JSON-LD structured data.
+
+## Work completed so far
+
+- Split `animations.js` (363 lines) into 7 focused files: `stats-counter.js`, `ux-parallax.js`, `split-hover.js`, `card-stack.js`, `card-links.js`, `project-filter.js`, `blog-filter.js`
+- Split `sections.css` (2,812 lines) into 6 colocated page files under `src/css/pages/` (home, projects, case-study, blog, about, contact) — each file contains its own responsive rules
+- Added `data-page` attribute to 18 HTML body tags; rewrote `main.js` with `PAGE_LOADERS` map and dynamic imports
+- Converted `case-study-content.js` and `blog-content.js` to use dynamic MD imports (Vite code-splits each MD into its own chunk)
+- Deleted `smooth-scroll.js` (dead code)
+- Deleted `content.js` (runtime image injector) — all 20 homepage image sources now hardcoded in HTML, hero photo can load during HTML parse
+- Deleted `animations.js` (now replaced by the 7 split files)
+- Deleted `sample-post.html` (dead blog post stub)
+- Trimmed `responsive.css` from 340 → 37 lines (only site-wide rules remain)
+
+**Rough bundle impact (non-homepage pages):**
+- Lottie-web (~170 KB) — no longer loaded
+- 6 other blog MDs — no longer loaded on any given blog post
+- 6 other project MDs — no longer loaded on any given case study
+- Stats animation, marquee, testimonials, card-stack — no longer loaded on non-homepage
+- Image injector JS — no longer loaded anywhere

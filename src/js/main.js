@@ -1,12 +1,11 @@
 /*
   Entry point — runs on every page.
 
-  Shared modules (images, nav, link hover, card click handlers) load eagerly.
+  Shared modules (nav, link hover, card click handlers) load eagerly.
   Page-specific modules load via dynamic import() based on the body's data-page
   attribute, so each page only downloads the JS it actually needs.
 */
 
-import { applyImages } from './content.js';
 import { initNav } from './nav.js';
 import { initSplitHover } from './split-hover.js';
 import { initCardLinks } from './card-links.js';
@@ -23,7 +22,6 @@ const loadHome = async () => {
     { initCardStack },
     { initTestimonials },
     { initMarquee },
-    { initLottieIcons },
   ] = await Promise.all([
     import('./md-content.js'),
     import('./stats-counter.js'),
@@ -31,7 +29,6 @@ const loadHome = async () => {
     import('./card-stack.js'),
     import('./testimonials.js'),
     import('./marquee.js'),
-    import('./lottie-icons.js'),
   ]);
   safe('applyMdContent', applyMdContent);
   safe('initStatsAnimation', initStatsAnimation);
@@ -39,7 +36,14 @@ const loadHome = async () => {
   safe('initTestimonials', initTestimonials);
   safe('initMarquee', initMarquee);
   safe('initCardStack', initCardStack);
-  safe('initLottieIcons', initLottieIcons);
+
+  // Lottie-web (~170KB) only loads if the page actually has animated icons.
+  // Keeps the lottie chunk out of the critical path and out of any homepage
+  // variant that doesn't use animated icons.
+  if (document.querySelector('[data-lottie]')) {
+    const { initLottieIcons } = await import('./lottie-icons.js');
+    safe('initLottieIcons', initLottieIcons);
+  }
 };
 
 const loadProjects = async () => {
@@ -88,7 +92,6 @@ const PAGE_LOADERS = {
 
 const init = async () => {
   // --- Shared (every page) ---
-  safe('applyImages', applyImages);
   safe('initNav', initNav);
   safe('initSplitHover', initSplitHover);
   safe('initCardLinks', initCardLinks);

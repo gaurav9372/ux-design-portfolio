@@ -1,25 +1,46 @@
 /*
   Contact form → Google Sheets via Apps Script
 
-  SETUP (one-time, ~5 minutes):
-  1. Open Google Sheets → create a new sheet
-  2. Name the columns in Row 1: Timestamp | Name | Email | Subject | Message
-  3. Go to Extensions → Apps Script
-  4. Delete the default code and paste the script from: src/content/google-apps-script.js
-  5. Click Deploy → New deployment → Type: Web app
-  6. Set "Execute as" = Me, "Who has access" = Anyone
-  7. Click Deploy → copy the Web App URL
-  8. Paste that URL below replacing the placeholder
+  Client-side spam protection:
+    1. Honeypot field ("website") — hidden from humans, bots fill it automatically
+    2. Min-time check — reject submissions faster than 2 seconds after page load
+    3. Silent rejection — bots see a fake success, making it hard to probe the trap
+
+  Server-side protection lives in the Apps Script (see src/content/google-apps-script.js).
+  Update that script and redeploy whenever you change the client-side fields.
 */
 
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbys1fv9eWpNQb7fbL9qrZSoSV2uYeZcCl-p48sPic9h_S2D0Z14ReeZMWKEFTZNUy3E/exec';
+
+const MIN_TIME_MS = 2000;   // reject submissions under 2 seconds
+const SUCCESS_HOLD_MS = 3000;
 
 export const initContactForm = () => {
   const form = document.getElementById('contactForm');
   if (!form) return;
 
+  // Set the timestamp as soon as the page loads. Used both client-side
+  // (min-time check below) and server-side (Apps Script rejects stale ones).
+  const tsInput = form.querySelector('#ct-ts');
+  if (tsInput) tsInput.value = String(Date.now());
+
   const btn = form.querySelector('.ct-submit');
   const originalText = btn.textContent;
+
+  const showFakeSuccess = () => {
+    // Used when we silently reject a bot — we pretend the submission worked
+    // so scrapers/automation can't tell whether their payload was accepted.
+    form.reset();
+    if (tsInput) tsInput.value = String(Date.now());
+    btn.textContent = 'Sent!';
+    btn.classList.remove('ct-submit--sending');
+    btn.classList.add('ct-submit--success');
+    setTimeout(() => {
+      btn.textContent = originalText;
+      btn.disabled = false;
+      btn.classList.remove('ct-submit--success');
+    }, SUCCESS_HOLD_MS);
+  };
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -30,11 +51,30 @@ export const initContactForm = () => {
     btn.textContent = 'Sending...';
     btn.classList.add('ct-submit--sending');
 
+    // --- Spam protection ---
+
+    // 1. Honeypot — if it has any value, it's a bot
+    const honeypot = (form.elements.website && form.elements.website.value) || '';
+    if (honeypot.trim()) {
+      showFakeSuccess();
+      return;
+    }
+
+    // 2. Min-time check — reject if submitted too fast
+    const ts = Number(tsInput && tsInput.value) || 0;
+    const elapsed = Date.now() - ts;
+    if (ts && elapsed < MIN_TIME_MS) {
+      showFakeSuccess();
+      return;
+    }
+
     const data = {
       name: form.elements.name.value.trim(),
       email: form.elements.email.value.trim(),
       subject: form.elements.subject.value.trim(),
       message: form.elements.message.value.trim(),
+      website: '', // always empty for real users
+      _ts: String(ts),
     };
 
     try {
@@ -44,10 +84,7 @@ export const initContactForm = () => {
         await new Promise((r) => setTimeout(r, 800));
       } else {
         const formData = new FormData();
-        formData.append('name', data.name);
-        formData.append('email', data.email);
-        formData.append('subject', data.subject);
-        formData.append('message', data.message);
+        Object.entries(data).forEach(([k, v]) => formData.append(k, v));
 
         await fetch(GOOGLE_SCRIPT_URL, {
           method: 'POST',
@@ -58,6 +95,7 @@ export const initContactForm = () => {
 
       // Success
       form.reset();
+      if (tsInput) tsInput.value = String(Date.now());
       btn.textContent = 'Sent!';
       btn.classList.remove('ct-submit--sending');
       btn.classList.add('ct-submit--success');
@@ -66,7 +104,7 @@ export const initContactForm = () => {
         btn.textContent = originalText;
         btn.disabled = false;
         btn.classList.remove('ct-submit--success');
-      }, 3000);
+      }, SUCCESS_HOLD_MS);
 
     } catch (err) {
       console.error('Contact form error:', err);
@@ -78,7 +116,7 @@ export const initContactForm = () => {
         btn.textContent = originalText;
         btn.disabled = false;
         btn.classList.remove('ct-submit--error');
-      }, 3000);
+      }, SUCCESS_HOLD_MS);
     }
   });
 
