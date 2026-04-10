@@ -2,5 +2,14 @@
 @import './src/css/base.css';
 @import './src/css/layout.css';
 @import './src/css/components.css';
-@import './src/css/sections.css';
+
+/* Page-specific styles (each file contains its own responsive rules) */
+@import './src/css/pages/home.css';
+@import './src/css/pages/projects.css';
+@import './src/css/pages/case-study.css';
+@import './src/css/pages/blog.css';
+@import './src/css/pages/about.css';
+@import './src/css/pages/contact.css';
+
+/* Site-wide responsive rules (breakpoint variables, nav, reduced motion) */
 @import './src/css/responsive.css';

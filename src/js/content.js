@@ -3,14 +3,21 @@ import { $ } from './utils.js';
 const PLACEHOLDER = "/images/image-missing.png";
 
 const IMAGE_MAP = {
+  // Navbar logos
   brandImg: "/images/navlogo.png",
   brandImgFixed: "/images/navlogo.png",
+
+  // About section
   aboutLogo: "/images/brandlogo.png",
+
+  // Nav CTA arrow
   arrowImg: "/images/icons/arrow-button.svg",
+
+  // Hero
   heroOrn: "/images/headerpattern.svg",
   heroPhoto: "/images/my-photo.png",
 
-
+  // UX section circles (client/company sides)
   c1: "/images/clientThird.png",
   c2: "/images/clientSecond.png",
   c3: "/images/clientFirst.png",
@@ -21,16 +28,13 @@ const IMAGE_MAP = {
   uxRingClient: "/images/ux-smaller-ring.svg",
   uxRingCompany: "/images/ux-smaller-ring.svg",
 
+  // Case card icons (homepage projects list) — placeholders until real icons arrive
+  caseIconA: PLACEHOLDER,
+  caseIconB: PLACEHOLDER,
+  caseIconC: PLACEHOLDER,
 
-  caseIconA: PLACEHOLDER, caseIconB: PLACEHOLDER, caseIconC: PLACEHOLDER,
-
+  // Gallery ornament (reuses header pattern)
   footerOrn: "/images/headerpattern.svg",
-  g1: "/images/galleryOne.png",
-  g2: "/images/galleryTwo.png",
-  g3: "/images/galleryThree.png",
-  g4: "/images/galleryFour.png",
-  g5: "/images/galleryFive.png",
-  g6: "/images/gallerySix.png"
 };
 
 export const applyImages = () => {
