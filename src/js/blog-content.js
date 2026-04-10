@@ -1,20 +1,28 @@
-import mistakesMd from '../content/blogs/12-mistakes-junior-designers-make.md?raw';
-import developersMd from '../content/blogs/how-you-work-with-developers.md?raw';
-import constraintsMd from '../content/blogs/designing-under-constraints.md?raw';
-import aiUxMd from '../content/blogs/ai-ux-real-use-cases.md?raw';
-import claudeMd from '../content/blogs/using-claude-ai-as-ux-thinking-partner.md?raw';
-import vibeCodingMd from '../content/blogs/why-ux-designers-need-vibe-coding.md?raw';
+/*
+  Blog content — loads only the current blog post's MD file via dynamic import.
+  Vite code-splits each MD into its own chunk, so visiting one blog post
+  downloads only that post's content, not all 6 MD files.
 
-const MD_MAP = {
-  '12-mistakes-junior-designers-make': mistakesMd,
-  'how-you-work-with-developers': developersMd,
-  'designing-under-constraints': constraintsMd,
-  'ai-ux-real-use-cases': aiUxMd,
-  'using-claude-ai-as-ux-thinking-partner': claudeMd,
-  'why-ux-designers-need-vibe-coding': vibeCodingMd,
+  BLOG_LIST metadata (title, date, excerpt, thumb) stays static — it's tiny
+  and used at runtime for the "more posts" grid on every blog post page.
+*/
+
+const MD_LOADERS = {
+  '12-mistakes-junior-designers-make':
+    () => import('../content/blogs/12-mistakes-junior-designers-make.md?raw'),
+  'how-you-work-with-developers':
+    () => import('../content/blogs/how-you-work-with-developers.md?raw'),
+  'designing-under-constraints':
+    () => import('../content/blogs/designing-under-constraints.md?raw'),
+  'ai-ux-real-use-cases':
+    () => import('../content/blogs/ai-ux-real-use-cases.md?raw'),
+  'using-claude-ai-as-ux-thinking-partner':
+    () => import('../content/blogs/using-claude-ai-as-ux-thinking-partner.md?raw'),
+  'why-ux-designers-need-vibe-coding':
+    () => import('../content/blogs/why-ux-designers-need-vibe-coding.md?raw'),
 };
 
-/* ---- shared blog metadata for the index page ---- */
+/* ---- shared blog metadata for the index page and "more posts" grid ---- */
 export const BLOG_LIST = [
   {
     slug: '12-mistakes-junior-designers-make',
@@ -78,7 +86,7 @@ export const BLOG_LIST = [
   },
 ];
 
-/* ---- parser ---- */
+/* ---- MD parser ---- */
 const parseBlogMd = (raw) => {
   const content = {};
   const sections = raw.split(/^## /m).slice(1);
@@ -166,14 +174,18 @@ const fillMorePosts = (currentSlug) => {
 };
 
 /* ---- apply to DOM ---- */
-export const applyBlogContent = () => {
+export const applyBlogContent = async () => {
   const meta = document.querySelector('meta[name="blog-post"]');
   if (!meta) return;
 
   const slug = meta.getAttribute('content');
-  const md = MD_MAP[slug];
-  if (!md) { console.warn(`Blog: no MD found for "${slug}"`); return; }
+  const loader = MD_LOADERS[slug];
+  if (!loader) {
+    console.warn(`Blog: no MD loader for "${slug}"`);
+    return;
+  }
 
+  const { default: md } = await loader();
   const content = parseBlogMd(md);
 
   document.querySelectorAll('[data-blog]').forEach((el) => {

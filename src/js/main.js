@@ -1,41 +1,108 @@
-// JS modules
-import { applyImages } from './content.js';
-import { applyMdContent } from './md-content.js';
-import { applyCaseStudyContent } from './case-study-content.js';
-import { applyBlogContent } from './blog-content.js';
-import { applyAboutContent } from './about-content.js';
-import { initContactForm } from './contact-form.js';
-import { initMosaicGallery } from './mosaic-gallery.js';
-import { initLottieIcons } from './lottie-icons.js';
-import { initNav } from './nav.js';
-import { initStatsAnimation, initUxParallax, initSplitHover, initCardStack, initProjectFilter, initBlogFilter, initCardLinks } from './animations.js';
-import { initTestimonials } from './testimonials.js';
-import { initMarquee } from './marquee.js';
+/*
+  Entry point — runs on every page.
 
-// Initialize everything
-const init = () => {
-  try { applyImages(); } catch (e) { console.error("applyImages:", e); }
-  try { applyMdContent(); } catch (e) { console.error("applyMdContent:", e); }
-  try { applyCaseStudyContent(); } catch (e) { console.error("applyCaseStudyContent:", e); }
-  try { applyBlogContent(); } catch (e) { console.error("applyBlogContent:", e); }
-  try { applyAboutContent(); } catch (e) { console.error("applyAboutContent:", e); }
-  try { initNav(); } catch (e) { console.error("initNav:", e); }
-  try { initStatsAnimation(); } catch (e) { console.error("initStatsAnimation:", e); }
-  try { initUxParallax(); } catch (e) { console.error("initUxParallax:", e); }
-  try { initSplitHover(); } catch (e) { console.error("initSplitHover:", e); }
-  try { initTestimonials(); } catch (e) { console.error("initTestimonials:", e); }
-  try { initMarquee(); } catch (e) { console.error("initMarquee:", e); }
-  try { initCardStack(); } catch (e) { console.error("initCardStack:", e); }
-  try { initCardLinks(); } catch (e) { console.error("initCardLinks:", e); }
-  try { initProjectFilter(); } catch (e) { console.error("initProjectFilter:", e); }
-  try { initBlogFilter(); } catch (e) { console.error("initBlogFilter:", e); }
-  try { initContactForm(); } catch (e) { console.error("initContactForm:", e); }
-  try { initMosaicGallery(); } catch (e) { console.error("initMosaicGallery:", e); }
-  try { initLottieIcons(); } catch (e) { console.error("initLottieIcons:", e); }
+  Shared modules (images, nav, link hover, card click handlers) load eagerly.
+  Page-specific modules load via dynamic import() based on the body's data-page
+  attribute, so each page only downloads the JS it actually needs.
+*/
+
+import { applyImages } from './content.js';
+import { initNav } from './nav.js';
+import { initSplitHover } from './split-hover.js';
+import { initCardLinks } from './card-links.js';
+
+const safe = (label, fn) => {
+  try { fn(); } catch (e) { console.error(label + ':', e); }
 };
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", init);
+const loadHome = async () => {
+  const [
+    { applyMdContent },
+    { initStatsAnimation },
+    { initUxParallax },
+    { initCardStack },
+    { initTestimonials },
+    { initMarquee },
+    { initLottieIcons },
+  ] = await Promise.all([
+    import('./md-content.js'),
+    import('./stats-counter.js'),
+    import('./ux-parallax.js'),
+    import('./card-stack.js'),
+    import('./testimonials.js'),
+    import('./marquee.js'),
+    import('./lottie-icons.js'),
+  ]);
+  safe('applyMdContent', applyMdContent);
+  safe('initStatsAnimation', initStatsAnimation);
+  safe('initUxParallax', initUxParallax);
+  safe('initTestimonials', initTestimonials);
+  safe('initMarquee', initMarquee);
+  safe('initCardStack', initCardStack);
+  safe('initLottieIcons', initLottieIcons);
+};
+
+const loadProjects = async () => {
+  const { initProjectFilter } = await import('./project-filter.js');
+  safe('initProjectFilter', initProjectFilter);
+};
+
+const loadCaseStudy = async () => {
+  const [{ applyCaseStudyContent }, { initMosaicGallery }] = await Promise.all([
+    import('./case-study-content.js'),
+    import('./mosaic-gallery.js'),
+  ]);
+  safe('applyCaseStudyContent', applyCaseStudyContent);
+  safe('initMosaicGallery', initMosaicGallery);
+};
+
+const loadBlogIndex = async () => {
+  const { initBlogFilter } = await import('./blog-filter.js');
+  safe('initBlogFilter', initBlogFilter);
+};
+
+const loadBlogPost = async () => {
+  const { applyBlogContent } = await import('./blog-content.js');
+  safe('applyBlogContent', applyBlogContent);
+};
+
+const loadAbout = async () => {
+  const { applyAboutContent } = await import('./about-content.js');
+  safe('applyAboutContent', applyAboutContent);
+};
+
+const loadContact = async () => {
+  const { initContactForm } = await import('./contact-form.js');
+  safe('initContactForm', initContactForm);
+};
+
+const PAGE_LOADERS = {
+  home: loadHome,
+  projects: loadProjects,
+  project: loadCaseStudy,
+  'blog-index': loadBlogIndex,
+  'blog-post': loadBlogPost,
+  about: loadAbout,
+  contact: loadContact,
+};
+
+const init = async () => {
+  // --- Shared (every page) ---
+  safe('applyImages', applyImages);
+  safe('initNav', initNav);
+  safe('initSplitHover', initSplitHover);
+  safe('initCardLinks', initCardLinks);
+
+  // --- Page-specific (dynamic imports) ---
+  const page = document.body.dataset.page || '';
+  const loader = PAGE_LOADERS[page];
+  if (loader) {
+    try { await loader(); } catch (e) { console.error(`${page} loader:`, e); }
+  }
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
 } else {
   init();
 }

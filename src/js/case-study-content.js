@@ -1,19 +1,18 @@
-import careNaturalsMd from '../content/projects/care-naturals.md?raw';
-import unitedRubberMd from '../content/projects/united-rubber.md?raw';
-import adscultMd from '../content/projects/adscult.md?raw';
-import finflowMd from '../content/projects/finflow.md?raw';
-import meditrackMd from '../content/projects/meditrack.md?raw';
-import flavorStreetMd from '../content/projects/flavor-street.md?raw';
-import edusparkMd from '../content/projects/eduspark.md?raw';
+/*
+  Case study content — reads the `<meta name="project">` tag on the page and
+  dynamically imports only that project's MD file. Vite code-splits each MD
+  into its own chunk, so visiting Care Naturals downloads only care-naturals.md
+  instead of all 7 project MD files.
+*/
 
-const MD_MAP = {
-  'care-naturals': careNaturalsMd,
-  'united-rubber': unitedRubberMd,
-  'adscult': adscultMd,
-  'finflow': finflowMd,
-  'meditrack': meditrackMd,
-  'flavor-street': flavorStreetMd,
-  'eduspark': edusparkMd,
+const MD_LOADERS = {
+  'care-naturals': () => import('../content/projects/care-naturals.md?raw'),
+  'united-rubber': () => import('../content/projects/united-rubber.md?raw'),
+  'adscult': () => import('../content/projects/adscult.md?raw'),
+  'finflow': () => import('../content/projects/finflow.md?raw'),
+  'meditrack': () => import('../content/projects/meditrack.md?raw'),
+  'flavor-street': () => import('../content/projects/flavor-street.md?raw'),
+  'eduspark': () => import('../content/projects/eduspark.md?raw'),
 };
 
 const parseMd = (raw) => {
@@ -30,14 +29,18 @@ const parseMd = (raw) => {
   return content;
 };
 
-export const applyCaseStudyContent = () => {
+export const applyCaseStudyContent = async () => {
   const meta = document.querySelector('meta[name="project"]');
   if (!meta) return;
 
   const project = meta.getAttribute('content');
-  const md = MD_MAP[project];
-  if (!md) { console.warn(`Case study: no MD found for "${project}"`); return; }
+  const loader = MD_LOADERS[project];
+  if (!loader) {
+    console.warn(`Case study: no MD loader for "${project}"`);
+    return;
+  }
 
+  const { default: md } = await loader();
   const content = parseMd(md);
 
   // Fill all [data-cs] elements

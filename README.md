@@ -114,3 +114,5 @@ All homepage text and image URLs are managed in `src/data/homepage.js`. Edit tha
 **Shreyansh Gaurav**
 UX Designer — Varanasi, India
 Gauravguptasggs@gmail.com
+
+
