@@ -271,7 +271,7 @@ export const initContactForm = () => {
     // Prevent double submit
     if (btn.disabled) return;
     btn.disabled = true;
-    btn.textContent = 'Sending...';
+    btn.innerHTML = 'Sending<span class="ct-spinner" aria-hidden="true"></span>';
     btn.classList.add('ct-submit--sending');
 
     // --- Spam protection ---

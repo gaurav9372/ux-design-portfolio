@@ -93,10 +93,12 @@ function doPost(e) {
 
     // All checks passed — append to sheet
     // Columns: Date Received | Time | Name | Email | Subject | Message
-    // We write the SAME Date object to both date + time cells, then apply
-    // different number formats so filtering/charts treat them as real
-    // dates/times (not strings). Also stamp the header row once so a
-    // fresh sheet starts with labels.
+    //
+    // IMPORTANT: Column A stores a date-only value (midnight) so that
+    // "Group by Date Received" collapses all same-day rows into one group.
+    // Column B stores the full timestamp (only the time portion is shown
+    // via number format). Both are real Date values — filters, sort, and
+    // charts still work natively.
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
     if (sheet.getLastRow() === 0) {
       sheet.appendRow(['Date Received', 'Time', 'Name', 'Email', 'Subject', 'Message']);
@@ -105,7 +107,8 @@ function doPost(e) {
     }
 
     var stamp = new Date();
-    sheet.appendRow([stamp, stamp, name, email, subject, message]);
+    var dateOnly = new Date(stamp.getFullYear(), stamp.getMonth(), stamp.getDate());
+    sheet.appendRow([dateOnly, stamp, name, email, subject, message]);
 
     // Re-apply formats on the new row (safe even if already set)
     var newRow = sheet.getLastRow();
