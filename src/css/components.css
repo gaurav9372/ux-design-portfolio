@@ -106,7 +106,7 @@
   background: rgba(18, 23, 21, .75);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  padding: 100px var(--pad) 40px;
+  padding: 76px var(--pad) 40px;
   gap: 12px;
   overflow-y: auto;
   align-content: start;
@@ -403,6 +403,13 @@
   padding: 0;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
+  /* Expand tap target to 44px without changing visual size */
+  position: relative;
+}
+.t-dot::after {
+  content: '';
+  position: absolute;
+  inset: -18px;
 }
 .t-dot.active { background: var(--accent) }
 .t-dot:focus { outline: none; box-shadow: none }

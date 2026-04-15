@@ -39,7 +39,7 @@
 .ct-body { padding: 0 0 100px }
 .ct-grid {
   display: grid;
-  grid-template-columns: 1fr 340px;
+  grid-template-columns: 1fr minmax(0, 340px);
   gap: 64px;
   align-items: start;
 }

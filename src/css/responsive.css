@@ -16,6 +16,7 @@
 /* Mobile */
 @media (max-width: 720px) {
   :root { --pad: 28px }
+  html { scroll-padding-top: 72px }
   .nav-top { padding: 20px 16px }
   .nav-top .nav-right { display: none }
   .burger-top { display: flex }

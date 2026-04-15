@@ -59,7 +59,6 @@
   line-height: 1;
   letter-spacing: -1.44px;
   margin: 0;
-  white-space: nowrap;
 }
 .hero-title .accent { color: var(--accent) }
 .hero-name { font-weight: 500 }
@@ -685,14 +684,18 @@
    HOMEPAGE — RESPONSIVE
    ================================================================ */
 
+@media (min-width: 1101px) {
+  .hero-title { white-space: nowrap }
+}
+
 @media (max-width: 1280px) {
   .hero-title { font-size: 60px }
 }
 
 @media (max-width: 1100px) {
   .hero { height: auto; gap: 32px; flex-wrap: wrap }
-  .hero-title { white-space: normal }
   .hero-img { width: min(320px, 100%); height: 320px }
+  .hero-img img { width: 100%; height: 100%; left: 0; top: 0 }
   .about { flex-direction: column; align-items: flex-start }
   .stats-row { flex-direction: column; align-items: flex-start }
   .stat { width: 100% }
@@ -762,7 +765,7 @@
   .gallery { padding: 64px var(--pad) }
   .gallery h2 { font-size: 32px }
   .gallery-header-icon { width: 120px; height: 120px }
-  .gallery-orn { width: 300px; height: 300px; left: -80px; bottom: -80px }
+  .gallery-orn { display: none }
   .footer .email { font-size: 28px }
   .stats-row { gap: 24px }
 
@@ -809,7 +812,6 @@
   .testimonials h2 { font-size: 28px }
   .gallery h2 { font-size: 28px }
   .gallery-header-icon { width: 80px; height: 80px }
-  .gallery-orn { display: none }
   .footer .email { font-size: 22px; padding-right: 0 }
   .footer .email::after { display: none }
   .case-left { padding: 24px }

@@ -755,4 +755,5 @@
     padding: 16px 20px;
   }
   .cs-meta-item:last-child { border-bottom: none }
+  .cs-meta-item .meta-label { font-size: 12px }
 }

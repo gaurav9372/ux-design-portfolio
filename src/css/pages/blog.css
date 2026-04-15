@@ -45,7 +45,8 @@
   flex-wrap: wrap;
 }
 .bl-filter {
-  padding: 8px 20px;
+  padding: 10px 20px;
+  min-height: 44px;
   border-radius: 100px;
   border: 1px solid var(--stroke);
   background: transparent;
@@ -65,7 +66,7 @@
   color: var(--bg);
 }
 .bl-count {
-  font-size: 11px;
+  font-size: 12px;
   opacity: .6;
   margin-left: 4px;
 }

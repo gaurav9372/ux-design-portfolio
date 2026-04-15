@@ -33,7 +33,7 @@
 
 /* Reset */
 * { box-sizing: border-box }
-html { height: 100% }
+html { height: 100%; scroll-padding-top: 80px }
 body { height: 100% }
 body {
   margin: 0;
@@ -119,14 +119,16 @@ button,
   top: 100%;
 }
 .split-hover:hover .split-char-inner,
-.split-hover:focus-visible .split-char-inner {
+.split-hover:focus-visible .split-char-inner,
+.split-hover:active .split-char-inner {
   transform: translateY(-100%);
   transition-duration: .25s;
   transition-delay: 0ms;
   opacity: 0;
 }
 .split-hover:hover .split-char-clone,
-.split-hover:focus-visible .split-char-clone {
+.split-hover:focus-visible .split-char-clone,
+.split-hover:active .split-char-clone {
   transform: translateY(-100%);
   transition-duration: .25s;
   transition-delay: 0ms;
