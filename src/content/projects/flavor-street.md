@@ -7,7 +7,7 @@ Edit this file to update the Flavor Street case study page. Save and refresh to 
 UX Case Study
 
 ## hero-title
-Flavor Street — Local Food Discovery App
+Flavor Street
 
 ## hero-tagline
 Designing a hyperlocal food discovery experience that made street food searchable, saveable, and shareable — 82% discovery-to-save rate in beta.
@@ -169,6 +169,90 @@ More shares per session vs. competitor app benchmark
 
 ## results-body
 The beta launched in two cities with 800 users and 120 vendor listings. The discovery-to-save rate (82%) significantly exceeded the product team's 50% target. The map-first discovery flow generated the longest session times — users spent an average of 6.4 minutes per session exploring the map, compared to 3.2 minutes on the list view. The vendor onboarding completion rate was 74%, compared to a 23% completion rate the team had seen with an earlier self-serve Google Form approach.
+
+---
+
+---
+
+## work-process
+I used a design sprint format — compressing discovery, ideation, and testing into focused 1-week cycles. The fast-paced food delivery market demanded rapid iteration, so I prioritised getting prototypes in front of real users within days, not weeks.
+
+## work-research
+I conducted 15 user interviews with frequent food delivery app users, ran a diary study with 8 participants tracking their ordering habits over 2 weeks, and performed a competitive analysis of 6 food delivery platforms. The key insight: users cared more about estimated delivery accuracy than delivery speed.
+
+## work-ideation
+I explored different approaches to the ordering flow — a cuisine-first browse, a mood-based recommendation engine, and a reorder-focused dashboard. Paper prototype tests showed that users wanted quick access to past orders and honest delivery time estimates more than curated recommendations.
+
+## work-solutions
+The redesigned app featured a smart reorder section as the primary entry point, real-time delivery tracking with honest ETAs (showing a range instead of a single time), and a simplified menu layout that grouped items by popularity within each restaurant. I also designed an order customisation flow that remembered user preferences.
+
+---
+
+
+---
+
+## ds-color-1
+#E74C3C
+
+## ds-color-1-name
+Tomato Red
+
+## ds-color-1-hex
+#E74C3C
+
+## ds-color-2
+#F5A623
+
+## ds-color-2-name
+Warm Yellow
+
+## ds-color-2-hex
+#F5A623
+
+## ds-color-3
+#FFF9F0
+
+## ds-color-3-name
+Off White
+
+## ds-color-3-hex
+#FFF9F0
+
+## ds-color-4
+#27AE60
+
+## ds-color-4-name
+Forest Green
+
+## ds-color-4-hex
+#27AE60
+
+## ds-color-5
+#3C2415
+
+## ds-color-5-name
+Dark Brown
+
+## ds-color-5-hex
+#3C2415
+
+## ds-font-1
+Poppins
+
+## ds-font-1-preview
+Aa Bb Cc 123
+
+## ds-font-1-name
+Poppins — Headings & Brand
+
+## ds-font-2
+Nunito
+
+## ds-font-2-preview
+Aa Bb Cc 123
+
+## ds-font-2-name
+Nunito — Body & Menu Items
 
 ---
 

@@ -22,7 +22,7 @@ const parseMd = (raw) => {
     const lines = section.trim().split('\n');
     const key = lines[0].trim();
     const value = lines.slice(1)
-      .filter((l) => !/^-{3,}\s*$/.test(l.trim()) && !/^#/.test(l.trim()))
+      .filter((l) => !/^-{3,}\s*$/.test(l.trim()) && !/^#{1,6}\s/.test(l.trim()))
       .join('\n').trim();
     if (key && value) content[key] = value;
   });
@@ -51,6 +51,21 @@ export const applyCaseStudyContent = async () => {
 
     if (key === 'next-href') {
       el.setAttribute('href', value);
+      return;
+    }
+
+    // Color swatches — apply as background, not text
+    if (el.classList.contains('cs-ds-swatch-circle')) {
+      el.style.backgroundColor = value;
+      return;
+    }
+
+    // Font previews — also set font-family
+    if (el.classList.contains('cs-ds-font-preview')) {
+      el.textContent = value;
+      const fontKey = key.replace('-preview', '');
+      const fontName = content[fontKey];
+      if (fontName) el.style.fontFamily = `"${fontName}", sans-serif`;
       return;
     }
 

@@ -7,7 +7,7 @@ Edit this file to update the FinFlow case study page. Save and refresh to see ch
 UX Case Study
 
 ## hero-title
-FinFlow — Personal Finance App
+FinFlow
 
 ## hero-tagline
 Designing a finance tracker that users actually stick with — day-30 retention jumped from 12% to 58% after a full UX overhaul.
@@ -169,6 +169,90 @@ App Store rating across 840 reviews
 
 ## results-body
 The redesigned app launched in a phased rollout — first to a cohort of 500 beta users, then to all users over 4 weeks. The biggest single win was the "morning snapshot" daily check-in — a single card summarising yesterday's spending vs the user's target, with one actionable insight. It replaced the push notification → transaction list experience entirely. Day-7 retention for the beta cohort was 71%, compared to 34% for the control group.
+
+---
+
+---
+
+## work-process
+I followed a structured discovery-to-delivery process with extra emphasis on data visualisation best practices. Financial dashboards demand precision, so every chart type and data layout went through multiple rounds of review with actual finance teams before finalising.
+
+## work-research
+I interviewed 12 finance professionals across startups and mid-sized companies, observed 5 participants navigating their current expense tracking tools, and audited 7 competing financial management platforms. The standout finding: most users did not need more data — they needed fewer, more actionable insights surfaced at the right time.
+
+## work-ideation
+I explored 3 dashboard concepts — a traditional table-heavy layout, a card-based summary view, and a narrative-driven approach that told a "financial story" with progressive disclosure. Testing with 8 users showed the card-based view with drill-down capability struck the right balance between overview and detail.
+
+## work-solutions
+The final dashboard used a card-based layout with 4 key financial health indicators at the top, smart alerts for unusual spending patterns, and a transaction timeline with natural language search. I designed a budget vs. actual view that used colour-coded progress bars instead of complex charts, making it instantly readable.
+
+---
+
+
+---
+
+## ds-color-1
+#3F51B5
+
+## ds-color-1-name
+Deep Indigo
+
+## ds-color-1-hex
+#3F51B5
+
+## ds-color-2
+#4CAF50
+
+## ds-color-2-name
+Success Green
+
+## ds-color-2-hex
+#4CAF50
+
+## ds-color-3
+#FF9800
+
+## ds-color-3-name
+Warning Amber
+
+## ds-color-3-hex
+#FF9800
+
+## ds-color-4
+#ECEFF1
+
+## ds-color-4-name
+Soft Grey
+
+## ds-color-4-hex
+#ECEFF1
+
+## ds-color-5
+#1A1A2E
+
+## ds-color-5-name
+Midnight
+
+## ds-color-5-hex
+#1A1A2E
+
+## ds-font-1
+DM Sans
+
+## ds-font-1-preview
+Aa Bb Cc 123
+
+## ds-font-1-name
+DM Sans — Headings & Dashboard
+
+## ds-font-2
+Inter
+
+## ds-font-2-preview
+Aa Bb Cc 123
+
+## ds-font-2-name
+Inter — Body & Financial Data
 
 ---
 

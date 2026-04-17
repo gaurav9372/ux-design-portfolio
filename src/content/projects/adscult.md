@@ -7,7 +7,7 @@ Edit this file to update the AdsCult case study page. Save and refresh to see ch
 UX Case Study
 
 ## hero-title
-AdsCult — Self-Serve Ad Platform for Creators
+AdsCult
 
 ## hero-tagline
 Redesigning a confusing 7-step campaign setup into a guided launch flow that cut onboarding drop-off by 60%.
@@ -169,6 +169,90 @@ Support tickets related to campaign setup
 
 ## results-body
 The redesigned onboarding launched to all new users in a phased rollout over 3 weeks. The single biggest impact came from the simplified step 4 — replacing the "Budget & Bidding" form with a three-option selector (Conservative, Balanced, Aggressive) with plain-language descriptions. Users who previously churned at this step now completed it in under 90 seconds on average.
+
+---
+
+---
+
+## work-process
+I used an iterative design process tightly coupled with the development team — shipping small improvements every week rather than a big redesign. This let us measure the impact of each change and course-correct quickly based on real user data.
+
+## work-research
+I interviewed 8 clients and 5 internal team members, reviewed 3 months of project management tool analytics to understand workflow bottlenecks, and benchmarked against 6 agency management platforms. The central finding: clients wanted visibility into project progress without having to ask for status updates, and the internal team needed fewer context switches between tools.
+
+## work-ideation
+I explored several approaches to the client dashboard — a Kanban-style project board, a timeline view, and a simplified status page with automated updates. Internal testing showed the status page approach reduced client check-in calls the most because it answered the "where are we?" question before it was asked.
+
+## work-solutions
+The redesigned platform introduced an automated client status page that pulled progress from internal project milestones, a unified inbox that consolidated feedback from email, Slack, and in-app comments into one thread per project, and a resource allocation view that helped the team balance workload across active projects.
+
+---
+
+
+---
+
+## ds-color-1
+#FF3B3B
+
+## ds-color-1-name
+Brand Red
+
+## ds-color-1-hex
+#FF3B3B
+
+## ds-color-2
+#1A1A1A
+
+## ds-color-2-name
+Dark Black
+
+## ds-color-2-hex
+#1A1A1A
+
+## ds-color-3
+#FFFFFF
+
+## ds-color-3-name
+Pure White
+
+## ds-color-3-hex
+#FFFFFF
+
+## ds-color-4
+#9E9E9E
+
+## ds-color-4-name
+Muted Grey
+
+## ds-color-4-hex
+#9E9E9E
+
+## ds-color-5
+#FFB800
+
+## ds-color-5-name
+Accent Gold
+
+## ds-color-5-hex
+#FFB800
+
+## ds-font-1
+Satoshi
+
+## ds-font-1-preview
+Aa Bb Cc 123
+
+## ds-font-1-name
+Satoshi — Headings & Navigation
+
+## ds-font-2
+General Sans
+
+## ds-font-2-preview
+Aa Bb Cc 123
+
+## ds-font-2-name
+General Sans — Body & Descriptions
 
 ---
 

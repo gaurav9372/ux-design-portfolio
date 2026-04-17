@@ -7,7 +7,7 @@ Edit this file to update the MediTrack case study page. Save and refresh to see 
 UX Case Study
 
 ## hero-title
-MediTrack — Healthcare Dashboard Redesign
+MediTrack
 
 ## hero-tagline
 Reducing patient review time by 38% and critical alert miss-rate by 82% through a redesigned clinical dashboard for outpatient nurses.
@@ -169,6 +169,90 @@ Escalation-related near-miss incidents in 6 months post-launch
 
 ## results-body
 The redesigned dashboard launched across 14 pilot clinics before rolling out to the full network. The split-panel layout alone reduced the average patient review session by 38% — nurses no longer navigated between screens, cutting context-switching entirely. The tiered alert system (critical, warning, routine) was validated in usability testing with 8 nurses: in 60-patient triage scenarios, miss-rate dropped from 23% to 4%. In the 6 months after launch, no escalation-related near-miss incidents were attributed to the dashboard.
+
+---
+
+---
+
+## work-process
+Given the healthcare context, I followed a compliance-aware design process — every feature went through a privacy review before development. I worked in 2-week sprints with the clinical advisory team to validate that workflows matched real hospital environments.
+
+## work-research
+I observed 6 nurses during their medication rounds across 2 hospital wards, interviewed 8 healthcare staff (nurses, pharmacists, ward managers), and reviewed incident reports related to medication errors from the past year. The critical insight: most errors happened during shift handovers when patient context was lost.
+
+## work-ideation
+I created journey maps for the medication administration workflow across shift changes and identified 3 intervention points. I prototyped a smart handover screen, a dosage verification overlay, and a timeline-based patient view. Clinical staff testing revealed the timeline view gave them the quickest situational awareness.
+
+## work-solutions
+The final design centred on a patient timeline that showed medication history, upcoming doses, and alerts in a single glanceable view. I added a shift handover summary that auto-generated from the day’s events, and a barcode verification step that confirmed the right medication for the right patient before administration.
+
+---
+
+
+---
+
+## ds-color-1
+#1A73E8
+
+## ds-color-1-name
+Medical Blue
+
+## ds-color-1-hex
+#1A73E8
+
+## ds-color-2
+#00897B
+
+## ds-color-2-name
+Calm Teal
+
+## ds-color-2-hex
+#00897B
+
+## ds-color-3
+#E53935
+
+## ds-color-3-name
+Alert Red
+
+## ds-color-3-hex
+#E53935
+
+## ds-color-4
+#F5F5F5
+
+## ds-color-4-name
+Light Grey
+
+## ds-color-4-hex
+#F5F5F5
+
+## ds-color-5
+#263238
+
+## ds-color-5-name
+Dark Slate
+
+## ds-color-5-hex
+#263238
+
+## ds-font-1
+Nunito Sans
+
+## ds-font-1-preview
+Aa Bb Cc 123
+
+## ds-font-1-name
+Nunito Sans — Headings & Labels
+
+## ds-font-2
+Roboto
+
+## ds-font-2-preview
+Aa Bb Cc 123
+
+## ds-font-2-name
+Roboto — Body & Clinical Data
 
 ---
 

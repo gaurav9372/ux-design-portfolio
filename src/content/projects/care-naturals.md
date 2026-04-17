@@ -7,7 +7,7 @@ Edit this file to update the Care Naturals case study page. Save and refresh to 
 UX Case Study
 
 ## hero-title
-Care Naturals — Natural Skincare Redesign
+Care Naturals
 
 ## hero-tagline
 Redesigning the checkout flow to reduce cart abandonment and boost conversions for a D2C skincare brand.
@@ -169,6 +169,90 @@ Mobile conversion rate improvement
 
 ## results-body
 The redesigned checkout launched 6 weeks after design handoff. In the first A/B test cohort (4,200 users), the new flow outperformed the control on every metric. The biggest single win was adding the contextual trust block (SSL badge + "Free returns in 30 days") directly above the Place Order CTA — something discovered in round 2 of usability testing.
+
+---
+
+---
+
+## work-process
+I followed a double-diamond approach — starting broad with discovery research, narrowing down to define the core problem, then expanding into ideation before converging on a refined, testable solution. Each phase had clear deliverables and stakeholder checkpoints to keep the team aligned.
+
+## work-research
+I ran 8 moderated usability tests on the existing checkout flow, conducted 12 user interviews with recent buyers and cart abandoners, performed a heuristic evaluation against Nielsen’s 10 principles, and audited 8 competitor D2C checkout experiences. The research revealed that trust — not form length — was the primary barrier at the payment step.
+
+## work-ideation
+I explored 3 different checkout structures through rapid sketching and low-fidelity wireframes: a single-page layout, an accordion stepper, and a focused 3-step flow. After testing paper prototypes with 5 users, the 3-step model (Address → Delivery → Payment) performed best because it reduced cognitive load at each stage.
+
+## work-solutions
+The final design introduced a 3-step checkout with contextual trust signals placed directly at the payment step — an SSL badge, a "Free returns in 30 days" promise, and real customer ratings. I also redesigned the form inputs with inline validation and smart defaults (auto-detecting card type, pre-filling city from pincode), cutting form fields from 14 to 8.
+
+---
+
+
+---
+
+## ds-color-1
+#2D5A3D
+
+## ds-color-1-name
+Forest Green
+
+## ds-color-1-hex
+#2D5A3D
+
+## ds-color-2
+#8BAF7C
+
+## ds-color-2-name
+Sage
+
+## ds-color-2-hex
+#8BAF7C
+
+## ds-color-3
+#FAF3E8
+
+## ds-color-3-name
+Cream
+
+## ds-color-3-hex
+#FAF3E8
+
+## ds-color-4
+#8B6946
+
+## ds-color-4-name
+Warm Brown
+
+## ds-color-4-hex
+#8B6946
+
+## ds-color-5
+#2C2C2C
+
+## ds-color-5-name
+Charcoal
+
+## ds-color-5-hex
+#2C2C2C
+
+## ds-font-1
+Playfair Display
+
+## ds-font-1-preview
+Aa Bb Cc 123
+
+## ds-font-1-name
+Playfair Display — Headings & Display
+
+## ds-font-2
+Inter
+
+## ds-font-2-preview
+Aa Bb Cc 123
+
+## ds-font-2-name
+Inter — Body & UI Text
 
 ---
 

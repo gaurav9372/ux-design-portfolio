@@ -7,7 +7,7 @@ Edit this file to update the United Rubber case study page. Save and refresh to 
 UX Case Study
 
 ## hero-title
-United Rubber — B2B Portal Redesign
+United Rubber
 
 ## hero-tagline
 Redesigning a legacy dealer portal to cut order processing time by 50% for a manufacturing company's distribution network.
@@ -169,6 +169,90 @@ Dealer satisfaction (survey, n=142)
 
 ## results-body
 The redesigned portal launched in a phased rollout — first to 40 pilot dealers, then to the full network over 4 weeks. The most impactful single change was the Quick Reorder feature on the dashboard: dealers with an existing order history were able to reorder in under 3 minutes from day one. The support team reported an immediate drop in order-related calls within the first two weeks.
+
+---
+
+---
+
+## work-process
+I adopted a lean UX process — short research sprints followed by rapid prototyping and testing cycles. Given the B2B context, I worked closely with the sales team to understand buyer workflows and pain points that were not visible in analytics alone.
+
+## work-research
+I interviewed 10 procurement managers across different industries, shadowed 3 sales calls to observe how buyers discussed product specifications, and analysed 6 months of support tickets to identify recurring friction points. The key finding: buyers needed to compare product specs side-by-side before requesting a quote.
+
+## work-ideation
+I mapped out the buyer journey from product discovery to quote request and identified 4 key decision moments. I sketched multiple approaches for the product comparison feature — modal overlay, side-by-side table, and a pinned comparison bar. User testing with 6 procurement managers showed the pinned bar approach felt most natural.
+
+## work-solutions
+The redesigned catalogue introduced filterable product grids with technical spec sheets, a sticky comparison bar that let buyers pin up to 3 products, and a streamlined quote request form that pre-filled product details. The enquiry-to-quote conversion improved significantly within the first quarter.
+
+---
+
+
+---
+
+## ds-color-1
+#1B3A5C
+
+## ds-color-1-name
+Industrial Blue
+
+## ds-color-1-hex
+#1B3A5C
+
+## ds-color-2
+#6B7B8D
+
+## ds-color-2-name
+Steel Grey
+
+## ds-color-2-hex
+#6B7B8D
+
+## ds-color-3
+#FFFFFF
+
+## ds-color-3-name
+White
+
+## ds-color-3-hex
+#FFFFFF
+
+## ds-color-4
+#E8652D
+
+## ds-color-4-name
+Signal Orange
+
+## ds-color-4-hex
+#E8652D
+
+## ds-color-5
+#0F2236
+
+## ds-color-5-name
+Dark Navy
+
+## ds-color-5-hex
+#0F2236
+
+## ds-font-1
+IBM Plex Sans
+
+## ds-font-1-preview
+Aa Bb Cc 123
+
+## ds-font-1-name
+IBM Plex Sans — Headings & Navigation
+
+## ds-font-2
+Source Sans Pro
+
+## ds-font-2-preview
+Aa Bb Cc 123
+
+## ds-font-2-name
+Source Sans Pro — Body & Data Tables
 
 ---
 

@@ -7,7 +7,7 @@ Edit this file to update the EduSpark case study page. Save and refresh to see c
 UX Case Study
 
 ## hero-title
-EduSpark — Online Learning Platform Redesign
+EduSpark
 
 ## hero-tagline
 Taking course completion rates from 18% to 61% by redesigning the learning experience around how working professionals actually find time to study.
@@ -169,6 +169,90 @@ Daily active users 8 weeks after launch
 
 ## results-body
 The redesigned experience launched to all users in a single release. Within 8 weeks, course completion had risen from 18% to 61% — a 3.4x improvement. The "continue learning" landing experience was the highest-impact single change: session start time (from opening app to beginning a lesson) dropped from an average of 2.5 minutes to 18 seconds, because users no longer had to navigate to find where they'd left off. The weekly streak feature had an 84% opt-in rate among users who saw it on their second session.
+
+---
+
+---
+
+## work-process
+I took a participatory design approach — involving both teachers and students throughout the process. Education products fail when they are designed for one group without understanding the other, so every major decision was validated with both audiences.
+
+## work-research
+I conducted 10 interviews with teachers and 8 with students (ages 14-18), observed 4 classroom sessions to understand how digital tools fit into existing workflows, and reviewed 5 competing edtech platforms. The key insight: teachers needed less content creation work, and students needed clearer progress signals to stay motivated.
+
+## work-ideation
+I mapped the learning journey from both teacher and student perspectives and found 5 friction points where the two experiences needed to connect better. I prototyped a shared progress dashboard, a simplified assignment builder, and a gamified learning path. Testing showed the progress dashboard was the most impactful feature for both groups.
+
+## work-solutions
+The platform featured a drag-and-drop assignment builder for teachers (reducing creation time from 20 minutes to 5), a student dashboard with visual progress tracking and streak counters, and a shared view where teachers could see class-wide understanding gaps in real time. I also designed an adaptive quiz system that adjusted difficulty based on student performance.
+
+---
+
+
+---
+
+## ds-color-1
+#7C4DFF
+
+## ds-color-1-name
+Learning Purple
+
+## ds-color-1-hex
+#7C4DFF
+
+## ds-color-2
+#FF6D00
+
+## ds-color-2-name
+Energy Orange
+
+## ds-color-2-hex
+#FF6D00
+
+## ds-color-3
+#40C4FF
+
+## ds-color-3-name
+Sky Blue
+
+## ds-color-3-hex
+#40C4FF
+
+## ds-color-4
+#FFF8E1
+
+## ds-color-4-name
+Soft Cream
+
+## ds-color-4-hex
+#FFF8E1
+
+## ds-color-5
+#37474F
+
+## ds-color-5-name
+Dark Graphite
+
+## ds-color-5-hex
+#37474F
+
+## ds-font-1
+Outfit
+
+## ds-font-1-preview
+Aa Bb Cc 123
+
+## ds-font-1-name
+Outfit — Headings & Display
+
+## ds-font-2
+Manrope
+
+## ds-font-2-preview
+Aa Bb Cc 123
+
+## ds-font-2-name
+Manrope — Body & Interface
 
 ---
 
