@@ -318,9 +318,7 @@
   color: var(--accent);
   text-decoration: none;
   margin-bottom: 24px;
-  transition: letter-spacing .2s;
 }
-.ab-cta-email:hover { letter-spacing: .5px }
 .ab-cta-socials {
   display: flex;
   justify-content: center;

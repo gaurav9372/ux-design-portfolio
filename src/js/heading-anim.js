@@ -66,6 +66,7 @@ export const initHeadingAnimations = () => {
     '.coming-soon h1',
     '.bl-index-title',
     '.bl-title',
+    '.bl-more-title',
     '.ct-title',
     '.ct-faq-title',
     '.pp-h1',

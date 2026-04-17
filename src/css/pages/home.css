@@ -674,9 +674,7 @@
   color: var(--accent);
   text-decoration: none;
   white-space: nowrap;
-  transition: letter-spacing .2s;
 }
-.home-blogs-viewall:hover { letter-spacing: .5px }
 .home-blogs-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

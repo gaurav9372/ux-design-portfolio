@@ -145,27 +145,45 @@
   align-self: flex-start;
   font-family: var(--font-ui);
   font-size: 15px;
-  font-weight: 600;
-  color: var(--bg);
-  background: var(--accent);
+  font-weight: 500;
+  color: var(--ink);
+  background: transparent;
   border: none;
-  border-radius: 100px;
-  padding: 14px 36px;
+  border-radius: 0;
+  padding: 8px 0;
   cursor: pointer;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: background .2s, transform .1s;
+  letter-spacing: .5px;
+  transition: color .25s ease, transform .1s;
 }
-.ct-submit:hover { background: var(--accent-hover) }
+.ct-submit::after {
+  content: "→";
+  margin-left: 10px;
+  display: inline-block;
+  transition: transform .25s ease, margin-left .25s ease;
+}
+.ct-submit:hover:not(:disabled)::after {
+  margin-left: 16px;
+  transform: translateX(2px);
+}
 .ct-submit:active { transform: scale(.97) }
-.ct-submit:disabled { opacity: .7; cursor: not-allowed }
-.ct-submit--sending { background: var(--muted); display: inline-flex; align-items: center; gap: 10px }
+.ct-submit:disabled {
+  color: rgba(255, 255, 255, .35);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.ct-submit:disabled .split-char-inner,
+.ct-submit:disabled .split-char-clone {
+  color: rgba(255, 255, 255, .35);
+}
+.ct-submit:disabled::after { opacity: .4 }
+.ct-submit--sending { color: var(--muted); display: inline-flex; align-items: center; gap: 10px }
 .ct-spinner {
   display: inline-block;
-  width: 14px;
-  height: 14px;
-  border: 2px solid rgba(0, 0, 0, .25);
-  border-top-color: var(--bg);
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(255, 255, 255, .15);
+  border-top-color: var(--accent);
   border-radius: 50%;
   animation: ct-spin .7s linear infinite;
 }

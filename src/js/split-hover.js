@@ -50,9 +50,7 @@ export const initSplitHover = () => {
     el.classList.add('split-hover');
   };
 
-  // Exclude elements that dynamically swap their text — split-hover corrupts
-  // their textContent (doubles characters) because inner + clone spans both count.
   document
-    .querySelectorAll('a:not(.bl-card), button:not(.ct-submit), [role="button"], .nav-cta, .footer .email, .bl-card-read')
+    .querySelectorAll('a:not(.bl-card), button, [role="button"], .nav-cta, .footer .email, .bl-card-read')
     .forEach(splitTextForHover);
 };

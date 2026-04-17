@@ -196,11 +196,11 @@ body.nav-visible .bl-filter-bar { top: 64px }
   color: var(--ink);
   text-transform: uppercase;
   letter-spacing: .15px;
-  transition: color .2s, letter-spacing .2s;
+  transition: color .2s;
 }
 .bl-card .bl-card-title { transition: color .2s }
 .bl-card:hover .bl-card-title { color: var(--accent) }
-.bl-card:hover .bl-card-read { color: var(--accent); letter-spacing: .5px }
+.bl-card:hover .bl-card-read { color: var(--accent) }
 .bl-card:hover .bl-card-read .split-char-inner {
   transform: translateY(-100%);
   transition-duration: .25s;
@@ -318,6 +318,13 @@ body.nav-visible .bl-filter-bar { top: 64px }
 }
 .bl-article a:hover { text-decoration-color: transparent }
 
+/* Tags shown at end of blog post */
+.bl-tags-section { padding: 32px var(--pad) 24px }
+.bl-tags-section .block {
+  max-width: 720px;
+  margin-inline: auto;
+}
+
 /* Author card */
 .bl-author-section { padding: 0 var(--pad) 48px }
 .bl-author-section .block {
@@ -373,31 +380,41 @@ body.nav-visible .bl-filter-bar { top: 64px }
   font-weight: 600;
   color: var(--accent);
   text-decoration: none;
-  transition: letter-spacing .2s;
 }
-.bl-back-btn:hover { letter-spacing: .5px }
 
-/* More posts (on blog post pages) */
-.bl-more-section { padding: 0 var(--pad) 100px }
-.bl-more-section .block {
-  max-width: 1100px;
-  margin-inline: auto;
+/* Related Blogs (on blog post pages) — mirrors homepage .home-blogs layout */
+.bl-more-section {
+  padding: 100px var(--pad) 120px;
+  overflow: hidden;
+}
+.bl-more-section .block { max-width: none; margin: 0 }
+.bl-more-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 40px;
 }
 .bl-more-title {
-  font-family: var(--font-display);
-  font-size: 28px;
-  font-weight: 800;
-  color: var(--ink);
-  margin: 0 0 32px;
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: 44px;
+  line-height: 1;
+  letter-spacing: -.44px;
+  color: var(--accent);
+  margin: 0;
+}
+.bl-more-viewall {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  white-space: nowrap;
 }
 .bl-more-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 28px;
-}
-.bl-more-footer {
-  margin-top: 40px;
-  text-align: center;
 }
 
 
@@ -437,7 +454,8 @@ body.nav-visible .bl-filter-bar { top: 64px }
   .bl-cover { padding: 0 var(--pad) 48px }
   .bl-body-section { padding: 0 var(--pad) 64px }
   .bl-author-section { padding: 0 var(--pad) 48px }
-  .bl-more-section { padding: 0 var(--pad) 80px }
+  .bl-more-section { padding: 60px var(--pad) 80px }
+  .bl-more-header { flex-direction: column; align-items: flex-start; gap: 16px }
   .bl-title { font-size: 28px }
   .bl-article p { font-size: 16px }
   .bl-article .bl-subheading { font-size: 19px; margin-top: 36px }

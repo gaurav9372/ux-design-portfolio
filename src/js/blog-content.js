@@ -7,6 +7,8 @@
   and used at runtime for the "more posts" grid on every blog post page.
 */
 
+import { initSplitHover } from './split-hover.js';
+
 const MD_LOADERS = {
   '12-mistakes-junior-designers-make':
     () => import('../content/blogs/12-mistakes-junior-designers-make.md?raw'),
@@ -171,6 +173,10 @@ const fillMorePosts = (currentSlug) => {
   // Shuffle and pick up to 3
   const shuffled = others.sort(() => Math.random() - 0.5).slice(0, 3);
   grid.innerHTML = shuffled.map(renderCard).join('');
+
+  // Re-run split-hover on newly-injected .bl-card-read elements so the
+  // character flip animation works on Related Blogs cards.
+  initSplitHover();
 };
 
 /* ---- apply to DOM ---- */

@@ -33,6 +33,37 @@ const MSG_WARN_AT = 4500;
 
 const EMAIL_REGEX = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
+// Wrap the button's text into split-hover character spans so the hover
+// animation works. Called on init and after every text restoration.
+const wrapButtonChars = (btn) => {
+  if (!btn) return;
+  const text = btn.textContent;
+  btn.innerHTML = '';
+  let charIndex = 0;
+  for (const ch of text) {
+    if (ch === ' ') {
+      btn.appendChild(document.createTextNode(' '));
+      continue;
+    }
+    const span = document.createElement('span');
+    span.className = 'split-char';
+    // Staggered hover animation — each letter flips slightly later
+    span.style.setProperty('--split-delay', `${Math.min(charIndex * 20, 400)}ms`);
+    const inner = document.createElement('span');
+    inner.className = 'split-char-inner';
+    inner.textContent = ch;
+    const clone = document.createElement('span');
+    clone.className = 'split-char-clone';
+    clone.textContent = ch;
+    span.appendChild(inner);
+    span.appendChild(clone);
+    btn.appendChild(span);
+    charIndex += 1;
+  }
+  btn.classList.add('split-hover');
+  btn.dataset.split = 'true';
+};
+
 const setError = (input, errorEl, message) => {
   if (message) {
     input.classList.add('is-invalid');
@@ -61,6 +92,7 @@ export const initContactForm = () => {
   const btn = form.querySelector('.ct-submit');
   const originalText = BUTTON_LABEL;
   btn.textContent = originalText;
+  wrapButtonChars(btn);
 
   // Field references
   const nameInput = form.querySelector('#ct-name');
@@ -243,6 +275,7 @@ export const initContactForm = () => {
     hasInteracted = false;
     setTimeout(() => {
       btn.textContent = originalText;
+      wrapButtonChars(btn);
       btn.disabled = false;
       btn.classList.remove('ct-submit--success');
       updateButtonState();
@@ -330,6 +363,7 @@ export const initContactForm = () => {
 
       setTimeout(() => {
         btn.textContent = originalText;
+        wrapButtonChars(btn);
         btn.disabled = false;
         btn.classList.remove('ct-submit--success');
         updateButtonState();
@@ -343,6 +377,7 @@ export const initContactForm = () => {
 
       setTimeout(() => {
         btn.textContent = originalText;
+        wrapButtonChars(btn);
         btn.disabled = false;
         btn.classList.remove('ct-submit--error');
         updateButtonState();
