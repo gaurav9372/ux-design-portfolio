@@ -1,0 +1,1334 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Heading Animations Moodboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;800&family=Inter:wght@400;500&display=swap">
+  <style>
+    :root {
+      --bg: #121715;
+      --bg2: #1c2320;
+      --accent: #ffc321;
+      --ink: #fff;
+      --muted: rgba(255,255,255,.5);
+      --font-ui: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0 }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    /* Page layout */
+    .page-header {
+      padding: 80px 64px 40px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .page-header h1 {
+      font-family: var(--font-ui);
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--accent);
+    }
+    .page-header p {
+      color: var(--muted);
+      font-size: 15px;
+      margin-top: 12px;
+      line-height: 1.7;
+    }
+    .demo-section {
+      padding: 160px 64px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .demo-label {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+      opacity: .7;
+    }
+    .demo-heading {
+      font-family: var(--font-ui);
+      font-weight: 500;
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.1;
+      letter-spacing: -.5px;
+      color: var(--accent);
+    }
+    .demo-desc {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+      margin-top: 32px;
+      max-width: 560px;
+    }
+    .replay-btn {
+      margin-top: 24px;
+      padding: 8px 20px;
+      border: 1px solid rgba(255,255,255,.15);
+      background: rgba(255,255,255,.04);
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .replay-btn:hover { background: rgba(255,255,255,.1) }
+
+    /* ============================================================
+       STYLE 1: Gold Wipe Reveal
+       Each character is masked and slides up while a gold underline
+       sweeps across the full heading width.
+       ============================================================ */
+    .anim-wipe-reveal .char {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: bottom;
+    }
+    .anim-wipe-reveal .char-inner {
+      display: inline-block;
+      transform: translateY(110%);
+      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .anim-wipe-reveal.in-view .char-inner {
+      transform: translateY(0);
+    }
+    .anim-wipe-reveal .underline {
+      display: block;
+      height: 2px;
+      background: var(--accent);
+      margin-top: 16px;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1) 0.4s;
+    }
+    .anim-wipe-reveal.in-view .underline {
+      transform: scaleX(1);
+    }
+
+    /* ============================================================
+       STYLE 2: Stagger Blur Emerge
+       Characters start blurred + transparent + scaled down, then
+       sharpen into place with staggered timing.
+       ============================================================ */
+    .anim-blur-emerge .char {
+      display: inline-block;
+    }
+    .anim-blur-emerge .char-inner {
+      display: inline-block;
+      opacity: 0;
+      filter: blur(12px);
+      transform: scale(0.7) translateY(20px);
+      transition: opacity 0.6s ease, filter 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .anim-blur-emerge.in-view .char-inner {
+      opacity: 1;
+      filter: blur(0);
+      transform: scale(1) translateY(0);
+    }
+
+    /* ============================================================
+       STYLE 3: Typewriter Gold Cursor
+       Characters appear one by one from left to right with a blinking
+       gold cursor that travels across and disappears at the end.
+       ============================================================ */
+    .anim-typewriter {
+      position: relative;
+    }
+    .anim-typewriter .char-inner {
+      opacity: 0;
+      transition: opacity 0.05s ease;
+    }
+    .anim-typewriter.in-view .char-inner {
+      opacity: 1;
+    }
+    .anim-typewriter .cursor {
+      display: inline-block;
+      width: 3px;
+      height: 1em;
+      background: var(--accent);
+      vertical-align: bottom;
+      margin-left: 2px;
+      animation: blink 0.6s ease infinite;
+      opacity: 0;
+    }
+    .anim-typewriter.in-view .cursor {
+      opacity: 1;
+    }
+    .anim-typewriter.done .cursor {
+      animation: none;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1 }
+      50% { opacity: 0 }
+    }
+
+    /* ============================================================
+       STYLE 4: Split Cascade
+       The heading splits into two halves at the middle character.
+       Left half slides in from the left, right half from the right,
+       meeting in the center with a brief gold flash.
+       ============================================================ */
+    .anim-split-cascade {
+      position: relative;
+      overflow: hidden;
+    }
+    .anim-split-cascade .half {
+      display: inline;
+    }
+    .anim-split-cascade .half-left .char-inner {
+      display: inline-block;
+      transform: translateX(-80px);
+      opacity: 0;
+      transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease;
+    }
+    .anim-split-cascade .half-right .char-inner {
+      display: inline-block;
+      transform: translateX(80px);
+      opacity: 0;
+      transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease;
+    }
+    .anim-split-cascade.in-view .half-left .char-inner,
+    .anim-split-cascade.in-view .half-right .char-inner {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    .anim-split-cascade .flash {
+      position: absolute;
+      inset: 0;
+      background: var(--accent);
+      opacity: 0;
+      pointer-events: none;
+      mix-blend-mode: overlay;
+    }
+    .anim-split-cascade.in-view .flash {
+      animation: goldFlash 0.6s ease 0.5s;
+    }
+    @keyframes goldFlash {
+      0% { opacity: 0 }
+      30% { opacity: .35 }
+      100% { opacity: 0 }
+    }
+
+    /* ============================================================
+       STYLE 5: Ink Drop Fill
+       Heading starts as transparent outlined text, then fills
+       with the gold accent color from bottom to top like ink
+       rising inside the letterforms.
+       ============================================================ */
+    .anim-ink-fill {
+      position: relative;
+      -webkit-text-stroke: 1px var(--accent);
+      color: transparent;
+      background: linear-gradient(to top, var(--accent) 50%, transparent 50%);
+      background-size: 100% 200%;
+      background-position: 0 0;
+      -webkit-background-clip: text;
+      background-clip: text;
+      transition: background-position 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .anim-ink-fill.in-view {
+      background-position: 0 100%;
+    }
+
+    /* ============================================================
+       STYLE 6: Domino Flip
+       Each letter rotates in 3D from flat (rotateX 90deg) to upright,
+       like dominoes standing up one after another. Gold shadow on landing.
+       ============================================================ */
+    .anim-domino { perspective: 800px }
+    .anim-domino .char {
+      display: inline-block;
+      perspective: 600px;
+    }
+    .anim-domino .char-inner {
+      display: inline-block;
+      transform: rotateX(-90deg);
+      transform-origin: bottom center;
+      opacity: 0;
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+      text-shadow: none;
+    }
+    .anim-domino.in-view .char-inner {
+      transform: rotateX(0deg);
+      opacity: 1;
+      text-shadow: 0 2px 20px rgba(255,195,33,.3);
+    }
+
+    /* ============================================================
+       STYLE 7: Scatter Assemble
+       Letters start scattered randomly across the section (random x, y,
+       rotation) then fly into their correct position.
+       ============================================================ */
+    .anim-scatter { position: relative }
+    .anim-scatter .char {
+      display: inline-block;
+    }
+    .anim-scatter .char-inner {
+      display: inline-block;
+      opacity: 0;
+      transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+    }
+    .anim-scatter.in-view .char-inner {
+      transform: translate(0, 0) rotate(0deg) !important;
+      opacity: 1;
+    }
+
+    /* ============================================================
+       STYLE 8: Neon Flicker
+       Letters appear one by one with a neon-like flicker — each char
+       blinks 2-3 times rapidly before stabilizing with a glow.
+       ============================================================ */
+    .anim-neon .char { display: inline-block }
+    .anim-neon .char-inner {
+      display: inline-block;
+      opacity: 0;
+    }
+    .anim-neon .char-inner.flicker {
+      animation: neonFlicker 0.3s ease forwards;
+    }
+    .anim-neon .char-inner.lit {
+      opacity: 1;
+      text-shadow: 0 0 8px rgba(255,195,33,.6), 0 0 24px rgba(255,195,33,.3);
+    }
+    @keyframes neonFlicker {
+      0%   { opacity: 0 }
+      15%  { opacity: 1 }
+      25%  { opacity: 0.1 }
+      40%  { opacity: 0.9 }
+      55%  { opacity: 0.15 }
+      70%  { opacity: 1 }
+      80%  { opacity: 0.2 }
+      100% { opacity: 1 }
+    }
+
+    /* ============================================================
+       STYLE 9: Wave Rise
+       Letters rise from below with a sine-wave motion — each char
+       overshoots upward then settles, creating a liquid wave ripple.
+       ============================================================ */
+    .anim-wave .char { display: inline-block; overflow: hidden }
+    .anim-wave .char-inner {
+      display: inline-block;
+      transform: translateY(120%);
+      transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .anim-wave.in-view .char-inner {
+      transform: translateY(0);
+    }
+
+    /* ============================================================
+       STYLE 10: Gravity Drop
+       Each letter drops from above with realistic gravity — starts
+       fast, bounces slightly on landing. Staggered left to right.
+       ============================================================ */
+    .anim-gravity .char { display: inline-block; overflow: hidden; height: 1.15em }
+    .anim-gravity .char-inner {
+      display: inline-block;
+      transform: translateY(-120%);
+      opacity: 0;
+    }
+    .anim-gravity .char-inner.dropping {
+      animation: gravityDrop 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    @keyframes gravityDrop {
+      0%   { transform: translateY(-120%); opacity: 0 }
+      40%  { transform: translateY(8%); opacity: 1 }
+      60%  { transform: translateY(-4%) }
+      80%  { transform: translateY(2%) }
+      100% { transform: translateY(0); opacity: 1 }
+    }
+
+    /* ============================================================
+       BODY TEXT ANIMATIONS — 10 styles
+       Subtle, refined, per-word or per-line (not per-char)
+       ============================================================ */
+    .body-demo {
+      font-size: 17px;
+      line-height: 1.8;
+      color: #ccc;
+      max-width: 640px;
+    }
+    .body-demo .word,
+    .body-demo .line {
+      display: inline-block;
+    }
+
+    /* B1 — Soft Fade Up */
+    .anim-b-fade-up .word {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .anim-b-fade-up.in-view .word { opacity: 1; transform: translateY(0) }
+
+    /* B2 — Gentle Blur In */
+    .anim-b-blur .word {
+      opacity: 0;
+      filter: blur(6px);
+      transition: opacity 0.7s ease, filter 0.9s ease;
+    }
+    .anim-b-blur.in-view .word { opacity: 1; filter: blur(0) }
+
+    /* B3 — Slide Right Reveal */
+    .anim-b-slide .word {
+      opacity: 0;
+      transform: translateX(-14px);
+      transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .anim-b-slide.in-view .word { opacity: 1; transform: translateX(0) }
+
+    /* B4 — Line Mask Wipe (per-line) */
+    .anim-b-mask .line-wrap {
+      display: block;
+      overflow: hidden;
+    }
+    .anim-b-mask .line {
+      transform: translateY(100%);
+      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .anim-b-mask.in-view .line { transform: translateY(0) }
+
+    /* B5 — Scale Breathe */
+    .anim-b-scale .word {
+      opacity: 0;
+      transform: scale(0.92);
+      transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.3, 0.64, 1);
+    }
+    .anim-b-scale.in-view .word { opacity: 1; transform: scale(1) }
+
+    /* B6 — Color Warm-Up (gray to warm gray) */
+    .anim-b-color .word {
+      opacity: 0;
+      color: #4a4a4a;
+      transition: opacity 0.5s ease, color 0.8s ease;
+    }
+    .anim-b-color.in-view .word { opacity: 1; color: #ccc }
+
+    /* B7 — Subtle Skew Release */
+    .anim-b-skew .word {
+      opacity: 0;
+      transform: skewY(4deg) translateY(8px);
+      transition: opacity 0.5s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .anim-b-skew.in-view .word { opacity: 1; transform: skewY(0) translateY(0) }
+
+    /* B8 — Left Border Grow + Fade (per-paragraph, no word split) */
+    .anim-b-border {
+      position: relative;
+      padding-left: 16px;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+    .anim-b-border::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--accent);
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .anim-b-border.in-view { opacity: 1 }
+    .anim-b-border.in-view::before { transform: scaleY(1) }
+
+    /* B9 — Read-Along Highlight Sweep */
+    .anim-b-highlight {
+      background-image: linear-gradient(90deg, rgba(255,195,33,0.18) 0%, rgba(255,195,33,0.18) 100%);
+      background-size: 0% 100%;
+      background-repeat: no-repeat;
+      background-position: left center;
+      transition: background-size 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+      opacity: 0;
+    }
+    .anim-b-highlight.in-view {
+      opacity: 1;
+      background-size: 100% 100%;
+      transition: background-size 1.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+    }
+
+    /* B10 — Depth Stack (layered z-axis fade) */
+    .anim-b-depth .word {
+      opacity: 0;
+      transform: translateZ(-60px) translateY(12px);
+      filter: blur(4px);
+      transition: opacity 0.7s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), filter 0.8s ease;
+    }
+    .anim-b-depth {
+      perspective: 400px;
+    }
+    .anim-b-depth.in-view .word {
+      opacity: 1;
+      transform: translateZ(0) translateY(0);
+      filter: blur(0);
+    }
+
+    /* B11 — Diagonal Clip Wipe
+       Each word is revealed via a diagonal clip-path sweep, like a paint
+       roller passing over text. Angled 25deg for dynamism. */
+    .anim-b-clip .word {
+      clip-path: polygon(-20% 0%, -20% 0%, -5% 100%, -5% 100%);
+      opacity: 0;
+      transition: clip-path 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+    }
+    .anim-b-clip.in-view .word {
+      clip-path: polygon(-20% 0%, 120% 0%, 105% 100%, -5% 100%);
+      opacity: 1;
+    }
+
+    /* B12 — Elastic Stretch Squash
+       Words start tall and narrow (scaleY 1.6, scaleX 0.5), then squash
+       to normal size with an elastic overshoot. */
+    .anim-b-elastic .word {
+      opacity: 0;
+      transform: scale(0.5, 1.6);
+      transform-origin: center bottom;
+      transition: opacity 0.3s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .anim-b-elastic.in-view .word {
+      opacity: 1;
+      transform: scale(1, 1);
+    }
+
+    /* B13 — Chromatic Split
+       Each word appears with a brief RGB-shift glitch that resolves into
+       crisp text. Uses text-shadow for accent/muted split, then collapses. */
+    .anim-b-chromatic .word {
+      opacity: 0;
+      transform: translateX(-8px);
+      text-shadow:
+        3px 0 0 rgba(255,195,33,0.9),
+        -3px 0 0 rgba(120,200,255,0.6);
+      transition:
+        opacity 0.25s ease,
+        transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+        text-shadow 0.5s ease 0.15s;
+    }
+    .anim-b-chromatic.in-view .word {
+      opacity: 1;
+      transform: translateX(0);
+      text-shadow: 0 0 0 transparent;
+    }
+
+    /* B14 — Iris Open
+       Circular clip-path opens from center of each word, revealing text.
+       Feels like aperture shutters opening. */
+    .anim-b-iris .word {
+      clip-path: circle(0% at 50% 50%);
+      opacity: 0;
+      transition: clip-path 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease;
+    }
+    .anim-b-iris.in-view .word {
+      clip-path: circle(75% at 50% 50%);
+      opacity: 1;
+    }
+
+    /* B16 — Wave Rise (inspired by heading style 9)
+       Each line emerges from a clipped mask, offset from below.
+       Slow, smooth, no opacity fade — just pure geometry. */
+    .anim-b-wave {
+      opacity: 1 !important;
+    }
+    .anim-b-wave .line-wrap {
+      display: block;
+      overflow: hidden;
+      opacity: 1 !important;
+    }
+    .anim-b-wave .line {
+      display: inline-block;
+      white-space: nowrap;
+      opacity: 1 !important;
+      transform: translateY(110%);
+      transition: transform 2.4s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+    .anim-b-wave.in-view .line { transform: translateY(0) }
+
+    /* B15 — Spring Flip 3D
+       Each word rotates in on the X-axis (from -90deg to 0), flipping like
+       a card. Origin at top edge so it flips forward into view. */
+    .anim-b-flip { perspective: 800px }
+    .anim-b-flip .word {
+      display: inline-block;
+      opacity: 0;
+      transform-origin: top center;
+      transform: rotateX(-90deg) translateY(-6px);
+      transition: opacity 0.3s ease, transform 0.6s cubic-bezier(0.34, 1.4, 0.64, 1);
+    }
+    .anim-b-flip.in-view .word {
+      opacity: 1;
+      transform: rotateX(0) translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <a href="/" style="display:inline-flex;align-items:center;gap:8px;padding:20px 64px;color:var(--muted);font-size:13px;text-decoration:none;letter-spacing:.5px;text-transform:uppercase;font-family:var(--font-ui)">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    Back to Home
+  </a>
+  <div class="page-header" style="padding-top:20px">
+    <h1>Heading Animations Moodboard</h1>
+    <p>5 unique animation styles matched to the portfolio's dark + gold brand. Scroll down to trigger each one.</p>
+  </div>
+
+  <!-- STYLE 1 -->
+  <section class="demo-section" data-style="1">
+    <p class="demo-label">Style 01</p>
+    <h2 class="demo-heading anim-wipe-reveal" data-anim="wipe-reveal">
+      Three stakeholders. One experience. That's the job.
+    </h2>
+    <p class="demo-desc">
+      Characters slide up from behind a mask with staggered timing, then a gold underline sweeps across the full width.
+      Clean, editorial, and premium. The reveal feels like a curtain lifting.
+    </p>
+    <button class="replay-btn" data-replay="1">Replay</button>
+  </section>
+
+  <!-- STYLE 2 -->
+  <section class="demo-section" data-style="2">
+    <p class="demo-label">Style 02</p>
+    <h2 class="demo-heading anim-blur-emerge" data-anim="blur-emerge">
+      Three stakeholders. One experience. That's the job.
+    </h2>
+    <p class="demo-desc">
+      Each character starts heavily blurred, scaled down and transparent, then sharpens into crystal-clear focus with staggered timing.
+      Creates a "materializing out of fog" effect. Sophisticated and cinematic.
+    </p>
+    <button class="replay-btn" data-replay="2">Replay</button>
+  </section>
+
+  <!-- STYLE 3 -->
+  <section class="demo-section" data-style="3">
+    <p class="demo-label">Style 03</p>
+    <h2 class="demo-heading anim-typewriter" data-anim="typewriter">
+      Three stakeholders. One experience. That's the job.
+    </h2>
+    <p class="demo-desc">
+      Characters appear one by one with a blinking gold cursor that travels across the text.
+      When complete, the cursor blinks twice and fades out. Feels like the heading is being typed live.
+      Minimal, developer-inspired, intentional.
+    </p>
+    <button class="replay-btn" data-replay="3">Replay</button>
+  </section>
+
+  <!-- STYLE 4 -->
+  <section class="demo-section" data-style="4">
+    <p class="demo-label">Style 04</p>
+    <h2 class="demo-heading anim-split-cascade" data-anim="split-cascade">
+      Three stakeholders. One experience. That's the job.
+    </h2>
+    <p class="demo-desc">
+      The heading splits at the center character. Left half slides in from the left, right half from the right,
+      meeting in the middle with a brief gold flash on collision. Dramatic, dynamic, impactful.
+    </p>
+    <button class="replay-btn" data-replay="4">Replay</button>
+  </section>
+
+  <!-- STYLE 5 -->
+  <section class="demo-section" data-style="5">
+    <p class="demo-label">Style 05</p>
+    <h2 class="demo-heading anim-ink-fill" data-anim="ink-fill">
+      Three stakeholders. One experience. That's the job.
+    </h2>
+    <p class="demo-desc">
+      The heading starts as thin outlined text (transparent with a gold stroke), then the gold color fills up from bottom to top
+      like ink rising inside the letterforms. Pure CSS, no JS needed for the fill. Elegant and distinctive.
+    </p>
+    <button class="replay-btn" data-replay="5">Replay</button>
+  </section>
+
+  <!-- STYLE 6 -->
+  <section class="demo-section" data-style="6">
+    <p class="demo-label">Style 06</p>
+    <h2 class="demo-heading anim-domino" data-anim="domino">
+      Three stakeholders. One experience. That's the job.
+    </h2>
+    <p class="demo-desc">
+      Each letter flips into view from a 3D face-down rotation, like a row of dominoes standing up.
+      A subtle gold text-shadow glows on landing. Feels physical and tactile — letters have weight.
+    </p>
+    <button class="replay-btn" data-replay="6">Replay</button>
+  </section>
+
+  <!-- STYLE 7 -->
+  <section class="demo-section" data-style="7">
+    <p class="demo-label">Style 07</p>
+    <h2 class="demo-heading anim-scatter" data-anim="scatter">
+      Three stakeholders. One experience. That's the job.
+    </h2>
+    <p class="demo-desc">
+      Letters start scattered randomly — each at a different position, rotation, and distance.
+      On trigger, they all fly into their correct position simultaneously. Chaos to order. Magnetic.
+    </p>
+    <button class="replay-btn" data-replay="7">Replay</button>
+  </section>
+
+  <!-- STYLE 8 -->
+  <section class="demo-section" data-style="8">
+    <p class="demo-label">Style 08</p>
+    <h2 class="demo-heading anim-neon" data-anim="neon">
+      Three stakeholders. One experience. That's the job.
+    </h2>
+    <p class="demo-desc">
+      Each letter flickers to life like a neon sign — rapid on/off blinks before stabilizing with a warm gold glow.
+      Letters light up left to right with tight staggering. Feels electric and alive.
+    </p>
+    <button class="replay-btn" data-replay="8">Replay</button>
+  </section>
+
+  <!-- STYLE 9 -->
+  <section class="demo-section" data-style="9">
+    <p class="demo-label">Style 09</p>
+    <h2 class="demo-heading anim-wave" data-anim="wave">
+      Three stakeholders. One experience. That's the job.
+    </h2>
+    <p class="demo-desc">
+      Letters rise up from below with a bouncy sine-wave overshoot — each one pops past its
+      final position then settles back, creating a ripple effect across the heading. Playful but refined.
+    </p>
+    <button class="replay-btn" data-replay="9">Replay</button>
+  </section>
+
+  <!-- STYLE 10 -->
+  <section class="demo-section" data-style="10">
+    <p class="demo-label">Style 10</p>
+    <h2 class="demo-heading anim-gravity" data-anim="gravity">
+      Three stakeholders. One experience. That's the job.
+    </h2>
+    <p class="demo-desc">
+      Letters drop from above with realistic gravity and bounce on landing — a quick overshoot
+      down, small bounce up, then settle. Staggered left to right. Physical, punchy, satisfying.
+    </p>
+    <button class="replay-btn" data-replay="10">Replay</button>
+  </section>
+
+  <!-- ===========================================
+       BODY TEXT ANIMATIONS
+       =========================================== -->
+  <div class="page-header" style="margin-top:80px">
+    <h1>Body Text Animations</h1>
+    <p>10 subtle per-word animations designed for paragraph text. Each executes within 1 second so reading flow isn't disrupted.</p>
+  </div>
+
+  <!-- B1 -->
+  <section class="demo-section" data-style="b1">
+    <p class="demo-label">Body 01 — Soft Fade Up</p>
+    <p class="body-demo anim-b-fade-up" data-anim="b-fade-up">I design digital products that make complex things feel simple. My work sits at the intersection of research, craft, and systems thinking.</p>
+    <p class="demo-desc">Words fade in while gently rising from 20px below. Classic, restrained, works anywhere.</p>
+    <button class="replay-btn" data-replay="b1">Replay</button>
+  </section>
+
+  <!-- B2 -->
+  <section class="demo-section" data-style="b2">
+    <p class="demo-label">Body 02 — Gentle Blur In</p>
+    <p class="body-demo anim-b-blur" data-anim="b-blur">I design digital products that make complex things feel simple. My work sits at the intersection of research, craft, and systems thinking.</p>
+    <p class="demo-desc">Words start blurred and sharpen into focus. Feels like text is being dictated into existence.</p>
+    <button class="replay-btn" data-replay="b2">Replay</button>
+  </section>
+
+  <!-- B3 -->
+  <section class="demo-section" data-style="b3">
+    <p class="demo-label">Body 03 — Slide Right Reveal</p>
+    <p class="body-demo anim-b-slide" data-anim="b-slide">I design digital products that make complex things feel simple. My work sits at the intersection of research, craft, and systems thinking.</p>
+    <p class="demo-desc">Words slide in from 14px to the left as they fade. Natural reading direction, feels like text is being placed.</p>
+    <button class="replay-btn" data-replay="b3">Replay</button>
+  </section>
+
+  <!-- B4 -->
+  <section class="demo-section" data-style="b4">
+    <p class="demo-label">Body 04 — Line Mask Wipe</p>
+    <p class="body-demo anim-b-mask" data-anim="b-mask">I design digital products that make complex things feel simple. My work sits at the intersection of research, craft, and systems thinking.</p>
+    <p class="demo-desc">Each line slides up from behind an invisible mask, one after another. Editorial, poster-like. Per-line (not per-word).</p>
+    <button class="replay-btn" data-replay="b4">Replay</button>
+  </section>
+
+  <!-- B5 -->
+  <section class="demo-section" data-style="b5">
+    <p class="demo-label">Body 05 — Scale Breathe</p>
+    <p class="body-demo anim-b-scale" data-anim="b-scale">I design digital products that make complex things feel simple. My work sits at the intersection of research, craft, and systems thinking.</p>
+    <p class="demo-desc">Words scale from 0.92 to 1.0 with a subtle overshoot on the easing curve — like text breathing into place.</p>
+    <button class="replay-btn" data-replay="b5">Replay</button>
+  </section>
+
+  <!-- B6 -->
+  <section class="demo-section" data-style="b6">
+    <p class="demo-label">Body 06 — Color Warm-Up</p>
+    <p class="body-demo anim-b-color" data-anim="b-color">I design digital products that make complex things feel simple. My work sits at the intersection of research, craft, and systems thinking.</p>
+    <p class="demo-desc">Words appear dark gray and warm up to full body color as they come into view. Subtle chromatic reveal.</p>
+    <button class="replay-btn" data-replay="b6">Replay</button>
+  </section>
+
+  <!-- B7 -->
+  <section class="demo-section" data-style="b7">
+    <p class="demo-label">Body 07 — Skew Release</p>
+    <p class="body-demo anim-b-skew" data-anim="b-skew">I design digital products that make complex things feel simple. My work sits at the intersection of research, craft, and systems thinking.</p>
+    <p class="demo-desc">Words start with a 4-degree skewY tilt and snap to vertical as they settle. Feels physical, like text is relaxing into place.</p>
+    <button class="replay-btn" data-replay="b7">Replay</button>
+  </section>
+
+  <!-- B8 -->
+  <section class="demo-section" data-style="b8">
+    <p class="demo-label">Body 08 — Border Grow</p>
+    <p class="body-demo anim-b-border" data-anim="b-border">I design digital products that make complex things feel simple. My work sits at the intersection of research, craft, and systems thinking.</p>
+    <p class="demo-desc">A gold accent line grows from top to bottom on the left edge while the paragraph fades in. Editorial, pull-quote inspired.</p>
+    <button class="replay-btn" data-replay="b8">Replay</button>
+  </section>
+
+  <!-- B9 -->
+  <section class="demo-section" data-style="b9">
+    <p class="demo-label">Body 09 — Highlight Sweep</p>
+    <p class="body-demo anim-b-highlight" data-anim="b-highlight">I design digital products that make complex things feel simple. My work sits at the intersection of research, craft, and systems thinking.</p>
+    <p class="demo-desc">A warm gold highlight sweeps across the paragraph from left to right, like a marker pass. Then fades naturally. No word split needed.</p>
+    <button class="replay-btn" data-replay="b9">Replay</button>
+  </section>
+
+  <!-- B10 -->
+  <section class="demo-section" data-style="b10">
+    <p class="demo-label">Body 10 — Depth Stack</p>
+    <p class="body-demo anim-b-depth" data-anim="b-depth">I design digital products that make complex things feel simple. My work sits at the intersection of research, craft, and systems thinking.</p>
+    <p class="demo-desc">Words start offset into the z-axis (blurred and pushed back), then pull forward into focus. 3D depth reveal, cinematic but subtle.</p>
+    <button class="replay-btn" data-replay="b10">Replay</button>
+  </section>
+
+  <!-- B11 -->
+  <section class="demo-section" data-style="b11">
+    <p class="demo-label">Body 11 — Diagonal Clip Wipe</p>
+    <p class="body-demo anim-b-clip" data-anim="b-clip">I design digital products that make complex things feel simple. My work sits at the intersection of research, craft, and systems thinking.</p>
+    <p class="demo-desc">Each word is revealed via a diagonal clip-path sweep — like a paint roller passing across the text at a 25° angle. Crisp, editorial, unexpected.</p>
+    <button class="replay-btn" data-replay="b11">Replay</button>
+  </section>
+
+  <!-- B12 -->
+  <section class="demo-section" data-style="b12">
+    <p class="demo-label">Body 12 — Elastic Stretch</p>
+    <p class="body-demo anim-b-elastic" data-anim="b-elastic">I design digital products that make complex things feel simple. My work sits at the intersection of research, craft, and systems thinking.</p>
+    <p class="demo-desc">Words start tall and narrow (scaleX 0.5, scaleY 1.6), then snap to normal proportions with an elastic overshoot. Bouncy but fast — completes in under a second.</p>
+    <button class="replay-btn" data-replay="b12">Replay</button>
+  </section>
+
+  <!-- B13 -->
+  <section class="demo-section" data-style="b13">
+    <p class="demo-label">Body 13 — Chromatic Split</p>
+    <p class="body-demo anim-b-chromatic" data-anim="b-chromatic">I design digital products that make complex things feel simple. My work sits at the intersection of research, craft, and systems thinking.</p>
+    <p class="demo-desc">Words appear with a brief RGB-shift split (gold + cyan offset) that resolves into crisp text. Feels glitchy and modern, like a signal stabilizing.</p>
+    <button class="replay-btn" data-replay="b13">Replay</button>
+  </section>
+
+  <!-- B14 -->
+  <section class="demo-section" data-style="b14">
+    <p class="demo-label">Body 14 — Iris Open</p>
+    <p class="body-demo anim-b-iris" data-anim="b-iris">I design digital products that make complex things feel simple. My work sits at the intersection of research, craft, and systems thinking.</p>
+    <p class="demo-desc">Each word is revealed by a circular clip-path opening from the center — like a camera aperture expanding. Unusual and distinctive.</p>
+    <button class="replay-btn" data-replay="b14">Replay</button>
+  </section>
+
+  <!-- B15 -->
+  <section class="demo-section" data-style="b15">
+    <p class="demo-label">Body 15 — Spring Flip 3D</p>
+    <p class="body-demo anim-b-flip" data-anim="b-flip">I design digital products that make complex things feel simple. My work sits at the intersection of research, craft, and systems thinking.</p>
+    <p class="demo-desc">Each word flips forward on the X-axis from -90° to 0° with a springy overshoot — like cards rotating into view from behind the line of text. Tactile and physical.</p>
+    <button class="replay-btn" data-replay="b15">Replay</button>
+  </section>
+
+  <!-- B16 -->
+  <section class="demo-section" data-style="b16">
+    <p class="demo-label">Body 16 — Wave Rise</p>
+    <p class="body-demo anim-b-wave" data-anim="b-wave">I design digital products that make complex things feel simple. My work sits at the intersection of research, craft, and systems thinking.</p>
+    <p class="demo-desc">Each line emerges from a clipped mask, sliding up from below with smooth easing. No opacity fade — just pure geometric reveal. Staggered line-by-line for an editorial, poster-like cadence.</p>
+    <button class="replay-btn" data-replay="b16">Replay</button>
+  </section>
+
+  <script>
+    // === Utility: wrap characters for animation ===
+    function wrapChars(el, wrapperClass = '') {
+      const text = el.textContent;
+      el.innerHTML = '';
+      const chars = [];
+      for (const ch of text) {
+        if (ch === ' ') {
+          el.appendChild(document.createTextNode(' '));
+          continue;
+        }
+        const outer = document.createElement('span');
+        outer.className = 'char';
+        const inner = document.createElement('span');
+        inner.className = 'char-inner';
+        inner.textContent = ch;
+        outer.appendChild(inner);
+        el.appendChild(outer);
+        chars.push(inner);
+      }
+      return chars;
+    }
+
+    // Replay helper — removes class, waits for reset to paint, then re-adds
+    function replay(el) {
+      // Kill transitions temporarily so reset is instant
+      el.style.transition = 'none';
+      el.querySelectorAll('.char-inner, .underline').forEach(c => c.style.transition = 'none');
+      el.classList.remove('in-view');
+      // Force the browser to paint the reset state
+      void el.offsetHeight;
+      // Restore transitions
+      el.style.transition = '';
+      el.querySelectorAll('.char-inner, .underline').forEach(c => c.style.transition = '');
+      // Small delay then trigger
+      setTimeout(() => el.classList.add('in-view'), 50);
+    }
+
+    // === STYLE 1: Wipe Reveal ===
+    function initWipeReveal(el) {
+      const chars = wrapChars(el);
+      chars.forEach((c, i) => {
+        c.style.transitionDelay = `${i * 30}ms`;
+      });
+      const line = document.createElement('span');
+      line.className = 'underline';
+      el.appendChild(line);
+      return () => replay(el);
+    }
+
+    // === STYLE 2: Blur Emerge ===
+    function initBlurEmerge(el) {
+      const chars = wrapChars(el);
+      chars.forEach((c, i) => {
+        c.style.transitionDelay = `${i * 40}ms`;
+      });
+      return () => replay(el);
+    }
+
+    // === STYLE 3: Typewriter ===
+    function initTypewriter(el) {
+      const text = el.textContent.trim();
+      el.innerHTML = '';
+      const spans = [];
+      for (const ch of text) {
+        const span = document.createElement('span');
+        span.className = 'char-inner';
+        span.textContent = ch;
+        span.style.opacity = '0';
+        el.appendChild(span);
+        spans.push(span);
+      }
+      const cursor = document.createElement('span');
+      cursor.className = 'cursor';
+      el.appendChild(cursor);
+
+      let timeout;
+      function play() {
+        el.classList.remove('done');
+        el.classList.add('in-view');
+        spans.forEach(s => s.style.opacity = '0');
+        cursor.style.opacity = '1';
+        let i = 0;
+        clearTimeout(timeout);
+        function next() {
+          if (i < spans.length) {
+            spans[i].style.opacity = '1';
+            i++;
+            timeout = setTimeout(next, 35 + Math.random() * 25);
+          } else {
+            setTimeout(() => el.classList.add('done'), 800);
+          }
+        }
+        next();
+      }
+      return play;
+    }
+
+    // === STYLE 4: Split Cascade ===
+    function initSplitCascade(el) {
+      const text = el.textContent.trim();
+      el.innerHTML = '';
+      const mid = Math.ceil(text.length / 2);
+      const leftText = text.slice(0, mid);
+      const rightText = text.slice(mid);
+
+      const leftSpan = document.createElement('span');
+      leftSpan.className = 'half half-left';
+      const rightSpan = document.createElement('span');
+      rightSpan.className = 'half half-right';
+
+      for (const ch of leftText) {
+        if (ch === ' ') { leftSpan.appendChild(document.createTextNode(' ')); continue; }
+        const s = document.createElement('span');
+        s.className = 'char-inner';
+        s.textContent = ch;
+        leftSpan.appendChild(s);
+      }
+      for (const ch of rightText) {
+        if (ch === ' ') { rightSpan.appendChild(document.createTextNode(' ')); continue; }
+        const s = document.createElement('span');
+        s.className = 'char-inner';
+        s.textContent = ch;
+        rightSpan.appendChild(s);
+      }
+
+      const leftChars = leftSpan.querySelectorAll('.char-inner');
+      const rightChars = rightSpan.querySelectorAll('.char-inner');
+      leftChars.forEach((c, i) => { c.style.transitionDelay = `${(leftChars.length - 1 - i) * 30}ms`; });
+      rightChars.forEach((c, i) => { c.style.transitionDelay = `${(rightChars.length - 1 - i) * 30}ms`; });
+
+      el.appendChild(leftSpan);
+      el.appendChild(rightSpan);
+
+      const flash = document.createElement('span');
+      flash.className = 'flash';
+      el.appendChild(flash);
+
+      return () => {
+        // Kill transitions, reset, repaint, restore, trigger
+        el.style.transition = 'none';
+        el.querySelectorAll('.char-inner, .flash').forEach(c => c.style.transition = 'none');
+        el.classList.remove('in-view');
+        // Replace flash element to re-trigger its animation
+        const newFlash = flash.cloneNode(true);
+        flash.parentNode.replaceChild(newFlash, flash);
+        void el.offsetHeight;
+        el.style.transition = '';
+        el.querySelectorAll('.char-inner').forEach(c => c.style.transition = '');
+        setTimeout(() => el.classList.add('in-view'), 50);
+      };
+    }
+
+    // === STYLE 5: Ink Fill (pure CSS, just toggle class) ===
+    function initInkFill(el) {
+      return () => {
+        el.style.transition = 'none';
+        el.classList.remove('in-view');
+        void el.offsetHeight;
+        el.style.transition = '';
+        setTimeout(() => el.classList.add('in-view'), 50);
+      };
+    }
+
+    // === STYLE 6: Domino Flip ===
+    function initDomino(el) {
+      const chars = wrapChars(el);
+      chars.forEach((c, i) => {
+        c.style.transitionDelay = `${i * 45}ms`;
+      });
+      return () => {
+        el.style.transition = 'none';
+        el.querySelectorAll('.char-inner').forEach(c => { c.style.transition = 'none'; c.style.textShadow = 'none'; });
+        el.classList.remove('in-view');
+        void el.offsetHeight;
+        el.style.transition = '';
+        el.querySelectorAll('.char-inner').forEach(c => c.style.transition = '');
+        setTimeout(() => el.classList.add('in-view'), 50);
+      };
+    }
+
+    // === STYLE 7: Scatter Assemble ===
+    function initScatter(el) {
+      const chars = wrapChars(el);
+      function randomize() {
+        chars.forEach(c => {
+          const x = (Math.random() - 0.5) * 400;
+          const y = (Math.random() - 0.5) * 200;
+          const r = (Math.random() - 0.5) * 120;
+          c.style.transform = `translate(${x}px, ${y}px) rotate(${r}deg)`;
+        });
+      }
+      randomize();
+      return () => {
+        el.querySelectorAll('.char-inner').forEach(c => c.style.transition = 'none');
+        el.classList.remove('in-view');
+        randomize();
+        void el.offsetHeight;
+        el.querySelectorAll('.char-inner').forEach(c => c.style.transition = '');
+        setTimeout(() => el.classList.add('in-view'), 50);
+      };
+    }
+
+    // === STYLE 8: Neon Flicker ===
+    function initNeon(el) {
+      const chars = wrapChars(el);
+      let timeouts = [];
+      function play() {
+        timeouts.forEach(clearTimeout);
+        timeouts = [];
+        el.classList.add('in-view');
+        chars.forEach(c => { c.classList.remove('flicker', 'lit'); c.style.opacity = '0'; c.style.textShadow = 'none'; });
+        chars.forEach((c, i) => {
+          const t = setTimeout(() => {
+            c.classList.add('flicker');
+            const t2 = setTimeout(() => {
+              c.classList.remove('flicker');
+              c.classList.add('lit');
+            }, 300);
+            timeouts.push(t2);
+          }, i * 60);
+          timeouts.push(t);
+        });
+      }
+      return play;
+    }
+
+    // === STYLE 9: Wave Rise ===
+    function initWave(el) {
+      const chars = wrapChars(el);
+      chars.forEach((c, i) => {
+        c.style.transitionDelay = `${i * 40}ms`;
+      });
+      return () => {
+        el.style.transition = 'none';
+        el.querySelectorAll('.char-inner').forEach(c => c.style.transition = 'none');
+        el.classList.remove('in-view');
+        void el.offsetHeight;
+        el.style.transition = '';
+        el.querySelectorAll('.char-inner').forEach(c => c.style.transition = '');
+        setTimeout(() => el.classList.add('in-view'), 50);
+      };
+    }
+
+    // === STYLE 10: Gravity Drop ===
+    function initGravity(el) {
+      const chars = wrapChars(el);
+      let timeouts = [];
+      function play() {
+        timeouts.forEach(clearTimeout);
+        timeouts = [];
+        chars.forEach(c => { c.classList.remove('dropping'); c.style.opacity = '0'; c.style.transform = 'translateY(-120%)'; });
+        void el.offsetHeight;
+        chars.forEach((c, i) => {
+          const t = setTimeout(() => c.classList.add('dropping'), i * 50);
+          timeouts.push(t);
+        });
+      }
+      return play;
+    }
+
+    // === BODY TEXT ANIMATIONS ===
+
+    // Wrap each word in a span (spaces preserved as text nodes)
+    function wrapWords(el) {
+      if (el.dataset.wrapped === 'true') return;
+      const text = el.textContent;
+      el.innerHTML = '';
+      const parts = text.split(/(\s+)/);
+      parts.forEach(p => {
+        if (/^\s+$/.test(p)) {
+          el.appendChild(document.createTextNode(p));
+        } else if (p) {
+          const span = document.createElement('span');
+          span.className = 'word';
+          span.textContent = p;
+          el.appendChild(span);
+        }
+      });
+      el.dataset.wrapped = 'true';
+    }
+
+    // Wrap text into per-line spans (each line inside overflow-hidden line-wrap)
+    function wrapLines(el) {
+      if (el.dataset.wrappedLines === 'true') return;
+      // Simple split by natural word boundaries, group into lines manually after measuring
+      const text = el.textContent;
+      const words = text.split(/\s+/).filter(Boolean);
+      el.innerHTML = '';
+
+      // Build temporary structure with all words to measure line positions
+      words.forEach((w, i) => {
+        const s = document.createElement('span');
+        s.textContent = w + (i < words.length - 1 ? ' ' : '');
+        s.style.display = 'inline';
+        s.dataset.wordIdx = i;
+        el.appendChild(s);
+      });
+
+      // Group words by top position
+      const spans = Array.from(el.querySelectorAll('span'));
+      const lines = [];
+      let currentLine = [];
+      let currentTop = null;
+      spans.forEach(s => {
+        const top = s.offsetTop;
+        if (currentTop === null) currentTop = top;
+        if (top !== currentTop) {
+          lines.push(currentLine);
+          currentLine = [];
+          currentTop = top;
+        }
+        currentLine.push(s.textContent);
+      });
+      if (currentLine.length) lines.push(currentLine);
+
+      // Rebuild with line-wrap structure
+      el.innerHTML = '';
+      lines.forEach(lineWords => {
+        const wrap = document.createElement('span');
+        wrap.className = 'line-wrap';
+        const line = document.createElement('span');
+        line.className = 'line';
+        line.textContent = lineWords.join('').trimEnd();
+        wrap.appendChild(line);
+        el.appendChild(wrap);
+        el.appendChild(document.createTextNode(' '));
+      });
+      el.dataset.wrappedLines = 'true';
+    }
+
+    // Generic per-word body animation init (fade-up, blur, slide, scale, color, skew, depth)
+    function initBodyWords(el, staggerMs) {
+      wrapWords(el);
+      const words = el.querySelectorAll('.word');
+      words.forEach((w, i) => {
+        w.style.transitionDelay = `${i * staggerMs}ms`;
+      });
+      return () => {
+        words.forEach(w => w.style.transition = 'none');
+        el.classList.remove('in-view');
+        void el.offsetHeight;
+        words.forEach(w => w.style.transition = '');
+        setTimeout(() => el.classList.add('in-view'), 50);
+      };
+    }
+
+    // Per-line init for Body 04 (mask wipe) and Body 16 (wave rise)
+    // Waits for fonts to load before measuring line positions to avoid
+    // off-by-one breaks caused by font swap after initial layout.
+    function initBodyLines(el, staggerMs) {
+      const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
+      let lines = [];
+
+      const doWrap = () => {
+        wrapLines(el);
+        lines = el.querySelectorAll('.line');
+        lines.forEach((l, i) => {
+          l.style.transitionDelay = `${i * staggerMs}ms`;
+        });
+      };
+
+      fontsReady.then(doWrap);
+
+      return () => {
+        if (!lines.length) return;
+        lines.forEach(l => l.style.transition = 'none');
+        el.classList.remove('in-view');
+        void el.offsetHeight;
+        lines.forEach(l => l.style.transition = '');
+        setTimeout(() => el.classList.add('in-view'), 50);
+      };
+    }
+
+    // Per-word init with overflow-hidden wrapper (for mask-style animations like B16 wave)
+    function initBodyWordsMasked(el, staggerMs) {
+      if (el.dataset.wrapped !== 'true') {
+        const text = el.textContent;
+        el.innerHTML = '';
+        const parts = text.split(/(\s+)/);
+        parts.forEach(p => {
+          if (/^\s+$/.test(p)) {
+            el.appendChild(document.createTextNode(p));
+          } else if (p) {
+            const wrap = document.createElement('span');
+            wrap.className = 'word-wrap';
+            const span = document.createElement('span');
+            span.className = 'word';
+            span.textContent = p;
+            wrap.appendChild(span);
+            el.appendChild(wrap);
+          }
+        });
+        el.dataset.wrapped = 'true';
+      }
+      const words = el.querySelectorAll('.word');
+      words.forEach((w, i) => {
+        w.style.transitionDelay = `${i * staggerMs}ms`;
+      });
+      return () => {
+        words.forEach(w => w.style.transition = 'none');
+        el.classList.remove('in-view');
+        void el.offsetHeight;
+        words.forEach(w => w.style.transition = '');
+        setTimeout(() => el.classList.add('in-view'), 50);
+      };
+    }
+
+    // Paragraph-level init for Body 08 (border) and Body 09 (highlight) — no word split
+    function initBodyParagraph(el) {
+      return () => {
+        el.style.transition = 'none';
+        el.classList.remove('in-view');
+        void el.offsetHeight;
+        el.style.transition = '';
+        setTimeout(() => el.classList.add('in-view'), 50);
+      };
+    }
+
+    // === Init all demos ===
+    const replays = {};
+    document.querySelectorAll('[data-anim]').forEach(el => {
+      const type = el.dataset.anim;
+      let play;
+      switch (type) {
+        case 'wipe-reveal': play = initWipeReveal(el); break;
+        case 'blur-emerge': play = initBlurEmerge(el); break;
+        case 'typewriter': play = initTypewriter(el); break;
+        case 'split-cascade': play = initSplitCascade(el); break;
+        case 'ink-fill': play = initInkFill(el); break;
+        case 'domino': play = initDomino(el); break;
+        case 'scatter': play = initScatter(el); break;
+        case 'neon': play = initNeon(el); break;
+        case 'wave': play = initWave(el); break;
+        case 'gravity': play = initGravity(el); break;
+        case 'b-fade-up': play = initBodyWords(el, 25); break;
+        case 'b-blur': play = initBodyWords(el, 30); break;
+        case 'b-slide': play = initBodyWords(el, 20); break;
+        case 'b-mask': play = initBodyLines(el, 120); break;
+        case 'b-scale': play = initBodyWords(el, 25); break;
+        case 'b-color': play = initBodyWords(el, 20); break;
+        case 'b-skew': play = initBodyWords(el, 25); break;
+        case 'b-border': play = initBodyParagraph(el); break;
+        case 'b-highlight': play = initBodyParagraph(el); break;
+        case 'b-depth': play = initBodyWords(el, 30); break;
+        case 'b-clip': play = initBodyWords(el, 20); break;
+        case 'b-elastic': play = initBodyWords(el, 25); break;
+        case 'b-chromatic': play = initBodyWords(el, 22); break;
+        case 'b-iris': play = initBodyWords(el, 18); break;
+        case 'b-flip': play = initBodyWords(el, 28); break;
+        case 'b-wave': play = initBodyLines(el, 350); break;
+      }
+      const section = el.closest('[data-style]');
+      if (section) replays[section.dataset.style] = play;
+
+      // IntersectionObserver trigger
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            if (play) play();
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      observer.observe(el);
+    });
+
+    // Replay buttons
+    document.querySelectorAll('[data-replay]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const play = replays[btn.dataset.replay];
+        if (play) play();
+      });
+    });
+  </script>
+</body>
+</html>

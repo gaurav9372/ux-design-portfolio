@@ -57,6 +57,16 @@ export const initNav = () => {
   let lastY = window.scrollY;
   let ticking = false;
 
+  const syncBodyState = () => {
+    // Mirror nav visibility onto body so sticky elements (filter bars) can
+    // respond to it via CSS: body.nav-visible offsets their sticky top.
+    if (navFixed.classList.contains("nav-hidden")) {
+      document.body.classList.remove("nav-visible");
+    } else {
+      document.body.classList.add("nav-visible");
+    }
+  };
+
   const update = () => {
     ticking = false;
     const y = window.scrollY;
@@ -77,6 +87,7 @@ export const initNav = () => {
       }
       lastY = y;
     }
+    syncBodyState();
   };
 
   window.addEventListener("scroll", () => {

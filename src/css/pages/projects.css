@@ -32,7 +32,7 @@
   line-height: 1.05;
   letter-spacing: -1.2px;
   margin: 0;
-  color: var(--ink);
+  color: var(--accent);
 }
 .pp-tagline {
   font-size: 17px;
@@ -84,7 +84,6 @@
 }
 .pp-list .case-card:hover {
   box-shadow: 0 8px 48px rgba(0,0,0,.4);
-  border-color: rgba(255,195,33,.35);
 }
 /* CTA always visible on projects page */
 .pp-list .case-left .cta {
@@ -119,6 +118,7 @@
 .pp-filter-bar {
   padding: 32px var(--pad);
   display: flex;
+  justify-content: center;
   gap: 10px;
   flex-wrap: wrap;
   border-bottom: 1px solid var(--stroke);
@@ -126,7 +126,9 @@
   position: sticky;
   top: 0;
   z-index: 30;
+  transition: top .35s cubic-bezier(.4,0,.2,1);
 }
+body.nav-visible .pp-filter-bar { top: 64px }
 .pp-filter {
   padding: 8px 20px;
   border-radius: 100px;
@@ -143,10 +145,12 @@
 }
 .pp-filter:hover { border-color: var(--accent) }
 .pp-filter.active {
-  background: var(--accent);
+  background: transparent;
   border-color: var(--accent);
-  color: var(--bg);
+  color: var(--accent);
 }
+.pp-filter.active .split-char-inner,
+.pp-filter.active .split-char-clone { color: var(--accent) }
 .pp-count {
   font-size: 11px;
   opacity: .6;
@@ -287,7 +291,6 @@
   transition: border-color .2s, box-shadow .2s, transform .2s;
 }
 .pp-card:hover {
-  border-color: var(--accent);
   box-shadow: 0 8px 40px rgba(0,0,0,.35);
   transform: translateY(-4px);
 }
@@ -505,6 +508,7 @@
 @media (max-width: 720px) {
   .pp-filter { display: none }
   .pp-filter-bar { padding: 12px var(--pad) }
+  body.nav-visible .pp-filter-bar { top: 56px }
 }
 
 @media (max-width: 480px) {

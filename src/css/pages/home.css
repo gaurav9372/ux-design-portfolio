@@ -59,6 +59,7 @@
   line-height: 1;
   letter-spacing: -1.44px;
   margin: 0;
+  color: var(--accent);
 }
 .hero-title .accent { color: var(--accent) }
 .hero-name { font-weight: 500 }
@@ -659,12 +660,13 @@
   margin: 0 0 8px;
 }
 .home-blogs-title {
-  font-family: var(--font-display);
-  font-size: clamp(28px, 3.5vw, 40px);
-  font-weight: 800;
-  color: var(--ink);
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: 44px;
+  line-height: 1;
+  letter-spacing: -.44px;
+  color: var(--accent);
   margin: 0;
-  line-height: 1.2;
 }
 .home-blogs-viewall {
   font-size: 15px;

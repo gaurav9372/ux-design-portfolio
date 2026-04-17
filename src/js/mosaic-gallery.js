@@ -95,8 +95,88 @@ export const initMosaicGallery = () => {
     const valid = results.filter(Boolean);
     if (!valid.length) return;
     buildMosaic(container, valid);
+    initLightbox(container);
     initMosaicParallax(container);
   });
+};
+
+/* --- Lightbox: click any mosaic image to open full-size with arrows --- */
+const initLightbox = (container) => {
+  // Build lightbox DOM
+  const lightbox = document.createElement('div');
+  lightbox.className = 'cs-lightbox';
+  lightbox.innerHTML = `
+    <div class="cs-lightbox-backdrop"></div>
+    <button class="cs-lightbox-close" aria-label="Close">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <button class="cs-lightbox-arrow cs-lightbox-prev" aria-label="Previous">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="cs-lightbox-scroll">
+      <img class="cs-lightbox-img" src="" alt="Project screen preview" />
+    </div>
+    <button class="cs-lightbox-arrow cs-lightbox-next" aria-label="Next">
+      <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+    </button>
+    <p class="cs-lightbox-counter"></p>
+  `;
+  document.body.appendChild(lightbox);
+
+  const img = lightbox.querySelector('.cs-lightbox-img');
+  const counter = lightbox.querySelector('.cs-lightbox-counter');
+  let images = [];
+  let currentIdx = 0;
+
+  const scrollWrap = lightbox.querySelector('.cs-lightbox-scroll');
+
+  const show = (idx) => {
+    currentIdx = idx;
+    img.src = images[idx];
+    counter.textContent = `${idx + 1} / ${images.length}`;
+    scrollWrap.scrollTop = 0;
+  };
+
+  const open = (idx) => {
+    // Collect all mosaic images in DOM order
+    images = Array.from(container.querySelectorAll('.cs-mosaic-img')).map((i) => i.src);
+    if (!images.length) return;
+    show(idx);
+    lightbox.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const close = () => {
+    lightbox.classList.remove('is-open');
+    document.body.style.overflow = '';
+  };
+
+  const prev = () => { if (images.length) show((currentIdx - 1 + images.length) % images.length); };
+  const next = () => { if (images.length) show((currentIdx + 1) % images.length); };
+
+  // Click handlers
+  container.addEventListener('click', (e) => {
+    const target = e.target.closest('.cs-mosaic-img');
+    if (!target) return;
+    const allImgs = Array.from(container.querySelectorAll('.cs-mosaic-img'));
+    open(allImgs.indexOf(target));
+  });
+
+  lightbox.querySelector('.cs-lightbox-backdrop').addEventListener('click', close);
+  lightbox.querySelector('.cs-lightbox-close').addEventListener('click', close);
+  lightbox.querySelector('.cs-lightbox-prev').addEventListener('click', prev);
+  lightbox.querySelector('.cs-lightbox-next').addEventListener('click', next);
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('is-open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') prev();
+    if (e.key === 'ArrowRight') next();
+  });
+
+  // Make mosaic images look clickable
+  container.style.cursor = 'pointer';
 };
 
 /* --- Subtle parallax: each column scrolls at a slightly different speed --- */

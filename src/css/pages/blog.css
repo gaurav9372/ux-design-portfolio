@@ -17,7 +17,7 @@
   font-family: var(--font-display);
   font-size: clamp(32px, 4vw, 52px);
   font-weight: 800;
-  color: var(--ink);
+  color: var(--accent);
   margin: 0 0 16px;
   line-height: 1.15;
 }
@@ -35,15 +35,18 @@
 .bl-filter-bar {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   padding: 16px var(--pad);
   position: sticky;
-  top: 64px;
+  top: 0;
   z-index: 90;
   background: var(--bg);
   border-bottom: 1px solid var(--stroke);
   flex-wrap: wrap;
+  transition: top .35s cubic-bezier(.4,0,.2,1);
 }
+body.nav-visible .bl-filter-bar { top: 64px }
 .bl-filter {
   padding: 10px 20px;
   min-height: 44px;
@@ -61,10 +64,12 @@
 }
 .bl-filter:hover { border-color: var(--accent) }
 .bl-filter.active {
-  background: var(--accent);
+  background: transparent;
   border-color: var(--accent);
-  color: var(--bg);
+  color: var(--accent);
 }
+.bl-filter.active .split-char-inner,
+.bl-filter.active .split-char-clone { color: var(--accent) }
 .bl-count {
   font-size: 12px;
   opacity: .6;
@@ -116,7 +121,6 @@
   transition: border-color .2s, box-shadow .2s;
 }
 .bl-card:hover {
-  border-color: var(--accent);
   box-shadow: 0 8px 32px rgba(0, 0, 0, .25);
 }
 .bl-card[hidden] { display: none }
@@ -241,7 +245,7 @@
   font-family: var(--font-display);
   font-size: clamp(28px, 4vw, 44px);
   font-weight: 800;
-  color: var(--ink);
+  color: var(--accent);
   line-height: 1.2;
   margin: 0 0 20px;
 }
@@ -460,7 +464,8 @@
   .bl-body-section { padding: 0 var(--pad) 40px }
   .bl-author-section { padding: 0 var(--pad) 32px }
   .bl-more-section { padding: 0 var(--pad) 60px }
-  .bl-filter-bar { padding: 10px 16px; top: 56px; gap: 6px }
+  .bl-filter-bar { padding: 10px 16px; top: 0; gap: 6px }
+  body.nav-visible .bl-filter-bar { top: 56px }
   .bl-filter { padding: 6px 12px; font-size: 11px }
   .bl-title { font-size: 24px }
 }

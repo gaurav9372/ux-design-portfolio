@@ -178,7 +178,9 @@
   font-size: 32px;
   letter-spacing: -.32px;
   line-height: 1;
+  transition: color .25s ease;
 }
+.case-card:hover .case-left .title { color: var(--accent) }
 .case-left .sub {
   margin: 0;
   font-weight: 500;
@@ -205,6 +207,18 @@
   opacity: 1;
   transform: translateY(0);
 }
+/* Trigger split-hover character flip on card hover (same as CTA buttons) */
+.case-card:hover .case-left .cta .split-char-inner {
+  transform: translateY(-100%);
+  transition-duration: .25s;
+  transition-delay: 0ms;
+  opacity: 0;
+}
+.case-card:hover .case-left .cta .split-char-clone {
+  transform: translateY(-100%);
+  transition-duration: .25s;
+  transition-delay: 0ms;
+}
 .case-left .bottom { display: flex; gap: 16px; align-items: flex-start }
 .case-left .bottom .bar { width: 2px; background: var(--ink); flex: 0 0 auto }
 .case-left .bottom p {
@@ -225,7 +239,9 @@
 .case-placeholder {
   width: 100%; height: 100%;
   object-fit: cover;
+  transition: transform .5s cubic-bezier(0.22, 1, 0.36, 1);
 }
+.case-card:hover .case-placeholder { transform: scale(1.04) }
 /* Case section footer */
 .case-footer {
   position: absolute;

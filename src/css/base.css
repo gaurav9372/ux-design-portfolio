@@ -133,3 +133,52 @@ button,
   transition-duration: .25s;
   transition-delay: 0ms;
 }
+
+/* Heading animation — Gravity Drop */
+.ha-word {
+  display: inline-flex;
+  white-space: nowrap;
+}
+.ha-char {
+  display: inline-block;
+  overflow: hidden;
+  height: 1.15em;
+  vertical-align: bottom;
+}
+.ha-char-inner {
+  display: inline-block;
+  transform: translateY(-120%);
+  opacity: 0;
+}
+.ha-char-inner.ha-drop {
+  animation: haGravityDrop 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes haGravityDrop {
+  0%   { transform: translateY(-120%); opacity: 0 }
+  40%  { transform: translateY(8%); opacity: 1 }
+  60%  { transform: translateY(-4%) }
+  80%  { transform: translateY(2%) }
+  100% { transform: translateY(0); opacity: 1 }
+}
+
+/* Body text animation — Wave Rise (per-line) */
+.ba-wave {
+  opacity: 1 !important;
+}
+.ba-wave .ba-line-wrap {
+  display: block;
+  overflow: hidden;
+  opacity: 1 !important;
+  margin: 0;
+  padding: 0;
+}
+.ba-wave .ba-line {
+  display: inline-block;
+  white-space: nowrap;
+  opacity: 1 !important;
+  transform: translateY(110%);
+  transition: transform 2.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.ba-wave.ba-in-view .ba-line {
+  transform: translateY(0);
+}

@@ -55,6 +55,14 @@ export const applyMdContent = () => {
       return;
     }
 
+    // Append trailing space to inline prefixes so they don't merge with
+    // the next element (e.g. "I am" + "Shreyansh" → "I amShreyansh").
+    if (key === 'hero-hello-prefix' || key === 'hero-title-prefix') {
+      const el = document.querySelector(selector);
+      if (el) el.textContent = value + ' ';
+      return;
+    }
+
     if (key === 'gallery-quote') {
       const el = document.querySelector(selector);
       if (el) el.innerHTML = value.replace(/\n/g, '<br>');

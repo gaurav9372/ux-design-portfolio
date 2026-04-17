@@ -9,9 +9,11 @@
 import { initNav } from './nav.js';
 import { initSplitHover } from './split-hover.js';
 import { initCardLinks } from './card-links.js';
+import { initHeadingAnimations } from './heading-anim.js';
+import { initBodyAnimations } from './body-anim.js';
 
-const safe = (label, fn) => {
-  try { fn(); } catch (e) { console.error(label + ':', e); }
+const safe = async (label, fn) => {
+  try { await fn(); } catch (e) { console.error(label + ':', e); }
 };
 
 const loadHome = async () => {
@@ -56,8 +58,8 @@ const loadCaseStudy = async () => {
     import('./case-study-content.js'),
     import('./mosaic-gallery.js'),
   ]);
-  safe('applyCaseStudyContent', applyCaseStudyContent);
-  safe('initMosaicGallery', initMosaicGallery);
+  await safe('applyCaseStudyContent', applyCaseStudyContent);
+  await safe('initMosaicGallery', initMosaicGallery);
 };
 
 const loadBlogIndex = async () => {
@@ -67,12 +69,12 @@ const loadBlogIndex = async () => {
 
 const loadBlogPost = async () => {
   const { applyBlogContent } = await import('./blog-content.js');
-  safe('applyBlogContent', applyBlogContent);
+  await safe('applyBlogContent', applyBlogContent);
 };
 
 const loadAbout = async () => {
   const { applyAboutContent } = await import('./about-content.js');
-  safe('applyAboutContent', applyAboutContent);
+  await safe('applyAboutContent', applyAboutContent);
 };
 
 const loadContact = async () => {
@@ -102,6 +104,10 @@ const init = async () => {
   if (loader) {
     try { await loader(); } catch (e) { console.error(`${page} loader:`, e); }
   }
+
+  // --- Heading & body animations (after page content is loaded so text is final) ---
+  safe('initHeadingAnimations', initHeadingAnimations);
+  safe('initBodyAnimations', initBodyAnimations);
 };
 
 if (document.readyState === 'loading') {
