@@ -80,6 +80,9 @@ export const applyMdContent = () => {
       if (el) {
         el.textContent = value;
         el.setAttribute('href', `mailto:${value}`);
+        // Clear the split-hover guard so it re-wraps the new text
+        delete el.dataset.split;
+        el.classList.remove('split-hover');
       }
       return;
     }
@@ -87,4 +90,8 @@ export const applyMdContent = () => {
     const el = document.querySelector(selector);
     if (el) el.textContent = value;
   });
+
+  // Re-run split-hover so elements whose textContent was just replaced
+  // (e.g. footer email) get their character wrappers rebuilt.
+  import('./split-hover.js').then(({ initSplitHover }) => initSplitHover());
 };

@@ -98,9 +98,10 @@
     /* Two-column compare layout */
     .ds-compare {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 32px;
       margin-top: 24px;
+      max-width: 960px;
     }
     .ds-col {
       background: var(--bg2);
@@ -454,6 +455,72 @@
     }
     .imp-btn--disabled::after { opacity: .4 }
 
+    /* Icon buttons — for arrow navigation (testimonial, lightbox) & close */
+    .imp-icon-btn {
+      width: 56px;
+      height: 56px;
+      border: 2px solid #323936;
+      border-radius: 0;
+      background: transparent;
+      color: var(--ink);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      padding: 0;
+      transition: border-color .2s ease, border-width .15s ease, transform .15s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .imp-icon-btn:hover { border-color: var(--accent) }
+    .imp-icon-btn:active { border-width: 1px; transform: scale(.96) }
+    .imp-icon-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px }
+    .imp-icon-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      display: block;
+    }
+    .imp-icon-btn--sm { width: 44px; height: 44px }
+    .imp-icon-btn--sm svg { width: 14px; height: 14px }
+
+    /* Current icon button variants (bad - inconsistent) */
+    .curr-icon-circle {
+      width: 56px; height: 56px;
+      border: 2px solid #323936;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink);
+      display: grid; place-items: center;
+      cursor: pointer;
+    }
+    .curr-icon-filled {
+      width: 48px; height: 48px;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 0;
+      background: rgba(255,255,255,.06);
+      color: var(--ink);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+    }
+    .curr-icon-circle svg,
+    .curr-icon-filled svg {
+      width: 18px; height: 18px;
+      fill: none; stroke: currentColor; stroke-width: 2;
+      stroke-linecap: round; stroke-linejoin: round;
+      display: block;
+    }
+    .curr-icon-burger {
+      width: 44px; height: 44px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 0;
+      background: rgba(255,255,255,.04);
+      display: grid; place-items: center;
+      cursor: pointer;
+    }
+
     /* Utility — filter chip (sharp corners, consistent with the rest) */
     .imp-chip {
       padding: 10px 20px;
@@ -711,7 +778,7 @@
     }
     .ds-body-demo.ds-run .ds-line { transform: translateY(0) }
 
-    /* Split-hover link demo */
+    /* Per-letter CTA hover demo */
     .ds-split-demo {
       display: inline-block;
       color: var(--ink);
@@ -735,6 +802,7 @@
       display: block;
       line-height: 1.15em;
       transition: transform 1.3s cubic-bezier(0.22,1,0.36,1);
+      transition-delay: var(--sc-delay, 0ms);
     }
     .ds-split-demo .ds-sc-inner { color: var(--ink) }
     .ds-split-demo .ds-sc-clone {
@@ -743,8 +811,8 @@
       top: 100%;
       color: var(--accent);
     }
-    .ds-split-demo:hover .ds-sc-inner { transform: translateY(-100%); transition-duration: .25s }
-    .ds-split-demo:hover .ds-sc-clone { transform: translateY(-100%); transition-duration: .25s }
+    .ds-split-demo:hover .ds-sc-inner { transform: translateY(-100%); transition-duration: .25s; transition-delay: 0ms }
+    .ds-split-demo:hover .ds-sc-clone { transform: translateY(-100%); transition-duration: .25s; transition-delay: 0ms }
 
     /* Card lift demo */
     .ds-card-demo {
@@ -852,6 +920,7 @@
       <a href="#spacing">Spacing</a>
       <a href="#buttons">Buttons</a>
       <a href="#forms">Forms</a>
+      <a href="#icons">Icons</a>
       <a href="#cards">Cards</a>
       <a href="#breakpoints">Breakpoints</a>
       <a href="#motion">Motion</a>
@@ -860,10 +929,10 @@
 
   <!-- Hero -->
   <section class="ds-hero">
-    <p style="color:var(--accent);font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:16px">Design System — Audit & Proposal</p>
-    <h1>From scattered rules<br/>to one visual language.</h1>
-    <p>This document audits the current state of the portfolio's design tokens and proposes a cleaner, more consistent system. Left side = what we have today. Right side = what we should move to. Once approved, these tokens will be rolled across every page.</p>
-    <p style="margin-top:16px;font-size:13px;color:rgba(255,255,255,.5)">All previews are live CSS — what you see is what we'll ship. Works on desktop, tablet, and mobile.</p>
+    <p style="color:var(--accent);font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:16px">Design System — v1.0</p>
+    <h1>One visual language<br/>across every page.</h1>
+    <p>The source of truth for every design token used on this portfolio. Colors, typography, spacing, radius, motion — all documented here as they ship in production. Covers desktop, tablet, and mobile behavior.</p>
+    <p style="margin-top:16px;font-size:13px;color:rgba(255,255,255,.5)">All previews are live CSS — what you see on this page is what the site uses.</p>
   </section>
 
   <!-- ========== COLORS ========== -->
@@ -871,46 +940,12 @@
     <div class="ds-section-header">
       <p class="ds-section-label">01 — Colors</p>
       <h2 class="ds-section-title">Color tokens</h2>
-      <p class="ds-section-desc">A portfolio rarely needs more than 10 color tokens. More than that creates ambiguity — "which gray do I use here?"</p>
+      <p class="ds-section-desc">11 semantic color tokens. Every color on the site belongs to one of these groups — surface, text, brand, border, or semantic state. No hardcoded hex values in page CSS.</p>
     </div>
 
     <div class="ds-compare">
-      <!-- CURRENT -->
-      <div class="ds-col ds-col-current">
-        <span class="ds-col-title">Current — 20+ values</span>
-        <h3>Too many colors, unclear names</h3>
-        <p>Variables split by numbered suffix (bg, bg2, bg3, bg4). Two "muted" tokens with overlapping usage. Hardcoded hex values scattered in page CSS.</p>
-
-        <p class="ds-group-label">Backgrounds — 4 tokens</p>
-        <div class="ds-swatches">
-          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#121715"></div><span class="ds-swatch-name">--bg</span><span class="ds-swatch-value">#121715</span></div>
-          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#1c2320"></div><span class="ds-swatch-name">--bg2</span><span class="ds-swatch-value">#1c2320</span></div>
-          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#181e1b"></div><span class="ds-swatch-name">--bg3</span><span class="ds-swatch-value">#181e1b</span></div>
-          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#0e1210"></div><span class="ds-swatch-name">--bg4</span><span class="ds-swatch-value">#0e1210</span></div>
-        </div>
-
-        <p class="ds-group-label">Text — 2 muted tokens</p>
-        <div class="ds-swatches">
-          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#fff"></div><span class="ds-swatch-name">--ink</span><span class="ds-swatch-value">#ffffff</span></div>
-          <div class="ds-swatch"><div class="ds-swatch-color" style="background:rgba(255,255,255,.64)"></div><span class="ds-swatch-name">--muted</span><span class="ds-swatch-value">white/64%</span></div>
-          <div class="ds-swatch"><div class="ds-swatch-color" style="background:rgba(255,255,255,.92)"></div><span class="ds-swatch-name">--muted2</span><span class="ds-swatch-value">white/92%</span></div>
-        </div>
-
-        <p class="ds-group-label">Semantic (scattered, not variables)</p>
-        <div class="ds-swatches">
-          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#ff6b6b"></div><span class="ds-swatch-name">Error A</span><span class="ds-swatch-value">#ff6b6b</span></div>
-          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#e74c3c"></div><span class="ds-swatch-name">Error B</span><span class="ds-swatch-value">#e74c3c</span></div>
-          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#2ecc71"></div><span class="ds-swatch-name">Success</span><span class="ds-swatch-value">#2ecc71</span></div>
-        </div>
-
-        <div class="ds-note">
-          <strong>Issues:</strong> Four near-identical dark backgrounds (all look the same on-screen). Two muted text tokens used interchangeably. Error red appears as two different hex values depending on the file. No semantic color variables for states.
-        </div>
-      </div>
-
-      <!-- IMPROVED -->
       <div class="ds-col ds-col-improved">
-        <span class="ds-col-title">Improved — 11 tokens</span>
+        <span class="ds-col-title">11 tokens</span>
         <h3>Semantic names, clear hierarchy</h3>
         <p>Each token has a single purpose. Names describe intent ("text-secondary"), not position ("muted2"). Backgrounds collapsed to 3 levels that actually differ visually.</p>
 
@@ -947,7 +982,7 @@
         </div>
 
         <div class="ds-note">
-          <strong>Rationale:</strong> 11 tokens total vs 20+. Each is used for one purpose. The three surface levels have noticeable contrast between them (so raised cards actually look raised). Error and success are tokenized so they never get hardcoded again.
+          <strong>Rationale:</strong> Every token has a single purpose. The three surface levels have noticeable contrast so raised cards actually look raised. Error and success are tokenized so they never get hardcoded.
         </div>
       </div>
     </div>
@@ -958,67 +993,14 @@
     <div class="ds-section-header">
       <p class="ds-section-label">02 — Typography</p>
       <h2 class="ds-section-title">Type scale</h2>
-      <p class="ds-section-desc">A predictable modular scale reduces decisions and makes every page feel related. The current site has 17+ distinct font sizes across pages — we can cut that in half without losing expression.</p>
+      <p class="ds-section-desc">Two font families (Outfit for headings, Inter for body) on a 1.25× modular scale. Every heading and body size is one of the 9 tokens below. Scales automatically across desktop, tablet, and mobile.</p>
     </div>
 
     <div class="ds-compare">
-      <!-- CURRENT -->
-      <div class="ds-col ds-col-current">
-        <span class="ds-col-title">Current — 3 fonts, 17+ sizes</span>
-        <h3>Three fonts, overlapping scales</h3>
-        <p>Heebo and Outfit serve nearly the same role. Arbitrary sizes like 44px, 36px, 32px, 28px appear on different pages for the "same" heading level.</p>
-
-        <div class="ds-type-row">
-          <span class="ds-type-label">Hero</span>
-          <span class="ds-type-sample" style="font-size:72px;font-weight:500">I Design</span>
-          <span class="ds-type-meta">Outfit 500 / 72px</span>
-        </div>
-        <div class="ds-type-row">
-          <span class="ds-type-label">Hero alt</span>
-          <span class="ds-type-sample" style="font-family:var(--font-display);font-size:52px;font-weight:800">Care Naturals</span>
-          <span class="ds-type-meta">Heebo 800 / 52px</span>
-        </div>
-        <div class="ds-type-row">
-          <span class="ds-type-label">H2 (A)</span>
-          <span class="ds-type-sample" style="font-size:44px;font-weight:500">Section Title</span>
-          <span class="ds-type-meta">Outfit 500 / 44px</span>
-        </div>
-        <div class="ds-type-row">
-          <span class="ds-type-label">H2 (B)</span>
-          <span class="ds-type-sample" style="font-family:var(--font-display);font-size:36px;font-weight:800">Section Title</span>
-          <span class="ds-type-meta">Heebo 800 / 36px</span>
-        </div>
-        <div class="ds-type-row">
-          <span class="ds-type-label">H3</span>
-          <span class="ds-type-sample" style="font-size:32px;font-weight:500">Card Title</span>
-          <span class="ds-type-meta">Outfit 500 / 32px</span>
-        </div>
-        <div class="ds-type-row">
-          <span class="ds-type-label">Body L</span>
-          <span class="ds-type-sample" style="font-family:var(--font-body);font-size:18px;font-weight:500">Paragraph text example</span>
-          <span class="ds-type-meta">Inter 500 / 18px</span>
-        </div>
-        <div class="ds-type-row">
-          <span class="ds-type-label">Body</span>
-          <span class="ds-type-sample" style="font-family:var(--font-body);font-size:16px;font-weight:500">Default body text</span>
-          <span class="ds-type-meta">Inter 500 / 16px</span>
-        </div>
-        <div class="ds-type-row">
-          <span class="ds-type-label">Caption</span>
-          <span class="ds-type-sample" style="font-family:var(--font-body);font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent)">Eyebrow Label</span>
-          <span class="ds-type-meta">Inter 500 / 11px</span>
-        </div>
-
-        <div class="ds-note">
-          <strong>Issues:</strong> Heebo and Outfit do similar jobs — using both increases page weight and visual noise. H2 appears at 44px, 36px, 32px, 28px across pages with no rule. Body weight defaults to 500 (medium), which makes long-form reading feel heavier than it should.
-        </div>
-      </div>
-
-      <!-- IMPROVED -->
       <div class="ds-col ds-col-improved">
-        <span class="ds-col-title">Improved — 2 fonts, 9 sizes</span>
+        <span class="ds-col-title">2 fonts, 9 sizes</span>
         <h3>Two fonts, modular scale (1.25 ratio)</h3>
-        <p>Remove Heebo. Outfit handles all headings. Inter handles all body. 9 sizes cover every use case, each built on the perfect-fourth modular scale (1.25x).</p>
+        <p>Outfit handles all headings. Inter handles all body. 9 sizes cover every use case, each built on the perfect-fourth modular scale (1.25×).</p>
 
         <div class="ds-type-row">
           <span class="ds-type-label">Display</span>
@@ -1096,36 +1078,12 @@
     <div class="ds-section-header">
       <p class="ds-section-label">03 — Border Radius</p>
       <h2 class="ds-section-title">Roundness scale</h2>
-      <p class="ds-section-desc">The current site uses 8+ different radius values including leftover `--radius: 10px` that's almost never applied. A dark editorial site should commit to one sharp-or-soft direction.</p>
+      <p class="ds-section-desc">Sharp corners everywhere. Rounded rectangles dilute the editorial tone, so every button, card, input, chip, and panel uses 0 radius. The only exception: inherently circular shapes (avatars, swatches, dot indicators).</p>
     </div>
 
     <div class="ds-compare">
-      <!-- CURRENT -->
-      <div class="ds-col ds-col-current">
-        <span class="ds-col-title">Current — 8 values</span>
-        <h3>No consistent language</h3>
-        <p>Cards use 0, buttons use 12px, inputs use 12px, some cards use 16px, pills use 999px. Feels unintentional.</p>
-
-        <div class="ds-radius-samples">
-          <div class="ds-radius-box" style="border-radius:0">0</div>
-          <div class="ds-radius-box" style="border-radius:4px">4px</div>
-          <div class="ds-radius-box" style="border-radius:6px">6px</div>
-          <div class="ds-radius-box" style="border-radius:8px">8px</div>
-          <div class="ds-radius-box" style="border-radius:10px">10px</div>
-          <div class="ds-radius-box" style="border-radius:12px">12px</div>
-          <div class="ds-radius-box" style="border-radius:16px">16px</div>
-          <div class="ds-radius-box" style="border-radius:20px">20px</div>
-          <div class="ds-radius-box" style="border-radius:999px">999px</div>
-        </div>
-
-        <div class="ds-note">
-          <strong>Issues:</strong> No system. Blog cards (0) and featured cards (16px) live on the same page. --radius variable defined but rarely used. Feels arbitrary.
-        </div>
-      </div>
-
-      <!-- IMPROVED -->
       <div class="ds-col ds-col-improved">
-        <span class="ds-col-title">Improved — 2 values only</span>
+        <span class="ds-col-title">2 values only</span>
         <h3>Sharp corners, period.</h3>
         <p>No rounded rectangles anywhere — buttons, cards, inputs, chips, modals all use 0. The only radius allowed is <code style="font-family:'SF Mono',Menlo,monospace;font-size:12px;color:var(--accent)">--radius-full (999px)</code> for inherently circular shapes (avatars, color swatches, dot indicators).</p>
 
@@ -1169,32 +1127,8 @@
     </div>
 
     <div class="ds-compare">
-      <!-- CURRENT -->
-      <div class="ds-col ds-col-current">
-        <span class="ds-col-title">Current — arbitrary values</span>
-        <h3>No scale</h3>
-        <p>Values like 14px, 18px, 20px, 24px, 28px, 32px, 36px, 44px, 48px, 56px, 64px, 72px, 80px, 96px, 100px, 110px, 120px appear without pattern.</p>
-
-        <div class="ds-spacing-samples">
-          <div class="ds-spacing-row"><span class="ds-spacing-label">button-pad</span><div class="ds-spacing-bar" style="width:14px"></div><span class="ds-spacing-value">14px</span></div>
-          <div class="ds-spacing-row"><span class="ds-spacing-label">input-pad</span><div class="ds-spacing-bar" style="width:18px"></div><span class="ds-spacing-value">18px</span></div>
-          <div class="ds-spacing-row"><span class="ds-spacing-label">gap-sm</span><div class="ds-spacing-bar" style="width:20px"></div><span class="ds-spacing-value">20px</span></div>
-          <div class="ds-spacing-row"><span class="ds-spacing-label">card-pad</span><div class="ds-spacing-bar" style="width:28px"></div><span class="ds-spacing-value">28px</span></div>
-          <div class="ds-spacing-row"><span class="ds-spacing-label">gap-md</span><div class="ds-spacing-bar" style="width:36px"></div><span class="ds-spacing-value">36px</span></div>
-          <div class="ds-spacing-row"><span class="ds-spacing-label">section-pad-alt</span><div class="ds-spacing-bar" style="width:44px"></div><span class="ds-spacing-value">44px</span></div>
-          <div class="ds-spacing-row"><span class="ds-spacing-label">section-pad-lg</span><div class="ds-spacing-bar" style="width:56px"></div><span class="ds-spacing-value">56px</span></div>
-          <div class="ds-spacing-row"><span class="ds-spacing-label">section-pad-xl</span><div class="ds-spacing-bar" style="width:96px"></div><span class="ds-spacing-value">96px</span></div>
-          <div class="ds-spacing-row"><span class="ds-spacing-label">hero-pad</span><div class="ds-spacing-bar" style="width:110px"></div><span class="ds-spacing-value">110px</span></div>
-        </div>
-
-        <div class="ds-note">
-          <strong>Issues:</strong> 14, 18, 20, 28, 44, 56, 110 don't follow a system. Developers and designers have to eyeball the right value each time.
-        </div>
-      </div>
-
-      <!-- IMPROVED -->
       <div class="ds-col ds-col-improved">
-        <span class="ds-col-title">Improved — 8-point scale</span>
+        <span class="ds-col-title">8-point scale</span>
         <h3>Every value is a multiple of 4</h3>
         <p>Named scale from xs to 5xl. Use tokens, not hardcoded pixels. Scales automatically across breakpoints.</p>
 
@@ -1234,70 +1168,12 @@
     <div class="ds-section-header">
       <p class="ds-section-label">05 — Buttons</p>
       <h2 class="ds-section-title">Button system</h2>
-      <p class="ds-section-desc">The site currently has at least 8 distinct button styles — some are nearly identical but implemented separately. A clean system has one primary, one secondary, and one tertiary (text/link) variant.</p>
+      <p class="ds-section-desc">One CTA pattern across the entire site: uppercase text with a trailing arrow. Hover triggers the per-letter flip (white → accent yellow) with staggered delay. No backgrounds, no borders. Filter chips are the only exception (needed for group-toggle UX).</p>
     </div>
 
     <div class="ds-compare">
-      <!-- CURRENT -->
-      <div class="ds-col ds-col-current">
-        <span class="ds-col-title">Current — 8+ variants</span>
-        <h3>Too many one-off styles</h3>
-        <p>Each page invented its own CTA. Inconsistent padding, border-radius, uppercase rules, and hover behaviors.</p>
-
-        <div class="ds-button-grid">
-          <div class="ds-btn-item">
-            <p class="ds-btn-caption">Pill primary (projects page)</p>
-            <p class="ds-btn-desc">Pill 999px · 14px 28px · filled · dark text</p>
-            <div class="ds-btn-preview">
-              <button class="curr-pill">Get in touch →</button>
-            </div>
-          </div>
-          <div class="ds-btn-item">
-            <p class="ds-btn-caption">Outline (filter chips)</p>
-            <p class="ds-btn-desc">Pill 100px · 10px 20px · transparent · outlined</p>
-            <div class="ds-btn-preview">
-              <button class="curr-outline">Design</button>
-              <button class="curr-outline" style="border-color:var(--accent);color:var(--accent)">Process</button>
-            </div>
-          </div>
-          <div class="ds-btn-item">
-            <p class="ds-btn-caption">Text CTA (next project)</p>
-            <p class="ds-btn-desc">No radius · no padding · uppercase · arrow</p>
-            <div class="ds-btn-preview">
-              <button class="curr-text">View case study</button>
-            </div>
-          </div>
-          <div class="ds-btn-item">
-            <p class="ds-btn-caption">Nav CTA</p>
-            <p class="ds-btn-desc">Custom uppercase · no border</p>
-            <div class="ds-btn-preview">
-              <button class="curr-nav">Projects</button>
-            </div>
-          </div>
-          <div class="ds-btn-item">
-            <p class="ds-btn-caption">Square (burger/toggle)</p>
-            <p class="ds-btn-desc">Radius 12px · translucent bg</p>
-            <div class="ds-btn-preview">
-              <button class="curr-square">☰</button>
-            </div>
-          </div>
-          <div class="ds-btn-item">
-            <p class="ds-btn-caption">Badge</p>
-            <p class="ds-btn-desc">Pill · 4px 12px · 11px</p>
-            <div class="ds-btn-preview">
-              <span class="curr-badge">Design</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="ds-note">
-          <strong>Issues:</strong> Each button style is bespoke. A user can't predict which interaction affords what. The pill-primary and pill-outline both live on pages but look so different they feel like different products.
-        </div>
-      </div>
-
-      <!-- IMPROVED -->
       <div class="ds-col ds-col-improved">
-        <span class="ds-col-title">Improved — text-only, one system</span>
+        <span class="ds-col-title">text-only, one system</span>
         <h3>No boxes. Letters + motion.</h3>
         <p>One CTA pattern across the site: uppercase text with a trailing arrow. Hover triggers the per-letter flip (white → accent yellow) with staggered delay. No backgrounds, no borders, no pill-vs-solid debates.</p>
 
@@ -1359,34 +1235,8 @@
     </div>
 
     <div class="ds-compare">
-      <!-- CURRENT -->
-      <div class="ds-col ds-col-current">
-        <span class="ds-col-title">Current — 12px radius, varied states</span>
-        <h3>Inputs don't match buttons</h3>
-        <p>Contact form uses 12px radius + 14px 18px padding. Filter chips use 100px. No consistency.</p>
-
-        <div style="margin-bottom:16px">
-          <label class="ds-label">Name</label>
-          <input class="ds-input" style="border-radius:12px;padding:14px 18px" placeholder="Your name" />
-        </div>
-        <div style="margin-bottom:16px">
-          <label class="ds-label">Message</label>
-          <textarea class="ds-input" style="border-radius:12px;padding:14px 18px;height:96px;resize:none" placeholder="Tell me about your project..."></textarea>
-        </div>
-        <div>
-          <label class="ds-label">Error state (hardcoded red)</label>
-          <input class="ds-input" style="border-radius:12px;padding:14px 18px;border-color:#ff6b6b" value="invalid@email" />
-          <p style="color:#ff6b6b;font-size:12px;margin-top:6px">Enter a valid email address</p>
-        </div>
-
-        <div class="ds-note">
-          <strong>Issues:</strong> Inputs at 12px radius, buttons at 999px or 100px. Error color uses hardcoded hex. Labels and inputs don't share a grid.
-        </div>
-      </div>
-
-      <!-- IMPROVED -->
       <div class="ds-col ds-col-improved">
-        <span class="ds-col-title">Improved — sharp, tokenized</span>
+        <span class="ds-col-title">sharp, tokenized</span>
         <h3>Zero radius. Clean focus state.</h3>
         <p>Inputs match the rest of the system: sharp corners, subtle border. Focus turns the border accent yellow. Error state uses the <code style="font-family:'SF Mono',Menlo,monospace;font-size:12px;color:var(--accent)">--state-error</code> token with a faint background tint.</p>
 
@@ -1411,46 +1261,93 @@
     </div>
   </section>
 
-  <!-- ========== CARDS ========== -->
-  <section class="ds-section" id="cards">
+  <!-- ========== ICON BUTTONS ========== -->
+  <section class="ds-section" id="icons">
     <div class="ds-section-header">
-      <p class="ds-section-label">07 — Cards</p>
-      <h2 class="ds-section-title">Card system</h2>
-      <p class="ds-section-desc">Cards appear in 4+ flavors today — blog, case study (list), case study (stack), project grid, testimonial, value card. Each has its own radius, padding, hover. Consolidate to 2 variants.</p>
+      <p class="ds-section-label">07 — Icon Buttons</p>
+      <h2 class="ds-section-title">Icon buttons & navigation arrows</h2>
+      <p class="ds-section-desc">Icon buttons are used for navigation (carousel arrows, lightbox prev/next) and utility actions (close, menu). They need their own consistent style because text-only CTAs don't work when there's no text.</p>
     </div>
 
     <div class="ds-compare">
-      <!-- CURRENT -->
-      <div class="ds-col ds-col-current">
-        <span class="ds-col-title">Current — 4+ card styles</span>
-        <h3>Every section reinvents the card</h3>
-        <p>Blog cards use radius 0. Case cards use 0 on desktop, 12px on mobile. About value cards use 16px. No shared token.</p>
+      <div class="ds-col ds-col-improved">
+        <span class="ds-col-title">one icon button</span>
+        <h3>Sharp square. 2px border. Accent on hover.</h3>
+        <p>Every icon button shares the exact same shell. Two sizes (default 56×56, small 44×44). Same border, same hover state, same active press.</p>
 
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-          <div class="ds-card-preview" style="border-radius:0">
-            <div class="ds-card-img">📄</div>
-            <div class="ds-card-body">
-              <p class="ds-card-title">Blog card (0px)</p>
-              <p class="ds-card-desc">Sharp corners, no radius.</p>
-            </div>
-          </div>
-          <div class="ds-card-preview" style="border-radius:16px">
-            <div class="ds-card-img">💎</div>
-            <div class="ds-card-body">
-              <p class="ds-card-title">Value card (16px)</p>
-              <p class="ds-card-desc">Rounded, softer feel.</p>
-            </div>
-          </div>
+        <p class="ds-group-label">Default — 56×56 (carousel, lightbox arrows)</p>
+        <div style="display:flex;gap:16px;margin-bottom:20px">
+          <button class="imp-icon-btn" aria-label="Previous">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="imp-icon-btn" aria-label="Next">
+            <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+          </button>
+          <button class="imp-icon-btn" aria-label="Close">
+            <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
         </div>
+
+        <p class="ds-group-label">Small — 44×44 (mobile arrows, compact UI)</p>
+        <div style="display:flex;gap:16px;margin-bottom:20px">
+          <button class="imp-icon-btn imp-icon-btn--sm" aria-label="Previous">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="imp-icon-btn imp-icon-btn--sm" aria-label="Next">
+            <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+          </button>
+          <button class="imp-icon-btn imp-icon-btn--sm" aria-label="Menu">
+            <span style="display:block;width:16px;height:2px;background:currentColor;position:relative">
+              <span style="position:absolute;left:0;top:-5px;width:16px;height:2px;background:currentColor"></span>
+              <span style="position:absolute;left:0;top:5px;width:16px;height:2px;background:currentColor"></span>
+            </span>
+          </button>
+        </div>
+
+        <p class="ds-group-label">Shared specs</p>
+        <table class="ds-responsive-table">
+          <thead><tr><th>Property</th><th>Default</th><th>Small</th></tr></thead>
+          <tbody>
+            <tr><td>Size</td><td class="mono">56×56</td><td class="mono">44×44</td></tr>
+            <tr><td>Border</td><td class="mono">2px solid #323936</td><td class="mono">2px solid #323936</td></tr>
+            <tr><td>Background</td><td class="mono">transparent</td><td class="mono">transparent</td></tr>
+            <tr><td>Icon size</td><td class="mono">18×18</td><td class="mono">14×14</td></tr>
+            <tr><td>Stroke width</td><td class="mono">2px</td><td class="mono">2px</td></tr>
+            <tr><td>Hover</td><td class="mono">border-color → --accent</td><td class="mono">border-color → --accent</td></tr>
+            <tr><td>Active</td><td class="mono">border-width 1px + scale(.96)</td><td class="mono">border-width 1px + scale(.96)</td></tr>
+            <tr><td>Focus-visible</td><td class="mono">outline 2px --accent · offset 2px</td><td class="mono">outline 2px --accent · offset 2px</td></tr>
+          </tbody>
+        </table>
+
+        <p class="ds-group-label" style="margin-top:24px">Used for</p>
+        <table class="ds-responsive-table">
+          <thead><tr><th>Context</th><th>Size</th><th>Where</th></tr></thead>
+          <tbody>
+            <tr><td>Testimonial carousel</td><td class="mono">56px</td><td class="mono">Homepage testimonials prev/next</td></tr>
+            <tr><td>Lightbox arrows</td><td class="mono">56px (44px mobile)</td><td class="mono">Case study image zoom prev/next</td></tr>
+            <tr><td>Lightbox close</td><td class="mono">48px</td><td class="mono">Case study image zoom top-right</td></tr>
+            <tr><td>Burger menu</td><td class="mono">44px</td><td class="mono">Mobile navbar</td></tr>
+          </tbody>
+        </table>
 
         <div class="ds-note">
-          <strong>Issues:</strong> Same data shown in completely different visual containers depending on page. User perceives them as unrelated UI.
+          <strong>Rationale:</strong> One visual language for every non-text interactive control. Users learn "square with border = clickable icon." The hover state (border turns accent) is the same affordance signal used everywhere else on the site.
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- IMPROVED -->
+  <!-- ========== CARDS ========== -->
+  <section class="ds-section" id="cards">
+    <div class="ds-section-header">
+      <p class="ds-section-label">08 — Cards</p>
+      <h2 class="ds-section-title">Card system</h2>
+      <p class="ds-section-desc">One card pattern for every context — blog posts, case studies, project grid, metrics, testimonials, value props. Sharp corners, subtle border, consistent hover behavior (lift + thumbnail zoom + title shifts to accent).</p>
+    </div>
+
+    <div class="ds-compare">
       <div class="ds-col ds-col-improved">
-        <span class="ds-col-title">Improved — one card, sharp</span>
+        <span class="ds-col-title">one card, sharp</span>
         <h3>One card pattern. Zero radius.</h3>
         <p>Every card on the site shares the same shell: sharp corners, subtle border, thumbnail on top, content below. Used by blog posts, case studies, value props, testimonials, metrics — all the same.</p>
 
@@ -1497,37 +1394,14 @@
   <!-- ========== BREAKPOINTS ========== -->
   <section class="ds-section" id="breakpoints">
     <div class="ds-section-header">
-      <p class="ds-section-label">08 — Breakpoints</p>
+      <p class="ds-section-label">09 — Breakpoints</p>
       <h2 class="ds-section-title">Responsive behavior</h2>
-      <p class="ds-section-desc">The current site uses 5 different breakpoints (1280, 1100, 768, 720, 480) with minor and sometimes conflicting tweaks. Let's commit to 3 real breakpoints that cover every device.</p>
+      <p class="ds-section-desc">Three breakpoints covering every device — Mobile (&lt; 640px), Tablet (640–1024px), Desktop (&gt; 1024px). Every token scales predictably at these three tiers.</p>
     </div>
 
     <div class="ds-compare">
-      <!-- CURRENT -->
-      <div class="ds-col ds-col-current">
-        <span class="ds-col-title">Current — 5 breakpoints</span>
-        <h3>Too many, overlapping</h3>
-        <p>720px and 768px are 48px apart but trigger different behaviors. 1100px is a non-standard cutoff.</p>
-
-        <table class="ds-responsive-table">
-          <thead><tr><th>BP</th><th>Used for</th></tr></thead>
-          <tbody>
-            <tr><td class="mono">1280px</td><td>Reduce hero title only</td></tr>
-            <tr><td class="mono">1100px</td><td>Primary tablet breakpoint — most layout shifts</td></tr>
-            <tr><td class="mono">768px</td><td>Type scale reduction</td></tr>
-            <tr><td class="mono">720px</td><td>Hide elements, nav switches</td></tr>
-            <tr><td class="mono">480px</td><td>Mobile fine-tuning</td></tr>
-          </tbody>
-        </table>
-
-        <div class="ds-note">
-          <strong>Issues:</strong> 720 and 768 overlap and cause unpredictable mid-tablet behavior. 1100 is non-standard — most tools default to 1024.
-        </div>
-      </div>
-
-      <!-- IMPROVED -->
       <div class="ds-col ds-col-improved">
-        <span class="ds-col-title">Improved — 3 breakpoints</span>
+        <span class="ds-col-title">3 breakpoints</span>
         <h3>Mobile · Tablet · Desktop</h3>
         <p>Three clear tiers aligned to actual devices.</p>
 
@@ -1584,56 +1458,14 @@
   <!-- ========== MOTION ========== -->
   <section class="ds-section" id="motion">
     <div class="ds-section-header">
-      <p class="ds-section-label">09 — Motion</p>
+      <p class="ds-section-label">10 — Motion</p>
       <h2 class="ds-section-title">Animation & easing</h2>
-      <p class="ds-section-desc">Motion is part of the brand. Today durations and easings are scattered across files — 20+ unique timing values and 6+ cubic-bezier curves. A tight motion system makes every interaction feel like it came from the same hand.</p>
+      <p class="ds-section-desc">Motion is part of the brand. 5 duration tokens + 4 easing tokens power every animation on the site — from hover states to scroll-triggered reveals.</p>
     </div>
 
     <div class="ds-compare">
-      <!-- CURRENT -->
-      <div class="ds-col ds-col-current">
-        <span class="ds-col-title">Current — scattered timings</span>
-        <h3>20+ durations, 6+ easings</h3>
-        <p>Values like .1s, .15s, .2s, .25s, .3s, .35s, .4s, .5s, .6s, .7s, .8s, 1s, 1.1s, 1.3s, 1.8s, 2.4s, 28s, 32s live across the CSS. Some animations use ease, some ease-out, some custom curves.</p>
-
-        <p class="ds-group-label">Durations in use (abridged)</p>
-        <table class="ds-motion-table">
-          <thead><tr><th>Duration</th><th>Where</th></tr></thead>
-          <tbody>
-            <tr><td class="mono">.1s</td><td>Button active scale</td></tr>
-            <tr><td class="mono">.2s</td><td>Most hovers, color transitions</td></tr>
-            <tr><td class="mono">.25s</td><td>Split-hover active state, card shadow</td></tr>
-            <tr><td class="mono">.3s</td><td>Transform transitions</td></tr>
-            <tr><td class="mono">.35s</td><td>Nav slide, sticky bar shift</td></tr>
-            <tr><td class="mono">.5s</td><td>Image zoom on card hover</td></tr>
-            <tr><td class="mono">.6s</td><td>Heading gravity drop</td></tr>
-            <tr><td class="mono">1.3s</td><td>Split-hover rest state</td></tr>
-            <tr><td class="mono">2.4s</td><td>Body wave rise per-line</td></tr>
-            <tr><td class="mono">28s / 32s</td><td>Marquee (logos, bgline)</td></tr>
-          </tbody>
-        </table>
-
-        <p class="ds-group-label">Easing curves in use</p>
-        <table class="ds-motion-table">
-          <thead><tr><th>Curve</th><th>Where</th></tr></thead>
-          <tbody>
-            <tr><td class="mono">cubic-bezier(.22,1,.36,1)</td><td>Most reveal animations</td></tr>
-            <tr><td class="mono">cubic-bezier(.4,0,.2,1)</td><td>Nav transform</td></tr>
-            <tr><td class="mono">cubic-bezier(.19,1,.22,1)</td><td>Body wave rise</td></tr>
-            <tr><td class="mono">cubic-bezier(.34,1.56,.64,1)</td><td>Moodboard experiments</td></tr>
-            <tr><td class="mono">ease / ease-out</td><td>Opacity fades</td></tr>
-            <tr><td class="mono">linear</td><td>Marquee & spinners</td></tr>
-          </tbody>
-        </table>
-
-        <div class="ds-note">
-          <strong>Issues:</strong> No named tokens — developers have to copy the exact cubic-bezier into every new rule. Durations change by small deltas for no semantic reason (.2s vs .25s vs .3s). No shared motion language between heading, body, and hover animations.
-        </div>
-      </div>
-
-      <!-- IMPROVED -->
       <div class="ds-col ds-col-improved">
-        <span class="ds-col-title">Improved — 5 durations · 4 easings</span>
+        <span class="ds-col-title">5 durations · 4 easings</span>
         <h3>Tokenized motion scale</h3>
         <p>Every animation picks from a short list. One token per intent (hover, reveal, long-form, marquee).</p>
 
@@ -1734,11 +1566,11 @@
         </table>
       </div>
 
-      <!-- SPLIT HOVER -->
+      <!-- PER-LETTER CTA HOVER -->
       <div class="ds-col ds-col-improved">
-        <span class="ds-col-title">Pattern 03 — Link / CTA Hover</span>
-        <h3>Split-Hover · letter flip</h3>
-        <p>All links, buttons, and CTAs. Each character flips up to reveal its accent-colored clone beneath.</p>
+        <span class="ds-col-title">Pattern 03 — CTA Hover (per-letter)</span>
+        <h3>Per-letter flip · the signature interaction</h3>
+        <p>Applied to every link, button, and CTA across the site — navbar items, "View All", "View Case Study", "Send Message", footer email, filter chips. <strong>Per-letter, not per-word</strong> — each character is wrapped in its own mask and flips individually from white to accent yellow, with a staggered delay that creates the wave feel.</p>
 
         <div class="ds-motion-demo">
           <p class="ds-motion-caption">Hover me</p>
@@ -1746,12 +1578,15 @@
         </div>
 
         <table class="ds-motion-table" style="margin-top:20px">
-          <thead><tr><th>State</th><th>Value</th></tr></thead>
+          <thead><tr><th>Property</th><th>Value</th></tr></thead>
           <tbody>
-            <tr><td>At rest</td><td class="mono">1300ms · --ease-out</td></tr>
-            <tr><td>On hover</td><td class="mono">250ms · --ease-out</td></tr>
-            <tr><td>Stagger</td><td class="mono">20ms per char, max 400ms</td></tr>
+            <tr><td>Unit of animation</td><td class="mono">1 character (not word)</td></tr>
+            <tr><td>At-rest transition</td><td class="mono">1300ms · --ease-out</td></tr>
+            <tr><td>On-hover transition</td><td class="mono">250ms · --ease-out</td></tr>
+            <tr><td>Per-letter stagger</td><td class="mono">20ms, capped at 400ms total</td></tr>
             <tr><td>Color</td><td class="mono">--text-primary → --accent</td></tr>
+            <tr><td>Reveal mechanic</td><td class="mono">Y-axis flip — original char slides up, accent clone slides up from below</td></tr>
+            <tr><td>Applied via</td><td class="mono">split-hover.js + base.css .split-hover rules</td></tr>
           </tbody>
         </table>
       </div>
@@ -1807,75 +1642,16 @@
       <h2 class="ds-section-title" style="font-size:26px">Motion rules</h2>
     </div>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
-      <div class="ds-col ds-col-improved" style="padding:24px">
-        <h3 style="font-size:16px;margin-bottom:12px">Do</h3>
-        <ul style="color:rgba(255,255,255,.85);font-size:14px;line-height:1.9;padding-left:20px">
-          <li>Use <code style="font-family:'SF Mono',Menlo,monospace;font-size:12px;color:var(--accent)">--duration-fast</code> for hover (color, border, shadow)</li>
-          <li>Use <code style="font-family:'SF Mono',Menlo,monospace;font-size:12px;color:var(--accent)">--duration-base</code> for movement (transform, slide)</li>
-          <li>Use <code style="font-family:'SF Mono',Menlo,monospace;font-size:12px;color:var(--accent)">--duration-slow</code> for reveals (entry animations)</li>
-          <li>Respect <code style="font-family:'SF Mono',Menlo,monospace;font-size:12px;color:var(--accent)">prefers-reduced-motion</code> — skip all non-essential animation</li>
-          <li>Trigger reveals via IntersectionObserver with threshold 0.15</li>
-          <li>Run each reveal once per scroll session (unobserve after)</li>
-        </ul>
-      </div>
-      <div class="ds-col ds-col-current" style="padding:24px">
-        <h3 style="font-size:16px;margin-bottom:12px">Don't</h3>
-        <ul style="color:rgba(255,255,255,.85);font-size:14px;line-height:1.9;padding-left:20px">
-          <li>Use arbitrary durations like 250ms, 320ms, 450ms — pick from the token list</li>
-          <li>Write inline cubic-bezier curves — use the 4 named easings</li>
-          <li>Add bounce/overshoot to navigational elements (feels gimmicky)</li>
-          <li>Trigger the same reveal twice if user scrolls up and back down</li>
-          <li>Use <code style="font-family:'SF Mono',Menlo,monospace;font-size:12px">ease-in</code> — entrances feel slow at the start (bad)</li>
-          <li>Stack more than 2 animations on one element at once</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== SUMMARY ========== -->
-  <section class="ds-section">
-    <div class="ds-section-header">
-      <p class="ds-section-label">Summary</p>
-      <h2 class="ds-section-title">What changes when approved</h2>
-    </div>
-
-    <div class="ds-compare" style="margin-top:0">
-      <div class="ds-col ds-col-current">
-        <span class="ds-col-title">What we remove</span>
-        <ul style="color:rgba(255,255,255,.85);font-size:14px;line-height:1.9;padding-left:20px">
-          <li>Heebo font (redundant with Outfit)</li>
-          <li>2 of the 4 background color tokens (bg3, bg4)</li>
-          <li>--muted2 token (merged into --text-secondary)</li>
-          <li>ALL rounded-corner values (4px, 6px, 8px, 10px, 12px, 16px, 20px)</li>
-          <li>Breakpoints at 1280px, 1100px, 720px</li>
-          <li>5+ one-off button styles</li>
-          <li>Hardcoded error red (used as 2 different hex values)</li>
-          <li>--radius variable that's defined but unused</li>
-          <li>20+ random duration values and 6+ inline cubic-beziers</li>
-        </ul>
-      </div>
-      <div class="ds-col ds-col-improved">
-        <span class="ds-col-title">What we gain</span>
-        <ul style="color:rgba(255,255,255,.85);font-size:14px;line-height:1.9;padding-left:20px">
-          <li>11 semantic color tokens vs 20+ raw values</li>
-          <li>2 font families vs 3 (saves ~35KB)</li>
-          <li>9 typography tokens on a 1.25x modular scale</li>
-          <li>2 radius tokens — 0 for everything, 999px for circles only</li>
-          <li>8-point spacing scale (xs → 5xl)</li>
-          <li>3 button variants × 3 sizes = one predictable API</li>
-          <li>3 breakpoints (mobile · tablet · desktop)</li>
-          <li>5 duration + 4 easing tokens covering every animation</li>
-          <li>5 named motion patterns (heading, body, hover, card, marquee)</li>
-          <li>Every token scales responsively — one system, three devices</li>
-        </ul>
-      </div>
-    </div>
-
-    <div style="margin-top:48px;padding:32px;background:rgba(255,195,33,.04);border:1px solid rgba(255,195,33,.15);border-radius:12px">
-      <p style="color:var(--accent);font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px">Next step</p>
-      <h3 style="font-family:var(--font-ui);font-weight:500;font-size:22px;margin-bottom:12px">Your review</h3>
-      <p style="color:var(--muted);font-size:15px;line-height:1.7;max-width:720px">Review the "Improved" column for each section. Mark any tokens you want changed — different accent shade, tighter type scale, bigger/smaller radius, different breakpoint values, different button variants. Once finalized, we'll apply this system across every page, replacing the scattered rules with a single tokenized source of truth.</p>
+    <div class="ds-col ds-col-improved" style="padding:24px;max-width:720px">
+      <ul style="color:rgba(255,255,255,.85);font-size:14px;line-height:1.9;padding-left:20px">
+        <li>Use <code style="font-family:'SF Mono',Menlo,monospace;font-size:12px;color:var(--accent)">--duration-fast</code> for hover (color, border, shadow).</li>
+        <li>Use <code style="font-family:'SF Mono',Menlo,monospace;font-size:12px;color:var(--accent)">--duration-base</code> for movement (transform, slide).</li>
+        <li>Use <code style="font-family:'SF Mono',Menlo,monospace;font-size:12px;color:var(--accent)">--duration-slow</code> for entry reveals (heading gravity drop).</li>
+        <li>Use <code style="font-family:'SF Mono',Menlo,monospace;font-size:12px;color:var(--accent)">--duration-longform</code> for per-line body wave reveals only.</li>
+        <li>Respect <code style="font-family:'SF Mono',Menlo,monospace;font-size:12px;color:var(--accent)">prefers-reduced-motion</code> — skip all non-essential animation.</li>
+        <li>Trigger reveals via <code style="font-family:'SF Mono',Menlo,monospace;font-size:12px;color:var(--accent)">IntersectionObserver</code> with threshold 0.15, and unobserve after firing once.</li>
+        <li>Always pick from the 5 duration + 4 easing tokens. Don't invent values or write inline cubic-beziers.</li>
+      </ul>
     </div>
   </section>
 
@@ -1969,23 +1745,28 @@
     };
     document.querySelector('[data-replay-body]').addEventListener('click', playBody);
 
-    // Split-hover link demo
+    // Per-letter CTA hover demo — wraps each character with staggered delay
     const splitEl = document.querySelector('[data-demo="split"]');
-    const splitText = splitEl.textContent;
-    splitEl.innerHTML = '';
-    for (const ch of splitText) {
-      if (ch === ' ') { splitEl.appendChild(document.createTextNode(' ')); continue }
-      const outer = document.createElement('span');
-      outer.className = 'ds-sc';
-      const inner = document.createElement('span');
-      inner.className = 'ds-sc-inner';
-      inner.textContent = ch;
-      const clone = document.createElement('span');
-      clone.className = 'ds-sc-clone';
-      clone.textContent = ch;
-      outer.appendChild(inner);
-      outer.appendChild(clone);
-      splitEl.appendChild(outer);
+    if (splitEl) {
+      const splitText = splitEl.textContent;
+      splitEl.innerHTML = '';
+      let splitIdx = 0;
+      for (const ch of splitText) {
+        if (ch === ' ') { splitEl.appendChild(document.createTextNode(' ')); continue }
+        const outer = document.createElement('span');
+        outer.className = 'ds-sc';
+        outer.style.setProperty('--sc-delay', `${Math.min(splitIdx * 20, 400)}ms`);
+        const inner = document.createElement('span');
+        inner.className = 'ds-sc-inner';
+        inner.textContent = ch;
+        const clone = document.createElement('span');
+        clone.className = 'ds-sc-clone';
+        clone.textContent = ch;
+        outer.appendChild(inner);
+        outer.appendChild(clone);
+        splitEl.appendChild(outer);
+        splitIdx++;
+      }
     }
 
     // Wrap chars for all improved-buttons with data-split

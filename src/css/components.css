@@ -431,6 +431,39 @@
 .t-dot:focus { outline: none; box-shadow: none }
 .t-dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px }
 
+/* Footer email (shared across all pages) */
+.footer .email {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: 44px;
+  line-height: 1;
+  letter-spacing: -.44px;
+  color: var(--ink);
+  word-break: break-word;
+  position: relative;
+  display: inline-block;
+  padding-right: var(--pad);
+  text-transform: none;
+  text-decoration: none;
+}
+.footer .email::after {
+  content: "";
+  position: absolute;
+  right: 0; top: 50%;
+  width: 24px; height: 16px;
+  background: url("/images/icons/arrow-button.svg") no-repeat center/contain;
+  opacity: 0;
+  transform: translateY(-50%) translateX(-6px);
+  transition: opacity .2s ease, transform .2s ease;
+  pointer-events: none;
+}
+.footer .email:hover::after,
+.footer .email:focus-visible::after {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
 /* Social dots */
 .socials { display: flex; gap: 16px; z-index: 2 }
 .social-icon {
@@ -441,7 +474,7 @@
   align-items: center;
   justify-content: center;
   background: var(--bg2);
-  border-radius: 50%;
+  border-radius: 0;
   flex-shrink: 0;
 }
 .social-icon img {
