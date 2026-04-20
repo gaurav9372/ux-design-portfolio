@@ -131,7 +131,7 @@
 body.nav-visible .pp-filter-bar { top: 64px }
 .pp-filter {
   padding: 8px 20px;
-  border-radius: 100px;
+  border-radius: 0;
   border: 1px solid var(--stroke);
   background: transparent;
   color: var(--ink);
@@ -162,7 +162,7 @@ body.nav-visible .pp-filter-bar { top: 64px }
   padding: 4px 12px;
   background: var(--bg4);
   border: 1px solid var(--stroke);
-  border-radius: 999px;
+  border-radius: 0;
   font-size: 11px;
   letter-spacing: 1.2px;
   text-transform: uppercase;
@@ -203,7 +203,7 @@ body.nav-visible .pp-filter-bar { top: 64px }
   color: var(--muted);
   padding: 4px 10px;
   border: 1px solid var(--stroke);
-  border-radius: 4px;
+  border-radius: 0;
 }
 .pp-card-cta {
   font-family: var(--font-ui);
@@ -228,7 +228,7 @@ body.nav-visible .pp-filter-bar { top: 64px }
   grid-template-columns: 1fr 1fr;
   background: var(--bg2);
   border: 1px solid var(--stroke);
-  border-radius: 16px;
+  border-radius: 0;
   overflow: hidden;
   text-decoration: none;
   transition: border-color .2s, box-shadow .2s;
@@ -283,7 +283,7 @@ body.nav-visible .pp-filter-bar { top: 64px }
 .pp-card {
   background: var(--bg2);
   border: 1px solid var(--stroke);
-  border-radius: 16px;
+  border-radius: 0;
   overflow: hidden;
   text-decoration: none;
   display: flex;
@@ -379,7 +379,7 @@ body.nav-visible .pp-filter-bar { top: 64px }
   padding: 32px;
   background: var(--bg);
   border: 1px solid var(--stroke);
-  border-radius: 12px;
+  border-radius: 0;
 }
 .pp-step-num {
   font-family: var(--font-ui);
@@ -453,7 +453,7 @@ body.nav-visible .pp-filter-bar { top: 64px }
   letter-spacing: .5px;
   text-decoration: none;
   padding: 14px 28px;
-  border-radius: 999px;
+  border-radius: 0;
   margin-top: 8px;
   transition: background .15s, gap .2s;
   width: fit-content;

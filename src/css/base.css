@@ -3,32 +3,82 @@
    =========================== */
 
 :root {
-  /* Colors */
-  --bg: #121715;
-  --bg2: #1c2320;
+  /* ============ COLORS ============ */
+  /* Surface — 3 levels */
+  --surface-base: #121715;
+  --surface-raised: #1c2320;
+  --surface-overlay: #252B28;
+
+  /* Text — 3 tiers of emphasis */
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255,255,255,.72);
+  --text-tertiary: rgba(255,255,255,.48);
+
+  /* Brand */
+  --accent: #ffc321;
+  --accent-hover: #ffd658;
+
+  /* Borders */
+  --border-subtle: rgba(255,255,255,.08);
+  --border-default: rgba(255,255,255,.14);
+
+  /* Semantic states */
+  --state-error: #FF6B6B;
+  --state-success: #34D399;
+
+  /* Legacy aliases (kept so existing rules don't break during migration) */
+  --bg: var(--surface-base);
+  --bg2: var(--surface-raised);
   --bg3: #181e1b;
   --bg4: #0e1210;
-  --ink: #ffffff;
-  --muted: rgba(255,255,255,.64);
+  --ink: var(--text-primary);
+  --muted: var(--text-secondary);
   --muted2: rgba(255,255,255,.92);
-  --accent: #ffc321;
-  --accent-hover: #e6af1d;
   --stroke: #3c403f;
   --stroke2: #121715;
 
-  /* Shadows */
+  /* ============ RADIUS ============ */
+  --radius-none: 0;
+  --radius-full: 999px;
+  --radius: 0; /* legacy alias, now 0 per design system */
+
+  /* ============ SPACING (8-point scale) ============ */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+  --space-5xl: 128px;
+
+  /* ============ MOTION ============ */
+  /* Durations */
+  --duration-instant: 100ms;
+  --duration-fast: 200ms;
+  --duration-base: 350ms;
+  --duration-slow: 600ms;
+  --duration-longform: 1800ms;
+
+  /* Easings */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-smooth: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-linear: linear;
+
+  /* ============ SHADOWS ============ */
   --shadow: 32px 40px 40px rgba(0,0,0,.24);
 
-  /* Layout */
+  /* ============ LAYOUT ============ */
   --wrap: 1280px;
   --pad: 96px;
   --padSm: 24px;
-  --radius: 10px;
 
-  /* Fonts */
+  /* ============ FONTS ============ */
   --font-body: Inter, system-ui, -apple-system, sans-serif;
-  --font-display: Heebo, sans-serif;
   --font-ui: Outfit, sans-serif;
+  --font-display: Outfit, sans-serif; /* merged into Outfit — Heebo removed */
 }
 
 /* Reset */

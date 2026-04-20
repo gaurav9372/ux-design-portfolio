@@ -722,7 +722,7 @@
     height: auto;
     transform: none !important;
     opacity: 1 !important;
-    border-radius: 12px;
+    border-radius: 0;
   }
   .case-left { width: 100%; flex: 0 0 auto }
   .case-right { width: 100%; flex: 0 0 auto; height: 360px }

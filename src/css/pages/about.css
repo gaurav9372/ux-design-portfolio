@@ -29,7 +29,7 @@
   flex: 0 0 280px;
   width: 280px;
   height: 280px;
-  border-radius: 20px;
+  border-radius: 0;
   overflow: hidden;
   background: var(--bg2);
   border: 1px solid var(--stroke);
@@ -87,7 +87,7 @@
 .ab-value-card {
   background: var(--bg2);
   border: 1px solid var(--stroke);
-  border-radius: 16px;
+  border-radius: 0;
   padding: 32px;
   display: flex;
   flex-direction: column;
@@ -152,7 +152,7 @@
   padding: 6px 14px;
   background: rgba(255, 255, 255, .06);
   border: 1px solid var(--stroke);
-  border-radius: 100px;
+  border-radius: 0;
   line-height: 1.4;
 }
 
@@ -232,7 +232,7 @@
   flex: 0 0 240px;
   width: 240px;
   height: 240px;
-  border-radius: 16px;
+  border-radius: 0;
   overflow: hidden;
   background: var(--bg2);
   border: 1px solid var(--stroke);
@@ -256,7 +256,7 @@
 .ab-quote-card {
   background: var(--bg);
   border: 1px solid var(--stroke);
-  border-radius: 16px;
+  border-radius: 0;
   padding: 32px;
   display: flex;
   flex-direction: column;
