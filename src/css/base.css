@@ -232,3 +232,85 @@ button,
 .ba-wave.ba-in-view .ba-line {
   transform: translateY(0);
 }
+
+/* ================================================================
+   Custom cursor — Dual Orbit (Square variant) — desktop only
+   Hidden by default; enabled when JS adds .has-custom-cursor to <html>
+   ================================================================ */
+html.has-custom-cursor,
+html.has-custom-cursor body {
+  cursor: none;
+}
+html.has-custom-cursor * { cursor: inherit }
+
+.cursor-outer,
+.cursor-dot {
+  position: fixed;
+  pointer-events: none;
+  z-index: 10000;
+  opacity: 0;
+  will-change: transform, left, top;
+  transform: translate(-50%, -50%);
+  top: -100px;
+  left: -100px;
+}
+.cursor-outer.is-visible,
+.cursor-dot.is-visible { opacity: 1 }
+.cursor-outer {
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--accent);
+  border-radius: 0;
+  /* Base state = transitions FROM hover/text back to default.
+     Slower timings so the shrink-from-expanded-circle feels smooth. */
+  transition: opacity .5s ease,
+              width .8s cubic-bezier(.22, 1, .36, 1),
+              height .8s cubic-bezier(.22, 1, .36, 1),
+              border-radius 1s cubic-bezier(.65, 0, .35, 1);
+}
+.cursor-outer.is-hover {
+  border-radius: 50%;
+  /* Hover enter: 0.5s quick */
+  transition: opacity .25s ease,
+              border-radius .5s cubic-bezier(.65, 0, .35, 1);
+}
+/* Text-field state: outer square expands outward and fades out */
+.cursor-outer.is-text {
+  opacity: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border-width: 1px;
+  transition: opacity .3s ease,
+              width .4s cubic-bezier(.22, 1, .36, 1),
+              height .4s cubic-bezier(.22, 1, .36, 1),
+              border-radius .4s cubic-bezier(.22, 1, .36, 1);
+}
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 999px;
+  /* Bouncy spring when resizing on hover */
+  transition: opacity .25s ease,
+              width .45s cubic-bezier(.34, 1.56, .64, 1),
+              height .45s cubic-bezier(.34, 1.56, .64, 1),
+              background .3s ease-out;
+}
+.cursor-dot.is-hover {
+  width: 18px;
+  height: 18px;
+  background: var(--ink);
+}
+/* Text-field state: dot morphs to a thin tall vertical caret */
+.cursor-dot.is-text {
+  width: 2px;
+  height: 22px;
+  background: var(--ink);
+  border-radius: 0;
+  transition: opacity .25s ease,
+              width .3s cubic-bezier(.65, 0, .35, 1),
+              height .3s cubic-bezier(.65, 0, .35, 1),
+              border-radius .3s cubic-bezier(.65, 0, .35, 1),
+              background .25s ease;
+}

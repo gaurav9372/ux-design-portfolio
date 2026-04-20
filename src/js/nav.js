@@ -38,6 +38,36 @@ export const initNav = () => {
     });
   }
 
+  // Admin dropdown (dev-only)
+  document.querySelectorAll(".admin-dropdown").forEach((wrap) => {
+    const btn = wrap.querySelector(".admin-btn");
+    if (!btn) return;
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isOpen = wrap.classList.toggle("is-open");
+      btn.setAttribute("aria-expanded", String(isOpen));
+    });
+  });
+  // Click outside closes all admin menus
+  document.addEventListener("click", (e) => {
+    document.querySelectorAll(".admin-dropdown.is-open").forEach((wrap) => {
+      if (!wrap.contains(e.target)) {
+        wrap.classList.remove("is-open");
+        const btn = wrap.querySelector(".admin-btn");
+        if (btn) btn.setAttribute("aria-expanded", "false");
+      }
+    });
+  });
+  // Esc closes admin menu
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    document.querySelectorAll(".admin-dropdown.is-open").forEach((wrap) => {
+      wrap.classList.remove("is-open");
+      const btn = wrap.querySelector(".admin-btn");
+      if (btn) btn.setAttribute("aria-expanded", "false");
+    });
+  });
+
   // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
     a.addEventListener("click", (e) => {

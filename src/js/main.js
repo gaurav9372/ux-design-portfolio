@@ -11,6 +11,7 @@ import { initSplitHover } from './split-hover.js';
 import { initCardLinks } from './card-links.js';
 import { initHeadingAnimations } from './heading-anim.js';
 import { initBodyAnimations } from './body-anim.js';
+import { initCursor } from './cursor.js';
 
 const safe = async (label, fn) => {
   try { await fn(); } catch (e) { console.error(label + ':', e); }
@@ -97,6 +98,7 @@ const init = async () => {
   safe('initNav', initNav);
   safe('initSplitHover', initSplitHover);
   safe('initCardLinks', initCardLinks);
+  safe('initCursor', initCursor);
 
   // --- Page-specific (dynamic imports) ---
   const page = document.body.dataset.page || '';

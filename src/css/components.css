@@ -55,25 +55,78 @@
 }
 .nav-links a { color: var(--ink) }
 .nav-cta {
-  display: flex; align-items: center; gap: 12px;
+  display: inline-block;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: -.32px;
+  letter-spacing: .5px;
   font-size: 15px;
   color: var(--ink);
   cursor: pointer;
   user-select: none;
+  text-decoration: none;
 }
-.nav-cta img {
-  width: 18px; height: auto;
-  opacity: 0;
-  transform: translateX(-4px);
-  transition: opacity .2s ease, transform .2s ease;
+
+/* Admin dropdown (dev-only — hide before going live) */
+.admin-dropdown {
+  position: relative;
+  display: inline-block;
 }
-.nav-cta:hover img,
-.nav-cta:focus-visible img {
-  opacity: 1;
-  transform: translateX(0);
+.admin-btn {
+  display: inline-block;
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--ink);
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  line-height: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.admin-btn[disabled] { opacity: .3; cursor: not-allowed }
+.admin-btn-chev {
+  margin-left: 6px;
+  vertical-align: middle;
+  opacity: .6;
+  transition: transform .2s ease;
+}
+.admin-btn[aria-expanded="true"] .admin-btn-chev { transform: rotate(180deg) }
+.admin-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 240px;
+  background: rgba(18, 23, 21, .96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,195,33,.25);
+  border-radius: 0;
+  display: none;
+  flex-direction: column;
+  padding: 6px;
+  z-index: 1002;
+}
+.admin-dropdown.is-open .admin-menu { display: flex }
+.admin-menu a {
+  display: block;
+  padding: 12px 14px;
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: background .2s, border-color .2s, color .2s;
+}
+.admin-menu a:hover {
+  background: rgba(255,195,33,.08);
+  border-color: rgba(255,195,33,.25);
+  color: var(--accent);
 }
 
 /* Mobile menu */

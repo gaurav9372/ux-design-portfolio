@@ -554,7 +554,7 @@
   line-height: 1.4;
   letter-spacing: -.36px;
   color: var(--bg);
-  width: fit-content;
+  max-width: 100%;
   z-index: 2;
 }
 .gallery h2 .gallery-quote { display: block }

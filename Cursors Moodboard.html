@@ -1,0 +1,1172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cursors Moodboard — Shreyansh Gaurav</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800&display=swap">
+  <style>
+    :root {
+      --bg: #121715;
+      --bg2: #1c2320;
+      --ink: #fff;
+      --muted: rgba(255,255,255,.64);
+      --accent: #ffc321;
+      --stroke: #3c403f;
+      --font-ui: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0 }
+    html, body { background: var(--bg); color: var(--ink); font-family: var(--font-body) }
+    body { line-height: 1.6; overflow-x: hidden; min-height: 100vh }
+
+    .cm-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 20px 48px; color: var(--muted); font-size: 13px;
+      text-decoration: none; letter-spacing: .5px; text-transform: uppercase;
+      font-family: var(--font-ui);
+    }
+    .cm-back:hover { color: var(--accent) }
+
+    .cm-hero {
+      padding: 40px 48px 40px;
+      max-width: 1400px; margin: 0 auto;
+    }
+    .cm-hero .label {
+      color: var(--accent); font-size: 12px; letter-spacing: 2px;
+      text-transform: uppercase; margin-bottom: 16px; font-family: var(--font-ui);
+    }
+    .cm-hero h1 {
+      font-family: var(--font-ui); font-weight: 500;
+      font-size: clamp(36px, 5vw, 56px); line-height: 1;
+      letter-spacing: -1px; color: var(--accent); margin-bottom: 20px;
+    }
+    .cm-hero p {
+      color: var(--muted); font-size: 17px; max-width: 720px;
+      line-height: 1.7;
+    }
+    .cm-hero .note {
+      margin-top: 16px; font-size: 13px; color: rgba(255,255,255,.5);
+    }
+
+    .cm-grid {
+      max-width: 1400px; margin: 0 auto;
+      padding: 32px 48px 96px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    @media (max-width: 900px) { .cm-grid { grid-template-columns: 1fr; padding: 32px 20px } }
+
+    .cm-item {
+      position: relative;
+      background: var(--bg2);
+      border: 1px solid rgba(255,255,255,.06);
+      padding: 0;
+      overflow: hidden;
+    }
+    .cm-item-header {
+      padding: 24px 28px 16px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .cm-num {
+      display: inline-block;
+      font-family: var(--font-ui); font-weight: 500;
+      font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 8px;
+    }
+    .cm-title {
+      font-family: var(--font-ui); font-weight: 500;
+      font-size: 22px; letter-spacing: -.2px; margin-bottom: 8px;
+    }
+    .cm-desc {
+      color: var(--muted); font-size: 14px; line-height: 1.6;
+    }
+
+    /* Demo zone — cursor: none so the custom one replaces it */
+    .cm-zone {
+      position: relative;
+      min-height: 280px;
+      padding: 32px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 18px;
+      background: radial-gradient(circle at center, rgba(255,255,255,.02), transparent 70%);
+      cursor: none;
+    }
+    .cm-zone * { cursor: none }
+    .cm-zone-hint {
+      font-family: var(--font-ui); font-weight: 500;
+      font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,255,255,.3);
+    }
+    .cm-zone-btn {
+      padding: 12px 28px;
+      border: 1px solid rgba(255,255,255,.15);
+      background: transparent;
+      color: var(--ink);
+      font-family: var(--font-ui); font-weight: 500;
+      font-size: 14px; letter-spacing: .5px;
+      text-transform: uppercase; cursor: none;
+      transition: border-color .2s, color .2s;
+    }
+    .cm-zone-btn:hover { border-color: var(--accent); color: var(--accent) }
+    .cm-zone-link {
+      font-family: var(--font-ui); font-weight: 500;
+      font-size: 13px; letter-spacing: 1px; text-transform: uppercase;
+      color: var(--accent); text-decoration: none;
+    }
+
+    /* =================================================================
+       CURSOR 01 — DUAL ORBIT
+       ================================================================= */
+    .cur01-outer, .cur01-inner {
+      position: fixed; pointer-events: none;
+      z-index: 9999; opacity: 0;
+      will-change: transform;
+    }
+    .cur01-outer {
+      width: 36px; height: 36px;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      transform: translate(-50%, -50%);
+      transition: opacity .2s, width .2s cubic-bezier(.22,1,.36,1), height .2s cubic-bezier(.22,1,.36,1);
+    }
+    .cur01-inner {
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 999px;
+      transform: translate(-50%, -50%);
+      transition: opacity .2s, width .15s, height .15s;
+    }
+    .cur01-outer.is-hover { width: 56px; height: 56px }
+    .cur01-inner.is-hover { width: 10px; height: 10px }
+
+    /* =================================================================
+       CURSOR 02 — MAGNETIC APERTURE
+       ================================================================= */
+    .cur02-crosshair, .cur02-ring {
+      position: fixed; pointer-events: none;
+      z-index: 9999; opacity: 0;
+      will-change: transform;
+      transform: translate(-50%, -50%);
+    }
+    .cur02-crosshair {
+      width: 14px; height: 14px;
+      color: var(--ink);
+    }
+    .cur02-crosshair::before,
+    .cur02-crosshair::after {
+      content: ''; position: absolute; background: currentColor;
+    }
+    .cur02-crosshair::before { top: 50%; left: 0; width: 100%; height: 1px; transform: translateY(-50%) }
+    .cur02-crosshair::after { top: 0; left: 50%; width: 1px; height: 100%; transform: translateX(-50%) }
+    .cur02-ring {
+      width: 44px; height: 44px;
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 999px;
+      background: transparent;
+      transition: width .35s cubic-bezier(.22,1,.36,1), height .35s cubic-bezier(.22,1,.36,1),
+                  border-color .2s, background .25s, opacity .2s;
+    }
+    .cur02-ring.is-hover {
+      width: 70px; height: 70px;
+      border-color: var(--accent);
+      background: rgba(255,195,33,.12);
+    }
+
+    /* =================================================================
+       CURSOR 03 — INK TRAIL
+       ================================================================= */
+    .cur03-head {
+      position: fixed; pointer-events: none;
+      z-index: 9999; opacity: 0;
+      width: 10px; height: 10px;
+      background: var(--accent); border-radius: 999px;
+      transform: translate(-50%, -50%);
+      transition: opacity .2s, width .15s, height .15s;
+    }
+    .cur03-head.is-hover { width: 16px; height: 16px }
+    .cur03-dot {
+      position: fixed; pointer-events: none;
+      z-index: 9998;
+      width: 8px; height: 8px;
+      background: var(--accent); border-radius: 999px;
+      transform: translate(-50%, -50%);
+      animation: cur03-fade .7s ease-out forwards;
+    }
+    @keyframes cur03-fade {
+      0% { opacity: .8; transform: translate(-50%, -50%) scale(1) }
+      100% { opacity: 0; transform: translate(-50%, -50%) scale(.2) }
+    }
+
+    /* =================================================================
+       CURSOR 04 — GLITCH BLOCK
+       ================================================================= */
+    .cur04-block {
+      position: fixed; pointer-events: none;
+      z-index: 9999; opacity: 0;
+      width: 16px; height: 16px;
+      background: var(--accent);
+      transform: translate(-50%, -50%);
+      will-change: transform;
+      transition: width .2s, height .2s, background .2s, opacity .2s;
+    }
+    .cur04-block.is-hover {
+      width: 32px; height: 32px;
+      background: transparent;
+      border: 2px solid var(--accent);
+    }
+    .cur04-glitch {
+      position: fixed; pointer-events: none;
+      z-index: 9998; opacity: 0;
+      width: 16px; height: 16px;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: screen;
+      will-change: transform;
+    }
+    .cur04-glitch.r { background: rgba(255,60,60,.7) }
+    .cur04-glitch.b { background: rgba(80,200,255,.7) }
+
+    /* =================================================================
+       CURSOR 05 — CORNER BRACKETS
+       ================================================================= */
+    .cur05-wrap {
+      position: fixed; pointer-events: none;
+      z-index: 9999; opacity: 0;
+      width: 48px; height: 48px;
+      transform: translate(-50%, -50%);
+      will-change: transform;
+      transition: width .25s cubic-bezier(.22,1,.36,1), height .25s cubic-bezier(.22,1,.36,1);
+    }
+    .cur05-wrap.is-hover { width: 32px; height: 32px }
+    .cur05-wrap::before, .cur05-wrap::after,
+    .cur05-wrap > span::before, .cur05-wrap > span::after {
+      content: ''; position: absolute;
+      width: 10px; height: 10px;
+      border-color: var(--accent);
+      border-style: solid;
+      border-width: 0;
+    }
+    .cur05-wrap::before { top: 0; left: 0; border-top-width: 1.5px; border-left-width: 1.5px }
+    .cur05-wrap::after { top: 0; right: 0; border-top-width: 1.5px; border-right-width: 1.5px }
+    .cur05-wrap > span { position: absolute; inset: 0 }
+    .cur05-wrap > span::before { bottom: 0; left: 0; border-bottom-width: 1.5px; border-left-width: 1.5px }
+    .cur05-wrap > span::after { bottom: 0; right: 0; border-bottom-width: 1.5px; border-right-width: 1.5px }
+
+    /* =================================================================
+       CURSOR 06 — INVERT BUBBLE
+       Uses mix-blend-mode: difference so whatever is underneath gets
+       color-inverted. Modern, editorial, distinctive.
+       ================================================================= */
+    .cur06-bubble {
+      position: fixed; pointer-events: none;
+      z-index: 9999; opacity: 0;
+      width: 36px; height: 36px;
+      background: #fff;
+      border-radius: 999px;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: difference;
+      will-change: transform;
+      transition: width .3s cubic-bezier(.22,1,.36,1), height .3s cubic-bezier(.22,1,.36,1), opacity .2s;
+    }
+    .cur06-bubble.is-hover { width: 72px; height: 72px }
+
+    /* =================================================================
+       CURSOR 07 — RIPPLE RADAR
+       Small dot + periodic concentric rings pulsing outward (like a
+       sonar ping). On click, a stronger ripple emits.
+       ================================================================= */
+    .cur07-dot {
+      position: fixed; pointer-events: none;
+      z-index: 9999; opacity: 0;
+      width: 8px; height: 8px;
+      background: var(--accent); border-radius: 999px;
+      transform: translate(-50%, -50%);
+      transition: width .2s, height .2s, opacity .2s;
+    }
+    .cur07-dot.is-hover { width: 14px; height: 14px }
+    .cur07-ring {
+      position: fixed; pointer-events: none;
+      z-index: 9998; opacity: 0;
+      width: 16px; height: 16px;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      transform: translate(-50%, -50%);
+      animation: cur07-pulse 1.6s ease-out infinite;
+    }
+    .cur07-ring.r2 { animation-delay: .6s }
+    .cur07-ring.r3 { animation-delay: 1.2s }
+    @keyframes cur07-pulse {
+      0%   { width: 16px; height: 16px; opacity: .7; border-width: 1.5px }
+      100% { width: 90px; height: 90px; opacity: 0; border-width: 0.5px }
+    }
+    @keyframes cur07-click {
+      0%   { width: 20px; height: 20px; opacity: .9; border-width: 2px }
+      100% { width: 200px; height: 200px; opacity: 0; border-width: 0.5px }
+    }
+
+    /* =================================================================
+       CURSOR 08 — TEXT LABEL
+       Minimal dot cursor that expands into a labeled pill on hover
+       over interactive elements, showing what will happen.
+       ================================================================= */
+    .cur08-wrap {
+      position: fixed; pointer-events: none;
+      z-index: 9999; opacity: 0;
+      transform: translate(-50%, -50%);
+      display: flex; align-items: center;
+      will-change: transform;
+    }
+    .cur08-dot {
+      width: 8px; height: 8px;
+      background: var(--accent);
+      border-radius: 999px;
+      transition: width .25s cubic-bezier(.22,1,.36,1), height .25s cubic-bezier(.22,1,.36,1), background .25s;
+    }
+    .cur08-label {
+      overflow: hidden;
+      max-width: 0;
+      white-space: nowrap;
+      opacity: 0;
+      color: var(--bg);
+      font-family: var(--font-ui);
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: max-width .3s cubic-bezier(.22,1,.36,1), opacity .2s ease, padding .3s;
+      padding: 0;
+    }
+    .cur08-wrap.is-hover .cur08-dot {
+      width: 56px; height: 24px;
+      border-radius: 0;
+    }
+    .cur08-wrap.is-hover {
+      /* The dot becomes the background of the label */
+    }
+    .cur08-wrap.is-hover .cur08-label {
+      max-width: 60px;
+      opacity: 1;
+      padding: 0 8px 0 4px;
+      margin-left: -52px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* =================================================================
+       CURSOR 09 — GOOEY BLOB
+       A soft blob that squishes/stretches based on movement velocity.
+       Organic, playful, but still editorial.
+       ================================================================= */
+    .cur09-blob {
+      position: fixed; pointer-events: none;
+      z-index: 9999; opacity: 0;
+      width: 24px; height: 24px;
+      background: var(--accent);
+      border-radius: 999px;
+      transform: translate(-50%, -50%);
+      will-change: transform;
+      transition: border-radius .3s ease, width .25s, height .25s, opacity .2s;
+      filter: blur(0.5px);
+    }
+    .cur09-blob.is-hover {
+      width: 48px; height: 48px;
+      background: transparent;
+      border: 2px solid var(--accent);
+      filter: none;
+    }
+
+    /* =================================================================
+       CURSOR 10 — PAINT STROKE
+       Smooth curved line trailing the cursor (SVG path), like a
+       calligraphic brushstroke that decays over time.
+       ================================================================= */
+    .cur10-head {
+      position: fixed; pointer-events: none;
+      z-index: 9999; opacity: 0;
+      width: 10px; height: 10px;
+      background: var(--accent); border-radius: 999px;
+      transform: translate(-50%, -50%);
+      transition: opacity .2s, width .15s, height .15s;
+    }
+    .cur10-head.is-hover { width: 16px; height: 16px }
+    .cur10-svg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9998;
+      width: 100%; height: 100%;
+    }
+    .cur10-path {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      opacity: 0;
+    }
+
+    /* =================================================================
+       CURSOR 11 — DUAL ORBIT (Square variant)
+       Same spring-lag behavior as Cursor 01, but the tracking frame is
+       a sharp square instead of a ring — matches the design system's
+       no-radius rule for rectangles.
+       ================================================================= */
+    .cur11-outer {
+      position: fixed; pointer-events: none;
+      z-index: 9999; opacity: 0;
+      width: 36px; height: 36px;
+      border: 1.5px solid var(--accent);
+      border-radius: 0;
+      transform: translate(-50%, -50%);
+      will-change: transform;
+      /* Base state controls EXIT transition (circle → square): 1s eased */
+      transition: opacity .2s,
+                  border-radius 1s cubic-bezier(.65, 0, .35, 1);
+    }
+    .cur11-outer.is-hover {
+      border-radius: 50%;
+      /* Hover state controls ENTER transition (square → circle): quick 0.5s */
+      transition: opacity .2s,
+                  border-radius .5s cubic-bezier(.65, 0, .35, 1);
+    }
+    .cur11-inner {
+      position: fixed; pointer-events: none;
+      z-index: 9999; opacity: 0;
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 999px;
+      transform: translate(-50%, -50%);
+      will-change: transform;
+      /* Bouncy spring on hover entry — overshoots 18px then settles. */
+      transition: opacity .2s,
+                  width .45s cubic-bezier(.34, 1.56, .64, 1),
+                  height .45s cubic-bezier(.34, 1.56, .64, 1),
+                  background .3s ease-out;
+    }
+    .cur11-inner.is-hover {
+      width: 18px;
+      height: 18px;
+      background: var(--ink);
+    }
+
+    /* =================================================================
+       CURSOR 12 — CLEAN BLOCK (Variation of 04, no RGB glitch)
+       Same sharp-square cursor as Glitch Block but without chromatic
+       aberration. Just the accent square with a clean size change on
+       hover. Minimal, editorial, no noise.
+       ================================================================= */
+    .cur12-block {
+      position: fixed; pointer-events: none;
+      z-index: 9999; opacity: 0;
+      width: 16px; height: 16px;
+      background: var(--accent);
+      transform: translate(-50%, -50%);
+      will-change: transform;
+      transition: width .2s cubic-bezier(.22,1,.36,1),
+                  height .2s cubic-bezier(.22,1,.36,1),
+                  background .2s, opacity .2s;
+    }
+    .cur12-block.is-hover {
+      width: 32px; height: 32px;
+      background: transparent;
+      border: 2px solid var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <a href="/" class="cm-back">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    Back to Home
+  </a>
+
+  <section class="cm-hero">
+    <p class="label">Admin · Moodboard</p>
+    <h1>Cursor explorations.</h1>
+    <p>Custom cursors that match the site's editorial, sharp-cornered, accent-gold tone. Ten base styles plus variations. Hover into each demo zone to try them out — the real page cursor stays the same.</p>
+    <p class="note">Desktop only. Cursors disable themselves on touch devices and when reduced-motion is enabled.</p>
+  </section>
+
+  <section class="cm-grid">
+    <!-- 01 -->
+    <div class="cm-item">
+      <div class="cm-item-header">
+        <span class="cm-num">Cursor 01</span>
+        <h2 class="cm-title">Dual Orbit</h2>
+        <p class="cm-desc">An accent-gold ring tracks the pointer exactly while a smaller dot lags behind with spring easing. On hover over anything interactive, the ring expands and the dot magnetizes outward.</p>
+      </div>
+      <div class="cm-zone" data-cursor="1">
+        <p class="cm-zone-hint">Move your mouse here</p>
+        <button class="cm-zone-btn">Hover me</button>
+        <a href="#" class="cm-zone-link">Link example →</a>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="cm-item">
+      <div class="cm-item-header">
+        <span class="cm-num">Cursor 02</span>
+        <h2 class="cm-title">Magnetic Aperture</h2>
+        <p class="cm-desc">A subtle crosshair with a circular ring around it. When hovering interactive elements, the ring expands and fills with translucent accent — like a camera aperture opening.</p>
+      </div>
+      <div class="cm-zone" data-cursor="2">
+        <p class="cm-zone-hint">Move your mouse here</p>
+        <button class="cm-zone-btn">Hover me</button>
+        <a href="#" class="cm-zone-link">Link example →</a>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="cm-item">
+      <div class="cm-item-header">
+        <span class="cm-num">Cursor 03</span>
+        <h2 class="cm-title">Ink Trail</h2>
+        <p class="cm-desc">The cursor head is a solid accent dot. As you move, it leaves a decaying trail of smaller dots that fade and shrink — a calligraphic, handwritten feel.</p>
+      </div>
+      <div class="cm-zone" data-cursor="3">
+        <p class="cm-zone-hint">Move your mouse here</p>
+        <button class="cm-zone-btn">Hover me</button>
+        <a href="#" class="cm-zone-link">Link example →</a>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="cm-item">
+      <div class="cm-item-header">
+        <span class="cm-num">Cursor 04</span>
+        <h2 class="cm-title">Glitch Block</h2>
+        <p class="cm-desc">A sharp square of accent gold with RGB-split chromatic aberration following at slight lag. On hover the square becomes an outlined frame. Technical, slightly unstable.</p>
+      </div>
+      <div class="cm-zone" data-cursor="4">
+        <p class="cm-zone-hint">Move your mouse here</p>
+        <button class="cm-zone-btn">Hover me</button>
+        <a href="#" class="cm-zone-link">Link example →</a>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="cm-item">
+      <div class="cm-item-header">
+        <span class="cm-num">Cursor 05</span>
+        <h2 class="cm-title">Corner Brackets</h2>
+        <p class="cm-desc">Four L-shaped corner markers frame the pointer. On hover over interactive elements, the brackets snap inward to form a tighter square — a targeting reticle feel.</p>
+      </div>
+      <div class="cm-zone" data-cursor="5">
+        <p class="cm-zone-hint">Move your mouse here</p>
+        <button class="cm-zone-btn">Hover me</button>
+        <a href="#" class="cm-zone-link">Link example →</a>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div class="cm-item">
+      <div class="cm-item-header">
+        <span class="cm-num">Cursor 06</span>
+        <h2 class="cm-title">Invert Bubble</h2>
+        <p class="cm-desc">A circular cursor that uses <code style="font-family:'SF Mono',Menlo,monospace;font-size:12px;color:var(--accent)">mix-blend-mode: difference</code> to invert the colors of whatever is underneath it. Expands on interactive hover.</p>
+      </div>
+      <div class="cm-zone" data-cursor="6" style="background:linear-gradient(135deg, rgba(255,195,33,.2), rgba(255,255,255,.06) 60%, rgba(0,0,0,.2))">
+        <p class="cm-zone-hint" style="color:rgba(255,255,255,.5)">Move your mouse here</p>
+        <button class="cm-zone-btn">Hover me</button>
+        <a href="#" class="cm-zone-link">Link example →</a>
+      </div>
+    </div>
+
+    <!-- 07 -->
+    <div class="cm-item">
+      <div class="cm-item-header">
+        <span class="cm-num">Cursor 07</span>
+        <h2 class="cm-title">Ripple Radar</h2>
+        <p class="cm-desc">Small accent dot surrounded by three concentric rings that pulse outward on a continuous loop — like a sonar ping. On click, a stronger ripple emits from the cursor position.</p>
+      </div>
+      <div class="cm-zone" data-cursor="7">
+        <p class="cm-zone-hint">Move your mouse here — click to ping</p>
+        <button class="cm-zone-btn">Hover me</button>
+        <a href="#" class="cm-zone-link">Link example →</a>
+      </div>
+    </div>
+
+    <!-- 08 -->
+    <div class="cm-item">
+      <div class="cm-item-header">
+        <span class="cm-num">Cursor 08</span>
+        <h2 class="cm-title">Text Label</h2>
+        <p class="cm-desc">A minimal dot that expands into a labeled pill when hovering interactive elements. Shows the intent of the action — "VIEW" on links, "CLICK" on buttons. Editorial and informative.</p>
+      </div>
+      <div class="cm-zone" data-cursor="8">
+        <p class="cm-zone-hint">Move your mouse here</p>
+        <button class="cm-zone-btn" data-label="CLICK">Hover me</button>
+        <a href="#" class="cm-zone-link" data-label="VIEW">Link example →</a>
+      </div>
+    </div>
+
+    <!-- 09 -->
+    <div class="cm-item">
+      <div class="cm-item-header">
+        <span class="cm-num">Cursor 09</span>
+        <h2 class="cm-title">Gooey Blob</h2>
+        <p class="cm-desc">A soft accent blob that squishes and stretches based on movement velocity — elongates when moving fast, returns to a circle when still. On hover it inverts to an outlined frame.</p>
+      </div>
+      <div class="cm-zone" data-cursor="9">
+        <p class="cm-zone-hint">Move your mouse here</p>
+        <button class="cm-zone-btn">Hover me</button>
+        <a href="#" class="cm-zone-link">Link example →</a>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="cm-item">
+      <div class="cm-item-header">
+        <span class="cm-num">Cursor 10</span>
+        <h2 class="cm-title">Paint Stroke</h2>
+        <p class="cm-desc">The cursor leaves a continuous smooth curve behind it — like a calligraphic brushstroke — that fades out over a second. Different from Ink Trail: a connected line, not discrete dots.</p>
+      </div>
+      <div class="cm-zone" data-cursor="10">
+        <p class="cm-zone-hint">Move your mouse here</p>
+        <button class="cm-zone-btn">Hover me</button>
+        <a href="#" class="cm-zone-link">Link example →</a>
+      </div>
+    </div>
+
+    <!-- 11 — Variation of Cursor 01 -->
+    <div class="cm-item">
+      <div class="cm-item-header">
+        <span class="cm-num">Cursor 11 · Variation of 01</span>
+        <h2 class="cm-title">Dual Orbit — Square</h2>
+        <p class="cm-desc">Same spring-lag dual-cursor behavior as Dual Orbit (01), but the outer tracking frame is a sharp square instead of a ring — matching the design system's no-radius rule. The inner dot stays circular for contrast. On interactive hover, the square smoothly morphs into a circle and expands.</p>
+      </div>
+      <div class="cm-zone" data-cursor="11">
+        <p class="cm-zone-hint">Move your mouse here</p>
+        <button class="cm-zone-btn">Hover me</button>
+        <a href="#" class="cm-zone-link">Link example →</a>
+      </div>
+    </div>
+
+    <!-- 12 — Variation of Cursor 04 -->
+    <div class="cm-item">
+      <div class="cm-item-header">
+        <span class="cm-num">Cursor 12 · Variation of 04</span>
+        <h2 class="cm-title">Clean Block</h2>
+        <p class="cm-desc">Same sharp-square cursor as Glitch Block (04) but without the RGB chromatic aberration. Just a clean accent square that scales up into an outlined frame on interactive hover. Minimal, quiet, editorial.</p>
+      </div>
+      <div class="cm-zone" data-cursor="12">
+        <p class="cm-zone-hint">Move your mouse here</p>
+        <button class="cm-zone-btn">Hover me</button>
+        <a href="#" class="cm-zone-link">Link example →</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Skip on touch + reduced-motion
+    const canUseCursor = !('ontouchstart' in window) &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (canUseCursor) initCursors();
+
+    function initCursors() {
+      document.querySelectorAll('.cm-zone').forEach((zone) => {
+        const which = zone.dataset.cursor;
+        let active = false;
+
+        zone.addEventListener('mouseenter', () => {
+          active = true;
+          const cleanup = attachCursor(which, zone);
+          zone.addEventListener('mouseleave', function onLeave() {
+            active = false;
+            cleanup();
+            zone.removeEventListener('mouseleave', onLeave);
+          });
+        });
+      });
+    }
+
+    // Each cursor returns a cleanup fn that removes its DOM + listeners
+    function attachCursor(which, zone) {
+      switch (which) {
+        case '1': return cursor01(zone);
+        case '2': return cursor02(zone);
+        case '3': return cursor03(zone);
+        case '4': return cursor04(zone);
+        case '5': return cursor05(zone);
+        case '6': return cursor06(zone);
+        case '7': return cursor07(zone);
+        case '8': return cursor08(zone);
+        case '9': return cursor09(zone);
+        case '10': return cursor10(zone);
+        case '11': return cursor11(zone);
+        case '12': return cursor12(zone);
+      }
+      return () => {};
+    }
+
+    // ==== CURSOR 01 — DUAL ORBIT ====
+    function cursor01(zone) {
+      const outer = Object.assign(document.createElement('div'), { className: 'cur01-outer' });
+      const inner = Object.assign(document.createElement('div'), { className: 'cur01-inner' });
+      document.body.append(outer, inner);
+
+      let mx = 0, my = 0, ix = 0, iy = 0;
+      const onMove = (e) => {
+        mx = e.clientX; my = e.clientY;
+        outer.style.left = mx + 'px'; outer.style.top = my + 'px';
+        outer.style.opacity = '1'; inner.style.opacity = '1';
+      };
+      zone.addEventListener('mousemove', onMove);
+
+      const isInteractive = (el) => el.closest('a, button, [data-cursor-hover]');
+      const onOver = (e) => {
+        if (isInteractive(e.target)) { outer.classList.add('is-hover'); inner.classList.add('is-hover') }
+      };
+      const onOut = (e) => {
+        if (isInteractive(e.target)) { outer.classList.remove('is-hover'); inner.classList.remove('is-hover') }
+      };
+      zone.addEventListener('mouseover', onOver);
+      zone.addEventListener('mouseout', onOut);
+
+      // Spring-lag inner dot
+      let raf;
+      const tick = () => {
+        ix += (mx - ix) * 0.18;
+        iy += (my - iy) * 0.18;
+        inner.style.left = ix + 'px';
+        inner.style.top = iy + 'px';
+        raf = requestAnimationFrame(tick);
+      };
+      tick();
+
+      return () => {
+        cancelAnimationFrame(raf);
+        zone.removeEventListener('mousemove', onMove);
+        zone.removeEventListener('mouseover', onOver);
+        zone.removeEventListener('mouseout', onOut);
+        outer.remove(); inner.remove();
+      };
+    }
+
+    // ==== CURSOR 02 — MAGNETIC APERTURE ====
+    function cursor02(zone) {
+      const cross = Object.assign(document.createElement('div'), { className: 'cur02-crosshair' });
+      const ring = Object.assign(document.createElement('div'), { className: 'cur02-ring' });
+      document.body.append(ring, cross);
+
+      const onMove = (e) => {
+        const x = e.clientX, y = e.clientY;
+        cross.style.left = x + 'px'; cross.style.top = y + 'px';
+        ring.style.left = x + 'px'; ring.style.top = y + 'px';
+        cross.style.opacity = '1'; ring.style.opacity = '1';
+      };
+      zone.addEventListener('mousemove', onMove);
+
+      const isInteractive = (el) => el.closest('a, button');
+      const onOver = (e) => { if (isInteractive(e.target)) ring.classList.add('is-hover') };
+      const onOut  = (e) => { if (isInteractive(e.target)) ring.classList.remove('is-hover') };
+      zone.addEventListener('mouseover', onOver);
+      zone.addEventListener('mouseout', onOut);
+
+      return () => {
+        zone.removeEventListener('mousemove', onMove);
+        zone.removeEventListener('mouseover', onOver);
+        zone.removeEventListener('mouseout', onOut);
+        cross.remove(); ring.remove();
+      };
+    }
+
+    // ==== CURSOR 03 — INK TRAIL ====
+    function cursor03(zone) {
+      const head = Object.assign(document.createElement('div'), { className: 'cur03-head' });
+      document.body.append(head);
+
+      let lastSpawn = 0;
+      const onMove = (e) => {
+        const x = e.clientX, y = e.clientY;
+        head.style.left = x + 'px'; head.style.top = y + 'px';
+        head.style.opacity = '1';
+        const now = performance.now();
+        if (now - lastSpawn > 28) {
+          lastSpawn = now;
+          const dot = document.createElement('div');
+          dot.className = 'cur03-dot';
+          dot.style.left = x + 'px';
+          dot.style.top = y + 'px';
+          document.body.appendChild(dot);
+          setTimeout(() => dot.remove(), 720);
+        }
+      };
+      zone.addEventListener('mousemove', onMove);
+
+      const isInteractive = (el) => el.closest('a, button');
+      const onOver = (e) => { if (isInteractive(e.target)) head.classList.add('is-hover') };
+      const onOut  = (e) => { if (isInteractive(e.target)) head.classList.remove('is-hover') };
+      zone.addEventListener('mouseover', onOver);
+      zone.addEventListener('mouseout', onOut);
+
+      return () => {
+        zone.removeEventListener('mousemove', onMove);
+        zone.removeEventListener('mouseover', onOver);
+        zone.removeEventListener('mouseout', onOut);
+        head.remove();
+        document.querySelectorAll('.cur03-dot').forEach((d) => d.remove());
+      };
+    }
+
+    // ==== CURSOR 04 — GLITCH BLOCK ====
+    function cursor04(zone) {
+      const block = Object.assign(document.createElement('div'), { className: 'cur04-block' });
+      const red = Object.assign(document.createElement('div'), { className: 'cur04-glitch r' });
+      const blue = Object.assign(document.createElement('div'), { className: 'cur04-glitch b' });
+      document.body.append(red, blue, block);
+
+      let lastMove = performance.now();
+      let lastX = 0, lastY = 0;
+
+      const onMove = (e) => {
+        const x = e.clientX, y = e.clientY;
+        const now = performance.now();
+        const dt = now - lastMove; lastMove = now;
+        const dx = x - lastX, dy = y - lastY;
+        const speed = Math.min(Math.hypot(dx, dy) / Math.max(dt, 1), 3);
+        lastX = x; lastY = y;
+
+        block.style.left = x + 'px'; block.style.top = y + 'px';
+        block.style.opacity = '1';
+        const offset = 3 + speed * 8;
+        red.style.left = (x - offset) + 'px'; red.style.top = y + 'px';
+        blue.style.left = (x + offset) + 'px'; blue.style.top = y + 'px';
+        red.style.opacity = blue.style.opacity = Math.min(speed * .8, .7).toString();
+      };
+      zone.addEventListener('mousemove', onMove);
+
+      const isInteractive = (el) => el.closest('a, button');
+      const onOver = (e) => { if (isInteractive(e.target)) block.classList.add('is-hover') };
+      const onOut  = (e) => { if (isInteractive(e.target)) block.classList.remove('is-hover') };
+      zone.addEventListener('mouseover', onOver);
+      zone.addEventListener('mouseout', onOut);
+
+      return () => {
+        zone.removeEventListener('mousemove', onMove);
+        zone.removeEventListener('mouseover', onOver);
+        zone.removeEventListener('mouseout', onOut);
+        block.remove(); red.remove(); blue.remove();
+      };
+    }
+
+    // ==== CURSOR 05 — CORNER BRACKETS ====
+    function cursor05(zone) {
+      const wrap = Object.assign(document.createElement('div'), { className: 'cur05-wrap' });
+      const sp = document.createElement('span');
+      wrap.appendChild(sp);
+      document.body.append(wrap);
+
+      const onMove = (e) => {
+        wrap.style.left = e.clientX + 'px';
+        wrap.style.top = e.clientY + 'px';
+        wrap.style.opacity = '1';
+      };
+      zone.addEventListener('mousemove', onMove);
+
+      const isInteractive = (el) => el.closest('a, button');
+      const onOver = (e) => { if (isInteractive(e.target)) wrap.classList.add('is-hover') };
+      const onOut  = (e) => { if (isInteractive(e.target)) wrap.classList.remove('is-hover') };
+      zone.addEventListener('mouseover', onOver);
+      zone.addEventListener('mouseout', onOut);
+
+      return () => {
+        zone.removeEventListener('mousemove', onMove);
+        zone.removeEventListener('mouseover', onOver);
+        zone.removeEventListener('mouseout', onOut);
+        wrap.remove();
+      };
+    }
+
+    // ==== CURSOR 06 — INVERT BUBBLE ====
+    function cursor06(zone) {
+      const bubble = Object.assign(document.createElement('div'), { className: 'cur06-bubble' });
+      document.body.append(bubble);
+      const onMove = (e) => {
+        bubble.style.left = e.clientX + 'px';
+        bubble.style.top = e.clientY + 'px';
+        bubble.style.opacity = '1';
+      };
+      zone.addEventListener('mousemove', onMove);
+      const isInteractive = (el) => el.closest('a, button');
+      const onOver = (e) => { if (isInteractive(e.target)) bubble.classList.add('is-hover') };
+      const onOut  = (e) => { if (isInteractive(e.target)) bubble.classList.remove('is-hover') };
+      zone.addEventListener('mouseover', onOver);
+      zone.addEventListener('mouseout', onOut);
+      return () => {
+        zone.removeEventListener('mousemove', onMove);
+        zone.removeEventListener('mouseover', onOver);
+        zone.removeEventListener('mouseout', onOut);
+        bubble.remove();
+      };
+    }
+
+    // ==== CURSOR 07 — RIPPLE RADAR ====
+    function cursor07(zone) {
+      const dot = Object.assign(document.createElement('div'), { className: 'cur07-dot' });
+      const r1 = Object.assign(document.createElement('div'), { className: 'cur07-ring' });
+      const r2 = Object.assign(document.createElement('div'), { className: 'cur07-ring r2' });
+      const r3 = Object.assign(document.createElement('div'), { className: 'cur07-ring r3' });
+      document.body.append(r1, r2, r3, dot);
+      const onMove = (e) => {
+        const x = e.clientX, y = e.clientY;
+        [dot, r1, r2, r3].forEach((el) => {
+          el.style.left = x + 'px'; el.style.top = y + 'px';
+          el.style.opacity = '1';
+        });
+      };
+      zone.addEventListener('mousemove', onMove);
+      const onClick = (e) => {
+        const ripple = document.createElement('div');
+        ripple.style.cssText = 'position:fixed;pointer-events:none;z-index:9997;border:2px solid var(--accent);border-radius:999px;transform:translate(-50%,-50%);left:' + e.clientX + 'px;top:' + e.clientY + 'px;width:20px;height:20px;opacity:.9;animation:cur07-click .6s ease-out forwards';
+        document.body.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 620);
+      };
+      zone.addEventListener('click', onClick);
+      const isInteractive = (el) => el.closest('a, button');
+      const onOver = (e) => { if (isInteractive(e.target)) dot.classList.add('is-hover') };
+      const onOut  = (e) => { if (isInteractive(e.target)) dot.classList.remove('is-hover') };
+      zone.addEventListener('mouseover', onOver);
+      zone.addEventListener('mouseout', onOut);
+      return () => {
+        zone.removeEventListener('mousemove', onMove);
+        zone.removeEventListener('click', onClick);
+        zone.removeEventListener('mouseover', onOver);
+        zone.removeEventListener('mouseout', onOut);
+        [dot, r1, r2, r3].forEach((el) => el.remove());
+      };
+    }
+
+    // ==== CURSOR 08 — TEXT LABEL ====
+    function cursor08(zone) {
+      const wrap = Object.assign(document.createElement('div'), { className: 'cur08-wrap' });
+      const dot = Object.assign(document.createElement('div'), { className: 'cur08-dot' });
+      const label = Object.assign(document.createElement('span'), { className: 'cur08-label' });
+      wrap.append(dot, label);
+      document.body.append(wrap);
+      const onMove = (e) => {
+        wrap.style.left = e.clientX + 'px';
+        wrap.style.top = e.clientY + 'px';
+        wrap.style.opacity = '1';
+      };
+      zone.addEventListener('mousemove', onMove);
+      const onOver = (e) => {
+        const target = e.target.closest('[data-label]');
+        if (target) {
+          label.textContent = target.dataset.label;
+          wrap.classList.add('is-hover');
+        }
+      };
+      const onOut = (e) => {
+        if (e.target.closest('[data-label]')) wrap.classList.remove('is-hover');
+      };
+      zone.addEventListener('mouseover', onOver);
+      zone.addEventListener('mouseout', onOut);
+      return () => {
+        zone.removeEventListener('mousemove', onMove);
+        zone.removeEventListener('mouseover', onOver);
+        zone.removeEventListener('mouseout', onOut);
+        wrap.remove();
+      };
+    }
+
+    // ==== CURSOR 09 — GOOEY BLOB ====
+    function cursor09(zone) {
+      const blob = Object.assign(document.createElement('div'), { className: 'cur09-blob' });
+      document.body.append(blob);
+      let lastX = 0, lastY = 0, lastT = performance.now();
+      const onMove = (e) => {
+        const x = e.clientX, y = e.clientY;
+        const now = performance.now();
+        const dt = Math.max(now - lastT, 1);
+        const dx = x - lastX, dy = y - lastY;
+        const dist = Math.hypot(dx, dy);
+        const speed = Math.min(dist / dt * 10, 30);
+        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+        lastX = x; lastY = y; lastT = now;
+
+        blob.style.left = x + 'px';
+        blob.style.top = y + 'px';
+        blob.style.opacity = '1';
+        if (!blob.classList.contains('is-hover')) {
+          // Stretch along the movement direction when fast
+          const stretchX = 1 + speed * 0.02;
+          const stretchY = 1 - speed * 0.015;
+          blob.style.transform = `translate(-50%, -50%) rotate(${angle}deg) scale(${stretchX}, ${stretchY})`;
+        } else {
+          blob.style.transform = 'translate(-50%, -50%)';
+        }
+      };
+      zone.addEventListener('mousemove', onMove);
+      const isInteractive = (el) => el.closest('a, button');
+      const onOver = (e) => { if (isInteractive(e.target)) blob.classList.add('is-hover') };
+      const onOut  = (e) => { if (isInteractive(e.target)) blob.classList.remove('is-hover') };
+      zone.addEventListener('mouseover', onOver);
+      zone.addEventListener('mouseout', onOut);
+      return () => {
+        zone.removeEventListener('mousemove', onMove);
+        zone.removeEventListener('mouseover', onOver);
+        zone.removeEventListener('mouseout', onOut);
+        blob.remove();
+      };
+    }
+
+    // ==== CURSOR 10 — PAINT STROKE ====
+    function cursor10(zone) {
+      const head = Object.assign(document.createElement('div'), { className: 'cur10-head' });
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('class', 'cur10-svg');
+      document.body.append(svg, head);
+      let points = [];
+      let raf;
+      const onMove = (e) => {
+        head.style.left = e.clientX + 'px';
+        head.style.top = e.clientY + 'px';
+        head.style.opacity = '1';
+        points.push({ x: e.clientX, y: e.clientY, t: performance.now() });
+      };
+      zone.addEventListener('mousemove', onMove);
+
+      const TRAIL_MS = 900;
+      const render = () => {
+        const now = performance.now();
+        points = points.filter((p) => now - p.t < TRAIL_MS);
+
+        // Clear
+        while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+        if (points.length < 2) {
+          raf = requestAnimationFrame(render);
+          return;
+        }
+
+        // Build a smooth path and fade with opacity based on age
+        const d = points.map((p, i) => {
+          if (i === 0) return `M${p.x},${p.y}`;
+          const prev = points[i - 1];
+          const cx = (prev.x + p.x) / 2, cy = (prev.y + p.y) / 2;
+          return `Q${prev.x},${prev.y} ${cx},${cy}`;
+        }).join(' ');
+
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('class', 'cur10-path');
+        path.setAttribute('d', d);
+        path.setAttribute('stroke-opacity', '0.9');
+        svg.appendChild(path);
+
+        raf = requestAnimationFrame(render);
+      };
+      render();
+
+      const isInteractive = (el) => el.closest('a, button');
+      const onOver = (e) => { if (isInteractive(e.target)) head.classList.add('is-hover') };
+      const onOut  = (e) => { if (isInteractive(e.target)) head.classList.remove('is-hover') };
+      zone.addEventListener('mouseover', onOver);
+      zone.addEventListener('mouseout', onOut);
+
+      return () => {
+        cancelAnimationFrame(raf);
+        zone.removeEventListener('mousemove', onMove);
+        zone.removeEventListener('mouseover', onOver);
+        zone.removeEventListener('mouseout', onOut);
+        head.remove(); svg.remove();
+        points = [];
+      };
+    }
+
+    // ==== CURSOR 12 — CLEAN BLOCK (Variation of 04, no glitch) ====
+    function cursor12(zone) {
+      const block = Object.assign(document.createElement('div'), { className: 'cur12-block' });
+      document.body.append(block);
+      const onMove = (e) => {
+        block.style.left = e.clientX + 'px';
+        block.style.top = e.clientY + 'px';
+        block.style.opacity = '1';
+      };
+      zone.addEventListener('mousemove', onMove);
+      const isInteractive = (el) => el.closest('a, button');
+      const onOver = (e) => { if (isInteractive(e.target)) block.classList.add('is-hover') };
+      const onOut  = (e) => { if (isInteractive(e.target)) block.classList.remove('is-hover') };
+      zone.addEventListener('mouseover', onOver);
+      zone.addEventListener('mouseout', onOut);
+      return () => {
+        zone.removeEventListener('mousemove', onMove);
+        zone.removeEventListener('mouseover', onOver);
+        zone.removeEventListener('mouseout', onOut);
+        block.remove();
+      };
+    }
+
+    // ==== CURSOR 11 — DUAL ORBIT (Square variant) ====
+    function cursor11(zone) {
+      const outer = Object.assign(document.createElement('div'), { className: 'cur11-outer' });
+      const inner = Object.assign(document.createElement('div'), { className: 'cur11-inner' });
+      document.body.append(outer, inner);
+
+      let mx = 0, my = 0, ix = 0, iy = 0;
+      const onMove = (e) => {
+        mx = e.clientX; my = e.clientY;
+        outer.style.left = mx + 'px'; outer.style.top = my + 'px';
+        outer.style.opacity = '1'; inner.style.opacity = '1';
+      };
+      zone.addEventListener('mousemove', onMove);
+
+      // Track hover state as a single source of truth — only toggle the
+      // class when interactive state actually changes, so the CSS transition
+      // doesn't restart when moving between child elements inside a button.
+      // Strictly only <a> and <button> trigger the hover state — plain
+      // text (paragraphs, headings, labels) leaves the cursor in base mode.
+      const isInteractive = (el) => !!el.closest('a, button');
+      let hovering = false;
+      let spinAnim;
+      const setHover = (next) => {
+        if (next === hovering) return;
+        hovering = next;
+        outer.classList.toggle('is-hover', next);
+        inner.classList.toggle('is-hover', next);
+        // One-shot spin synced to the shape morph.
+        // Enter: clockwise 180° over 500ms (quick)
+        // Exit:  counter-clockwise 180° over 2000ms (slow)
+        if (spinAnim) spinAnim.cancel();
+        const endAngle = next ? 180 : -180;
+        const duration = next ? 500 : 1000;
+        spinAnim = outer.animate([
+          { transform: 'translate(-50%, -50%) rotate(0deg)' },
+          { transform: `translate(-50%, -50%) rotate(${endAngle}deg)` }
+        ], {
+          duration,
+          easing: 'cubic-bezier(.65, 0, .35, 1)',
+          fill: 'none'
+        });
+      };
+      const onMoveHover = (e) => setHover(isInteractive(e.target));
+      zone.addEventListener('mousemove', onMoveHover);
+      const onLeaveZone = () => setHover(false);
+      zone.addEventListener('mouseleave', onLeaveZone);
+
+      // Spring-lag inner dot (same physics as Cursor 01)
+      let raf;
+      const tick = () => {
+        ix += (mx - ix) * 0.18;
+        iy += (my - iy) * 0.18;
+        inner.style.left = ix + 'px';
+        inner.style.top = iy + 'px';
+        raf = requestAnimationFrame(tick);
+      };
+      tick();
+
+      return () => {
+        cancelAnimationFrame(raf);
+        zone.removeEventListener('mousemove', onMove);
+        zone.removeEventListener('mousemove', onMoveHover);
+        zone.removeEventListener('mouseleave', onLeaveZone);
+        outer.remove(); inner.remove();
+      };
+    }
+  </script>
+</body>
+</html>
