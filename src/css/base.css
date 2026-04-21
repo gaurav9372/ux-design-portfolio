@@ -243,55 +243,65 @@ html.has-custom-cursor body {
 }
 html.has-custom-cursor * { cursor: inherit }
 
+/* Position containers — JS updates transform: translate3d() for
+   GPU-accelerated movement. top/left stay at 0 — no layout recalc. */
 .cursor-outer,
 .cursor-dot {
   position: fixed;
+  top: 0;
+  left: 0;
   pointer-events: none;
   z-index: 10000;
   opacity: 0;
-  will-change: transform, left, top;
-  transform: translate(-50%, -50%);
-  top: -100px;
-  left: -100px;
+  will-change: transform;
+  transition: opacity .5s ease;
 }
 .cursor-outer.is-visible,
 .cursor-dot.is-visible { opacity: 1 }
-.cursor-outer {
+
+/* Outer frame — the visible box. Rotation runs on this via WAAPI so
+   the parent's translate3d() position updates don't conflict. */
+.cursor-outer-frame {
+  position: absolute;
   width: 36px;
   height: 36px;
   border: 1.5px solid var(--accent);
   border-radius: 0;
-  /* Base state = transitions FROM hover/text back to default.
-     Slower timings so the shrink-from-expanded-circle feels smooth. */
-  transition: opacity .5s ease,
-              width .8s cubic-bezier(.22, 1, .36, 1),
+  transform: translate(-50%, -50%);
+  will-change: transform;
+  /* Base state = exit transitions (from hover/text → default) */
+  transition: width .8s cubic-bezier(.22, 1, .36, 1),
               height .8s cubic-bezier(.22, 1, .36, 1),
               border-radius 1s cubic-bezier(.65, 0, .35, 1);
 }
-.cursor-outer.is-hover {
+.cursor-outer.is-hover .cursor-outer-frame {
   border-radius: 50%;
-  /* Hover enter: 0.5s quick */
-  transition: opacity .25s ease,
+  transition: width .5s cubic-bezier(.65, 0, .35, 1),
+              height .5s cubic-bezier(.65, 0, .35, 1),
               border-radius .5s cubic-bezier(.65, 0, .35, 1);
 }
-/* Text-field state: outer square expands outward and fades out */
 .cursor-outer.is-text {
   opacity: 0;
+  transition: opacity .3s ease;
+}
+.cursor-outer.is-text .cursor-outer-frame {
   width: 120px;
   height: 120px;
   border-radius: 50%;
   border-width: 1px;
-  transition: opacity .3s ease,
-              width .4s cubic-bezier(.22, 1, .36, 1),
+  transition: width .4s cubic-bezier(.22, 1, .36, 1),
               height .4s cubic-bezier(.22, 1, .36, 1),
               border-radius .4s cubic-bezier(.22, 1, .36, 1);
 }
+
+/* Dot — single element. Position + centering composed in JS as one
+   transform string. Size transitions via CSS; translate(-50%, -50%)
+   always centers it regardless of current width/height. */
 .cursor-dot {
   width: 6px;
   height: 6px;
   background: var(--accent);
   border-radius: 999px;
-  /* Bouncy spring when resizing on hover */
   transition: opacity .25s ease,
               width .45s cubic-bezier(.34, 1.56, .64, 1),
               height .45s cubic-bezier(.34, 1.56, .64, 1),
@@ -302,7 +312,6 @@ html.has-custom-cursor * { cursor: inherit }
   height: 18px;
   background: var(--ink);
 }
-/* Text-field state: dot morphs to a thin tall vertical caret */
 .cursor-dot.is-text {
   width: 2px;
   height: 22px;
