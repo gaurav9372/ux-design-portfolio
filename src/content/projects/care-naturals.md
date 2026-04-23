@@ -17,7 +17,7 @@ Designing one brand experience for three very different buyers — everyday cons
 
 ---
 
-## meta-method
+## meta-type
 Revamp Project
 
 ## meta-role

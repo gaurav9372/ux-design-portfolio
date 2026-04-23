@@ -308,13 +308,8 @@ body.nav-visible .pp-filter-bar { top: 64px }
   transition: transform .4s ease;
 }
 .pp-card:hover .pp-card-img img { transform: scale(1.04) }
-.pp-card-body {
-  padding: 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  flex: 1 1 0;
-}
+/* .pp-card-body rule removed — class name reused by new .case-left card
+   layout, which sets its own padding-less flex body. */
 .pp-card-top {
   display: flex;
   align-items: center;

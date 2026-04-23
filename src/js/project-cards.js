@@ -48,6 +48,7 @@ export const applyProjectCardContent = async () => {
       const { default: md } = await loader();
       data[slug] = {
         tagline: extractMdValue(md, 'hero-tagline'),
+        type: extractMdValue(md, 'meta-type'),
         category: extractMdValue(md, 'meta-category'),
       };
     } catch (e) {
@@ -63,11 +64,16 @@ export const applyProjectCardContent = async () => {
     const taglineSlot = card.querySelector('[data-project-tagline]');
     if (taglineSlot && entry.tagline) taglineSlot.textContent = entry.tagline;
 
-    // Tag badge(s) — fill any empty [data-project-tag] with meta-category.
-    // Leaves existing static text intact (so a hand-authored badge wins).
+    // Named tag slots — [data-project-tag="type"] gets meta-type,
+    // [data-project-tag="category"] gets meta-category. If the MD value
+    // is missing for a named slot, hide the badge so empty pills don't show.
     card.querySelectorAll('[data-project-tag]').forEach((slot) => {
-      if (!slot.textContent.trim() && entry.category) {
-        slot.textContent = entry.category;
+      const key = slot.getAttribute('data-project-tag');
+      const val = entry[key];
+      if (val) {
+        slot.textContent = val;
+      } else if (key) {
+        slot.style.display = 'none';
       }
     });
   });
