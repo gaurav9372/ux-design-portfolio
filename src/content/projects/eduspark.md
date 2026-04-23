@@ -75,16 +75,16 @@ There was no "resume" experience — every time a user opened the app, they land
 
 ---
 
-## goals-intro
+## requirements-intro
 Three design goals were set after research, each targeting a specific failure point in the learning habit loop.
 
-## goal-1
+## requirement-1
 Redesign the course player to show lesson duration upfront and introduce natural stopping points — so users can make an informed decision about starting a lesson rather than abandoning mid-way.
 
-## goal-2
+## requirement-2
 Build a "continue learning" landing experience that brings users directly back to their last lesson within 2 seconds of opening the app — eliminating the dashboard-first decision every session.
 
-## goal-3
+## requirement-3
 Redesign progress tracking around lesson completion and weekly streaks rather than video watch percentage — giving users a motivating metric that reflects real learning effort.
 
 ---
@@ -192,49 +192,19 @@ The platform featured a drag-and-drop assignment builder for teachers (reducing 
 ---
 
 ## ds-color-1
-#7C4DFF
-
-## ds-color-1-name
-Learning Purple
-
-## ds-color-1-hex
-#7C4DFF
+7C4DFF
 
 ## ds-color-2
-#FF6D00
-
-## ds-color-2-name
-Energy Orange
-
-## ds-color-2-hex
-#FF6D00
+FF6D00
 
 ## ds-color-3
-#40C4FF
-
-## ds-color-3-name
-Sky Blue
-
-## ds-color-3-hex
-#40C4FF
+40C4FF
 
 ## ds-color-4
-#FFF8E1
-
-## ds-color-4-name
-Soft Cream
-
-## ds-color-4-hex
-#FFF8E1
+FFF8E1
 
 ## ds-color-5
-#37474F
-
-## ds-color-5-name
-Dark Graphite
-
-## ds-color-5-hex
-#37474F
+37474F
 
 ## ds-font-1
 Outfit

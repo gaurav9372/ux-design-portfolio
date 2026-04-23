@@ -75,16 +75,16 @@ There was no draft-saving or resume functionality — if a user closed the tab m
 
 ---
 
-## goals-intro
+## requirements-intro
 Three goals were aligned with the product team before any design work began, grounded in drop-off analytics and support ticket themes.
 
-## goal-1
+## requirement-1
 Redesign the campaign setup as a linear, step-by-step guided flow with a persistent progress bar and the ability to save drafts at any point.
 
-## goal-2
+## requirement-2
 Replace or contextually explain all advertising jargon with plain language — every technical term should have an inline explanation within 1 click.
 
-## goal-3
+## requirement-3
 Reduce time-to-first-launched-campaign from the current average of 4 sessions to a single session for 80% of new users.
 
 ---
@@ -192,49 +192,19 @@ The redesigned platform introduced an automated client status page that pulled p
 ---
 
 ## ds-color-1
-#FF3B3B
-
-## ds-color-1-name
-Brand Red
-
-## ds-color-1-hex
-#FF3B3B
+FF3B3B
 
 ## ds-color-2
-#1A1A1A
-
-## ds-color-2-name
-Dark Black
-
-## ds-color-2-hex
-#1A1A1A
+1A1A1A
 
 ## ds-color-3
-#FFFFFF
-
-## ds-color-3-name
-Pure White
-
-## ds-color-3-hex
-#FFFFFF
+FFFFFF
 
 ## ds-color-4
-#9E9E9E
-
-## ds-color-4-name
-Muted Grey
-
-## ds-color-4-hex
-#9E9E9E
+9E9E9E
 
 ## ds-color-5
-#FFB800
-
-## ds-color-5-name
-Accent Gold
-
-## ds-color-5-hex
-#FFB800
+FFB800
 
 ## ds-font-1
 Satoshi

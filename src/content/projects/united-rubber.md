@@ -75,16 +75,16 @@ Invoices and order history lived in a separate system accessed through a differe
 
 ---
 
-## goals-intro
+## requirements-intro
 Three goals were aligned between UX, product, and the business before any design work began. These shaped every decision from IA through final screens.
 
-## goal-1
+## requirement-1
 Design a product catalogue that allows dealers to find products by application, material, or keyword — not just by SKU — reducing time-to-order-start to under 2 minutes.
 
-## goal-2
+## requirement-2
 Redesign the order flow as a persistent, single-session experience with a live cart, saved drafts, and clear progress indicators.
 
-## goal-3
+## requirement-3
 Consolidate invoices, order history, and account management into a unified portal so dealers never need to leave to complete a task.
 
 ---
@@ -192,49 +192,19 @@ The redesigned catalogue introduced filterable product grids with technical spec
 ---
 
 ## ds-color-1
-#1B3A5C
-
-## ds-color-1-name
-Industrial Blue
-
-## ds-color-1-hex
-#1B3A5C
+1B3A5C
 
 ## ds-color-2
-#6B7B8D
-
-## ds-color-2-name
-Steel Grey
-
-## ds-color-2-hex
-#6B7B8D
+6B7B8D
 
 ## ds-color-3
-#FFFFFF
-
-## ds-color-3-name
-White
-
-## ds-color-3-hex
-#FFFFFF
+FFFFFF
 
 ## ds-color-4
-#E8652D
-
-## ds-color-4-name
-Signal Orange
-
-## ds-color-4-hex
-#E8652D
+E8652D
 
 ## ds-color-5
-#0F2236
-
-## ds-color-5-name
-Dark Navy
-
-## ds-color-5-hex
-#0F2236
+0F2236
 
 ## ds-font-1
 IBM Plex Sans

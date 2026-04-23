@@ -283,6 +283,56 @@
   color: var(--muted);
   white-space: pre-wrap;
 }
+
+/* --- New card layout (logo top / body middle / footer bottom) --- */
+.case-left .pp-card-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  display: block;
+  flex: 0 0 auto;
+  align-self: flex-start;
+}
+.case-left .pp-card-body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  min-height: 0;
+}
+.case-left .pp-card-tagline {
+  margin: 0;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.6;
+  letter-spacing: .14px;
+  color: var(--muted);
+  white-space: pre-wrap;
+  max-width: 52ch;
+}
+.case-left .pp-card-foot {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.case-left .pp-card-divider {
+  height: 1px;
+  background: var(--stroke);
+  width: 100%;
+}
+.case-left .pp-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+/* In this layout the CTA sits below the tagline and should stay visible,
+   not fade in only on hover like the old layout did. */
+.case-left .pp-card-body .cta {
+  opacity: 1;
+  transform: none;
+}
 .case-right {
   width: 50%;
   flex: 0 0 50%;

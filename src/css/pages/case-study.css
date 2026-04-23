@@ -17,6 +17,19 @@
   margin: 0;
 }
 .cs-hero-text { display: flex; flex-direction: column; gap: 16px }
+.cs-hero-title-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.cs-hero-logo {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: block;
+}
 .cs-hero h1 {
   font-family: var(--font-ui);
   font-weight: 500;
@@ -59,6 +72,8 @@
   border-right: 1px solid var(--stroke);
 }
 .cs-meta-item:last-child { border-right: none }
+/* Hide Duration card for now — MD key stays so value can be re-enabled later */
+.cs-meta-item:has([data-cs="meta-duration"]) { display: none }
 .cs-meta-item .meta-label {
   font-size: 11px;
   letter-spacing: 1.5px;
@@ -141,7 +156,186 @@
   margin: 0;
 }
 
-/* Goals and Tasks (after Overview) — reuses goal-card grid */
+/* ================================================================
+   Tools & Stack — single combined grid, no sub-groups
+   ================================================================ */
+.cs-tools {
+  padding: 96px var(--pad);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  background: var(--bg2);
+  border: 1px solid var(--stroke2);
+}
+.cs-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+.cs-tool {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 0;
+  background: transparent;
+  border: none;
+  color: var(--ink);
+  text-decoration: none;
+  transition: color .2s;
+}
+.cs-tool:hover {
+  color: var(--accent);
+}
+.cs-tool-icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+.cs-tool-icon img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  display: block;
+  transition: transform .2s ease;
+}
+.cs-tool:hover .cs-tool-icon img {
+  transform: scale(1.08);
+}
+/* Dark-logo fix: invert logos whose brand colors are mostly black so
+   they don't disappear against the dark background (Awwwards, Mobbin). */
+.cs-tool-icon--invert img {
+  filter: invert(1);
+}
+.cs-tool-name {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: .3px;
+  line-height: 1.3;
+}
+
+/* ================================================================
+   Requirements (was Goals and Tasks) — numbered list
+   ================================================================ */
+.cs-requirements {
+  padding: 96px var(--pad);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.cs-requirements .intro {
+  font-size: 17px;
+  line-height: 1.9;
+  color: var(--muted2);
+  margin: 0;
+  max-width: 720px;
+}
+.cs-requirements .intro:empty { display: none }
+.cs-req-list {
+  list-style: none;
+  counter-reset: req;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 900px;
+}
+.cs-req-list li {
+  counter-increment: req;
+  position: relative;
+  padding: 20px 24px 20px 72px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--bg2);
+  border: 1px solid var(--stroke);
+}
+.cs-req-list li:empty { display: none }
+.cs-req-list li::before {
+  content: counter(req, decimal-leading-zero);
+  position: absolute;
+  left: 24px;
+  top: 20px;
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: -.5px;
+  color: var(--accent);
+}
+
+/* ================================================================
+   Problems grid (2-column)
+   ================================================================ */
+.cs-problem {
+  padding: 96px var(--pad);
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  background: var(--bg2);
+  border: 1px solid var(--stroke2);
+}
+.cs-problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.cs-problem-item {
+  padding: 24px;
+  background: var(--bg);
+  border: 1px solid var(--stroke);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink);
+  position: relative;
+}
+.cs-problem-item:empty { display: none }
+.cs-problem-item::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--accent);
+  opacity: .4;
+}
+
+/* ================================================================
+   Challenges grid (2-column) — distinct style from Problems
+   ================================================================ */
+.cs-challenges {
+  padding: 96px var(--pad);
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.cs-challenge-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.cs-challenge-item {
+  padding: 28px;
+  background: var(--bg2);
+  border-top: 2px solid var(--accent);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink);
+}
+.cs-challenge-item:empty { display: none }
+
+/* Hide legacy sections no longer shown on case study pages */
+.cs-results,
+.cs-reflections { display: none !important }
+
+/* Goals and Tasks (legacy — kept for backward compat if present) */
 .cs-goals-tasks {
   padding: 96px var(--pad);
   display: flex;
@@ -236,27 +430,42 @@
 
 /* Font pairings */
 .cs-ds-fonts {
-  display: flex;
-  gap: 48px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
 }
 .cs-ds-font {
+  padding: 36px 32px 28px;
+  background: var(--bg);
+  border: 1px solid var(--stroke);
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  min-width: 200px;
+  gap: 20px;
 }
-.cs-ds-font-preview {
-  font-size: 28px;
-  line-height: 1.2;
+.cs-ds-font-display {
+  font-size: 96px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -2px;
   color: var(--ink);
   margin: 0;
+  font-family: "Times New Roman", serif; /* fallback until JS swaps in brand font */
+}
+.cs-ds-font-sample {
+  font-size: 18px;
+  line-height: 1.5;
+  color: rgba(255,255,255,.85);
+  margin: 0;
+  font-family: "Times New Roman", serif; /* fallback until JS swaps in brand font */
 }
 .cs-ds-font-name {
   font-size: 13px;
   color: var(--muted);
   margin: 0;
   letter-spacing: .5px;
+  text-transform: uppercase;
+  padding-top: 16px;
+  border-top: 1px solid var(--stroke);
 }
 
 /* Lightbox */
@@ -971,20 +1180,29 @@
 @media (max-width: 768px) {
   .cs-hero { padding: 120px var(--pad) 40px }
   .cs-hero h1 { font-size: 36px }
+  .cs-hero-logo { width: 96px; height: 96px }
+  .cs-hero-title-row { gap: 14px }
   .cs-next-title { font-size: 28px }
   .cs-next-link-card { grid-template-columns: 1fr; gap: 32px }
-  .cs-overview, .cs-goals-tasks, .cs-problem, .cs-work, .cs-goals, .cs-result-highlight, .cs-research, .cs-personas,
+  .cs-overview, .cs-tools, .cs-requirements, .cs-goals-tasks, .cs-problem, .cs-challenges, .cs-work, .cs-goals, .cs-result-highlight, .cs-research, .cs-personas,
   .cs-wireframes, .cs-screens, .cs-design-system, .cs-results, .cs-reflections, .cs-next {
     padding: 56px var(--pad);
   }
-  .cs-ds-fonts { gap: 32px }
+  .cs-ds-fonts { grid-template-columns: 1fr; gap: 16px }
+  .cs-ds-font { padding: 28px 24px 20px }
+  .cs-ds-font-display { font-size: 72px }
+  .cs-ds-font-sample { font-size: 16px }
   .cs-goals-grid { grid-template-columns: 1fr }
+  .cs-problem-grid { grid-template-columns: 1fr }
+  .cs-challenge-grid { grid-template-columns: 1fr }
   .cs-result-highlight-grid { grid-template-columns: 1fr }
   .cs-research-grid { grid-template-columns: 1fr }
   .cs-personas-grid { grid-template-columns: 1fr }
   .cs-img-grid { grid-template-columns: 1fr }
   .cs-screens-row { grid-template-columns: 1fr }
   .cs-results-metrics { grid-template-columns: 1fr }
+  .cs-req-list li { padding: 16px 20px 16px 60px; font-size: 15px }
+  .cs-req-list li::before { left: 20px; top: 16px; font-size: 18px }
   .cs-meta-strip { flex-wrap: wrap }
   .cs-meta-item { flex: 0 0 50%; border-right: none; border-bottom: 1px solid var(--stroke) }
   .cs-meta-item:last-child { border-bottom: none }
@@ -1000,7 +1218,9 @@
   .cs-mosaic { gap: 4px; flex-wrap: wrap }
   .cs-mosaic-col { flex: 1 1 calc(50% - 2px); gap: 4px }
   .cs-hero h1 { font-size: 28px }
-  .cs-overview, .cs-goals-tasks, .cs-problem, .cs-goals, .cs-result-highlight, .cs-research, .cs-personas,
+  .cs-hero-logo { width: 72px; height: 72px }
+  .cs-hero-title-row { gap: 12px }
+  .cs-overview, .cs-tools, .cs-requirements, .cs-goals-tasks, .cs-problem, .cs-challenges, .cs-goals, .cs-result-highlight, .cs-research, .cs-personas,
   .cs-wireframes, .cs-screens, .cs-results, .cs-reflections, .cs-next {
     padding: 40px var(--pad);
   }

@@ -75,16 +75,16 @@ There was no trusted social layer for this type of food — no way to see where 
 
 ---
 
-## goals-intro
+## requirements-intro
 Three goals were aligned with the founding team after research — each addressing a distinct failure mode of existing discovery tools.
 
-## goal-1
+## requirement-1
 Design a discovery experience built around real-world browsing behaviour — proximity, what's open now, and experience type — not keyword search alone.
 
-## goal-2
+## requirement-2
 Build a vendor profile structure that surface timings, location accuracy, and daily specials as first-class information — the three things users cared most about in research.
 
-## goal-3
+## requirement-3
 Design a save-and-share layer that makes passing on a food find as easy as sharing an Instagram story — reducing the friction between discovery and recommendation.
 
 ---
@@ -192,49 +192,19 @@ The redesigned app featured a smart reorder section as the primary entry point, 
 ---
 
 ## ds-color-1
-#E74C3C
-
-## ds-color-1-name
-Tomato Red
-
-## ds-color-1-hex
-#E74C3C
+E74C3C
 
 ## ds-color-2
-#F5A623
-
-## ds-color-2-name
-Warm Yellow
-
-## ds-color-2-hex
-#F5A623
+F5A623
 
 ## ds-color-3
-#FFF9F0
-
-## ds-color-3-name
-Off White
-
-## ds-color-3-hex
-#FFF9F0
+FFF9F0
 
 ## ds-color-4
-#27AE60
-
-## ds-color-4-name
-Forest Green
-
-## ds-color-4-hex
-#27AE60
+27AE60
 
 ## ds-color-5
-#3C2415
-
-## ds-color-5-name
-Dark Brown
-
-## ds-color-5-hex
-#3C2415
+3C2415
 
 ## ds-font-1
 Poppins

@@ -20,6 +20,7 @@ const safe = async (label, fn) => {
 const loadHome = async () => {
   const [
     { applyMdContent },
+    { applyProjectCardContent },
     { initStatsAnimation },
     { initUxParallax },
     { initCardStack },
@@ -27,6 +28,7 @@ const loadHome = async () => {
     { initMarquee },
   ] = await Promise.all([
     import('./md-content.js'),
+    import('./project-cards.js'),
     import('./stats-counter.js'),
     import('./ux-parallax.js'),
     import('./card-stack.js'),
@@ -34,6 +36,7 @@ const loadHome = async () => {
     import('./marquee.js'),
   ]);
   safe('applyMdContent', applyMdContent);
+  safe('applyProjectCardContent', applyProjectCardContent);
   safe('initStatsAnimation', initStatsAnimation);
   safe('initUxParallax', initUxParallax);
   safe('initTestimonials', initTestimonials);
@@ -50,7 +53,11 @@ const loadHome = async () => {
 };
 
 const loadProjects = async () => {
-  const { initProjectFilter } = await import('./project-filter.js');
+  const [{ initProjectFilter }, { applyProjectCardContent }] = await Promise.all([
+    import('./project-filter.js'),
+    import('./project-cards.js'),
+  ]);
+  safe('applyProjectCardContent', applyProjectCardContent);
   safe('initProjectFilter', initProjectFilter);
 };
 

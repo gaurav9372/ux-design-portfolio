@@ -75,16 +75,16 @@ The transaction categorisation was fully manual and required 3 taps per transact
 
 ---
 
-## goals-intro
+## requirements-intro
 Three design goals were set after synthesising research — each targeting a specific point in the broken habit loop.
 
-## goal-1
+## requirement-1
 Redesign onboarding to defer budget-setting until after the user has connected their account and seen their first spending summary — letting data inform their targets.
 
-## goal-2
+## requirement-2
 Design a daily check-in experience that gives users one meaningful insight in under 30 seconds — replacing the push notification → transaction list flow.
 
-## goal-3
+## requirement-3
 Introduce smart auto-categorisation with one-tap correction — reducing the manual categorisation load from 3 taps to 1 for at least 70% of transactions.
 
 ---
@@ -192,49 +192,19 @@ The final dashboard used a card-based layout with 4 key financial health indicat
 ---
 
 ## ds-color-1
-#3F51B5
-
-## ds-color-1-name
-Deep Indigo
-
-## ds-color-1-hex
-#3F51B5
+3F51B5
 
 ## ds-color-2
-#4CAF50
-
-## ds-color-2-name
-Success Green
-
-## ds-color-2-hex
-#4CAF50
+4CAF50
 
 ## ds-color-3
-#FF9800
-
-## ds-color-3-name
-Warning Amber
-
-## ds-color-3-hex
-#FF9800
+FF9800
 
 ## ds-color-4
-#ECEFF1
-
-## ds-color-4-name
-Soft Grey
-
-## ds-color-4-hex
-#ECEFF1
+ECEFF1
 
 ## ds-color-5
-#1A1A2E
-
-## ds-color-5-name
-Midnight
-
-## ds-color-5-hex
-#1A1A2E
+1A1A2E
 
 ## ds-font-1
 DM Sans

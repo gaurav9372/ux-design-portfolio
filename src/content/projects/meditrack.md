@@ -75,16 +75,16 @@ The patient list and the patient detail view were on separate screens — nurses
 
 ---
 
-## goals-intro
+## requirements-intro
 Three goals were defined with clinical managers and signed off before any design work, with direct input from the nursing staff who used the system daily.
 
-## goal-1
+## requirement-1
 Design a visual hierarchy system that makes critical alerts immediately visible without any scanning — a nurse should be able to triage a 10-patient list in under 60 seconds.
 
-## goal-2
+## requirement-2
 Surface the three most-used actions (Add Note, Escalate, Mark Reviewed) as persistent, always-visible controls — removing the need to navigate into dropdowns or secondary screens.
 
-## goal-3
+## requirement-3
 Redesign the layout as a split-panel: patient list on the left, active patient detail on the right — eliminating the back-and-forth navigation between screens.
 
 ---
@@ -192,49 +192,19 @@ The final design centred on a patient timeline that showed medication history, u
 ---
 
 ## ds-color-1
-#1A73E8
-
-## ds-color-1-name
-Medical Blue
-
-## ds-color-1-hex
-#1A73E8
+1A73E8
 
 ## ds-color-2
-#00897B
-
-## ds-color-2-name
-Calm Teal
-
-## ds-color-2-hex
-#00897B
+00897B
 
 ## ds-color-3
-#E53935
-
-## ds-color-3-name
-Alert Red
-
-## ds-color-3-hex
-#E53935
+E53935
 
 ## ds-color-4
-#F5F5F5
-
-## ds-color-4-name
-Light Grey
-
-## ds-color-4-hex
-#F5F5F5
+F5F5F5
 
 ## ds-color-5
-#263238
-
-## ds-color-5-name
-Dark Slate
-
-## ds-color-5-hex
-#263238
+263238
 
 ## ds-font-1
 Nunito Sans

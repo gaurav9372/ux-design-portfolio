@@ -1,267 +1,168 @@
 # Care Naturals — Case Study Content
-Edit this file to update the Care Naturals case study page. Save and refresh to see changes.
+# Edit this file to update the Care Naturals case study page.
 
 ---
 
 ## hero-eyebrow
 UX Case Study
 
+## hero-logo
+/images/project-logos/care-naturals.png
+
 ## hero-title
 Care Naturals
 
 ## hero-tagline
-Redesigning the checkout flow to reduce cart abandonment and boost conversions for a D2C skincare brand.
+Designing one brand experience for three very different buyers — everyday consumers, bulk procurement teams, and international importers — without breaking the brand story.
+
+---
+
+## meta-method
+Revamp Project
 
 ## meta-role
-Lead UX Designer
+Lead UX/UI Designer (Solo)
 
-## meta-duration
-10 weeks
-
-## meta-team
-3 people
-
-## meta-tools
-Figma, Maze, Miro
+## meta-category
+Ecommerce Website
 
 ## meta-platform
-iOS & Web
+Desktop, Tablet & Mobile
+
+## meta-duration
+12 weeks
+
+---
+
+## tools
+Figma | https://www.figma.com/
+Obsidian | https://obsidian.md/
+Google Docs | https://docs.google.com/
+Google Sheet | https://docs.google.com/spreadsheets/
+Zoho | https://www.zoho.com/
+Teams | https://www.microsoft.com/en-in/microsoft-teams/group-chat-software
+Huemint | https://huemint.com/
+Coolors | https://coolors.co/
+Realtimecolors | https://www.realtimecolors.com/
+Freepik | https://www.freepik.com/
+Phosphoricons | https://phosphoricons.com/
+Hero Icons | https://heroicons.com/
+Behance | https://www.behance.net/
+Dribbble | https://dribbble.com/
+Awwwards | https://www.awwwards.com/
+Mobbin | https://mobbin.com/
+Google Fonts | https://fonts.google.com/
 
 ---
 
 ## overview-summary
-Care Naturals is a direct-to-consumer natural skincare brand with a growing loyal customer base. Their existing e-commerce experience had a high cart abandonment rate, especially at checkout step 3. I was brought in to redesign the end-to-end shopping and checkout experience, with a focus on reducing friction and building trust at critical decision points.
+Care Naturals is an Indian personal care brand that makes natural face, body, hair, and baby-care products rooted in traditional ingredients — saffron, Himalayan salt, crystal-energy compositions, and herbal oils. The brand was growing in three directions at once: a D2C storefront for Indian consumers, a B2B channel for bulk and wholesale buyers (hotels, gifting companies, retail chains), and an export pipeline for international brands looking to private-label Indian-made natural products. The existing website was trying to serve all three audiences with a single flat experience — and each audience was quietly underserved.
 
 ## overview-contribution
-My specific contribution: end-to-end UX design from research through high-fidelity prototypes. I led user interviews, synthesised insights into personas and journey maps, designed the information architecture, and produced final screens and a handoff-ready design system.
-
-## metric-1-value
-35%
-
-## metric-1-label
-Increase in checkout completion rate
-
-## metric-2-value
--42%
-
-## metric-2-label
-Drop in cart abandonment
-
-## metric-3-value
-4.7/5
-
-## metric-3-label
-Post-launch user satisfaction score
+I led the project end-to-end as the sole designer. That covered stakeholder interviews, user research across all three buyer types, information architecture, user flows, wireframes, high-fidelity designs, and the brand-aligned design system. I also worked with the content and dev teams on cataloging and the new website changes.
 
 ---
 
-## problem-heading
-The Problem
+## requirements-intro
+The client shared a clear set of goals at the start — modernise the design to match the product branding, lift conversion across pages, and strengthen the Bulk Sale and Gifting experiences specifically.
 
-## problem-statement
-Users were abandoning the checkout at step 3 — payment — because they didn't trust the site with their card details and couldn't find reassuring signals at the moment they needed them most.
+## requirement-1
+Modern design that matches the product branding — the packaging had a natural, artisan feel that the old site wasn't carrying through.
 
-## problem-body
-Despite strong product discovery and a healthy add-to-cart rate, Care Naturals was losing over 60% of users between cart and payment confirmation. Exit surveys pointed to trust issues, a cluttered checkout UI, and confusion over return policies. The business needed a solution that didn't just fix the UI — it needed to rebuild confidence at the most sensitive step in the flow.
+## requirement-2
+Better conversion across pages — especially on the PDP and checkout where the existing site was bleeding users.
 
-## problem-pain-1
-Users couldn't find trust signals (SSL badge, return policy) at the payment step — they had to navigate away to verify.
-
-## problem-pain-2
-The checkout form had 14 required fields on a single screen, causing decision fatigue on mobile.
-
-## problem-pain-3
-Error messages were generic and unhelpful — users didn't know which field caused the failure.
+## requirement-3
+Improvements on the Bulk Sale and Gifting pages — the two fastest-growing channels had no dedicated experience and were being handled through generic emails.
 
 ---
 
-## goals-intro
-We defined three north-star goals to guide every design decision, grounded in both user research and business objectives.
+## problem-1
+Outdated design that didn't match the physical product packaging or the brand's artisan heritage.
 
-## goal-1
-Rebuild trust at the payment step by surfacing security signals, a clear return policy, and social proof in the right context.
+## problem-2
+Cataloging was poor — category and sub-category structure wasn't helping users find products. Needed a proper information architecture reset.
 
-## goal-2
-Reduce checkout form friction by breaking the flow into 3 focused steps with smart defaults and inline validation.
+## problem-3
+Homepage conversion was low. The layout wasn't driving visitors toward the right next action for their intent.
 
-## goal-3
-Improve error recovery — every error message must tell the user exactly what went wrong and how to fix it.
+## problem-4
+Key sections were missing from the homepage — no production story, no certifications surfaced, no social proof in view.
 
----
+## problem-5
+The Product Listing Page had weak filters and exploration features. Users were bouncing without finding what they came for.
 
-## research-intro
-I conducted a mixed-methods research sprint over 2 weeks: usability testing on the existing site, user interviews, and a competitor audit across 8 D2C brands.
+## problem-6
+The Product Detail Page was hard to convert on — view options were limited, and the trust-building sections (ingredients, how-to, reviews) weren't structured well.
 
-## research-method-1
-Moderated Usability Tests (8 participants)
+## problem-7
+The Gifting and Bulk Order pages were missing sections that build credibility and help conversion (certifications, process, lead forms).
 
-## research-method-2
-User Interviews (12 participants)
+## problem-8
+The navbar menu didn't reflect the site's actual audiences — one generic nav for three very different buyer types.
 
-## research-method-3
-Heuristic Evaluation
+## problem-9
+The brand felt less trustworthy than its competitors. Certifications existed but weren't visible, and the copy was generic.
 
-## research-method-4
-Competitor Audit (8 brands)
-
-## research-insight-1
-7 of 8 usability test participants paused or hesitated at the payment step — all cited "not seeing a lock icon or security badge."
-
-## research-insight-2
-Users on mobile found it harder to correct form errors — they had to scroll back up to find which field was highlighted.
-
-## research-insight-3
-Competitors with a visible "Free returns, no questions asked" badge near the payment CTA had measurably shorter checkout times.
+## problem-10
+The design lacked product-specific branding and looked like a generic e-commerce template rather than a purpose-built personal-care site.
 
 ---
 
-## persona-1-name
-Priya Sharma
+## challenge-1
+Three very different buyers on one site — consumers couldn't find products, bulk buyers couldn't find pricing, and international partners couldn't find a way in at all.
 
-## persona-1-role
-Marketing Manager, 29
+## challenge-2
+Too many products across many categories — required rebuilding the taxonomy and information architecture from the ground up without losing anything.
 
-## persona-1-quote
-"I love supporting indie brands, but if I can't see that my card details are safe, I'm going to Amazon."
+## challenge-3
+Constant back-and-forth with dev and content teams for cataloging help and getting source data from the client to drive the right outcomes.
 
-## persona-1-pain
-Priya shops online frequently but is wary of smaller D2C brands. She checks for trust indicators before entering any payment details and will abandon if she can't find them quickly.
-
-## persona-2-name
-Rahul Mehta
-
-## persona-2-role
-Freelance Designer, 34
-
-## persona-2-quote
-"I just want to check out fast. I don't need a 10-step form for a face wash."
-
-## persona-2-pain
-Rahul values speed and clarity. A long checkout form on mobile frustrates him immediately. He will switch to a competitor site that has Apple Pay or a one-page checkout.
-
----
-
-## wireframes-caption
-Low-fidelity wireframes exploring a 3-step checkout: Address → Delivery → Payment. Each step shows only what's needed at that moment. Trust signals were placed contextually on the Payment step after research showed that was the moment of hesitation.
-
-## screens-caption
-Final high-fidelity screens delivered in Figma with a component library and interaction specs for handoff.
-
----
-
-## results-metric-1-value
-+35%
-
-## results-metric-1-label
-Checkout completion rate (A/B test, 4 weeks post-launch)
-
-## results-metric-2-value
--42%
-
-## results-metric-2-label
-Cart abandonment at payment step
-
-## results-metric-3-value
-+28%
-
-## results-metric-3-label
-Mobile conversion rate improvement
-
-## results-body
-The redesigned checkout launched 6 weeks after design handoff. In the first A/B test cohort (4,200 users), the new flow outperformed the control on every metric. The biggest single win was adding the contextual trust block (SSL badge + "Free returns in 30 days") directly above the Place Order CTA — something discovered in round 2 of usability testing.
-
----
+## challenge-4
+No existing brand guide — had to establish visual direction from product packaging photos and the company logo alone.
 
 ---
 
 ## work-process
-I followed a double-diamond approach — starting broad with discovery research, narrowing down to define the core problem, then expanding into ideation before converging on a refined, testable solution. Each phase had clear deliverables and stakeholder checkpoints to keep the team aligned.
+I followed a compressed discovery-to-delivery cycle — three weeks of research, two of IA and flows, four of design, one of testing, and two of iteration and handoff. Because the site had to serve three distinct buyers, I kept a running decision log noting which audience each pattern served, so no feature was justified by "it just looks nice."
 
 ## work-research
-I ran 8 moderated usability tests on the existing checkout flow, conducted 12 user interviews with recent buyers and cart abandoners, performed a heuristic evaluation against Nielsen’s 10 principles, and audited 8 competitor D2C checkout experiences. The research revealed that trust — not form length — was the primary barrier at the payment step.
+I ran interviews with 12 people across three segments (D2C shoppers, B2B procurement managers, international buyers), plus stakeholder sessions with the founder and sales lead to understand the current inbound flow. I audited eight Indian D2C beauty brands, three B2B wholesale platforms, and two export-focused sites to see how each category handled multi-audience navigation. The consistent pattern: sites that served multiple audiences well used a split-nav or secondary-CTA pattern to signal "this page is for you" to each buyer type.
 
 ## work-ideation
-I explored 3 different checkout structures through rapid sketching and low-fidelity wireframes: a single-page layout, an accordion stepper, and a focused 3-step flow. After testing paper prototypes with 5 users, the 3-step model (Address → Delivery → Payment) performed best because it reduced cognitive load at each stage.
+I explored three IA options in low-fidelity: a single nav with toggles, three separate microsites under one brand umbrella, and a split navigation with audience-specific pages. Paper prototypes tested with four people (one D2C, two B2B, one export) — split-nav won on every dimension: fastest time-to-relevant-page, least confusion, and it kept the brand feel consistent instead of fragmenting it.
 
 ## work-solutions
-The final design introduced a 3-step checkout with contextual trust signals placed directly at the payment step — an SSL badge, a "Free returns in 30 days" promise, and real customer ratings. I also redesigned the form inputs with inline validation and smart defaults (auto-detecting card type, pre-filling city from pincode), cutting form fields from 14 to 8.
-
----
-
+The final design uses a split navigation: product categories (Face, Body, Hair, Baby) for retail shoppers, and audience entries (Bulk Order, Gifting, Overseas) beside them. Each audience page has its own tailored hero, a trust block showing certifications and the production process, testimonials from that segment, and a structured inquiry form. The retail PDP was rebuilt around a benefits-first hierarchy — title, quantity, buy CTA, then a tabbed content section (About, Ingredients, How to Use, Reviews).
 
 ---
 
 ## ds-color-1
-#2D5A3D
-
-## ds-color-1-name
-Forest Green
-
-## ds-color-1-hex
-#2D5A3D
+B5D943
 
 ## ds-color-2
-#8BAF7C
-
-## ds-color-2-name
-Sage
-
-## ds-color-2-hex
-#8BAF7C
+176B4F
 
 ## ds-color-3
-#FAF3E8
-
-## ds-color-3-name
-Cream
-
-## ds-color-3-hex
-#FAF3E8
+1A2421
 
 ## ds-color-4
-#8B6946
-
-## ds-color-4-name
-Warm Brown
-
-## ds-color-4-hex
-#8B6946
+F3F5EC  
 
 ## ds-color-5
-#2C2C2C
-
-## ds-color-5-name
-Charcoal
-
-## ds-color-5-hex
-#2C2C2C
+FFFFFF
 
 ## ds-font-1
-Playfair Display
-
-## ds-font-1-preview
-Aa Bb Cc 123
+Arima Madurai
 
 ## ds-font-1-name
-Playfair Display — Headings & Display
+Arima Madurai — Headings & Editorial
 
 ## ds-font-2
 Inter
 
-## ds-font-2-preview
-Aa Bb Cc 123
-
 ## ds-font-2-name
 Inter — Body & UI Text
-
----
-
-## reflections-body
-The biggest lesson from this project: trust is a design problem, not just a copy problem. We initially focused on shortening the form, but the data kept pointing back to the payment step as the key moment. Once we shifted our attention there, the solution became obvious.
-
-I also learned that small, well-placed text changes (like "Your data is encrypted and never stored") have a disproportionate impact on user confidence — more than visual polish.
-
-If I were to do this project again, I'd push for a faster prototype-and-test cycle in weeks 1–2 rather than spending that time on competitor audits. The real insights came from watching users, not benchmarking.
 
 ---
 

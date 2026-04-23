@@ -63,7 +63,10 @@
     <section class="cs-hero">
       <p class="eyebrow" data-cs="hero-eyebrow">UX Case Study</p>
       <div class="cs-hero-text">
-        <h1 data-cs="hero-title">Care Naturals — Natural Skincare Redesign</h1>
+        <div class="cs-hero-title-row">
+          <img class="cs-hero-logo" data-cs="hero-logo" src="" alt="Project logo" />
+          <h1 data-cs="hero-title"></h1>
+        </div>
         <p class="tagline" data-cs="hero-tagline">Redesigning the checkout flow to reduce cart abandonment and boost conversions.</p>
       </div>
       <div class="cs-hero-img">
@@ -71,25 +74,33 @@
       </div>
       <div class="cs-meta-strip">
         <div class="cs-meta-item">
+          <p class="meta-label">Method</p>
+          <p class="meta-value" data-cs="meta-method">Revamp Project</p>
+        </div>
+        <div class="cs-meta-item">
           <p class="meta-label">Role</p>
           <p class="meta-value" data-cs="meta-role">Lead UX Designer</p>
         </div>
         <div class="cs-meta-item">
-          <p class="meta-label">Duration</p>
-          <p class="meta-value" data-cs="meta-duration">10 weeks</p>
-        </div>
-        <div class="cs-meta-item">
-          <p class="meta-label">Team</p>
-          <p class="meta-value" data-cs="meta-team">3 people</p>
-        </div>
-        <div class="cs-meta-item">
-          <p class="meta-label">Tools</p>
-          <p class="meta-value" data-cs="meta-tools">Figma, Maze, Miro</p>
+          <p class="meta-label">Category</p>
+          <p class="meta-value" data-cs="meta-category">Ecommerce Website</p>
         </div>
         <div class="cs-meta-item">
           <p class="meta-label">Platform</p>
-          <p class="meta-value" data-cs="meta-platform">iOS &amp; Web</p>
+          <p class="meta-value" data-cs="meta-platform">Desktop, Tablet &amp; Mobile</p>
         </div>
+        <div class="cs-meta-item">
+          <p class="meta-label">Duration</p>
+          <p class="meta-value" data-cs="meta-duration">12 weeks</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tools & Stack -->
+    <section class="cs-tools">
+      <h2 class="cs-section-title">Tools &amp; Stack</h2>
+      <div class="cs-tools-grid" data-cs-tools="tools">
+        <!-- Filled by JS from MD (one tool per line: Name | URL) -->
       </div>
     </section>
 
@@ -101,37 +112,45 @@
       <p class="contribution" data-cs="overview-contribution"></p>
     </section>
 
-    <!-- Goals and Tasks -->
-    <section class="cs-goals-tasks">
-      <p class="cs-kicker">What We Set Out To Do</p>
-      <h2 class="cs-section-title">Goals and Tasks</h2>
-      <p class="intro" data-cs="goals-intro"></p>
-      <div class="cs-goals-grid">
-        <div class="cs-goal-card">
-          <p class="cs-goal-num">01</p>
-          <p data-cs="goal-1"></p>
-        </div>
-        <div class="cs-goal-card">
-          <p class="cs-goal-num">02</p>
-          <p data-cs="goal-2"></p>
-        </div>
-        <div class="cs-goal-card">
-          <p class="cs-goal-num">03</p>
-          <p data-cs="goal-3"></p>
-        </div>
+    <!-- Requirements -->
+    <section class="cs-requirements">
+      <h2 class="cs-section-title">Requirements</h2>
+      <p class="intro" data-cs="requirements-intro"></p>
+      <ol class="cs-req-list">
+        <li data-cs="requirement-1"></li>
+        <li data-cs="requirement-2"></li>
+        <li data-cs="requirement-3"></li>
+      </ol>
+    </section>
+
+    <!-- Problems -->
+    <section class="cs-problem">
+      <h2 class="cs-section-title">Problems</h2>
+      <div class="cs-problem-grid">
+        <div class="cs-problem-item" data-cs="problem-1"></div>
+        <div class="cs-problem-item" data-cs="problem-2"></div>
+        <div class="cs-problem-item" data-cs="problem-3"></div>
+        <div class="cs-problem-item" data-cs="problem-4"></div>
+        <div class="cs-problem-item" data-cs="problem-5"></div>
+        <div class="cs-problem-item" data-cs="problem-6"></div>
+        <div class="cs-problem-item" data-cs="problem-7"></div>
+        <div class="cs-problem-item" data-cs="problem-8"></div>
+        <div class="cs-problem-item" data-cs="problem-9"></div>
+        <div class="cs-problem-item" data-cs="problem-10"></div>
       </div>
     </section>
 
-    <!-- 3. The Problem -->
-    <section class="cs-problem">
-      <h2 class="cs-section-title">Problems and Challenges</h2>
-      <p class="statement" data-cs="problem-statement"></p>
-      <p class="body" data-cs="problem-body"></p>
-      <ul class="cs-pain-list" aria-label="User pain points">
-        <li data-cs="problem-pain-1"></li>
-        <li data-cs="problem-pain-2"></li>
-        <li data-cs="problem-pain-3"></li>
-      </ul>
+    <!-- Challenges -->
+    <section class="cs-challenges">
+      <h2 class="cs-section-title">Challenges</h2>
+      <div class="cs-challenge-grid">
+        <div class="cs-challenge-item" data-cs="challenge-1"></div>
+        <div class="cs-challenge-item" data-cs="challenge-2"></div>
+        <div class="cs-challenge-item" data-cs="challenge-3"></div>
+        <div class="cs-challenge-item" data-cs="challenge-4"></div>
+        <div class="cs-challenge-item" data-cs="challenge-5"></div>
+        <div class="cs-challenge-item" data-cs="challenge-6"></div>
+      </div>
     </section>
 
     <!-- The Work -->
@@ -160,19 +179,19 @@
     <section class="cs-goals">
       <p class="cs-kicker">Design Direction</p>
       <h2 class="cs-section-title">Goals &amp; Success Metrics</h2>
-      <p class="intro" data-cs="goals-intro"></p>
+      <p class="intro" data-cs="requirements-intro"></p>
       <div class="cs-goals-grid">
         <div class="cs-goal-card">
           <p class="cs-goal-num">01</p>
-          <p data-cs="goal-1"></p>
+          <p data-cs="requirement-1"></p>
         </div>
         <div class="cs-goal-card">
           <p class="cs-goal-num">02</p>
-          <p data-cs="goal-2"></p>
+          <p data-cs="requirement-2"></p>
         </div>
         <div class="cs-goal-card">
           <p class="cs-goal-num">03</p>
-          <p data-cs="goal-3"></p>
+          <p data-cs="requirement-3"></p>
         </div>
       </div>
     </section>
@@ -307,44 +326,22 @@
 
       <div class="cs-ds-group">
         <p class="cs-ds-group-title">Color Palette</p>
-        <div class="cs-ds-colors">
-          <div class="cs-ds-swatch">
-            <div class="cs-ds-swatch-circle" data-cs="ds-color-1"></div>
-            <p class="cs-ds-swatch-name" data-cs="ds-color-1-name"></p>
-            <p class="cs-ds-swatch-hex" data-cs="ds-color-1-hex"></p>
-          </div>
-          <div class="cs-ds-swatch">
-            <div class="cs-ds-swatch-circle" data-cs="ds-color-2"></div>
-            <p class="cs-ds-swatch-name" data-cs="ds-color-2-name"></p>
-            <p class="cs-ds-swatch-hex" data-cs="ds-color-2-hex"></p>
-          </div>
-          <div class="cs-ds-swatch">
-            <div class="cs-ds-swatch-circle" data-cs="ds-color-3"></div>
-            <p class="cs-ds-swatch-name" data-cs="ds-color-3-name"></p>
-            <p class="cs-ds-swatch-hex" data-cs="ds-color-3-hex"></p>
-          </div>
-          <div class="cs-ds-swatch">
-            <div class="cs-ds-swatch-circle" data-cs="ds-color-4"></div>
-            <p class="cs-ds-swatch-name" data-cs="ds-color-4-name"></p>
-            <p class="cs-ds-swatch-hex" data-cs="ds-color-4-hex"></p>
-          </div>
-          <div class="cs-ds-swatch">
-            <div class="cs-ds-swatch-circle" data-cs="ds-color-5"></div>
-            <p class="cs-ds-swatch-name" data-cs="ds-color-5-name"></p>
-            <p class="cs-ds-swatch-hex" data-cs="ds-color-5-hex"></p>
-          </div>
+        <div class="cs-ds-colors" data-cs-colors>
+          <!-- Filled by JS from MD: one swatch per ds-color-N key -->
         </div>
       </div>
 
       <div class="cs-ds-group">
         <p class="cs-ds-group-title">Typography</p>
         <div class="cs-ds-fonts">
-          <div class="cs-ds-font">
-            <p class="cs-ds-font-preview" data-cs="ds-font-1-preview"></p>
+          <div class="cs-ds-font" data-cs-font-target="ds-font-1">
+            <p class="cs-ds-font-display">Ag</p>
+            <p class="cs-ds-font-sample">The quick brown fox jumps over the lazy dog. 0123</p>
             <p class="cs-ds-font-name" data-cs="ds-font-1-name"></p>
           </div>
-          <div class="cs-ds-font">
-            <p class="cs-ds-font-preview" data-cs="ds-font-2-preview"></p>
+          <div class="cs-ds-font" data-cs-font-target="ds-font-2">
+            <p class="cs-ds-font-display">Ag</p>
+            <p class="cs-ds-font-sample">The quick brown fox jumps over the lazy dog. 0123</p>
             <p class="cs-ds-font-name" data-cs="ds-font-2-name"></p>
           </div>
         </div>

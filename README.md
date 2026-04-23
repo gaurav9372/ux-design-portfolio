@@ -99,15 +99,6 @@ npm run preview
 
 All homepage text and image URLs are managed in `src/data/homepage.js`. Edit that file and refresh — no need to modify HTML.
 
-## Projects
-
-1. **Care Naturals** — Natural skincare e-commerce UX
-2. **United Rubber** — B2B industrial manufacturer positioning
-3. **AdsCult** — Digital marketing agency brand & web
-4. **FinFlow** — Fintech mobile banking onboarding
-5. **MediTrack** — Healthcare SaaS patient dashboard
-6. **Flavor Street** — Food delivery app end-to-end UX
-7. **EduSpark** — EdTech gamified K-12 learning
 
 ## Author
 
