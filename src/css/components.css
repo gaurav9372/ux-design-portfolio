@@ -36,12 +36,27 @@
   pointer-events: none;
 }
 .brand {
-  height: 40px; position: relative; flex: 0 0 auto;
+  height: 40px;
+  position: relative;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--ink);
 }
 .brand img {
   height: 100%;
   width: auto;
   object-fit: cover;
+}
+.brand-name {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -.2px;
+  line-height: 1;
+  white-space: nowrap;
 }
 .nav-right { display: flex; align-items: center; gap: 32px }
 .nav-links {
