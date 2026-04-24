@@ -194,14 +194,22 @@
 
 /* Case study cards */
 .case-list {
-  background: var(--bg3);
+  /* No section background — lets the page bg show through the tall
+     sticky-scroll area above and below the 680px card stage. On tall
+     viewports the neighbouring sections (projects logos above,
+     testimonials below) blend visually instead of getting hidden behind
+     a large bg3 block. */
   position: relative;
   width: 100%;
 }
 .case-stack {
+  /* Sticky stage for the card-stacking animation. Stage height is tuned so
+     the 467px card sits in the visual center of the viewport with room for
+     the "View all projects" CTA directly below. Shorter than 100vh means
+     less trailing scroll between the final card and the next section. */
   position: sticky;
-  top: 0;
-  height: 100vh;
+  top: calc((100vh - 680px) / 2);
+  height: 680px;
   width: 100%;
   max-width: none;
   margin: 0 auto;
@@ -376,6 +384,12 @@
   margin-top: 44px;
   font-weight: 500;
 }
+/* Centered layout variant — used when there's a single CTA instead of
+   the original text+link split. */
+.case-footer.case-footer-center {
+  justify-content: center;
+  align-items: center;
+}
 .case-footer .left {
   width: min(430px, 100%);
   font-size: 16px;
@@ -392,6 +406,36 @@
   white-space: nowrap;
   padding-top: 6px;
 }
+.case-footer-cta {
+  /* Matches the site's CTA pattern (see .ct-submit, .home-blogs-viewall):
+     uppercase accent-colored link with a sliding arrow on hover. No border
+     or background — it reads as part of the editorial flow, not a pill. */
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: transparent;
+  border: none;
+  padding: 8px 0;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform .1s ease;
+}
+.case-footer-cta::after {
+  content: "→";
+  margin-left: 10px;
+  display: inline-block;
+  transition: margin-left .25s ease, transform .25s ease;
+}
+.case-footer-cta:hover::after {
+  margin-left: 16px;
+  transform: translateX(2px);
+}
+.case-footer-cta:active { transform: scale(.97); }
 
 /* Logo tiles & pills */
 .logos-top { overflow: hidden; width: 100% }

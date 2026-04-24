@@ -30,8 +30,7 @@ const CONTENT_MAP = {
   'gallery-quote': '.gallery .gallery-quote',
   'gallery-author': '.gallery .gallery-author',
   'gallery-small-quote': '.gallery .small-quote',
-  'case-footer-left': '.case-footer .left',
-  'case-footer-right': '.case-footer .right',
+  'case-footer-cta': '.case-footer .case-footer-cta',
   'testimonials-heading': '.testimonials h2',
   'testimonials-bgline': '.bgline-track span',
   'footer-location-1': '.footer-bg p:first-child',
@@ -63,7 +62,7 @@ export const applyMdContent = () => {
       return;
     }
 
-    if (key === 'gallery-quote') {
+    if (key === 'gallery-quote' || key === 'gallery-small-quote') {
       const el = document.querySelector(selector);
       if (el) el.innerHTML = value.replace(/\n/g, '<br>');
       return;
@@ -71,7 +70,9 @@ export const applyMdContent = () => {
 
     if (key === 'gallery-author') {
       const el = document.querySelector(selector);
-      if (el) el.textContent = `— ${value}`;
+      // Em dashes banned site-wide; CSS on .gallery-author handles visual
+      // separation from the quote above. Just set the name.
+      if (el) el.textContent = value;
       return;
     }
 
@@ -88,10 +89,21 @@ export const applyMdContent = () => {
     }
 
     const el = document.querySelector(selector);
-    if (el) el.textContent = value;
+    if (!el) return;
+    el.textContent = value;
+    // If this element had already been wrapped by split-hover, the
+    // textContent replacement above destroyed those char-spans. Clear the
+    // guard so the re-init below can rebuild them and the hover animation
+    // starts working again. (Examples: .case-footer-cta, any other MD-driven
+    // <a>/<button> that split-hover auto-wraps.)
+    if (el.dataset.split === 'true') {
+      delete el.dataset.split;
+      el.classList.remove('split-hover');
+    }
   });
 
   // Re-run split-hover so elements whose textContent was just replaced
-  // (e.g. footer email) get their character wrappers rebuilt.
+  // (footer email, case-footer CTA, etc.) get their character wrappers
+  // rebuilt now that they have their final MD-sourced text.
   import('./split-hover.js').then(({ initSplitHover }) => initSplitHover());
 };

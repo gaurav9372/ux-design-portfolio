@@ -1,10 +1,10 @@
-# Blog — 12 Mistakes Junior Designers Make
+# Blog: 12 Mistakes Junior Designers Make
 Edit this file to update the blog post. Save and refresh to see changes.
 
 ---
 
 ## title
-12 Mistakes Junior Designers Make (And How to Actually Fix Them)
+Gen Z Designers, Please Do Not Make These 12 Mistakes I Did 
 
 ## date
 March 2025
@@ -29,17 +29,17 @@ Illustration of common design mistakes
 ## body
 When I started designing, I thought I was doing everything right. I was watching YouTube tutorials, recreating Dribbble shots, and collecting Figma plugins like they were Pokemon cards. Turns out, I was making a bunch of mistakes that nobody told me about until much later.
 
-So here are 12 things I wish someone had told me on day one. Not from some design textbook. Just stuff I learned by messing up, getting feedback, and slowly getting better.
+So here are 12 things I wish someone had told me on day one. These are not from a design textbook. They are things I learned by making mistakes, getting feedback, and slowly getting better.
 
 1. Designing for yourself instead of the user
 
-This is the big one. You open Figma, pick your favorite colors, choose a trendy font, and start building something that looks good to you. But here is the thing. You are not the user. Your mom is not the user. Your designer friend on Twitter is not the user.
+This is the big one. You open Figma, pick your favorite colors, choose a trendy font, and start building something that looks good to you. Here is the problem. You are not the user. Your mom is not the user. Your designer friend on Twitter is not the user.
 
 The fix is simple but uncomfortable. Talk to real people who will actually use the product. Watch them struggle. Ask them what confuses them. It changes everything.
 
 2. Skipping research because it feels slow
 
-I get it. Research sounds boring when you just want to push pixels. But designing without research is like cooking without tasting the food. You might get lucky, but most of the time you will end up with something nobody wants.
+I get it. Research sounds boring when you just want to start designing. But designing without research is like cooking without tasting the food. You might get lucky, but most of the time you will end up with something nobody wants.
 
 You do not need a fancy research setup. Even five quick interviews or reading through customer support tickets will give you more insight than guessing.
 
@@ -95,7 +95,7 @@ Practice talking through your decisions. "I chose this layout because users told
 
 When you are starting out, it is tempting to over design everything so it looks good in your portfolio. But in a real job, sometimes the best design is the simplest one. The one that ships fast and solves the problem without drama.
 
-Not everything needs to be a showstopper. Sometimes a clean, simple solution is exactly what the project needs. Your portfolio will thank you for showing restraint and good judgment.
+Not every project needs to be a showcase piece. Sometimes a clean, simple solution is exactly what the project needs. Your portfolio will thank you for showing restraint and good judgment.
 
 12. Giving up too early when things get hard
 
@@ -105,8 +105,8 @@ The ones who get good are the ones who keep showing up. Keep designing. Keep ask
 
 Wrapping up
 
-So if you are a junior designer reading this, do not stress too much. You are going to make mistakes. That is part of the process. The goal is not to be perfect. The goal is to get a little better every week.
+So if you are a junior designer reading this, do not stress too much. You are going to make mistakes, and that is part of the process. Just aim to get a little better every week. That is more than enough.
 
-The difference between designers who grow fast and those who stay stuck is not talent. It is awareness. Once you know what the common mistakes look like, you start catching yourself before you fall into them. You start asking better questions. You start thinking about the user before you think about the pixels.
+Growing fast as a designer is less about talent and more about awareness. Once you know what the common mistakes look like, you start catching yourself before you fall into them. You start asking better questions. You start thinking about the user and not just about the pixels.
 
-None of these 12 things are hard to fix on their own. The hard part is admitting you are doing them in the first place. But once you do that, everything else gets easier. And if even one of these points saves you from a mistake I made, then this whole article was worth writing.
+None of these 12 things are hard to fix on their own. What is actually hard is admitting you are doing them in the first place. But once you do that, everything else gets easier. And if even one of these points saves you from a mistake I made, then this article was worth writing.

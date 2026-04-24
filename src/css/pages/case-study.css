@@ -289,23 +289,14 @@
   gap: 16px;
 }
 .cs-problem-item {
-  padding: 24px;
-  background: var(--bg);
-  border: 1px solid var(--stroke);
+  padding: 28px;
+  background: var(--bg2);
+  border-top: 2px solid var(--accent);
   font-size: 16px;
-  line-height: 1.65;
+  line-height: 1.7;
   color: var(--ink);
-  position: relative;
 }
 .cs-problem-item:empty { display: none }
-.cs-problem-item::before {
-  content: "";
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 3px;
-  background: var(--accent);
-  opacity: .4;
-}
 
 /* ================================================================
    Challenges grid (2-column) — distinct style from Problems

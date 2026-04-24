@@ -9,33 +9,60 @@ const STAGGER_MS = 50;
 
 const wrapChars = (el) => {
   if (el.dataset.headingAnim === 'ready') return [];
-  const text = el.textContent;
-  el.innerHTML = '';
   const chars = [];
-  const words = text.split(/( +)/); // split but keep spaces as separate entries
 
-  words.forEach((segment) => {
-    if (/^ +$/.test(segment)) {
-      // Spaces between words — keep as text nodes so browser can line-break here
-      el.appendChild(document.createTextNode(segment));
+  // Snapshot children BEFORE wiping innerHTML so we can walk structure.
+  const originalNodes = Array.from(el.childNodes);
+  el.innerHTML = '';
+
+  // Wrap a plain text segment's words/chars into ha-word > ha-char > ha-char-inner
+  // spans, appending everything onto `container`.
+  const wrapTextInto = (text, container) => {
+    text.split(/( +)/).forEach((segment) => {
+      if (!segment) return;
+      if (/^ +$/.test(segment)) {
+        // Preserve spaces as text nodes so browser can break between words.
+        container.appendChild(document.createTextNode(segment));
+        return;
+      }
+      const wordSpan = document.createElement('span');
+      wordSpan.className = 'ha-word';
+      for (const ch of segment) {
+        const outer = document.createElement('span');
+        outer.className = 'ha-char';
+        const inner = document.createElement('span');
+        inner.className = 'ha-char-inner';
+        inner.textContent = ch;
+        outer.appendChild(inner);
+        wordSpan.appendChild(outer);
+        chars.push(inner);
+      }
+      container.appendChild(wordSpan);
+    });
+  };
+
+  // Walk each child of the original heading. Text nodes get char-wrapped;
+  // <br> is preserved as-is (line breaks in markup must stay); other elements
+  // (e.g. <span class="accent">) are cloned shallow and their children are
+  // processed recursively so inline styling/classes still apply to wrapped chars.
+  const processNode = (node, container) => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      wrapTextInto(node.textContent, container);
       return;
     }
-    // Wrap each word in a container that prevents mid-word breaks
-    const wordSpan = document.createElement('span');
-    wordSpan.className = 'ha-word';
-    for (const ch of segment) {
-      const outer = document.createElement('span');
-      outer.className = 'ha-char';
-      const inner = document.createElement('span');
-      inner.className = 'ha-char-inner';
-      inner.textContent = ch;
-      outer.appendChild(inner);
-      wordSpan.appendChild(outer);
-      chars.push(inner);
+    if (node.nodeType !== Node.ELEMENT_NODE) return;
+    if (node.tagName === 'BR') {
+      container.appendChild(document.createElement('br'));
+      return;
     }
-    el.appendChild(wordSpan);
-  });
+    // Clone the element without children, copy attributes, then recurse.
+    const clone = document.createElement(node.tagName);
+    for (const attr of node.attributes) clone.setAttribute(attr.name, attr.value);
+    Array.from(node.childNodes).forEach((child) => processNode(child, clone));
+    container.appendChild(clone);
+  };
 
+  originalNodes.forEach((n) => processNode(n, el));
   el.dataset.headingAnim = 'ready';
   return chars;
 };

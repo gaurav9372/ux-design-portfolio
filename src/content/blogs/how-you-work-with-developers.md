@@ -1,10 +1,10 @@
-# Blog — How You Work With Developers (Real Friction)
+# Blog: Designers and Developers Are On the Same Team
 Edit this file to update the blog post. Save and refresh to see changes.
 
 ---
 
 ## title
-How You Work With Developers (Real Friction)
+Designers and Developers Are On the Same Team
 
 ## date
 March 2025
@@ -59,7 +59,7 @@ When you say "just make it responsive" and the developer asks "what should happe
 
 5. You take feedback on implementation personally
 
-When a developer says "we cannot do this exactly as designed," it is not an attack on your work. It is a reality of building software. Timelines are real. Technical debt is real. Browser quirks are real.
+When a developer says "we cannot do this exactly as designed," it is not an attack on your work. It is a reality of building software. Timelines, technical debt, and browser quirks all push back on even the cleanest designs.
 
 The designers who are great to work with are the ones who hear that feedback and say "okay, what can we do that is close?" instead of digging in and insisting on pixel perfection at the cost of shipping on time.
 
@@ -77,11 +77,11 @@ When you include developers in design reviews or brainstorming sessions, two thi
 
 The truth nobody tells you
 
-The friction between designers and developers is not a personality problem. It is a communication problem. Most of the time, both sides want the same thing, a good product that ships on time. The disconnect happens because nobody set up a good process for talking to each other.
+The friction between designers and developers is rarely about personality. It is almost always about communication. Most of the time, both sides want the same thing, a good product that ships on time. The disconnect happens because nobody set up a good process for talking to each other.
 
 Wrapping up
 
-If I had to boil this entire article down to one sentence, it would be this: the best design happens when designers and developers actually talk to each other. Not through Jira tickets. Not through Figma comments. Actually talk.
+The shortest version of this article is one line. The best design happens when designers and developers actually talk to each other. Not through Jira tickets. Not through Figma comments. Actually talk.
 
 Go sit with your developer this week. Not to hand something off. Just to talk. Ask them what annoys them about the current process. Ask them what would make their life easier. You will be surprised how much better things get when you just ask.
 

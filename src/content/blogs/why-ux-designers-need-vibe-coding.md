@@ -1,10 +1,10 @@
-# Blog — Why UX Designers Need to Learn Vibe Coding
+# Blog: Vibe Coding Just Became a Core Designer Skill
 Edit this file to update the blog post. Save and refresh to see changes.
 
 ---
 
 ## title
-Why UX Designers Need to Learn Vibe Coding (And How It Is Not Optional Anymore)
+Vibe Coding Just Became a Core Designer Skill
 
 ## date
 April 2025
@@ -31,7 +31,7 @@ There is a new term floating around the design and tech world right now. Vibe co
 
 And I think every UX designer needs to learn it. Not tomorrow. Now.
 
-Before you roll your eyes and say "I did not become a designer to write code," hear me out. This is not about becoming a frontend developer. It is about something much more practical than that.
+Before you roll your eyes and say "I did not become a designer to write code," hear me out. What I am suggesting has nothing to do with becoming a frontend developer. It is something far more practical than that.
 
 1. The gap between design and development is where good ideas go to die
 
@@ -63,7 +63,7 @@ Every designer says they understand developer constraints. Most of us are lying.
 
 When you vibe code, you hit real walls. You realize that the layout you designed does not work when the content is dynamic. You discover that the interaction you imagined is actually three separate states that need to be handled differently. You learn that "just make it responsive" involves fifty decisions you never thought about.
 
-This is not frustrating. It is educational. And it makes you a dramatically better designer because you start designing things that are buildable from the start instead of throwing impossible ideas over the wall and hoping for the best.
+It sounds frustrating but it is actually educational. And it makes you a dramatically better designer because you start designing things that are buildable from the start instead of throwing impossible ideas over the wall and hoping for the best.
 
 5. AI tools have made the barrier almost zero
 
@@ -103,7 +103,7 @@ Start there. Pick something simple. Describe it to an AI. See what comes out. Th
 
 Wrapping up
 
-Vibe coding is not a trend that will disappear in six months. It is the beginning of a fundamental shift in how design and development work together. The wall between "people who design" and "people who build" is getting thinner every day, and AI is the reason.
+Vibe coding is here to stay. It is the beginning of a fundamental shift in how design and development work together. The wall between "people who design" and "people who build" is getting thinner every day, and AI is the reason.
 
 You do not need to become a developer. You do not need to write code from scratch. You do not need to understand what a JavaScript promise is or how CSS grid works under the hood. You just need to be willing to describe what you want and work with what you get.
 

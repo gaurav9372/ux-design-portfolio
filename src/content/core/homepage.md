@@ -4,7 +4,7 @@ Edit this file to update homepage text. Save and refresh to see changes.
 ---
 
 ## hero-hello-prefix
-Hello there, I am
+Hi, I am
 
 ## hero-hello-name
 Shreyansh Gaurav.
@@ -27,7 +27,7 @@ Designer
 A passion for the screens and helping people
 
 ## about-body
-I'm a UI/UX Designer who turns complex problems into intuitive, user-first experiences. With a background in visual design and a deep curiosity for how people interact with screens, I bridge the gap between what users need and what businesses want. Every pixel I place is backed by research, empathy, and a relentless focus on usability.
+I am a UX designer based in Varanasi. I have always loved screens, apps, and the internet. Even now, I am curious about new apps, new tech, new operating systems, and pretty much anything happening online. That curiosity is what led me into UX design. I enjoy working on products that people use in their everyday life. A good design, for me, is one that feels simple and does not get in the way of what the user is trying to do.
 
 ---
 
@@ -35,7 +35,7 @@ I'm a UI/UX Designer who turns complex problems into intuitive, user-first exper
 Three stakeholders. One experience. That's the job.
 
 ## ux-desc
-I thrive at the intersection of user needs, business goals, and technical feasibility. My process starts with listening — understanding the people who will use the product — and ends with designs that feel effortless. From research to wireframes to polished interfaces, I own the full design journey.
+For me, UX design is a balancing game between these three, and that is what I enjoy about it. The client has deadlines and budgets. The users have their own needs and habits. The company has business goals. My job is to find one design that works for all three, which is harder than it sounds. This is also why UX design is more than just visuals or UI, or the user experience on the screen. A big part of this job happens off the screen, in thinking through trade-offs and finding the middle path between what each side wants. Over the years, I have learned to bring this balancing into every project I take up.
 
 ---
 
@@ -43,7 +43,7 @@ I thrive at the intersection of user needs, business goals, and technical feasib
 My Projects
 
 ## projects-desc
-A selection of projects where I helped brands and startups design experiences that convert, retain, and delight. Each project is a story of constraints, collaboration, and user-centered thinking.
+I have worked on 60+ projects across many industries and types of businesses, including websites, mobile apps, complex dashboards, and more.
 
 ---
 
@@ -55,15 +55,13 @@ Your job is to make the user awesome."
 Kathy Sierra
 
 ## gallery-small-quote
-"Design is not just what it looks like. Design is how it works." — Steve Jobs
+Here are some glimpses of what my stupid passion for helping users has dragged me into.
+No regrets, mostly. 🥴
 
 ---
 
-## case-footer-left
-Every project starts with a question: what does the user actually need? I work backwards from that answer to build experiences that feel natural.
-
-## case-footer-right
-View all
+## case-footer-cta
+View all projects
 
 ---
 
@@ -88,4 +86,4 @@ Contact me
 Gauravguptasggs@gmail.com
 
 ## footer-desc
-Open to freelance projects, full-time roles, and collaborations. If you're building something that puts users first, let's talk.
+Got a project? A role? Just a design doubt? Send it my way.

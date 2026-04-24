@@ -1,10 +1,10 @@
-# Blog — Designing Under Constraints
+# Blog: Constraints Point You in the Right Direction
 Edit this file to update the blog post. Save and refresh to see changes.
 
 ---
 
 ## title
-Designing Under Constraints
+Constraints Point You in the Right Direction
 
 ## date
 February 2025
@@ -31,15 +31,15 @@ Every designer wants a blank canvas. Unlimited time, no technical limits, full c
 
 When everything is possible, nothing feels urgent. You end up exploring forever, second guessing every decision, and never shipping anything. The best work I have done was when someone told me "you have two weeks, one developer, and it needs to work on mobile." Suddenly, every decision became clear.
 
-Constraints are not problems. They are guardrails. And once you start seeing them that way, your design process changes completely.
+Constraints act more like guardrails than problems. Once you start seeing them that way, your design process changes completely.
 
 1. Time constraints force you to prioritize
 
 When you only have a week, you cannot redesign the entire flow. You have to figure out which screen matters the most and make that one great. Everything else gets "good enough for now."
 
-This sounds like cutting corners. It is not. It is being strategic about where you spend your effort. A polished checkout screen and a basic settings page will always beat a half finished everything.
+This sounds like cutting corners, but it is really about being strategic with where you spend your effort. A polished checkout screen and a basic settings page will always beat a half finished everything.
 
-The best designers I know are not the ones who design the most screens. They are the ones who know which screens to focus on.
+The best designers I know focus on the right screens, not all of them.
 
 2. Technical constraints make you more creative
 
@@ -49,7 +49,7 @@ Every one of those sentences used to frustrate me. Now I see them differently. W
 
 Some of my favorite design solutions came from situations where the "right" answer was not possible. You find workarounds, simpler approaches, and sometimes entirely new patterns that would not have existed if you had unlimited options.
 
-3. Budget constraints teach you what actually matters
+3. Budget constraints teach you what matters
 
 When a startup tells you they have budget for 10 screens, you learn very quickly which screens are essential and which ones are nice to have. You stop designing elaborate onboarding flows with 8 steps and start thinking about what is the minimum someone needs to see before they get value.
 
@@ -75,7 +75,7 @@ These are constraints too. And they are the most important ones. When you design
 
 Every project attracts feature requests like a magnet. Without scope constraints, you end up with a product that does 20 things badly instead of 3 things well.
 
-When someone asks for a new feature, the question should never be "can we build this?" It should be "should we build this right now, given everything else we need to do?"
+When someone asks for a new feature, do not jump to "can we build this?" The more important question is "should we build this right now, given everything else we have on our plate?"
 
 7. Brand constraints give you a starting point
 
@@ -91,6 +91,6 @@ Wrapping up
 
 If you are a designer who feels stuck because of limitations on your current project, try flipping your perspective. Instead of asking "what would I do without this constraint?" ask "what does this constraint make possible that I would not have tried otherwise?"
 
-The next time a project comes with a tight deadline, a small budget, or a technical limitation that makes your original idea impossible, do not see it as a setback. See it as direction. Constraints tell you where to focus. They remove the noise and leave you with what actually matters.
+The next time a project comes with a tight deadline, a small budget, or a technical limitation that makes your original idea impossible, do not see it as a setback. See it as direction. Constraints tell you where to focus. They remove the noise and leave you with what matters.
 
-Some of the most iconic products in the world were built under ridiculous constraints. And they are better because of it, not in spite of it. Your work can be too.
+Some of the most iconic products in the world were built under ridiculous constraints. The constraints are what made those products good. Your work can be too.

@@ -356,7 +356,7 @@
   letter-spacing: .16px;
   color: var(--muted2);
   text-align: center;
-  width: min(594px, 100%);
+  width: min(880px, 100%);
   z-index: 2;
   white-space: pre-wrap;
 }
@@ -589,7 +589,7 @@
   letter-spacing: .16px;
   text-align: right;
   color: var(--bg);
-  width: min(420px, 100%);
+  width: min(820px, 100%);
   margin-left: auto;
   z-index: 2;
   white-space: pre-wrap;

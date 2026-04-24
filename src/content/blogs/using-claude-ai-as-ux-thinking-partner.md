@@ -1,10 +1,10 @@
-# Blog — Using Claude AI as a UX Thinking Partner, Not a Tool
+# Blog: Talk to Claude. Do Not Use It to Design Everything for You.
 Edit this file to update the blog post. Save and refresh to see changes.
 
 ---
 
 ## title
-Using Claude AI as a UX Thinking Partner, Not a Tool
+Talk to Claude. Do Not Use It to Design Everything for You.
 
 ## date
 April 2025
@@ -29,7 +29,7 @@ Illustration of using Claude AI for UX design thinking
 ## body
 I started using Claude about six months ago. Not because I wanted it to design things for me. I was just stuck on a project and needed someone to think out loud with. My team was busy, my manager was in back to back meetings, and I had a research synthesis that was going nowhere.
 
-So I opened Claude and just started talking through the problem. And something clicked. Not because Claude gave me the answer. But because explaining my problem to it forced me to think more clearly about what I was actually trying to solve.
+So I opened Claude and just started talking through the problem. And something clicked. Claude did not give me the answer. What happened was that explaining my problem to it forced me to think more clearly about what I was actually trying to solve.
 
 That was the moment I stopped thinking of AI as a tool and started thinking of it as a thinking partner. And honestly, it has changed how I work more than any Figma plugin ever has.
 
@@ -83,7 +83,7 @@ It helps me see my labels and categories from an outside perspective. Sometimes 
 
 Before a big presentation, I walk Claude through my design rationale and ask it to play devil's advocate. "If you were a product manager who cares about shipping fast, what would you push back on?" or "If you were an engineer, what would concern you about this design?"
 
-This is not about getting perfect rebuttals. It is about anticipating questions so I am not caught off guard. The worst feeling in a design review is someone asking a question you have not thought about and having nothing to say. Claude helps me show up prepared.
+The point is not to get perfect rebuttals. It is to anticipate questions so I am not caught off guard. The worst feeling in a design review is someone asking a question you have not thought about and having nothing to say. Claude helps me show up prepared.
 
 What I do not use it for
 
@@ -105,4 +105,4 @@ The biggest shift for me was not about what Claude can do. It was about how I wo
 
 I still do all the actual design work myself. I still make all the decisions. I still sit with users and listen to their problems. None of that has changed. What has changed is that I spend less time stuck. Less time staring at a blank screen wondering where to start. Less time second guessing myself in isolation.
 
-And honestly, that alone makes it worth it. Not because AI is magic. But because sometimes you just need someone to think with. Even if that someone is not a person.
+And honestly, that alone makes it worth it. AI is not magic, but sometimes you just need someone to think with. Even if that someone is not a person.

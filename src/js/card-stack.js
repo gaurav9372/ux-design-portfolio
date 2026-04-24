@@ -20,7 +20,11 @@ export const initCardStack = () => {
   const SCROLL_PER_CARD = window.innerHeight * 0.6;
   const SCALE_STEP = 0.025;
   const PUSH_STEP = 12;
-  const TOP_OFFSET = 80;
+  // Match the sticky stage height defined in CSS (.case-stack).
+  // Card (467px) is centered within the stage; button sits in remaining room.
+  const STACK_HEIGHT = 680;
+  const CARD_HEIGHT = 467;
+  const TOP_OFFSET = Math.round((STACK_HEIGHT - CARD_HEIGHT) / 2);
 
   // Natural rotation angles per card (alternating, slight randomness)
   const ROTATIONS = cards.map((_, i) => {
@@ -30,7 +34,7 @@ export const initCardStack = () => {
   });
 
   // Set section height to create scroll room
-  section.style.height = `${SCROLL_PER_CARD * (count - 1) + window.innerHeight + 200}px`;
+  section.style.height = `${SCROLL_PER_CARD * (count - 1) + STACK_HEIGHT + 200}px`;
 
   // First card is always visible and pinned
   cards[0].style.transform = `translateX(-50%) translateY(${TOP_OFFSET}px)`;
@@ -84,12 +88,14 @@ export const initCardStack = () => {
       }
     });
 
-    // Footer fade-in after last card lands
+    // Footer fade-in after last card lands.
+    // Preserve translateX(-50%) from CSS (case-footer is absolute-positioned
+    // with left: 50%) so the footer stays centered while fading in.
     if (footer) {
       const footerStart = (count - 1) * SCROLL_PER_CARD;
       const fp = Math.min(Math.max((scrolled - footerStart) / (SCROLL_PER_CARD * 0.4), 0), 1);
       footer.style.opacity = fp.toFixed(3);
-      footer.style.transform = `translateY(${(1 - fp) * 20}px)`;
+      footer.style.transform = `translateX(-50%) translateY(${(1 - fp) * 20}px)`;
     }
   };
 
@@ -101,7 +107,7 @@ export const initCardStack = () => {
 
   window.addEventListener('resize', () => {
     if (window.matchMedia('(max-width: 1100px)').matches) return;
-    section.style.height = `${SCROLL_PER_CARD * (count - 1) + window.innerHeight + 200}px`;
+    section.style.height = `${SCROLL_PER_CARD * (count - 1) + STACK_HEIGHT + 200}px`;
     update();
   });
 
