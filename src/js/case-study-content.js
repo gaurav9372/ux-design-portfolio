@@ -7,6 +7,7 @@
 
 const MD_LOADERS = {
   'care-naturals': () => import('../content/projects/care-naturals.md?raw'),
+  'legacy-square': () => import('../content/projects/legacy-square.md?raw'),
   'united-rubber': () => import('../content/projects/united-rubber.md?raw'),
   'adscult': () => import('../content/projects/adscult.md?raw'),
   'finflow': () => import('../content/projects/finflow.md?raw'),

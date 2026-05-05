@@ -31,6 +31,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://shreyansh-gaurav.netlify.app/pages/project/legacy-square.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://shreyansh-gaurav.netlify.app/pages/project/united-rubber.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

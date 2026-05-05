@@ -43,7 +43,7 @@ For me, UX design is a balancing game between these three, and that is what I en
 My Projects
 
 ## projects-desc
-I have worked on 60+ projects across many industries and types of businesses, including websites, mobile apps, complex dashboards, and more.
+Eight case studies, from a D2C skincare storefront to a legacy-planning dashboard. They cover websites, product flows, dashboards, and the harder product questions that sit underneath them.
 
 ---
 

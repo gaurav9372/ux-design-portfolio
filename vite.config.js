@@ -10,6 +10,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         projects: resolve(__dirname, 'pages/projects.html'),
         'project-care-naturals': resolve(__dirname, 'pages/project/care-naturals.html'),
+        'project-legacy-square': resolve(__dirname, 'pages/project/legacy-square.html'),
         'project-united-rubber': resolve(__dirname, 'pages/project/united-rubber.html'),
         'project-adscult': resolve(__dirname, 'pages/project/adscult.html'),
         'project-finflow': resolve(__dirname, 'pages/project/finflow.html'),
